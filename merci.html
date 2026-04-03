@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Merci - Interactis</title>
+  <meta name="description" content="Merci pour votre demande d'animation interactive. Nous vous recontacterons bientôt.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://www.interactis.be/merci.html">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/images/logo-icon.png">
+  <link rel="apple-touch-icon" href="/images/logo-icon.png">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              orange: '#f97316',
+              red: '#dc2626',
+              dark: '#0f172a',
+              light: '#fff7ed'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-slide-in-up {
+      animation: slideInUp 0.6s ease-out forwards;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #f97316, #dc2626);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-scrolled { background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+
+    @keyframes checkmark {
+      0% { stroke-dashoffset: 50; }
+      100% { stroke-dashoffset: 0; }
+    }
+
+    .checkmark {
+      stroke-dasharray: 50;
+      animation: checkmark 0.8s ease-out forwards;
+      animation-delay: 0.3s;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-900 font-sans">
+
+  <!-- NAVIGATION -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3">
+        <img src="/images/logo-icon.png" alt="Interactis Logo" class="w-10 h-10 object-contain">
+        <div>
+          <span class="text-xl font-bold gradient-text">Interactis</span>
+          <span class="block text-xs text-gray-500">Animation Interactive</span>
+        </div>
+      </a>
+
+      <a href="/" class="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-5 py-2.5 rounded-lg font-semibold text-sm transition-colors shadow-lg shadow-orange-500/25">
+        Retour à l'accueil
+      </a>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="min-h-screen flex items-center justify-center py-20">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 text-center animate-slide-in-up">
+      <!-- Success icon -->
+      <div class="mb-8 flex justify-center">
+        <div class="relative w-32 h-32 bg-gradient-to-br from-orange-100 to-red-100 rounded-full flex items-center justify-center">
+          <svg class="w-16 h-16 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path class="checkmark" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- Heading -->
+      <h1 class="text-4xl sm:text-5xl font-black mb-6">
+        <span class="gradient-text">Merci pour votre demande !</span>
+      </h1>
+
+      <!-- Message -->
+      <div class="space-y-6 mb-12">
+        <p class="text-xl text-gray-700 font-semibold">
+          Nous avons bien reçu votre demande d'animation interactive.
+        </p>
+
+        <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-lg text-left">
+          <p class="text-lg text-gray-800 mb-3">
+            <strong>Prochaines étapes :</strong>
+          </p>
+          <ul class="space-y-3 text-gray-700">
+            <li class="flex items-start gap-3">
+              <span class="text-orange-600 font-bold text-xl mt-0.5">✓</span>
+              <span><strong>Traitement :</strong> Nous analysons votre demande avec soin</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-orange-600 font-bold text-xl mt-0.5">✓</span>
+              <span><strong>Devis :</strong> Un devis détaillé et personnalisé vous sera envoyé</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-orange-600 font-bold text-xl mt-0.5">✓</span>
+              <span><strong>Contact direct :</strong> Nous vous recontacterons par téléphone ou email sous 24h</span>
+            </li>
+          </ul>
+        </div>
+
+        <p class="text-gray-600 text-lg">
+          Vérifiez votre boîte email (y compris spam) pour recevoir notre devis et nos propositions.
+        </p>
+      </div>
+
+      <!-- Contact info -->
+      <div class="bg-orange-50 border border-orange-200 rounded-xl p-8 mb-12">
+        <h2 class="text-xl font-bold text-gray-900 mb-6">Besoin d'aide ou question urgente ?</h2>
+        <div class="space-y-3">
+          <p class="text-gray-700">
+            <span class="font-semibold">Contactez-nous directement :</span>
+          </p>
+          <p>
+            <a href="tel:+32488435342" class="inline-flex items-center gap-2 text-orange-600 hover:text-orange-700 font-semibold text-lg">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              +32 488 43 53 42
+            </a>
+          </p>
+          <p>
+            <a href="mailto:contact@interactis.be" class="inline-flex items-center gap-2 text-orange-600 hover:text-orange-700 font-semibold text-lg">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              contact@interactis.be
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <!-- CTA Button -->
+      <a href="/" class="inline-flex items-center gap-3 bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg shadow-orange-500/30 hover:shadow-xl hover:shadow-orange-500/40">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+        Retour à l'accueil
+      </a>
+
+      <!-- Additional info -->
+      <div class="mt-16 pt-12 border-t border-gray-200">
+        <p class="text-sm text-gray-600 max-w-xl mx-auto">
+          Vos données sont traitées conformément à notre politique de confidentialité. Vous pouvez à tout moment nous contacter pour modifier ou supprimer vos informations.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-900 text-gray-400 py-16 mt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid md:grid-cols-4 gap-8 mb-12">
+        <!-- Brand -->
+        <div class="md:col-span-1">
+          <div class="flex items-center gap-3 mb-4">
+            <img src="/images/logo-icon.png" alt="Interactis Logo" class="w-10 h-10 object-contain brightness-0 invert">
+            <span class="text-xl font-bold text-white">Interactis</span>
+          </div>
+          <p class="text-sm">Animation interactive mobile pour événements et écoles. 100% accessible et inclusif.</p>
+        </div>
+
+        <!-- Navigation -->
+        <div>
+          <h4 class="text-white font-bold mb-4">Navigation</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/" class="hover:text-orange-400 transition-colors">Accueil</a></li>
+            <li><a href="/#publics" class="hover:text-orange-400 transition-colors">Nos publics</a></li>
+            <li><a href="/#animations" class="hover:text-orange-400 transition-colors">Animations</a></li>
+            <li><a href="/#faq" class="hover:text-orange-400 transition-colors">FAQ</a></li>
+            <li><a href="/#contact" class="hover:text-orange-400 transition-colors">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Services -->
+        <div>
+          <h4 class="text-white font-bold mb-4">Nos services</h4>
+          <ul class="space-y-2 text-sm">
+            <li>Écoles & Enfants</li>
+            <li>Team Building</li>
+            <li>Seniors & Homes</li>
+            <li>Événements privés</li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <h4 class="text-white font-bold mb-4">Contact</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="tel:+32488435342" class="hover:text-orange-400 transition-colors">+32 488 43 53 42</a></li>
+            <li><a href="mailto:contact@interactis.be" class="hover:text-orange-400 transition-colors">contact@interactis.be</a></li>
+            <li>Service mobile - Belgique</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-800 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <p class="text-sm">&copy; 2026 Interactis. Tous droits réservés.</p>
+        <div class="flex gap-6 text-sm">
+          <a href="/mentions-legales.html" class="hover:text-orange-400 transition-colors">Mentions légales</a>
+          <a href="/confidentialite.html" class="hover:text-orange-400 transition-colors">Confidentialité</a>
+          <a href="/cgv.html" class="hover:text-orange-400 transition-colors">CGV</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Sticky nav
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('nav-scrolled');
+      } else {
+        navbar.classList.remove('nav-scrolled');
+      }
+    });
+  </script>
+</body>
+</html>
