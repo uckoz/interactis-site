@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animation Team Building et Entreprise | InterActis Belgique</title>
+  <meta name="description" content="Animation interactive pour team building et événements d'entreprise. Jeux collaboratifs projetés sur un mur. On se déplace dans vos locaux en Belgique.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.interactis.be/animation-entreprise">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Animation Team Building et Entreprise | InterActis">
+  <meta property="og:description" content="Animation interactive pour team building et événements d'entreprise. Jeux collaboratifs projetés sur un mur. Installation rapide.">
+  <meta property="og:url" content="https://www.interactis.be/animation-entreprise">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_BE">
+  <meta property="og:site_name" content="Interactis">
+  <meta property="og:image" content="https://www.interactis.be/images/hero.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/images/logo-icon.png">
+  <link rel="apple-touch-icon" href="/images/logo-icon.png">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              orange: '#f97316',
+              red: '#dc2626',
+              dark: '#0f172a',
+              light: '#fff7ed'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Schema.org - Organization + Service -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://www.interactis.be/#business",
+    "name": "Interactis",
+    "description": "Animation interactive pour team building et événements d'entreprise. Jeux collaboratifs projetés sur un mur.",
+    "url": "https://www.interactis.be",
+    "telephone": "+32488435342",
+    "email": "contact@interactis.be",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Mons",
+      "postalCode": "7000",
+      "addressCountry": "BE"
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    },
+    "areaServed": [
+      {"@type": "Country", "name": "Belgique"},
+      {"@type": "Country", "name": "Luxembourg"},
+      {"@type": "Country", "name": "France"}
+    ],
+    "priceRange": "$$",
+    "logo": "https://www.interactis.be/images/logo-icon.png"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Animation Team Building Interactif",
+    "description": "Animation interactive pour team building et événements d'entreprise en Belgique",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Interactis",
+      "url": "https://www.interactis.be"
+    },
+    "areaServed": [
+      "Belgique",
+      "Luxembourg",
+      "France"
+    ],
+    "serviceType": "Animation Interactive"
+  }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .animate-fade-in-up { animation: fadeInUp 0.6s ease-out forwards; }
+    .animate-fade-in { animation: fadeIn 0.5s ease-out forwards; }
+
+    /* Scroll animations */
+    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s ease-out; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* Gradient text */
+    .gradient-text {
+      background: linear-gradient(135deg, #f97316, #dc2626);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Card hover */
+    .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+
+    /* Sticky nav background */
+    .nav-scrolled { background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+  </style>
+</head>
+<body class="bg-white text-gray-900 font-sans">
+
+  <!-- NAVIGATION -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3">
+        <img src="/images/logo-icon.png" alt="Interactis Logo" class="w-10 h-10 object-contain">
+        <div>
+          <span class="text-xl font-bold gradient-text">Interactis</span>
+          <span class="block text-xs text-gray-500">Animation Interactive</span>
+        </div>
+      </a>
+
+      <!-- Desktop nav -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="/#publics" class="text-sm font-medium text-gray-700 hover:text-orange-600 transition-colors">Nos publics</a>
+        <a href="/#fonctionnement" class="text-sm font-medium text-gray-700 hover:text-orange-600 transition-colors">Comment ça marche</a>
+        <a href="/#animations" class="text-sm font-medium text-gray-700 hover:text-orange-600 transition-colors">Animations</a>
+        <a href="/#faq" class="text-sm font-medium text-gray-700 hover:text-orange-600 transition-colors">FAQ</a>
+        <a href="#contact" class="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-5 py-2.5 rounded-lg font-semibold text-sm transition-colors shadow-lg shadow-orange-500/25">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+          Demander un devis
+        </a>
+      </div>
+
+      <!-- Mobile menu button -->
+      <button id="menuBtn" class="md:hidden p-2 rounded-lg hover:bg-gray-100" aria-label="Menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white border-t shadow-lg">
+      <div class="px-4 py-4 space-y-3">
+        <a href="/#publics" class="block py-2 text-gray-700 font-medium">Nos publics</a>
+        <a href="/#fonctionnement" class="block py-2 text-gray-700 font-medium">Comment ça marche</a>
+        <a href="/#animations" class="block py-2 text-gray-700 font-medium">Animations</a>
+        <a href="/#faq" class="block py-2 text-gray-700 font-medium">FAQ</a>
+        <a href="#contact" class="block py-3 bg-orange-500 text-white text-center rounded-lg font-semibold">Demander un devis</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="relative overflow-hidden bg-gradient-to-br from-orange-50 via-pink-50 to-purple-50 pt-28 pb-20 sm:pt-36 sm:pb-28">
+    <!-- Background decoration -->
+    <div class="absolute -top-40 -right-40 w-80 h-80 bg-orange-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+    <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="animate-fade-in-up">
+          <div class="inline-flex items-center gap-2 bg-white/80 backdrop-blur px-4 py-2 rounded-full text-sm font-medium text-gray-700 mb-6 shadow-sm">
+            <svg class="w-5 h-5 text-orange-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            Renforcer la cohésion d'équipe
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight mb-6">
+            <span class="gradient-text">Animation Interactive pour Entreprises et Team Building</span>
+          </h1>
+
+          <p class="text-lg text-gray-600 mb-8 max-w-xl">
+            Renforcez la cohésion d'équipe avec des jeux interactifs projetés sur un mur. Une activité originale et inclusive qui rassemble tous vos collaborateurs.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4 mb-10">
+            <a href="#contact" class="inline-flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg shadow-orange-500/30 hover:shadow-xl hover:shadow-orange-500/40">
+              Recevoir un devis rapide
+            </a>
+            <a href="tel:+32488435342" class="inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-gray-800 px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-md border border-gray-200">
+              <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              Être rappelé
+            </a>
+          </div>
+
+          <!-- Stats -->
+          <div class="grid grid-cols-3 gap-4">
+            <div class="text-center p-3 bg-white/60 backdrop-blur rounded-xl">
+              <div class="text-2xl font-black text-orange-600">100%</div>
+              <div class="text-xs text-gray-600 font-medium">Inclusif & PMR</div>
+            </div>
+            <div class="text-center p-3 bg-white/60 backdrop-blur rounded-xl">
+              <div class="text-2xl font-black text-orange-600">&lt;3min</div>
+              <div class="text-xs text-gray-600 font-medium">Installation</div>
+            </div>
+            <div class="text-center p-3 bg-white/60 backdrop-blur rounded-xl">
+              <div class="text-2xl font-black text-orange-600">36</div>
+              <div class="text-xs text-gray-600 font-medium">Jeux interactifs</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="animate-fade-in relative">
+          <img src="/images/hero.jpg" alt="Animation Team Building InterActis" class="rounded-2xl shadow-2xl w-full object-cover" loading="eager">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POURQUOI INTERACTIS POUR VOTRE ENTREPRISE -->
+  <section id="pourquoi" class="py-20 sm:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-16 reveal">
+        <h2 class="text-3xl sm:text-4xl font-black mb-4">
+          Pourquoi <span class="gradient-text">InterActis pour votre entreprise ?</span>
+        </h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">Une solution éprouvée pour renforcer la cohésion et créer des moments mémorables</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
+        <!-- Card 1 -->
+        <div class="card-hover bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
+          <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 19H9a6 6 0 016-6v0a6 6 0 016 6v1"/></svg>
+          </div>
+          <h3 class="text-lg font-bold mb-3">Team Building</h3>
+          <p class="text-gray-600 text-sm">Renforcez la cohésion d'équipe de manière ludique et collaborative.</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card-hover bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
+          <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold mb-3">Événements Corporate</h3>
+          <p class="text-gray-600 text-sm">Animation originale pour vos séminaires, inaugurations et événements.</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card-hover bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
+          <div class="w-12 h-12 bg-pink-100 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12M8 11h12M8 15h12M3 7h.01M3 11h.01M3 15h.01"/></svg>
+          </div>
+          <h3 class="text-lg font-bold mb-3">Journées Portes Ouvertes</h3>
+          <p class="text-gray-600 text-sm">Attirez l'attention et créez une expérience unique pour vos visiteurs.</p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card-hover bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
+          <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold mb-3">Séminaires</h3>
+          <p class="text-gray-600 text-sm">Dynaminez vos sessions de formation et créez des pauses energiques.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMENT ÇA MARCHE -->
+  <section id="fonctionnement" class="py-20 sm:py-28 bg-gradient-to-br from-gray-50 to-orange-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-16 reveal">
+        <h2 class="text-3xl sm:text-4xl font-black mb-4">
+          Comment ça <span class="gradient-text">marche ?</span>
+        </h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">Un processus simple et rapide pour vos événements</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
+        <!-- Step 1 -->
+        <div class="relative">
+          <div class="bg-white rounded-2xl p-8 h-full border border-gray-100 shadow-sm">
+            <div class="w-14 h-14 bg-gradient-to-br from-orange-500 to-red-500 rounded-full flex items-center justify-center text-white font-black text-xl mb-4">1</div>
+            <h3 class="text-xl font-bold mb-3">Projection murale</h3>
+            <p class="text-gray-600">Un vidéoprojecteur affiche les jeux sur votre mur. Nul besoin d'équipement complexe.</p>
+          </div>
+          <div class="absolute -right-3 top-1/2 transform -translate-y-1/2 hidden lg:block">
+            <svg class="w-6 h-6 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="relative">
+          <div class="bg-white rounded-2xl p-8 h-full border border-gray-100 shadow-sm">
+            <div class="w-14 h-14 bg-gradient-to-br from-orange-500 to-red-500 rounded-full flex items-center justify-center text-white font-black text-xl mb-4">2</div>
+            <h3 class="text-xl font-bold mb-3">Interaction directe</h3>
+            <p class="text-gray-600">Les joueurs interagissent directement avec les mains ou avec des ballons. Aucune manette requise.</p>
+          </div>
+          <div class="absolute -right-3 top-1/2 transform -translate-y-1/2 hidden lg:block">
+            <svg class="w-6 h-6 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="relative">
+          <div class="bg-white rounded-2xl p-8 h-full border border-gray-100 shadow-sm">
+            <div class="w-14 h-14 bg-gradient-to-br from-orange-500 to-red-500 rounded-full flex items-center justify-center text-white font-black text-xl mb-4">3</div>
+            <h3 class="text-xl font-bold mb-3">Installation express</h3>
+            <p class="text-gray-600">Installation en moins de 3 minutes. Nous nous adaptons à vos locaux et configuration.</p>
+          </div>
+          <div class="absolute -right-3 top-1/2 transform -translate-y-1/2 hidden lg:block">
+            <svg class="w-6 h-6 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div>
+          <div class="bg-white rounded-2xl p-8 h-full border border-gray-100 shadow-sm">
+            <div class="w-14 h-14 bg-gradient-to-br from-orange-500 to-red-500 rounded-full flex items-center justify-center text-white font-black text-xl mb-4">4</div>
+            <h3 class="text-xl font-bold mb-3">Déplacement inclus</h3>
+            <p class="text-gray-600">Nous nous déplaçons dans vos locaux en Belgique, Luxembourg et France.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature highlights -->
+      <div class="grid md:grid-cols-3 gap-6 mt-16 reveal">
+        <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0">
+              <svg class="w-8 h-8 text-orange-600" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            </div>
+            <div>
+              <h4 class="font-bold text-gray-900 mb-1">100% Accessible</h4>
+              <p class="text-gray-600 text-sm">Adapté à tous les niveaux de mobilité et d'inclusivité.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0">
+              <svg class="w-8 h-8 text-orange-600" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            </div>
+            <div>
+              <h4 class="font-bold text-gray-900 mb-1">Nombreux jeux</h4>
+              <p class="text-gray-600 text-sm">36 jeux interactifs pour tous les publics et tous les contextes.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0">
+              <svg class="w-8 h-8 text-orange-600" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            </div>
+            <div>
+              <h4 class="font-bold text-gray-900 mb-1">Flexible & Évolutif</h4>
+              <p class="text-gray-600 text-sm">Adaptation à votre budget, votre durée et vos besoins spécifiques.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OCCASIONS POUR UTILISER INTERACTIS -->
+  <section id="animations" class="py-20 sm:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-16 reveal">
+        <h2 class="text-3xl sm:text-4xl font-black mb-4">
+          Des activités pour <span class="gradient-text">chaque occasion</span>
+        </h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">Notre animation s'adapte à votre contexte</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
+        <!-- Team Building -->
+        <div class="card-hover bg-white border border-gray-100 rounded-2xl p-8 shadow-sm">
+          <div class="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.856-1.487M15 10a3 3 0 11-6 0 3 3 0 016 0zM15 20H9m6 0h.01M9 20H3v-2a6 6 0 0112 0v2z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Team Building</h3>
+          <p class="text-gray-600 mb-4">Renforcez la cohésion d'équipe avec une activité ludique et inclusive qui rassemble tout le monde.</p>
+          <ul class="space-y-2 text-sm text-gray-600">
+            <li class="flex items-start gap-2">
+              <span class="text-orange-600 font-bold">•</span>
+              <span>Jeux collaboratifs</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-orange-600 font-bold">•</span>
+              <span>Défi en équipe</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-orange-600 font-bold">•</span>
+              <span>Moment fédérateur</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Journée du Personnel -->
+        <div class="card-hover bg-white border border-gray-100 rounded-2xl p-8 shadow-sm">
+          <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Journée du Personnel</h3>
+          <p class="text-gray-600 mb-4">Une activité mémorable pour célébrer votre équipe et créer des souvenirs durables.</p>
+          <ul class="space-y-2 text-sm text-gray-600">
+            <li class="flex items-start gap-2">
+              <span class="text-orange-600 font-bold">•</span>
+              <span>Divertissement garanti</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-orange-600 font-bold">•</span>
+              <span>Tous les âges</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-orange-600 font-bold">•</span>
+              <span>Accessible à tous</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Afterwork -->
+        <div class="card-hover bg-white border border-gray-100 rounded-2xl p-8 shadow-sm">
+          <div class="w-14 h-14 bg-pink-100 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-8 h-8 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Afterwork</h3>
+          <p class="text-gray-600 mb-4">Une pause energique et ludique pour décompresser après le travail dans une ambiance conviviale.</p>
+          <ul class="space-y-2 text-sm text-gray-600">
+            <li class="flex items-start gap-2">
+              <span class="text-orange-600 font-bold">•</span>
+              <span>Détente garantie</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-orange-600 font-bold">•</span>
+              <span>Bonne ambiance</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-orange-600 font-bold">•</span>
+              <span>Entre collègues</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Événement Client -->
+        <div class="card-hover bg-white border border-gray-100 rounded-2xl p-8 shadow-sm">
+          <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V6a2 2 0 11-2-2m2 2v1m6-6v10a2 2 0 11-4 0V8a2 2 0 11 4 0z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Événement Client</h3>
+          <p class="text-gray-600 mb-4">Impressionnez vos clients avec une animation originale qui renforce vos relations professionnelles.</p>
+          <ul class="space-y-2 text-sm text-gray-600">
+            <li class="flex items-start gap-2">
+              <span class="text-orange-600 font-bold">•</span>
+              <span>Expérience mémorable</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-orange-600 font-bold">•</span>
+              <span>Image premium</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-orange-600 font-bold">•</span>
+              <span>Relation renforcée</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Salon Professionnel -->
+        <div class="card-hover bg-white border border-gray-100 rounded-2xl p-8 shadow-sm">
+          <div class="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Salon Professionnel</h3>
+          <p class="text-gray-600 mb-4">Attirez l'attention des visiteurs et augmentez le flux sur votre stand avec une animation captivante.</p>
+          <ul class="space-y-2 text-sm text-gray-600">
+            <li class="flex items-start gap-2">
+              <span class="text-orange-600 font-bold">•</span>
+              <span>Attraction visuelle</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-orange-600 font-bold">•</span>
+              <span>Trafic généré</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-orange-600 font-bold">•</span>
+              <span>Mémorabilité</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Inauguration -->
+        <div class="card-hover bg-white border border-gray-100 rounded-2xl p-8 shadow-sm">
+          <div class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Inauguration</h3>
+          <p class="text-gray-600 mb-4">Créez un moment inoubliable lors de l'inauguration de vos nouveaux locaux ou installations.</p>
+          <ul class="space-y-2 text-sm text-gray-600">
+            <li class="flex items-start gap-2">
+              <span class="text-orange-600 font-bold">•</span>
+              <span>Moment de fête</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-orange-600 font-bold">•</span>
+              <span>Convivialité</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-orange-600 font-bold">•</span>
+              <span>Souvenirs durables</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA SECTION -->
+  <section class="py-20 sm:py-28 bg-gradient-to-br from-orange-500 via-red-500 to-pink-500 relative overflow-hidden">
+    <!-- Background decoration -->
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute -top-40 -right-40 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
+    </div>
+
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center relative z-10">
+      <h2 class="text-3xl sm:text-5xl font-black text-white mb-6">
+        Prêt à transformer vos événements ?
+      </h2>
+      <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+        Demandez un devis dès maintenant et découvrez comment InterActis peut renforcer la cohésion de votre équipe.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#contact" class="inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-100 text-orange-600 px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg">
+          Recevoir un devis
+        </a>
+        <a href="tel:+32488435342" class="inline-flex items-center justify-center gap-2 bg-white/20 hover:bg-white/30 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all border border-white/50 backdrop-blur">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+          +32 488 435 342
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT FORM -->
+  <section id="contact" class="py-20 sm:py-28 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12 reveal">
+        <h2 class="text-3xl sm:text-4xl font-black mb-4">
+          Demander un <span class="gradient-text">devis gratuit</span>
+        </h2>
+        <p class="text-lg text-gray-600">Remplissez le formulaire ci-dessous et nous vous recontacterons rapidement</p>
+      </div>
+
+      <form action="https://formspree.io/f/xyzabc" method="POST" class="bg-white rounded-2xl shadow-xl p-8 border border-gray-100 reveal">
+        <div class="grid sm:grid-cols-2 gap-6 mb-6">
+          <div>
+            <label for="name" class="block text-sm font-bold text-gray-900 mb-2">Nom complet *</label>
+            <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all" placeholder="Votre nom">
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-bold text-gray-900 mb-2">Email *</label>
+            <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all" placeholder="votre@email.com">
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-6 mb-6">
+          <div>
+            <label for="phone" class="block text-sm font-bold text-gray-900 mb-2">Téléphone *</label>
+            <input type="tel" id="phone" name="phone" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all" placeholder="+32 xxx xx xx xx">
+          </div>
+          <div>
+            <label for="company" class="block text-sm font-bold text-gray-900 mb-2">Entreprise *</label>
+            <input type="text" id="company" name="company" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all" placeholder="Votre entreprise">
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <label for="event" class="block text-sm font-bold text-gray-900 mb-2">Type d'événement *</label>
+          <select id="event" name="event" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all">
+            <option value="">Sélectionner une option</option>
+            <option value="Team Building">Team Building</option>
+            <option value="Journée du Personnel">Journée du Personnel</option>
+            <option value="Afterwork">Afterwork</option>
+            <option value="Événement Client">Événement Client</option>
+            <option value="Salon Professionnel">Salon Professionnel</option>
+            <option value="Inaugurasion">Inauguration</option>
+            <option value="Séminaire">Séminaire</option>
+            <option value="Autre">Autre</option>
+          </select>
+        </div>
+
+        <div class="mb-6">
+          <label for="participants" class="block text-sm font-bold text-gray-900 mb-2">Nombre de participants estimé *</label>
+          <input type="number" id="participants" name="participants" required min="1" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all" placeholder="Environ...">
+        </div>
+
+        <div class="mb-6">
+          <label for="date" class="block text-sm font-bold text-gray-900 mb-2">Date d'événement envisagée</label>
+          <input type="date" id="date" name="date" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all">
+        </div>
+
+        <div class="mb-6">
+          <label for="message" class="block text-sm font-bold text-gray-900 mb-2">Message</label>
+          <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all resize-none" placeholder="Détails supplémentaires sur votre événement..."></textarea>
+        </div>
+
+        <div class="mb-6">
+          <label for="consent" class="flex items-start gap-3">
+            <input type="checkbox" id="consent" name="consent" required class="w-4 h-4 mt-1 rounded border-gray-300 text-orange-600 focus:ring-orange-500">
+            <span class="text-sm text-gray-600">
+              J'accepte la <a href="/confidentialite" class="text-orange-600 hover:underline">politique de confidentialité</a> et j'autorise InterActis à me recontacter *
+            </span>
+          </label>
+        </div>
+
+        <button type="submit" class="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-orange-500/30 hover:shadow-xl">
+          Envoyer ma demande
+        </button>
+
+        <p class="text-sm text-gray-500 text-center mt-4">
+          Nous vous recontacterons dans les 24 heures. Rapide et sans engagement.
+        </p>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-900 text-white py-16 sm:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <!-- Brand -->
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <img src="/images/logo-icon.png" alt="Interactis Logo" class="w-10 h-10 object-contain">
+            <div>
+              <span class="text-lg font-bold">Interactis</span>
+              <span class="block text-xs text-gray-400">Animation Interactive</span>
+            </div>
+          </div>
+          <p class="text-gray-400 text-sm">
+            Animation interactive mobile accessible à tous. Événements, écoles, entreprises, maisons de repos.
+          </p>
+        </div>
+
+        <!-- Navigation -->
+        <div>
+          <h4 class="font-bold mb-4">Navigation</h4>
+          <ul class="space-y-2 text-sm text-gray-400">
+            <li><a href="/" class="hover:text-white transition-colors">Accueil</a></li>
+            <li><a href="/#publics" class="hover:text-white transition-colors">Nos publics</a></li>
+            <li><a href="/#fonctionnement" class="hover:text-white transition-colors">Comment ça marche</a></li>
+            <li><a href="#contact" class="hover:text-white transition-colors">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Pages SEO -->
+        <div>
+          <h4 class="font-bold mb-4">Nos services</h4>
+          <ul class="space-y-2 text-sm text-gray-400">
+            <li><a href="/" class="hover:text-white transition-colors">Animation Entreprise</a></li>
+            <li><a href="/" class="hover:text-white transition-colors">Animation École</a></li>
+            <li><a href="/" class="hover:text-white transition-colors">Animation Senior</a></li>
+            <li><a href="/" class="hover:text-white transition-colors">Tous les services</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <h4 class="font-bold mb-4">Contact</h4>
+          <ul class="space-y-3 text-sm text-gray-400">
+            <li class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              <a href="tel:+32488435342" class="hover:text-white transition-colors">+32 488 435 342</a>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              <a href="mailto:contact@interactis.be" class="hover:text-white transition-colors">contact@interactis.be</a>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-orange-500 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg>
+              <span>Mons, Belgique</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="border-t border-gray-800 pt-8 mb-8">
+        <div class="grid sm:grid-cols-2 gap-8 text-sm text-gray-400">
+          <div>
+            <p class="mb-4 font-semibold text-white">Zones de service</p>
+            <p>Belgique (Wallonie, Flandre), Luxembourg et France</p>
+          </div>
+          <div class="sm:text-right">
+            <p class="mb-4 font-semibold text-white">Horaires</p>
+            <p>Lun-Ven: 9h00 - 18h00</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom -->
+      <div class="border-t border-gray-800 pt-8">
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-gray-400">
+          <p>&copy; 2026 InterActis. Tous droits réservés.</p>
+          <div class="flex gap-6">
+            <a href="/mentions-legales" class="hover:text-white transition-colors">Mentions légales</a>
+            <a href="/confidentialite" class="hover:text-white transition-colors">Confidentialité</a>
+            <a href="/cgv" class="hover:text-white transition-colors">CGV</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Mobile menu toggle
+    document.getElementById('menuBtn').addEventListener('click', function() {
+      document.getElementById('mobileMenu').classList.toggle('hidden');
+    });
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('nav-scrolled');
+      } else {
+        navbar.classList.remove('nav-scrolled');
+      }
+    });
+
+    // Reveal animations on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    reveals.forEach(reveal => {
+      observer.observe(reveal);
+    });
+  </script>
+</body>
+</html>

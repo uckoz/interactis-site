@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animation Interactive pour Maisons de Repos | InterActis Belgique</title>
+  <meta name="description" content="Animation interactive clé en main pour maisons de repos et seniors. Jeux projetés sur un mur, 100% accessible PMR. Démonstration gratuite en Belgique.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.interactis.be/animation-maison-de-repos">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Animation Interactive pour Maisons de Repos | InterActis">
+  <meta property="og:description" content="Des jeux ludiques projetés sur un mur pour stimuler la mobilité, la mémoire et le lien social. 100% accessible PMR.">
+  <meta property="og:url" content="https://www.interactis.be/animation-maison-de-repos">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_BE">
+  <meta property="og:site_name" content="Interactis">
+  <meta property="og:image" content="https://www.interactis.be/images/hero.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/images/logo-icon.png">
+  <link rel="apple-touch-icon" href="/images/logo-icon.png">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              orange: '#f97316',
+              red: '#dc2626',
+              dark: '#0f172a',
+              light: '#fff7ed'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Schema.org Service Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": "https://www.interactis.be/animation-maison-de-repos",
+    "name": "Animation Interactive pour Maisons de Repos",
+    "description": "Animation interactive ludique et accessible pour maisons de repos et seniors. Jeux projetés sur un mur, 100% accessible aux personnes à mobilité réduite.",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Interactis",
+      "telephone": "+32488435342",
+      "email": "contact@interactis.be",
+      "url": "https://www.interactis.be",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Mons",
+        "postalCode": "7000",
+        "addressCountry": "BE"
+      }
+    },
+    "areaServed": [
+      {"@type": "Country", "name": "Belgique"},
+      {"@type": "Country", "name": "Luxembourg"},
+      {"@type": "Country", "name": "France"}
+    ],
+    "serviceType": "Animation interactive",
+    "audience": {
+      "@type": "Audience",
+      "audienceType": "Seniors, maisons de repos, personnes âgées"
+    }
+  }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .animate-fade-in-up { animation: fadeInUp 0.6s ease-out forwards; }
+    .animate-fade-in { animation: fadeIn 0.5s ease-out forwards; }
+
+    /* Scroll animations */
+    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s ease-out; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* FAQ accordion */
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+    .faq-answer.open { max-height: 200px; }
+
+    /* Gradient text */
+    .gradient-text {
+      background: linear-gradient(135deg, #f97316, #dc2626);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Card hover */
+    .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+
+    /* Sticky nav background */
+    .nav-scrolled { background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+  </style>
+</head>
+<body class="bg-white text-gray-900 font-sans">
+
+  <!-- NAVIGATION -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3">
+        <img src="/images/logo-icon.png" alt="Interactis Logo" class="w-10 h-10 object-contain">
+        <div>
+          <span class="text-xl font-bold gradient-text">Interactis</span>
+          <span class="block text-xs text-gray-500">Animation Interactive</span>
+        </div>
+      </a>
+
+      <!-- Desktop nav -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="/#publics" class="text-sm font-medium text-gray-700 hover:text-orange-600 transition-colors">Nos publics</a>
+        <a href="/#fonctionnement" class="text-sm font-medium text-gray-700 hover:text-orange-600 transition-colors">Comment ça marche</a>
+        <a href="/#animations" class="text-sm font-medium text-gray-700 hover:text-orange-600 transition-colors">Animations</a>
+        <a href="/#faq" class="text-sm font-medium text-gray-700 hover:text-orange-600 transition-colors">FAQ</a>
+        <a href="#contact" class="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-5 py-2.5 rounded-lg font-semibold text-sm transition-colors shadow-lg shadow-orange-500/25">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+          Demander un devis
+        </a>
+      </div>
+
+      <!-- Mobile menu button -->
+      <button id="menuBtn" class="md:hidden p-2 rounded-lg hover:bg-gray-100" aria-label="Menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white border-t shadow-lg">
+      <div class="px-4 py-4 space-y-3">
+        <a href="/#publics" class="block py-2 text-gray-700 font-medium">Nos publics</a>
+        <a href="/#fonctionnement" class="block py-2 text-gray-700 font-medium">Comment ça marche</a>
+        <a href="/#animations" class="block py-2 text-gray-700 font-medium">Animations</a>
+        <a href="/#faq" class="block py-2 text-gray-700 font-medium">FAQ</a>
+        <a href="#contact" class="block py-3 bg-orange-500 text-white text-center rounded-lg font-semibold">Demander un devis</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="relative overflow-hidden bg-gradient-to-br from-orange-50 via-pink-50 to-purple-50 pt-28 pb-20 sm:pt-36 sm:pb-28">
+    <!-- Background decoration -->
+    <div class="absolute -top-40 -right-40 w-80 h-80 bg-orange-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+    <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="animate-fade-in-up">
+          <div class="inline-flex items-center gap-2 bg-white/80 backdrop-blur px-4 py-2 rounded-full text-sm font-medium text-gray-700 mb-6 shadow-sm">
+            <svg class="w-5 h-5 text-orange-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            100% Inclusif & PMR
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight mb-6">
+            <span class="gradient-text">Animation Interactive pour Maisons de Repos et Seniors</span>
+          </h1>
+
+          <p class="text-lg text-gray-600 mb-8 max-w-xl">
+            Des jeux ludiques projetés sur un mur qui stimulent la mobilité, la mémoire et le lien social. 100% accessible aux personnes en fauteuil roulant.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4 mb-10">
+            <a href="#contact" class="inline-flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg shadow-orange-500/30 hover:shadow-xl hover:shadow-orange-500/40">
+              Demander une démonstration gratuite
+            </a>
+            <a href="tel:+32488435342" class="inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-gray-800 px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-md border border-gray-200">
+              <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              Être rappelé
+            </a>
+          </div>
+
+          <!-- Stats -->
+          <div class="grid grid-cols-3 gap-4">
+            <div class="text-center p-3 bg-white/60 backdrop-blur rounded-xl">
+              <div class="text-2xl font-black text-orange-600">100%</div>
+              <div class="text-xs text-gray-600 font-medium">Inclusif & PMR</div>
+            </div>
+            <div class="text-center p-3 bg-white/60 backdrop-blur rounded-xl">
+              <div class="text-2xl font-black text-orange-600">&lt;3min</div>
+              <div class="text-xs text-gray-600 font-medium">Installation</div>
+            </div>
+            <div class="text-center p-3 bg-white/60 backdrop-blur rounded-xl">
+              <div class="text-2xl font-black text-orange-600">36</div>
+              <div class="text-xs text-gray-600 font-medium">Jeux interactifs</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="animate-fade-in relative">
+          <img src="/images/hero.jpg" alt="Animation interactive pour maisons de repos et seniors" class="rounded-2xl shadow-2xl w-full object-cover" loading="eager">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS FOR SENIORS -->
+  <section class="py-20 sm:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-16 reveal">
+        <h2 class="text-3xl sm:text-4xl font-black mb-4">
+          Pourquoi choisir InterActis <span class="gradient-text">pour votre maison de repos ?</span>
+        </h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">Une animation pensée spécialement pour nos aînés</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
+        <!-- Mobilité -->
+        <div class="card-hover bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
+          <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Stimule la mobilité</h3>
+          <p class="text-gray-600">Des jeux qui encouragent les mouvements naturels et adaptés à chacun. Parfait pour maintenir l'activité physique.</p>
+        </div>
+
+        <!-- Mémoire -->
+        <div class="card-hover bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
+          <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Aiguise la mémoire</h3>
+          <p class="text-gray-600">Jeux de mémoire et de culture générale adaptés. Stimule le cerveau de façon ludique et agréable.</p>
+        </div>
+
+        <!-- Lien social -->
+        <div class="card-hover bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
+          <div class="w-12 h-12 bg-pink-100 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Crée du lien social</h3>
+          <p class="text-gray-600">Des jeux en groupe qui favorisent les interactions et renforcent les liens entre résidents.</p>
+        </div>
+
+        <!-- PMR -->
+        <div class="card-hover bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
+          <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">100% Accessible PMR</h3>
+          <p class="text-gray-600">Jouable depuis une chaise roulante. Chaque résident, sans exception, peut participer activement.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="py-20 sm:py-28 bg-gradient-to-br from-slate-50 to-orange-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-16 reveal">
+        <h2 class="text-3xl sm:text-4xl font-black mb-4">
+          Comment <span class="gradient-text">ça marche</span> ?
+        </h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">Une technologie simple et efficace, pensée pour nos aînés</p>
+      </div>
+
+      <div class="bg-white rounded-2xl p-8 sm:p-12 shadow-sm reveal">
+        <div class="max-w-4xl mx-auto">
+          <div class="grid md:grid-cols-3 gap-8">
+            <!-- Projected games -->
+            <div class="text-center">
+              <div class="w-16 h-16 bg-orange-500 text-white rounded-2xl flex items-center justify-center text-2xl font-black mx-auto mb-6 shadow-lg shadow-orange-500/30">1</div>
+              <h3 class="text-xl font-bold mb-3">Jeux projetés</h3>
+              <p class="text-gray-600">Les jeux sont projetés sur un grand mur blanc ou un écran. Pas besoin de manettes, pas de technologie complexe.</p>
+            </div>
+
+            <!-- Interaction -->
+            <div class="text-center">
+              <div class="w-16 h-16 bg-orange-500 text-white rounded-2xl flex items-center justify-center text-2xl font-black mx-auto mb-6 shadow-lg shadow-orange-500/30">2</div>
+              <h3 class="text-xl font-bold mb-3">Interaction naturelle</h3>
+              <p class="text-gray-600">Les résidents interagissent avec leurs mains ou avec des ballons souples. Totalement naturel et sans danger.</p>
+            </div>
+
+            <!-- Installation -->
+            <div class="text-center">
+              <div class="w-16 h-16 bg-orange-500 text-white rounded-2xl flex items-center justify-center text-2xl font-black mx-auto mb-6 shadow-lg shadow-orange-500/30">3</div>
+              <h3 class="text-xl font-bold mb-3">Installation en 3 min</h3>
+              <p class="text-gray-600">Nous nous occupons de tout. Installation, configuration, démonstration. Zéro tracas pour vous.</p>
+            </div>
+          </div>
+
+          <div class="mt-12 p-8 bg-orange-50 rounded-xl border-2 border-orange-200">
+            <h3 class="text-xl font-bold mb-3 text-gray-900">Espace requis</h3>
+            <p class="text-gray-700 mb-4">Un simple espace d'environ 3x3 mètres et une prise électrique. C'est tout ! Nous apportons tout le matériel.</p>
+            <div class="flex items-center gap-3 text-gray-700">
+              <svg class="w-5 h-5 text-orange-600" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+              <span>Montage et démontage en moins de 5 minutes</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADAPTED ACTIVITIES -->
+  <section class="py-20 sm:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-16 reveal">
+        <h2 class="text-3xl sm:text-4xl font-black mb-4">
+          Des animations <span class="gradient-text">adaptées à vos résidents</span>
+        </h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">36 jeux variés pour tous les niveaux et envies</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
+        <!-- Memory Games -->
+        <div class="card-hover bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
+          <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Jeux de mémoire</h3>
+          <p class="text-gray-600">Memory visual, reconnaître les paires, jeux de concentration. Entraîne la mémoire et l'attention.</p>
+        </div>
+
+        <!-- Coordination -->
+        <div class="card-hover bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
+          <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Jeux de coordination</h3>
+          <p class="text-gray-600">Cible, balle lancée, gestes adaptés. Améliore la coordination et maintient la flexibilité.</p>
+        </div>
+
+        <!-- Culture -->
+        <div class="card-hover bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
+          <div class="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Culture générale</h3>
+          <p class="text-gray-600">Quizz historique, géographie, cinéma. Stimule les connaissances de manière ludique et divertissante.</p>
+        </div>
+
+        <!-- Sport adapté -->
+        <div class="card-hover bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
+          <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Sport adapté</h3>
+          <p class="text-gray-600">Jeux de balle, d'équilibre, d'activation. Encourage le mouvement dans une ambiance positive.</p>
+        </div>
+
+        <!-- Team games -->
+        <div class="card-hover bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
+          <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Travail d'équipe</h3>
+          <p class="text-gray-600">Jeux collaboratifs, parcours collectifs. Favorise l'entraide et le renforcement du groupe.</p>
+        </div>
+
+        <!-- Music & Creativity -->
+        <div class="card-hover bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
+          <div class="w-12 h-12 bg-pink-100 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Musique & Créativité</h3>
+          <p class="text-gray-600">Jeux musicaux, danse interactive, créativité. Exprime la joie et la vitalité de nos résidents.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS SUMMARY -->
+  <section class="py-20 sm:py-28 bg-gradient-to-br from-gray-900 to-gray-800 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-16 reveal">
+        <h2 class="text-3xl sm:text-4xl font-black mb-4">
+          Les vrais <span class="text-orange-400">bénéfices</span> pour votre maison de repos
+        </h2>
+        <p class="text-lg text-gray-400">Des résultats visibles et durables</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 reveal">
+        <div class="text-center">
+          <div class="w-14 h-14 bg-orange-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-7 h-7 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Bien-être immédiat</h3>
+          <p class="text-gray-400 text-sm">Sourires et rires garantis dès les premières secondes. Une ambiance positive pour toute la journée.</p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-14 h-14 bg-orange-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-7 h-7 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Activation physique</h3>
+          <p class="text-gray-400 text-sm">Les résidents se lèvent, bougent, gesticulent. L'activité physique douce adaptée à chacun.</p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-14 h-14 bg-orange-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-7 h-7 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Stimulation cognitive</h3>
+          <p class="text-gray-400 text-sm">Concentration, mémoire, réflexion. Les jeux gardent l'esprit alerte et actif.</p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-14 h-14 bg-orange-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-7 h-7 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Lien social renforcé</h3>
+          <p class="text-gray-400 text-sm">Jeux en groupe, interactions, rires partagés. Renforce les liens entre résidents.</p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-14 h-14 bg-orange-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-7 h-7 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Qualité de vie améliorée</h3>
+          <p class="text-gray-400 text-sm">Moments de détente, de plaisir et de partage. Crée des souvenirs positifs.</p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-14 h-14 bg-orange-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-7 h-7 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Facilité d'utilisation</h3>
+          <p class="text-gray-400 text-sm">Zéro complexité technique. Nous gérons tout du début à la fin. Vous profitez, c'est tout.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 sm:py-28 bg-gradient-to-r from-orange-500 to-red-500 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center reveal">
+      <h2 class="text-4xl sm:text-5xl font-black mb-6">
+        Offrez à vos résidents une expérience inoubliable
+      </h2>
+      <p class="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
+        Une démonstration gratuite pour comprendre tout de suite les bénéfices. Sans engagement.
+      </p>
+      <a href="#contact" class="inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-100 text-orange-600 px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg">
+        Demander une démonstration gratuite
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-20 sm:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-16 reveal">
+        <h2 class="text-3xl sm:text-4xl font-black mb-4">
+          Démonstration <span class="gradient-text">gratuite</span>
+        </h2>
+        <p class="text-lg text-gray-600">Réponse rapide et devis adapté à votre maison de repos</p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-12 reveal">
+        <!-- Contact info -->
+        <div>
+          <div class="bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl p-8 text-white mb-6">
+            <h3 class="text-2xl font-bold mb-6">Contactez-nous directement</h3>
+
+            <div class="space-y-6">
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                </div>
+                <div>
+                  <p class="text-white/70 text-sm">Par téléphone</p>
+                  <a href="tel:+32488435342" class="text-xl font-bold hover:underline">+32 488 43 53 42</a>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                </div>
+                <div>
+                  <p class="text-white/70 text-sm">Par email</p>
+                  <a href="mailto:contact@interactis.be" class="text-xl font-bold hover:underline">contact@interactis.be</a>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                </div>
+                <div>
+                  <p class="text-white/70 text-sm">Nous intervenons dans</p>
+                  <p class="text-lg font-bold">Belgique, Luxembourg, Nord de la France</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <div>
+          <form action="https://formsubmit.co/contact@interactis.be" method="POST" class="bg-gray-50 rounded-2xl p-8">
+            <h3 class="text-xl font-bold mb-6">Formulaire de demande de démonstration</h3>
+            <p class="text-gray-600 text-sm mb-6">Remplissez ce formulaire et nous vous recontacterons sous 24h</p>
+
+            <!-- Anti-spam -->
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_subject" value="Nouvelle demande de démonstration - Animation Maison de Repos">
+            <input type="hidden" name="_next" value="https://www.interactis.be/merci.html">
+            <input type="text" name="_honey" style="display:none">
+
+            <div class="space-y-4">
+              <div>
+                <label for="name" class="block text-sm font-semibold text-gray-700 mb-1">Nom complet *</label>
+                <input type="text" id="name" name="name" required placeholder="Jean Dupont" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all">
+              </div>
+
+              <div>
+                <label for="phone" class="block text-sm font-semibold text-gray-700 mb-1">Téléphone *</label>
+                <input type="tel" id="phone" name="phone" required placeholder="+32 488 12 34 56" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all">
+              </div>
+
+              <div>
+                <label for="email" class="block text-sm font-semibold text-gray-700 mb-1">Email *</label>
+                <input type="email" id="email" name="email" required placeholder="jean.dupont@email.com" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all">
+              </div>
+
+              <div>
+                <label for="residence" class="block text-sm font-semibold text-gray-700 mb-1">Nom de la maison de repos *</label>
+                <input type="text" id="residence" name="residence_name" required placeholder="Ex: Maison de repos Les Cèdres..." class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all">
+              </div>
+
+              <div>
+                <label for="residents" class="block text-sm font-semibold text-gray-700 mb-1">Nombre de résidents *</label>
+                <input type="text" id="residents" name="nb_residents" required placeholder="Ex: 30-40 résidents" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all">
+              </div>
+
+              <div>
+                <label for="message" class="block text-sm font-semibold text-gray-700 mb-1">Votre message *</label>
+                <textarea id="message" name="message" required rows="4" placeholder="Décrivez vos besoins : lieu, date souhaitée, particularités de vos résidents..." class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all resize-none"></textarea>
+              </div>
+
+              <button type="submit" class="w-full bg-orange-500 hover:bg-orange-600 text-white py-4 rounded-lg font-bold text-lg transition-all shadow-lg shadow-orange-500/30 hover:shadow-xl">
+                Demander une démonstration
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-900 text-gray-400 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid md:grid-cols-4 gap-8 mb-12">
+        <!-- Brand -->
+        <div class="md:col-span-1">
+          <div class="flex items-center gap-3 mb-4">
+            <img src="/images/logo-icon.png" alt="Interactis Logo" class="w-10 h-10 object-contain brightness-0 invert">
+            <span class="text-xl font-bold text-white">Interactis</span>
+          </div>
+          <p class="text-sm">Animation interactive mobile pour maisons de repos, seniors, écoles et événements. 100% accessible et inclusif.</p>
+        </div>
+
+        <!-- Navigation -->
+        <div>
+          <h4 class="text-white font-bold mb-4">Navigation</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/" class="hover:text-orange-400 transition-colors">Accueil</a></li>
+            <li><a href="/#publics" class="hover:text-orange-400 transition-colors">Nos publics</a></li>
+            <li><a href="/#animations" class="hover:text-orange-400 transition-colors">Animations</a></li>
+            <li><a href="#contact" class="hover:text-orange-400 transition-colors">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Pages SEO -->
+        <div>
+          <h4 class="text-white font-bold mb-4">Nos secteurs</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/animation-maison-de-repos" class="hover:text-orange-400 transition-colors">Maisons de repos</a></li>
+            <li><a href="/animation-ecole" class="hover:text-orange-400 transition-colors">Écoles</a></li>
+            <li><a href="/animation-entreprise" class="hover:text-orange-400 transition-colors">Entreprises</a></li>
+            <li><a href="/animation-evenement" class="hover:text-orange-400 transition-colors">Événements</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <h4 class="text-white font-bold mb-4">Contact</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="tel:+32488435342" class="hover:text-orange-400 transition-colors">+32 488 43 53 42</a></li>
+            <li><a href="mailto:contact@interactis.be" class="hover:text-orange-400 transition-colors">contact@interactis.be</a></li>
+            <li>Service mobile - Belgique</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-800 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <p class="text-sm">&copy; 2026 Interactis. Tous droits réservés.</p>
+        <div class="flex gap-6 text-sm">
+          <a href="/mentions-legales" class="hover:text-orange-400 transition-colors">Mentions légales</a>
+          <a href="/confidentialite" class="hover:text-orange-400 transition-colors">Confidentialité</a>
+          <a href="/cgv" class="hover:text-orange-400 transition-colors">CGV</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Sticky nav
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('nav-scrolled', window.scrollY > 50);
+    });
+
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    // Close mobile menu on link click
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,47 +1,14 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false,
-  "headers": [
-    {
-      "source": "/images/(.*)",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
-      ]
-    },
-    {
-      "source": "/(.*)",
-      "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "DENY" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
-      ]
-    }
-  ],
   "redirects": [
-    {
-      "source": "/index",
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/mentions-legales.html",
-      "destination": "/mentions-legales",
-      "permanent": true
-    },
-    {
-      "source": "/confidentialite.html",
-      "destination": "/confidentialite",
-      "permanent": true
-    },
-    {
-      "source": "/cgv.html",
-      "destination": "/cgv",
-      "permanent": true
-    },
-    {
-      "source": "/merci.html",
-      "destination": "/merci",
-      "permanent": true
-    }
+    { "source": "/mentions-legales.html", "destination": "/mentions-legales", "permanent": true },
+    { "source": "/confidentialite.html", "destination": "/confidentialite", "permanent": true },
+    { "source": "/cgv.html", "destination": "/cgv", "permanent": true },
+    { "source": "/merci.html", "destination": "/merci", "permanent": true },
+    { "source": "/animation-maison-de-repos.html", "destination": "/animation-maison-de-repos", "permanent": true },
+    { "source": "/animation-ecole.html", "destination": "/animation-ecole", "permanent": true },
+    { "source": "/animation-evenement.html", "destination": "/animation-evenement", "permanent": true },
+    { "source": "/animation-anniversaire.html", "destination": "/animation-anniversaire", "permanent": true },
+    { "source": "/animation-entreprise.html", "destination": "/animation-entreprise", "permanent": true }
   ]
 }
