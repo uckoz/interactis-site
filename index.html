@@ -3,1668 +3,2013 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#f97316" />
-  <title>InterActis - Animation interactive mobile en Belgique</title>
-  <meta name="description" content="InterActis transforme n'importe quel mur en terrain de jeu interactif géant. Animation mobile pour écoles, entreprises, maisons de repos, anniversaires et événements en Belgique francophone. 100% accessible, installation en 15 minutes." />
-  <meta name="keywords" content="animation interactive, projection murale, animation mobile Belgique, team building, animation anniversaire enfant, animation maison de repos, animation école, jeux interactifs" />
+  <meta name="theme-color" content="#0a0e1a" />
+  <title>InterActis - Le mur qui transforme tout</title>
+  <meta name="description" content="L'animation interactive mobile qui transforme n'importe quel mur en terrain de jeu vivant. Anniversaires, entreprises, maisons de repos. De 5 à 95 ans, sans exception. Belgique, Luxembourg, Nord France." />
   <link rel="canonical" href="https://www.interactis.be/" />
+  <link rel="alternate" hreflang="fr" href="https://www.interactis.be/" />
+  <link rel="alternate" hreflang="nl" href="https://www.interactis.be/nl/" />
+  <link rel="alternate" hreflang="x-default" href="https://www.interactis.be/" />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="apple-touch-icon" href="/assets/hero.jpg" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="InterActis" />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="InterActis - Animation interactive mobile en Belgique" />
-  <meta property="og:description" content="Transformez n'importe quel mur en terrain de jeu interactif. Anniversaires, team buildings, maisons de repos, écoles. 100% accessible." />
+  <meta property="og:title" content="InterActis - Le mur qui transforme tout" />
+  <meta property="og:description" content="Animation interactive mobile. Anniversaires, team buildings, maisons de repos. 100% accessible, installation en 15 minutes." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.interactis.be/" />
-  <meta property="og:image" content="assets/hero.jpg" />
+  <meta property="og:image" content="https://www.interactis.be/assets/hero.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="InterActis - Le mur qui transforme tout" />
   <meta property="og:locale" content="fr_BE" />
+  <meta property="og:locale:alternate" content="nl_BE" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://www.interactis.be/assets/hero.jpg" />
+
+  <!-- Préchargement du LCP (hero image) -->
+  <link rel="preload" as="image" href="/assets/hero.jpg" fetchpriority="high" type="image/jpeg" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="dns-prefetch" href="https://assets.calendly.com" />
+  <link rel="dns-prefetch" href="https://embed.tawk.to" />
+  <link rel="dns-prefetch" href="https://formsubmit.co" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Bricolage+Grotesque:wght@700&display=swap" rel="stylesheet" />
 
-  <!-- Schema.org LocalBusiness -->
+  <!-- Calendly popup widget : JS chargé en async, CSS chargé à la demande au 1er clic -->
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <script>
+    function openCalendly() {
+      if (!document.querySelector('link[href*="calendly.com"]')) {
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = 'https://assets.calendly.com/assets/external/widget.css';
+        document.head.appendChild(link);
+      }
+      if (typeof Calendly !== 'undefined') {
+        Calendly.initPopupWidget({url:'https://calendly.com/uckoz-interactis/30min'});
+      }
+      return false;
+    }
+  </script>
+
+  <!-- LIVE CHAT TAWK.TO : différé de 3 secondes pour libérer le first paint -->
+  <script type="text/javascript">
+    window.addEventListener('load', function(){
+      setTimeout(function(){
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/6a0b93230ff9d11c35914030/1joujdgtg';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+      }, 3000);
+    });
+  </script>
+
+  <!-- ================================================
+       PLACEHOLDERS ANALYTICS - À ACTIVER QUAND VOUS AUREZ LES IDs
+       ================================================
+       1. Google Analytics 4 : créez un compte sur analytics.google.com,
+          récupérez l'ID au format G-XXXXXXXXXX, et remplacez ci-dessous.
+       2. Microsoft Clarity : créez un compte sur clarity.microsoft.com,
+          récupérez le project ID, et remplacez ci-dessous.
+  -->
+  <!-- GOOGLE ANALYTICS 4 (décommentez et remplacez G-XXXXXXXXXX par votre ID) -->
+  <!--
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  -->
+
+  <!-- MICROSOFT CLARITY (décommentez et remplacez XXXXXXXXXX par votre Project ID) -->
+  <!--
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "XXXXXXXXXX");
+  </script>
+  -->
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
+    "@id": "https://www.interactis.be/#business",
     "name": "InterActis",
-    "description": "Animation interactive mobile avec projection murale pour écoles, entreprises, maisons de repos, anniversaires et événements en Belgique francophone.",
+    "description": "Animation interactive mobile avec projection murale pour anniversaires, team buildings, maisons de repos et écoles. Belgique, Luxembourg, Nord France.",
     "url": "https://www.interactis.be/",
-    "telephone": "+32 488 43 53 42",
+    "telephone": "+32488435342",
+    "email": "contact@interactis.be",
+    "areaServed": [
+      {"@type": "Country", "name": "Belgique"},
+      {"@type": "Country", "name": "Luxembourg"},
+      {"@type": "AdministrativeArea", "name": "Nord de la France"}
+    ],
+    "image": "https://www.interactis.be/assets/hero.jpg",
+    "logo": "https://www.interactis.be/assets/hero.jpg",
+    "priceRange": "€€",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Mons",
+      "postalCode": "7000",
+      "addressCountry": "BE"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 50.4542,
+      "longitude": 3.9514
+    },
+    "openingHoursSpecification": [
+      {"@type": "OpeningHoursSpecification",
+       "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+       "opens": "09:00", "closes": "20:00"},
+      {"@type": "OpeningHoursSpecification",
+       "dayOfWeek": "Saturday", "opens": "10:00", "closes": "18:00"}
+    ],
+    "sameAs": [
+      "https://www.instagram.com/interactis.be/",
+      "https://www.linkedin.com/in/ubeyd-uckoz",
+      "https://www.facebook.com/profile.php?id=61586234006690",
+      "https://www.tiktok.com/@interactisbe"
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Animation interactive mobile",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "InterActis"
+    },
     "areaServed": ["Belgique", "Luxembourg", "Nord de la France"],
-    "image": "https://www.interactis.be/assets/hero.jpg"
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Animations interactives",
+      "itemListElement": [
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Animation anniversaire enfant"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Team building entreprise"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Animation maison de repos"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Animation école"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Animation événement public"}}
+      ]
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Comment ça marche, concrètement ?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Nous projetons les jeux sur un mur (3 m de large suffisent). Une caméra détecte les mouvements des joueurs : ils tapent, courent, sautent, le mur réagit en direct. Aucune manette, aucun écran, aucune complexité côté joueur."}
+      },
+      {
+        "@type": "Question",
+        "name": "Combien de personnes peuvent jouer en même temps ?",
+        "acceptedAnswer": {"@type": "Answer", "text": "De 2 à 12 joueurs simultanément selon le jeu, et les rotations sont rapides : 30 à 50 personnes passent dans l'heure facilement."}
+      },
+      {
+        "@type": "Question",
+        "name": "Quelle est la durée d'une animation ?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Format standard : 2 h ou 4 h. On adapte à la demi-journée ou à la journée complète selon votre événement."}
+      },
+      {
+        "@type": "Question",
+        "name": "De quoi avez-vous besoin sur place ?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Un mur clair d'environ 3 m de large, une pièce qu'on peut tamiser un peu, et une prise électrique. C'est tout. Le reste, on l'apporte."}
+      },
+      {
+        "@type": "Question",
+        "name": "L'animation est-elle accessible aux PMR ?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Oui, à 100 %. Tous les jeux sont jouables debout, assis, en fauteuil roulant. C'est l'une de nos différences phares."}
+      },
+      {
+        "@type": "Question",
+        "name": "Quelle zone géographique couvrez-vous ?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Toute la Belgique francophone, le Grand-Duché de Luxembourg et le nord de la France."}
+      }
+    ]
   }
   </script>
 
   <style>
     /* ============================================
-       VARIABLES & RESET
+       VARIABLES & FONDATIONS
        ============================================ */
     :root {
-      --orange: #f97316;
-      --orange-dark: #ea580c;
-      --orange-light: #fff7ed;
-      --dark: #0f172a;
-      --dark-soft: #1e293b;
-      --gray-900: #0f172a;
-      --gray-700: #334155;
-      --gray-500: #64748b;
-      --gray-300: #cbd5e1;
-      --gray-200: #e2e8f0;
-      --gray-100: #f1f5f9;
-      --gray-50: #f8fafc;
-      --white: #ffffff;
-      --whatsapp: #25d366;
-      --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
-      --shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
-      --shadow-lg: 0 20px 40px rgba(15, 23, 42, 0.12);
-      --radius: 14px;
-      --radius-lg: 20px;
-      --container: 1180px;
-      --transition: 0.25s ease;
+      --orange: #ff7a18;
+      --orange-bright: #ff8a2b;
+      --orange-glow: rgba(255, 122, 24, 0.4);
+      --blue: #00d4ff;
+      --blue-deep: #0066ff;
+      --blue-glow: rgba(0, 212, 255, 0.5);
+      --bg: #05070d;
+      --bg-soft: #0a0e1a;
+      --bg-card: #0f1424;
+      --text: #f5f7fb;
+      --text-dim: rgba(245, 247, 251, 0.65);
+      --text-faded: rgba(245, 247, 251, 0.35);
+      --line: rgba(245, 247, 251, 0.08);
+      --line-strong: rgba(245, 247, 251, 0.15);
+      --serif: 'Bricolage Grotesque', system-ui, sans-serif;
+      --sans: 'Inter', system-ui, sans-serif;
+      --container: 1280px;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+    html, body { background: var(--bg); color: var(--text); }
+    html { scroll-behavior: auto; font-size: 16px; }
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      color: var(--gray-900);
-      background: var(--white);
+      font-family: var(--sans);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
       overflow-x: hidden;
+      cursor: none;
     }
-    img, video { max-width: 100%; height: auto; display: block; }
+    @media (pointer: coarse) { body { cursor: auto; } }
+
+    img, video, svg { max-width: 100%; height: auto; display: block; }
     a { color: inherit; text-decoration: none; }
-    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+    button { font: inherit; cursor: none; background: none; border: none; color: inherit; }
+    @media (pointer: coarse) { button, a { cursor: pointer; } }
     ul { list-style: none; }
 
-    /* ============================================
-       LAYOUT
-       ============================================ */
-    .container {
-      max-width: var(--container);
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-    section { padding: 96px 0; }
-    .section-header { text-align: center; max-width: 760px; margin: 0 auto 64px; }
-    .section-header h2 {
-      font-size: clamp(2rem, 4vw, 2.75rem);
-      font-weight: 900;
-      letter-spacing: -0.02em;
-      line-height: 1.15;
-      margin-bottom: 16px;
-    }
-    .section-header p {
-      font-size: 1.125rem;
-      color: var(--gray-500);
-    }
-    .eyebrow {
-      display: inline-block;
-      font-size: 0.8125rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--orange);
-      margin-bottom: 12px;
-    }
+    ::selection { background: var(--orange); color: white; }
 
     /* ============================================
-       BUTTONS
+       ACCESSIBILITÉ - skip link + focus visible
        ============================================ */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 14px 26px;
-      font-size: 1rem;
+    .skip-link {
+      position: absolute;
+      top: -48px;
+      left: 8px;
+      z-index: 9999;
+      padding: 10px 18px;
+      background: var(--orange);
+      color: #fff;
       font-weight: 700;
-      border-radius: 10px;
-      transition: var(--transition);
+      font-size: 0.875rem;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: top 0.2s ease;
+    }
+    .skip-link:focus,
+    .skip-link:focus-visible {
+      top: 8px;
+      outline: 2px solid #fff;
+      outline-offset: 2px;
+    }
+    :where(a, button, input, select, textarea, [tabindex]):focus-visible {
+      outline: 2px solid var(--orange);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+    .form-field input:focus-visible,
+    .form-field select:focus-visible,
+    .form-field textarea:focus-visible {
+      outline: 2px solid var(--orange);
+      outline-offset: 2px;
+    }
+
+    /* Curseur custom */
+    .cursor {
+      position: fixed;
+      top: 0; left: 0;
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--blue);
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      mix-blend-mode: difference;
+      transition: width 0.25s var(--ease), height 0.25s var(--ease), background 0.25s var(--ease);
+      will-change: transform;
+    }
+    .cursor-ring {
+      position: fixed;
+      top: 0; left: 0;
+      width: 40px; height: 40px;
+      border: 1.5px solid rgba(0, 212, 255, 0.6);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: width 0.35s var(--ease), height 0.35s var(--ease), border-color 0.35s var(--ease);
+      will-change: transform;
+    }
+    .cursor.is-hover { width: 0; height: 0; }
+    .cursor-ring.is-hover { width: 70px; height: 70px; border-color: var(--orange); border-width: 2px; }
+    @media (pointer: coarse) { .cursor, .cursor-ring { display: none; } }
+
+    /* Bruit de fond subtil */
+    .grain {
+      position: fixed; inset: 0; pointer-events: none; z-index: 100;
+      opacity: 0.05; mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/></filter><rect width='100' height='100' filter='url(%23n)'/></svg>");
+    }
+
+    /* Container */
+    .wrap { max-width: var(--container); margin: 0 auto; padding: 0 32px; }
+    @media (max-width: 720px) { .wrap { padding: 0 20px; } }
+
+    /* Boutons */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 10px;
+      padding: 16px 28px;
+      font-size: 0.9375rem; font-weight: 700;
+      letter-spacing: 0.01em;
+      border-radius: 999px;
+      transition: all 0.4s var(--ease);
+      position: relative; overflow: hidden;
       white-space: nowrap;
+      will-change: transform;
     }
     .btn-primary {
       background: var(--orange);
-      color: var(--white);
-      box-shadow: 0 8px 20px rgba(249, 115, 22, 0.3);
+      color: white;
+      box-shadow: 0 0 0 0 var(--orange-glow), 0 12px 32px rgba(255, 122, 24, 0.35);
     }
-    .btn-primary:hover { background: var(--orange-dark); transform: translateY(-2px); box-shadow: 0 12px 28px rgba(249, 115, 22, 0.4); }
-    .btn-secondary {
-      background: var(--white);
-      color: var(--dark);
-      border: 2px solid var(--gray-200);
+    .btn-primary:hover {
+      background: var(--orange-bright);
+      box-shadow: 0 0 0 8px var(--orange-glow), 0 16px 40px rgba(255, 122, 24, 0.5);
     }
-    .btn-secondary:hover { border-color: var(--dark); transform: translateY(-2px); }
-    .btn-dark {
-      background: var(--dark);
-      color: var(--white);
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1.5px solid var(--line-strong);
     }
-    .btn-dark:hover { background: var(--dark-soft); transform: translateY(-2px); }
+    .btn-ghost:hover { border-color: var(--text); background: rgba(255,255,255,0.04); }
+    .btn .arrow { display: inline-block; transition: transform 0.35s var(--ease); }
+    .btn:hover .arrow { transform: translateX(4px); }
 
-    /* ============================================
-       HEADER / NAV
-       ============================================ */
-    .site-header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: saturate(180%) blur(12px);
-      -webkit-backdrop-filter: saturate(180%) blur(12px);
-      border-bottom: 1px solid var(--gray-100);
+    /* Typography utilities */
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--blue);
     }
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 72px;
+    .eyebrow::before {
+      content: ''; width: 24px; height: 1px; background: var(--blue);
     }
-    .logo {
-      font-size: 1.375rem;
-      font-weight: 900;
+    .display {
+      font-family: var(--serif);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 0.95;
+    }
+
+    /* Split text - chaque mot dans un span pour animation */
+    .split-line { display: block; overflow: hidden; }
+    .split-word {
+      display: inline-block;
+      transform: translateY(110%);
+      will-change: transform;
+    }
+    .split-word.in { transform: translateY(0); transition: transform 1s var(--ease); }
+
+    /* Header / Nav */
+    .hd {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 90;
+      padding: 20px 32px;
+      display: flex; align-items: center; justify-content: space-between;
+      mix-blend-mode: difference;
+      color: white;
+    }
+    .hd-logo {
+      font-family: var(--serif);
+      font-size: 1.5rem; font-weight: 700;
       letter-spacing: -0.02em;
-      color: var(--dark);
     }
-    .logo span { color: var(--orange); }
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      align-items: center;
+    .hd-logo span { color: var(--orange); }
+    .hd-nav { display: flex; gap: 36px; align-items: center; }
+    .hd-nav a {
+      font-size: 0.875rem; font-weight: 600;
+      position: relative; padding: 4px 0;
+      letter-spacing: 0.01em;
     }
-    .nav-links a {
-      font-size: 0.9375rem;
-      font-weight: 600;
-      color: var(--gray-700);
-      transition: color var(--transition);
+    .hd-nav a::after {
+      content: ''; position: absolute; left: 0; bottom: 0;
+      width: 100%; height: 1px;
+      background: currentColor;
+      transform: scaleX(0); transform-origin: right;
+      transition: transform 0.45s var(--ease);
     }
-    .nav-links a:hover { color: var(--orange); }
-    .nav-links .btn { padding: 10px 20px; font-size: 0.9375rem; }
-
-    .menu-toggle {
+    .hd-nav a:hover::after { transform: scaleX(1); transform-origin: left; }
+    .hd-cta {
+      padding: 10px 18px; font-size: 0.875rem;
+    }
+    .hd-burger {
       display: none;
-      width: 40px;
-      height: 40px;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 5px;
+      width: 32px; height: 32px;
+      flex-direction: column; justify-content: center; gap: 5px;
     }
-    .menu-toggle span {
-      width: 22px;
-      height: 2px;
-      background: var(--dark);
-      border-radius: 2px;
-      transition: var(--transition);
+    .hd-burger span {
+      width: 24px; height: 2px; background: currentColor;
+      transition: transform 0.35s var(--ease), opacity 0.35s var(--ease);
     }
-    .menu-toggle.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .menu-toggle.active span:nth-child(2) { opacity: 0; }
-    .menu-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .hd-burger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hd-burger.is-open span:nth-child(2) { opacity: 0; }
+    .hd-burger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    @media (max-width: 900px) {
+      .hd-nav { display: none; }
+      .hd-burger { display: flex; }
+    }
+
+    /* Menu mobile overlay */
+    .menu-overlay {
+      position: fixed; inset: 0;
+      background: var(--bg);
+      z-index: 80;
+      display: flex; align-items: center; justify-content: center;
+      transform: translateY(-100%);
+      transition: transform 0.6s var(--ease);
+    }
+    .menu-overlay.is-open { transform: translateY(0); }
+    .menu-overlay nav { display: flex; flex-direction: column; gap: 24px; text-align: center; }
+    .menu-overlay nav a {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 7vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      transition: color 0.3s var(--ease);
+    }
+    .menu-overlay nav a:hover { color: var(--orange); }
 
     /* ============================================
-       HERO PRINCIPAL
+       HERO CINÉMATIQUE
        ============================================ */
     .hero {
       position: relative;
-      padding: 160px 0 96px;
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-      color: var(--white);
+      min-height: 100vh;
+      min-height: 100svh;
       overflow: hidden;
+      display: flex; align-items: center;
+      padding: 0 32px;
     }
-    .hero::before {
+    .hero-bg {
+      position: absolute; inset: 0;
+      z-index: 0;
+    }
+    .hero-bg video, .hero-bg img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: brightness(0.42) contrast(1.15) saturate(1.15);
+    }
+    .hero-bg::after {
       content: '';
-      position: absolute;
-      top: -120px;
-      right: -120px;
-      width: 480px;
-      height: 480px;
-      background: radial-gradient(circle, rgba(249, 115, 22, 0.25) 0%, transparent 70%);
-      border-radius: 50%;
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 30% 50%, rgba(0,212,255,0.25), transparent 60%),
+        radial-gradient(ellipse at 80% 30%, rgba(255,122,24,0.18), transparent 60%),
+        linear-gradient(180deg, rgba(5,7,13,0.4) 0%, rgba(5,7,13,0.7) 70%, rgba(5,7,13,1) 100%);
+      pointer-events: none;
     }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.05fr 1fr;
-      gap: 56px;
-      align-items: center;
-      position: relative;
+    .hero-bg::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(0,212,255,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,212,255,0.06) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+      pointer-events: none;
     }
-    .hero h1 {
-      font-size: clamp(2.25rem, 5vw, 3.5rem);
-      font-weight: 900;
-      letter-spacing: -0.025em;
-      line-height: 1.05;
-      margin-bottom: 24px;
+
+    .hero-content {
+      position: relative; z-index: 2;
+      max-width: var(--container);
+      margin: 0 auto;
+      width: 100%;
+      padding-top: 80px;
     }
-    .hero h1 .accent { color: var(--orange); }
-    .hero p.lead {
-      font-size: 1.1875rem;
-      color: rgba(255, 255, 255, 0.78);
+    .hero-eyebrow {
       margin-bottom: 32px;
-      max-width: 540px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 1s var(--ease) 0.3s forwards;
     }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+    .hero h1.display {
+      font-size: clamp(3rem, 9vw, 8rem);
+      margin-bottom: 36px;
+      max-width: 16ch;
+    }
+    .hero h1 .accent {
+      color: var(--orange);
+      position: relative; display: inline-block;
+    }
+    .hero h1 .glow {
+      color: transparent;
+      background: linear-gradient(135deg, var(--blue) 0%, #ffffff 60%, var(--orange-bright) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      filter: drop-shadow(0 0 30px rgba(0,212,255,0.35));
+    }
+
+    .hero-sub {
+      font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
+      color: var(--text-dim);
+      max-width: 56ch;
+      margin-bottom: 48px;
+      line-height: 1.55;
+      opacity: 0;
+      animation: fadeUp 1s var(--ease) 1s forwards;
+    }
+
     .hero-ctas {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-bottom: 40px;
-    }
-    .hero-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      max-width: 480px;
-    }
-    .hero-stat .num {
-      font-size: 2rem;
-      font-weight: 900;
-      color: var(--orange);
-      letter-spacing: -0.02em;
-    }
-    .hero-stat .label {
-      font-size: 0.8125rem;
-      color: rgba(255, 255, 255, 0.65);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      font-weight: 600;
-    }
-    .hero-image {
-      position: relative;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: var(--shadow-lg);
-      aspect-ratio: 4 / 5;
-      background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-    }
-    .hero-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .hero-image .placeholder {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      color: rgba(255, 255, 255, 0.55);
-      font-size: 0.875rem;
-      text-align: center;
-      padding: 24px;
-    }
-    .hero-image .placeholder svg { width: 64px; height: 64px; margin-bottom: 16px; opacity: 0.4; }
-
-    /* ============================================
-       SECONDARY HERO - POUR QUI ?
-       ============================================ */
-    .pour-qui {
-      background: var(--gray-50);
-      padding: 88px 0;
-    }
-    .pour-qui h2 {
-      text-align: center;
-      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
-      font-weight: 900;
-      letter-spacing: -0.02em;
-      margin-bottom: 56px;
-    }
-    .pour-qui-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-      margin-bottom: 56px;
-    }
-    .pour-qui-card {
-      background: var(--white);
-      padding: 36px 28px;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow-sm);
-      border-top: 4px solid var(--orange);
-      transition: var(--transition);
-    }
-    .pour-qui-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow);
-    }
-    .pour-qui-card h3 {
-      font-size: 0.8125rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      color: var(--orange);
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-    .pour-qui-card p {
-      color: var(--gray-700);
-      font-size: 1rem;
-      line-height: 1.65;
-    }
-    .pour-qui-tagline {
-      text-align: center;
-      font-size: clamp(1.5rem, 3vw, 2.25rem);
-      font-weight: 900;
-      letter-spacing: -0.02em;
-      color: var(--dark);
-    }
-    .pour-qui-tagline .accent { color: var(--orange); }
-
-    /* ============================================
-       PUBLICS PRO (6 cibles)
-       ============================================ */
-    .publics-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-    .public-card {
-      padding: 32px 24px;
-      background: var(--white);
-      border: 1px solid var(--gray-200);
-      border-radius: var(--radius);
-      transition: var(--transition);
-    }
-    .public-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--orange);
-      box-shadow: var(--shadow);
-    }
-    .public-card .icon {
-      width: 52px;
-      height: 52px;
-      background: var(--orange-light);
-      color: var(--orange);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 18px;
-    }
-    .public-card h3 {
-      font-size: 1.125rem;
-      font-weight: 800;
-      margin-bottom: 10px;
-      color: var(--dark);
-    }
-    .public-card p {
-      font-size: 0.9375rem;
-      color: var(--gray-500);
+      display: flex; flex-wrap: wrap; gap: 14px;
+      opacity: 0;
+      animation: fadeUp 1s var(--ease) 1.2s forwards;
     }
 
-    /* ============================================
-       PARTICULIERS - Anniversaires
-       ============================================ */
-    .particuliers {
-      background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
-      position: relative;
-      overflow: hidden;
-    }
-    .particuliers::before {
-      content: '';
-      position: absolute;
-      top: -100px;
-      left: -100px;
-      width: 360px;
-      height: 360px;
-      background: radial-gradient(circle, rgba(249, 115, 22, 0.18) 0%, transparent 70%);
-      border-radius: 50%;
-    }
-    .particuliers-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 56px;
-      align-items: center;
-      position: relative;
-    }
-    .particuliers-content .eyebrow { background: var(--orange); color: var(--white); padding: 6px 12px; border-radius: 6px; }
-    .particuliers-content h2 {
-      font-size: clamp(2rem, 4vw, 2.75rem);
-      font-weight: 900;
-      letter-spacing: -0.02em;
-      line-height: 1.1;
-      margin-bottom: 14px;
-    }
-    .particuliers-content .subtitle {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: var(--gray-700);
-      margin-bottom: 24px;
-    }
-    .particuliers-content p {
-      font-size: 1.0625rem;
-      color: var(--gray-700);
-      margin-bottom: 16px;
-      line-height: 1.7;
-    }
-    .features-list {
-      margin: 28px 0 32px;
-    }
-    .features-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 10px 0;
-      font-size: 1rem;
-      color: var(--gray-700);
-      font-weight: 500;
-    }
-    .features-list .check {
-      flex-shrink: 0;
-      width: 24px;
-      height: 24px;
-      background: var(--orange);
-      color: var(--white);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .features-list .check svg { width: 14px; height: 14px; }
-    .particuliers-ctas {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-    }
-    .particuliers-visual {
-      background: var(--white);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-lg);
-      padding: 8px;
-      transform: rotate(-2deg);
-      transition: transform var(--transition);
-      overflow: hidden;
-    }
-    .particuliers-visual:hover { transform: rotate(0deg); }
-    .particuliers-visual video {
-      width: 100%;
-      aspect-ratio: 9 / 16;
-      object-fit: cover;
-      border-radius: 14px;
-      display: block;
-      background: #0f172a;
-    }
-
-    /* ============================================
-       POURQUOI INTERACTIS (5 blocs)
-       ============================================ */
-    .pourquoi {
-      background: var(--white);
-    }
-    .pourquoi-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-    .pourquoi-card {
-      padding: 36px 28px;
-      background: var(--gray-50);
-      border-radius: var(--radius);
-      transition: var(--transition);
-      border: 1px solid transparent;
-    }
-    .pourquoi-card:hover {
-      background: var(--white);
-      border-color: var(--orange);
-      transform: translateY(-4px);
-      box-shadow: var(--shadow);
-    }
-    .pourquoi-card .num-badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 44px;
-      height: 44px;
-      background: var(--orange);
-      color: var(--white);
-      border-radius: 12px;
-      font-weight: 800;
-      font-size: 1.125rem;
-      margin-bottom: 18px;
-    }
-    .pourquoi-card h3 {
-      font-size: 1.25rem;
-      font-weight: 800;
-      margin-bottom: 12px;
-      color: var(--dark);
-      letter-spacing: -0.01em;
-    }
-    .pourquoi-card p {
-      font-size: 0.9375rem;
-      color: var(--gray-700);
-      line-height: 1.65;
-    }
-    .pourquoi-card.featured {
-      grid-column: span 2;
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-      color: var(--white);
-    }
-    .pourquoi-card.featured h3 { color: var(--white); }
-    .pourquoi-card.featured p { color: rgba(255, 255, 255, 0.75); }
-    .pourquoi-card.featured .num-badge { background: var(--orange); }
-
-    /* ============================================
-       FONCTIONNEMENT
-       ============================================ */
-    .fonctionnement {
-      background: var(--gray-50);
-    }
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-      position: relative;
-    }
-    .step {
-      text-align: center;
-      padding: 36px 24px;
-      background: var(--white);
-      border-radius: var(--radius);
-      position: relative;
-    }
-    .step .step-num {
-      position: absolute;
-      top: -22px;
-      left: 50%;
+    /* Indicateur scroll */
+    .hero-scroll {
+      position: absolute; bottom: 32px; left: 50%;
       transform: translateX(-50%);
-      width: 44px;
-      height: 44px;
-      background: var(--orange);
-      color: var(--white);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 900;
-      font-size: 1.125rem;
+      z-index: 3;
+      display: flex; flex-direction: column; align-items: center; gap: 12px;
+      opacity: 0;
+      animation: fadeUp 1s var(--ease) 1.6s forwards;
     }
-    .step h3 {
-      font-size: 1.25rem;
-      font-weight: 800;
-      margin: 16px 0 10px;
+    .hero-scroll span {
+      font-size: 0.6875rem; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--text-faded);
     }
-    .step p { color: var(--gray-500); font-size: 0.9375rem; }
-
-    .montage-demo {
-      margin-top: 64px;
-      background: var(--white);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: var(--shadow-lg);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: stretch;
+    .hero-scroll-line {
+      width: 1px; height: 50px;
+      background: linear-gradient(180deg, transparent, var(--blue), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
     }
-    .montage-demo-content {
-      padding: 48px 44px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .montage-demo-content .eyebrow {
-      background: var(--orange);
-      color: var(--white);
-      padding: 6px 12px;
-      border-radius: 6px;
-      align-self: flex-start;
-    }
-    .montage-demo-content h3 {
-      font-size: clamp(1.5rem, 2.5vw, 2rem);
-      font-weight: 900;
-      letter-spacing: -0.02em;
-      line-height: 1.15;
-      margin: 14px 0 14px;
-      color: var(--dark);
-    }
-    .montage-demo-content p {
-      font-size: 1.0625rem;
-      color: var(--gray-700);
-      line-height: 1.65;
-    }
-    .montage-demo-content .demo-meta {
-      display: flex;
-      gap: 18px;
-      margin-top: 22px;
-      flex-wrap: wrap;
-    }
-    .montage-demo-content .demo-meta span {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.875rem;
-      font-weight: 700;
-      color: var(--orange-dark);
-      background: var(--orange-light);
-      padding: 6px 12px;
-      border-radius: 20px;
-    }
-    .montage-demo-video {
-      background: var(--dark);
-      position: relative;
-      min-height: 320px;
-    }
-    .montage-demo-video video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
+    @keyframes scrollPulse {
+      0%, 100% { transform: scaleY(0.5); opacity: 0.3; transform-origin: top; }
+      50% { transform: scaleY(1); opacity: 1; }
     }
 
-    /* ============================================
-       ANIMATIONS / GAMES
-       ============================================ */
-    .animations-grid {
+    /* Stats ticker en bas du hero */
+    .hero-stats {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      z-index: 3;
+      padding: 24px 32px;
+      border-top: 1px solid var(--line);
+      background: linear-gradient(180deg, transparent, rgba(5,7,13,0.9));
+      backdrop-filter: blur(20px);
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
+      gap: 24px;
+      opacity: 0;
+      animation: fadeUp 1.2s var(--ease) 1.8s forwards;
     }
-    .game-card {
-      background: var(--white);
-      border: 1px solid var(--gray-200);
-      border-radius: var(--radius);
-      padding: 24px 20px;
-      text-align: center;
-      transition: var(--transition);
-    }
-    .game-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--orange);
-      box-shadow: var(--shadow);
-    }
-    .game-card .game-icon {
-      width: 56px;
-      height: 56px;
-      margin: 0 auto 14px;
-      background: var(--orange-light);
-      color: var(--orange);
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .game-card h4 {
-      font-size: 1rem;
+    .hero-stat { display: flex; flex-direction: column; gap: 4px; }
+    .hero-stat .n {
+      font-family: var(--serif);
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
       font-weight: 700;
-      margin-bottom: 6px;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--blue) 0%, white 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
-    .game-card p { font-size: 0.8125rem; color: var(--gray-500); }
-
-    /* Carrousel galerie de jeux */
-    .gallery-wrap {
-      position: relative;
-      margin-bottom: 56px;
-    }
-    .gallery-track {
-      display: flex;
-      gap: 16px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
-      padding: 4px 4px 16px;
-      scrollbar-width: thin;
-      scrollbar-color: var(--orange) var(--gray-100);
-    }
-    .gallery-track::-webkit-scrollbar { height: 6px; }
-    .gallery-track::-webkit-scrollbar-track { background: var(--gray-100); border-radius: 3px; }
-    .gallery-track::-webkit-scrollbar-thumb { background: var(--orange); border-radius: 3px; }
-    .gallery-slide {
-      flex: 0 0 calc((100% - 32px) / 3);
-      scroll-snap-align: start;
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      position: relative;
-      background: var(--dark);
-      transition: transform var(--transition);
-    }
-    .gallery-slide:hover { transform: translateY(-4px); }
-    .gallery-slide img {
-      width: 100%;
-      aspect-ratio: 16 / 10;
-      object-fit: cover;
-      display: block;
-    }
-    .gallery-slide-caption {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      padding: 14px 16px 12px;
-      background: linear-gradient(180deg, transparent 0%, rgba(15, 23, 42, 0.85) 100%);
-      color: var(--white);
-      font-size: 0.875rem;
-      font-weight: 700;
-      letter-spacing: -0.005em;
-    }
-    .gallery-arrow {
-      position: absolute;
-      top: calc(50% - 24px);
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: var(--white);
-      color: var(--dark);
-      box-shadow: var(--shadow);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 5;
-      transition: var(--transition);
-      border: 1px solid var(--gray-200);
-    }
-    .gallery-arrow:hover {
-      background: var(--orange);
-      color: var(--white);
-      border-color: var(--orange);
-      transform: scale(1.08);
-    }
-    .gallery-arrow:disabled {
-      opacity: 0.35;
-      cursor: not-allowed;
-      transform: none;
-    }
-    .gallery-arrow.prev { left: -12px; }
-    .gallery-arrow.next { right: -12px; }
-    .gallery-hint {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      justify-content: center;
-      font-size: 0.8125rem;
-      color: var(--gray-500);
-      margin-top: 4px;
-      font-weight: 500;
-    }
-    .gallery-hint svg { width: 16px; height: 16px; }
-
-    @media (max-width: 980px) {
-      .gallery-slide { flex: 0 0 calc((100% - 16px) / 2); }
-      .gallery-arrow.prev { left: -8px; }
-      .gallery-arrow.next { right: -8px; }
+    .hero-stat .l {
+      font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--text-faded);
     }
     @media (max-width: 720px) {
-      .gallery-slide { flex: 0 0 85%; }
-      .gallery-arrow { display: none; }
+      .hero-stats { grid-template-columns: repeat(2, 1fr); }
+      .hero-scroll { display: none; }
     }
 
     /* ============================================
-       VIDÉOS
+       SECTION MANIFESTE - texte qui se construit au scroll + vidéo bg
        ============================================ */
-    .videos {
-      background: var(--gray-50);
-    }
-    .videos-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-    }
-    .video-card {
-      background: var(--dark);
-      border-radius: var(--radius);
+    .manifeste {
+      padding: 200px 32px;
+      position: relative;
+      background: var(--bg);
       overflow: hidden;
-      aspect-ratio: 16 / 9;
+      min-height: 100vh;
+      display: flex; align-items: center;
+    }
+    .manifeste-bg {
+      position: absolute; inset: 0;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .manifeste-bg video {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: brightness(0.32) contrast(1.1) saturate(1.1) blur(1px);
+      transform: scale(1.05);
+    }
+    .manifeste-bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 50%, rgba(5,7,13,0.2), rgba(5,7,13,0.85)),
+        linear-gradient(180deg, var(--bg) 0%, transparent 15%, transparent 85%, var(--bg) 100%);
+      pointer-events: none;
+    }
+    .manifeste::before {
+      content: '';
+      position: absolute; top: 0; left: 50%;
+      width: 1px; height: 80px;
+      background: linear-gradient(180deg, transparent, var(--blue));
+      z-index: 2;
+    }
+    .manifeste-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+    .manifeste-label {
+      margin-bottom: 64px;
+      text-align: center;
+    }
+    .manifeste-text {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 5vw, 4.5rem);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      text-align: left;
+    }
+    .manifeste-text .word {
+      display: inline-block;
+      margin-right: 0.2em;
+      color: var(--text-faded);
+      transition: color 0.6s var(--ease);
+    }
+    .manifeste-text .word.is-active { color: var(--text); }
+    .manifeste-text .word.orange { color: var(--orange) !important; }
+    .manifeste-text .word.blue { color: var(--blue) !important; }
+    .manifeste-text .word.italic { font-style: italic; }
+
+    /* ============================================
+       SECTION POUR QUI - 4 segments avec hover image
+       ============================================ */
+    .for-who {
+      padding: 160px 32px;
+      background: var(--bg-soft);
       position: relative;
     }
-    .video-card video {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      background: var(--dark);
+    .for-who-header {
+      max-width: var(--container);
+      margin: 0 auto 80px;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 80px;
+      align-items: end;
     }
-    .video-card .video-placeholder {
-      position: absolute;
-      inset: 0;
-      display: flex;
+    .for-who-header h2 {
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 0.95;
+    }
+    .for-who-header p {
+      font-size: 1.0625rem;
+      color: var(--text-dim);
+      max-width: 56ch;
+      line-height: 1.6;
+    }
+    @media (max-width: 900px) {
+      .for-who-header { grid-template-columns: 1fr; gap: 24px; }
+    }
+
+    .for-who-list {
+      max-width: var(--container);
+      margin: 0 auto;
+      border-top: 1px solid var(--line);
+    }
+    .for-who-item {
+      border-bottom: 1px solid var(--line);
+      padding: 48px 0;
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      gap: 40px;
       align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      color: rgba(255, 255, 255, 0.6);
-      text-align: center;
-      padding: 24px;
+      cursor: pointer;
+      position: relative;
+      transition: background 0.4s var(--ease);
     }
-    .video-card .video-placeholder svg { width: 64px; height: 64px; margin-bottom: 12px; opacity: 0.5; }
-    .video-card .video-placeholder span { font-size: 0.9375rem; }
+    .for-who-item::before {
+      content: '';
+      position: absolute; left: 0; top: 0; bottom: 0;
+      width: 4px;
+      background: var(--orange);
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform 0.5s var(--ease);
+    }
+    .for-who-item:hover::before { transform: scaleY(1); transform-origin: top; }
+    .for-who-item:hover { padding-left: 24px; }
+    .for-who-num {
+      font-family: var(--serif);
+      font-size: 1.125rem;
+      color: var(--text-faded);
+      font-weight: 600;
+    }
+    .for-who-title {
+      font-family: var(--serif);
+      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+      transition: color 0.3s var(--ease);
+    }
+    .for-who-item:hover .for-who-title { color: var(--orange); }
+    .for-who-desc {
+      font-size: 1rem;
+      color: var(--text-dim);
+      max-width: 50ch;
+      margin-top: 8px;
+    }
+    .for-who-arrow {
+      font-family: var(--serif);
+      font-size: 1.75rem;
+      color: var(--text-faded);
+      transition: transform 0.4s var(--ease), color 0.4s var(--ease);
+    }
+    .for-who-item:hover .for-who-arrow { transform: translateX(8px); color: var(--orange); }
+    @media (max-width: 720px) {
+      .for-who-item { grid-template-columns: 50px 1fr; gap: 16px; padding: 32px 0; }
+      .for-who-arrow { display: none; }
+    }
 
     /* ============================================
-       RÉFÉRENCES - Ils nous ont accueillis
+       SECTION PARTICULIERS - vidéo + storytelling
        ============================================ */
-    .references {
-      background: var(--white);
+    .anniv {
+      padding: 160px 32px;
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
     }
-    .refs-grid {
+    .anniv::before {
+      content: '';
+      position: absolute; top: 20%; right: -200px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(255,122,24,0.18), transparent 70%);
+      filter: blur(40px);
+      pointer-events: none;
+    }
+    .anniv-grid {
+      max-width: var(--container);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      position: relative;
+    }
+    .anniv-video {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      aspect-ratio: 9 / 12;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.5), 0 0 0 1px var(--line-strong);
+    }
+    .anniv-video video {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .anniv-video::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, transparent 40%, rgba(5,7,13,0.4) 100%);
+      pointer-events: none;
+    }
+    .anniv-badge {
+      position: absolute;
+      top: 24px; left: 24px;
+      background: rgba(5,7,13,0.7);
+      backdrop-filter: blur(12px);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--blue);
+      border: 1px solid var(--line-strong);
+      z-index: 2;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .anniv-badge::before {
+      content: ''; width: 6px; height: 6px;
+      background: var(--blue); border-radius: 50%;
+      box-shadow: 0 0 10px var(--blue);
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+    .anniv-content h2 {
+      font-family: var(--serif);
+      font-size: clamp(2.25rem, 5vw, 4rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.0;
+      margin: 24px 0 32px;
+    }
+    .anniv-content h2 .accent { color: var(--orange); }
+    .anniv-content > p {
+      font-size: 1.0625rem;
+      color: var(--text-dim);
+      line-height: 1.65;
+      margin-bottom: 16px;
+    }
+    .anniv-features {
+      margin: 36px 0 40px;
+      display: grid;
+      gap: 12px;
+    }
+    .anniv-features li {
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 0.9375rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+    .anniv-features li:last-child { border-bottom: none; }
+    .anniv-features .ico {
+      width: 28px; height: 28px;
+      flex-shrink: 0;
+      background: rgba(255,122,24,0.12);
+      color: var(--orange);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid rgba(255,122,24,0.3);
+    }
+    .anniv-features .ico svg { width: 14px; height: 14px; }
+    @media (max-width: 900px) {
+      .anniv-grid { grid-template-columns: 1fr; gap: 48px; }
+      .anniv-video { aspect-ratio: 4 / 5; max-width: 400px; margin: 0 auto; }
+    }
+
+    /* ============================================
+       SECTION BOUZANTON - photo full-bleed cinematic
+       ============================================ */
+    .bouz {
+      position: relative;
+      min-height: 90vh;
+      display: flex; align-items: flex-end;
+      overflow: hidden;
+      padding: 32px;
+    }
+    .bouz-bg {
+      position: absolute; inset: 0;
+      z-index: 0;
+    }
+    .bouz-bg img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transform: scale(1.1);
+      will-change: transform;
+    }
+    .bouz-bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(180deg, rgba(5,7,13,0.3) 0%, transparent 30%, rgba(5,7,13,0.85) 90%, var(--bg) 100%);
+    }
+    .bouz-content {
+      position: relative; z-index: 2;
+      max-width: var(--container);
+      margin: 0 auto;
+      width: 100%;
+      padding: 80px 0;
+    }
+    .bouz-tag {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(5,7,13,0.6);
+      backdrop-filter: blur(20px);
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--orange);
+      border: 1px solid var(--line-strong);
+      margin-bottom: 32px;
+    }
+    .bouz-content h2 {
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.0;
+      max-width: 16ch;
+      margin-bottom: 24px;
+    }
+    .bouz-content p {
+      font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
+      color: var(--text-dim);
+      max-width: 56ch;
+      line-height: 1.55;
+    }
+
+    /* ============================================
+       PROCESS - 3 étapes + vidéo montage
+       ============================================ */
+    .process {
+      padding: 160px 32px;
+      background: var(--bg);
+    }
+    .process-header {
+      max-width: var(--container);
+      margin: 0 auto 80px;
+      text-align: center;
+    }
+    .process-header .eyebrow { justify-content: center; margin-bottom: 24px; }
+    .process-header h2 {
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.0;
+    }
+    .process-header h2 .accent { color: var(--orange); }
+
+    .process-steps {
+      max-width: var(--container);
+      margin: 0 auto 96px;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
+    }
+    .process-step {
+      padding: 40px 32px;
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      position: relative;
+      transition: border-color 0.4s var(--ease), transform 0.4s var(--ease);
+    }
+    .process-step:hover { border-color: var(--orange); transform: translateY(-6px); }
+    .process-step-num {
+      font-family: var(--serif);
+      font-size: 4rem;
+      font-weight: 700;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--orange) 0%, var(--blue) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 24px;
+    }
+    .process-step h3 {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+    .process-step p {
+      color: var(--text-dim);
+      font-size: 0.9375rem;
+      line-height: 1.6;
+    }
+    @media (max-width: 900px) {
+      .process-steps { grid-template-columns: 1fr; }
+    }
+
+    /* Vidéo montage en preuve */
+    .process-proof {
+      max-width: var(--container);
+      margin: 0 auto;
+      background: var(--bg-card);
+      border-radius: 32px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      border: 1px solid var(--line);
+      position: relative;
+    }
+    .process-proof::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--orange), transparent);
+    }
+    .process-proof-text {
+      padding: 56px 48px;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .process-proof-text h3 {
+      font-family: var(--serif);
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin: 16px 0 16px;
+    }
+    .process-proof-text p {
+      color: var(--text-dim);
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    .process-proof-meta {
+      display: flex; gap: 12px; flex-wrap: wrap;
+    }
+    .process-proof-meta span {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 12px;
+      background: rgba(255,122,24,0.1);
+      border: 1px solid rgba(255,122,24,0.25);
+      border-radius: 999px;
+      font-size: 0.75rem; font-weight: 600;
+      color: var(--orange);
+    }
+    .process-proof-video {
+      background: #000;
+      position: relative;
+      min-height: 380px;
+    }
+    .process-proof-video video {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      position: absolute; inset: 0;
+    }
+    @media (max-width: 900px) {
+      .process-proof { grid-template-columns: 1fr; }
+      .process-proof-text { padding: 36px 28px; }
+      .process-proof-video { min-height: 240px; aspect-ratio: 16/9; }
+    }
+
+    /* ============================================
+       GALERIE PARALLAX - jeux en mosaïque
+       ============================================ */
+    .gallery {
+      padding: 160px 32px 100px;
+      background: var(--bg-soft);
+      position: relative;
+      overflow: hidden;
+    }
+    .gallery-header {
+      max-width: var(--container);
+      margin: 0 auto 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: end;
+    }
+    .gallery-header h2 {
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 0.95;
+    }
+    .gallery-header h2 .accent { color: var(--blue); }
+    .gallery-header p {
+      color: var(--text-dim);
+      font-size: 1.0625rem;
+      max-width: 56ch;
+      line-height: 1.6;
+    }
+    @media (max-width: 900px) { .gallery-header { grid-template-columns: 1fr; gap: 16px; } }
+
+    .gallery-grid {
+      max-width: var(--container);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+    }
+    .gallery-tile {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--bg-card);
+      cursor: pointer;
+      will-change: transform;
+    }
+    .gallery-tile img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s var(--ease), filter 0.8s var(--ease);
+      filter: brightness(0.92) saturate(1.05);
+    }
+    .gallery-tile:hover img { transform: scale(1.06); filter: brightness(1) saturate(1.15); }
+    .gallery-tile::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, transparent 50%, rgba(5,7,13,0.85));
+      pointer-events: none;
+    }
+    .gallery-tile .label {
+      position: absolute;
+      left: 20px; bottom: 16px; right: 20px;
+      z-index: 2;
+      font-family: var(--serif);
+      font-size: 1.0625rem;
+      font-weight: 600;
+      color: white;
+      letter-spacing: -0.01em;
+    }
+    .gallery-tile .label small {
+      display: block;
+      font-family: var(--sans);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 4px;
+    }
+    /* Mosaïque asymétrique */
+    .gallery-tile.t-lg { grid-column: span 6; aspect-ratio: 16/10; }
+    .gallery-tile.t-md { grid-column: span 4; aspect-ratio: 4/5; }
+    .gallery-tile.t-sm { grid-column: span 3; aspect-ratio: 1/1; }
+    .gallery-tile.t-tall { grid-column: span 3; aspect-ratio: 3/4; }
+    .gallery-tile.t-wide { grid-column: span 6; aspect-ratio: 16/9; }
+    @media (max-width: 900px) {
+      .gallery-grid { grid-template-columns: repeat(6, 1fr); }
+      .gallery-tile.t-lg, .gallery-tile.t-wide { grid-column: span 6; }
+      .gallery-tile.t-md, .gallery-tile.t-tall { grid-column: span 3; }
+      .gallery-tile.t-sm { grid-column: span 3; }
+    }
+    @media (max-width: 600px) {
+      .gallery-grid { grid-template-columns: 1fr; gap: 12px; }
+      .gallery-tile { grid-column: span 1 !important; aspect-ratio: 4/3 !important; }
+    }
+
+    /* ============================================
+       VIDÉOS - grille 2x2 + caption
+       ============================================ */
+    .videos {
+      padding: 160px 32px;
+      background: var(--bg);
+    }
+    .videos-header {
+      max-width: var(--container);
+      margin: 0 auto 64px;
+      text-align: center;
+    }
+    .videos-header .eyebrow { justify-content: center; margin-bottom: 20px; }
+    .videos-header h2 {
+      font-family: var(--serif);
+      font-size: clamp(2.25rem, 5vw, 4rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.0;
+    }
+    .videos-header h2 .accent { color: var(--orange); }
+    .videos-grid {
+      max-width: var(--container);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .vcard {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #000;
+      aspect-ratio: 16/9;
+      border: 1px solid var(--line);
+    }
+    .vcard video {
+      width: 100%; height: 100%;
+      object-fit: contain;
+      background: #000;
+    }
+    .vcard-meta {
+      position: absolute;
+      top: 16px; left: 16px;
+      background: rgba(5,7,13,0.7);
+      backdrop-filter: blur(12px);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--text);
+      border: 1px solid var(--line-strong);
+      z-index: 2;
+      pointer-events: none;
+    }
+    @media (max-width: 720px) {
+      .videos-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================
+       FAQ - accordion premium
+       ============================================ */
+    .faq {
+      padding: 160px 32px;
+      background: var(--bg-soft);
+    }
+    .faq-wrap {
       max-width: 900px;
       margin: 0 auto;
     }
-    .ref-card {
-      background: var(--gray-50);
-      border: 1px solid var(--gray-200);
-      border-radius: var(--radius);
-      padding: 32px 24px;
+    .faq-header {
       text-align: center;
-      transition: var(--transition);
+      margin-bottom: 64px;
     }
-    .ref-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--orange);
-      box-shadow: var(--shadow);
-    }
-    .ref-card .ref-icon {
-      width: 48px;
-      height: 48px;
-      margin: 0 auto 14px;
-      background: var(--white);
-      color: var(--orange);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid var(--gray-200);
-    }
-    .ref-card h4 {
-      font-size: 1.0625rem;
-      font-weight: 800;
-      color: var(--dark);
-    }
-    .ref-card span {
-      display: block;
-      font-size: 0.8125rem;
-      color: var(--gray-500);
-      margin-top: 4px;
-    }
-
-    .ref-feature {
-      margin-bottom: 56px;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: var(--shadow-lg);
-      position: relative;
-      background: var(--dark);
-    }
-    .ref-feature img {
-      width: 100%;
-      height: auto;
-      display: block;
-      aspect-ratio: 16 / 10;
-      object-fit: cover;
-    }
-    .ref-feature-overlay {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      padding: 32px;
-      background: linear-gradient(180deg, transparent 0%, rgba(15, 23, 42, 0.85) 100%);
-      color: var(--white);
-    }
-    .ref-feature-overlay .badge {
-      display: inline-block;
-      background: var(--orange);
-      color: var(--white);
-      padding: 4px 10px;
-      border-radius: 6px;
-      font-size: 0.75rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-    .ref-feature-overlay h3 {
-      font-size: clamp(1.25rem, 2.5vw, 1.75rem);
-      font-weight: 900;
-      letter-spacing: -0.02em;
-      margin-bottom: 6px;
-    }
-    .ref-feature-overlay p {
-      font-size: 0.9375rem;
-      color: rgba(255, 255, 255, 0.85);
-      max-width: 520px;
-    }
-    @media (max-width: 720px) {
-      .ref-feature img { aspect-ratio: 4 / 3; }
-      .ref-feature-overlay { padding: 20px; }
-    }
-
-    /* ============================================
-       FAQ
-       ============================================ */
-    .faq {
-      background: var(--gray-50);
-    }
-    .faq-list {
-      max-width: 820px;
-      margin: 0 auto;
+    .faq-header .eyebrow { justify-content: center; margin-bottom: 20px; }
+    .faq-header h2 {
+      font-family: var(--serif);
+      font-size: clamp(2.25rem, 5vw, 4rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.0;
     }
     .faq-item {
-      background: var(--white);
-      border-radius: var(--radius);
-      margin-bottom: 12px;
-      overflow: hidden;
-      border: 1px solid var(--gray-200);
+      border-bottom: 1px solid var(--line);
     }
-    .faq-question {
+    .faq-q {
       width: 100%;
-      padding: 22px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
+      padding: 28px 0;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 24px;
       text-align: left;
-      font-size: 1.0625rem;
-      font-weight: 700;
-      color: var(--dark);
-      transition: background var(--transition);
+      font-family: var(--serif);
+      font-size: clamp(1.125rem, 2vw, 1.5rem);
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      transition: color 0.3s var(--ease);
     }
-    .faq-question:hover { background: var(--gray-50); }
-    .faq-question .icon-plus {
+    .faq-q:hover { color: var(--orange); }
+    .faq-q-icon {
       flex-shrink: 0;
-      width: 28px;
-      height: 28px;
-      background: var(--orange-light);
-      color: var(--orange);
+      width: 36px; height: 36px;
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform var(--transition);
+      border: 1px solid var(--line-strong);
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 0.4s var(--ease), border-color 0.4s var(--ease), background 0.4s var(--ease);
+      position: relative;
     }
-    .faq-item.open .faq-question .icon-plus { transform: rotate(45deg); }
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.35s ease;
+    .faq-q-icon::before, .faq-q-icon::after {
+      content: '';
+      position: absolute;
+      background: currentColor;
+      transition: transform 0.4s var(--ease);
     }
-    .faq-answer-inner {
-      padding: 0 24px 22px;
-      color: var(--gray-700);
-      font-size: 0.9875rem;
+    .faq-q-icon::before { width: 12px; height: 1.5px; }
+    .faq-q-icon::after { width: 1.5px; height: 12px; }
+    .faq-item.is-open .faq-q-icon { background: var(--orange); border-color: var(--orange); color: white; transform: rotate(180deg); }
+    .faq-item.is-open .faq-q-icon::after { transform: scaleY(0); }
+    .faq-a {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.5s var(--ease);
+    }
+    .faq-a-inner {
+      padding: 0 0 28px;
+      color: var(--text-dim);
+      font-size: 1rem;
       line-height: 1.7;
+      max-width: 60ch;
     }
-    .faq-item.open .faq-answer { max-height: 400px; }
+    .faq-item.is-open .faq-a { max-height: 400px; }
 
     /* ============================================
-       CONTACT / DEVIS
+       CONTACT - form premium
        ============================================ */
     .contact {
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-      color: var(--white);
+      padding: 160px 32px;
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
     }
-    .contact .section-header h2 { color: var(--white); }
-    .contact .section-header p { color: rgba(255, 255, 255, 0.7); }
-    .contact-grid {
+    .contact::before {
+      content: '';
+      position: absolute; top: -100px; left: -100px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(0,212,255,0.15), transparent 70%);
+      filter: blur(60px);
+    }
+    .contact::after {
+      content: '';
+      position: absolute; bottom: -100px; right: -100px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(255,122,24,0.15), transparent 70%);
+      filter: blur(60px);
+    }
+    .contact-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
       display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 56px;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 80px;
       align-items: start;
     }
-    .contact-info h3 {
-      font-size: 1.25rem;
-      font-weight: 800;
-      margin-bottom: 24px;
+    .contact-left h2 {
+      font-family: var(--serif);
+      font-size: clamp(2.25rem, 5vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.0;
+      margin: 16px 0 32px;
     }
-    .contact-method {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
+    .contact-left h2 .accent { color: var(--orange); }
+    .contact-left > p {
+      color: var(--text-dim);
+      font-size: 1.0625rem;
+      line-height: 1.6;
+      margin-bottom: 40px;
+      max-width: 40ch;
+    }
+    .contact-channel {
+      display: flex; gap: 14px; align-items: flex-start;
       padding: 16px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      border-top: 1px solid var(--line);
     }
-    .contact-method:last-child { border-bottom: none; }
-    .contact-method .ci-icon {
-      width: 44px;
-      height: 44px;
+    .contact-channel:last-child { border-bottom: 1px solid var(--line); }
+    .contact-channel-ico {
+      width: 36px; height: 36px;
+      background: rgba(0,212,255,0.12);
+      border: 1px solid rgba(0,212,255,0.3);
+      color: var(--blue);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
-      background: rgba(249, 115, 22, 0.15);
-      color: var(--orange);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
-    .contact-method strong {
+    .contact-channel-ico svg { width: 16px; height: 16px; }
+    .contact-channel small {
       display: block;
-      font-size: 0.8125rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: rgba(255, 255, 255, 0.6);
-      font-weight: 600;
+      font-size: 0.6875rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--text-faded);
       margin-bottom: 4px;
     }
-    .contact-method a, .contact-method p {
-      color: var(--white);
-      font-size: 1.0625rem;
-      font-weight: 600;
+    .contact-channel a, .contact-channel p {
+      color: var(--text);
+      font-size: 1rem; font-weight: 600;
     }
+
     .contact-form {
-      background: var(--white);
-      color: var(--dark);
-      padding: 36px;
-      border-radius: var(--radius-lg);
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 40px;
     }
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-    .form-field {
-      margin-bottom: 16px;
-    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-field { margin-bottom: 18px; }
     .form-field label {
       display: block;
-      font-size: 0.875rem;
-      font-weight: 600;
-      margin-bottom: 6px;
-      color: var(--gray-700);
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--text-faded);
+      margin-bottom: 8px;
     }
-    .form-field input,
-    .form-field select,
-    .form-field textarea {
+    .form-field input, .form-field select, .form-field textarea {
       width: 100%;
-      padding: 12px 14px;
-      border: 1.5px solid var(--gray-200);
-      border-radius: 10px;
+      padding: 14px 16px;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      color: var(--text);
       font-family: inherit;
       font-size: 0.9375rem;
-      transition: border-color var(--transition);
-      background: var(--white);
+      transition: border-color 0.3s var(--ease), background 0.3s var(--ease);
     }
-    .form-field input:focus,
-    .form-field select:focus,
-    .form-field textarea:focus {
+    .form-field input:focus, .form-field select:focus, .form-field textarea:focus {
       outline: none;
       border-color: var(--orange);
+      background: rgba(255,122,24,0.04);
     }
-    .form-field textarea { resize: vertical; min-height: 110px; }
-    .form-submit { width: 100%; padding: 16px; font-size: 1rem; }
+    .form-field textarea { resize: vertical; min-height: 100px; }
+    .form-helper {
+      display: block;
+      margin-top: 6px;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      letter-spacing: 0.02em;
+    }
+    .form-submit { width: 100%; padding: 18px; font-size: 1rem; margin-top: 8px; }
+    .form-trust {
+      margin-top: 14px;
+      font-size: 0.75rem;
+      color: var(--text-faded);
+      text-align: center;
+      letter-spacing: 0.04em;
+    }
+    @media (max-width: 900px) {
+      .contact-wrap { grid-template-columns: 1fr; gap: 56px; }
+      .contact-form { padding: 28px; }
+      .form-row { grid-template-columns: 1fr; gap: 0; }
+    }
 
     /* ============================================
        FOOTER
        ============================================ */
-    .site-footer {
-      background: var(--dark);
-      color: rgba(255, 255, 255, 0.75);
-      padding: 56px 0 32px;
+    .ft {
+      padding: 80px 32px 32px;
+      background: var(--bg-soft);
+      border-top: 1px solid var(--line);
     }
-    .footer-grid {
+    .ft-grid {
+      max-width: var(--container);
+      margin: 0 auto;
       display: grid;
-      grid-template-columns: 1.4fr 1fr 1fr;
-      gap: 40px;
-      margin-bottom: 40px;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 56px;
     }
-    .footer-brand .logo { color: var(--white); margin-bottom: 14px; display: inline-block; }
-    .footer-brand p { font-size: 0.9375rem; line-height: 1.65; max-width: 360px; }
-    .footer-col h4 {
-      color: var(--white);
-      font-size: 0.875rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
+    .ft-brand h3 {
+      font-family: var(--serif);
+      font-size: 2rem; font-weight: 700;
+      letter-spacing: -0.02em;
       margin-bottom: 16px;
     }
-    .footer-col ul li { margin-bottom: 10px; }
-    .footer-col a {
+    .ft-brand h3 span { color: var(--orange); }
+    .ft-brand p { color: var(--text-dim); font-size: 0.9375rem; line-height: 1.6; max-width: 320px; }
+    .ft-col h4 {
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--text-faded);
+      margin-bottom: 18px;
+    }
+    .ft-col ul li { margin-bottom: 10px; }
+    .ft-col a {
+      color: var(--text-dim);
       font-size: 0.9375rem;
-      transition: color var(--transition);
+      transition: color 0.3s var(--ease);
     }
-    .footer-col a:hover { color: var(--orange); }
-    .social-links {
-      display: flex;
-      gap: 12px;
-      margin-top: 14px;
-    }
-    .social-links a {
-      width: 40px;
-      height: 40px;
-      background: rgba(255, 255, 255, 0.08);
-      color: var(--white);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: var(--transition);
-    }
-    .social-links a:hover { background: var(--orange); transform: translateY(-2px); }
-    .social-links svg { width: 18px; height: 18px; }
-    .footer-bottom {
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      padding-top: 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      font-size: 0.875rem;
-      color: rgba(255, 255, 255, 0.55);
-    }
-
-    /* ============================================
-       WHATSAPP FLOATING
-       ============================================ */
-    .whatsapp-float {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      width: 60px;
-      height: 60px;
-      background: var(--whatsapp);
+    .ft-col a:hover { color: var(--orange); }
+    .ft-socials { display: flex; gap: 10px; margin-top: 14px; }
+    .ft-socials a {
+      width: 38px; height: 38px;
+      background: var(--bg-card);
+      border: 1px solid var(--line);
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 10px 24px rgba(37, 211, 102, 0.4);
-      z-index: 90;
-      transition: transform var(--transition);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text);
+      transition: all 0.3s var(--ease);
     }
-    .whatsapp-float:hover { transform: scale(1.08); }
-    .whatsapp-float svg { width: 30px; height: 30px; color: white; }
+    .ft-socials a:hover { background: var(--orange); border-color: var(--orange); transform: translateY(-2px); }
+    .ft-socials svg { width: 16px; height: 16px; }
+    .ft-bottom {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 16px;
+      font-size: 0.8125rem; color: var(--text-faded);
+    }
+    .ft-bottom a { color: inherit; }
+    .ft-bottom a:hover { color: var(--orange); }
+    @media (max-width: 900px) { .ft-grid { grid-template-columns: 1fr 1fr; gap: 32px; } }
+    @media (max-width: 600px) { .ft-grid { grid-template-columns: 1fr; } .ft-bottom { flex-direction: column; text-align: center; } }
+
+    /* WhatsApp float */
+    .wa {
+      position: fixed; bottom: 24px; right: 24px;
+      width: 56px; height: 56px;
+      background: #25d366;
+      color: white;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 12px 32px rgba(37, 211, 102, 0.4);
+      z-index: 70;
+      transition: transform 0.3s var(--ease);
+    }
+    .wa:hover { transform: scale(1.1); }
+    .wa svg { width: 26px; height: 26px; }
+
+    /* Reveal animations */
+    [data-reveal] { opacity: 0; transform: translateY(30px); transition: opacity 1s var(--ease), transform 1s var(--ease); }
+    [data-reveal].in { opacity: 1; transform: translateY(0); }
 
     /* ============================================
-       REVEAL ANIMATION
+       STICKY CTA MOBILE (bouton Devis fixé en bas)
        ============================================ */
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
+    .mobile-cta {
+      display: none;
+      position: fixed;
+      left: 16px; right: 90px; bottom: 16px;
+      z-index: 75;
+      padding: 14px 20px;
+      background: var(--orange);
+      color: white;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.9375rem;
+      text-align: center;
+      box-shadow: 0 12px 32px rgba(255, 122, 24, 0.45);
+      letter-spacing: 0.01em;
+      transition: transform 0.3s var(--ease), opacity 0.3s var(--ease);
+      transform: translateY(120%);
     }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ============================================
-       RESPONSIVE
-       ============================================ */
-    @media (max-width: 980px) {
-      .hero-grid,
-      .particuliers-grid,
-      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
-      .hero { padding: 130px 0 72px; }
-      .pour-qui-grid,
-      .pourquoi-grid,
-      .publics-grid,
-      .steps-grid,
-      .refs-grid,
-      .videos-grid,
-      .footer-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-      .pourquoi-card.featured { grid-column: span 2; }
-      .animations-grid { grid-template-columns: repeat(2, 1fr); }
-      .form-row { grid-template-columns: 1fr; gap: 0; }
-      .montage-demo { grid-template-columns: 1fr; }
-      .montage-demo-content { padding: 36px 28px; }
-      .montage-demo-video { min-height: 280px; aspect-ratio: 16/9; }
-    }
-
+    .mobile-cta.is-visible { transform: translateY(0); }
     @media (max-width: 720px) {
-      section { padding: 72px 0; }
-      .nav-links {
-        position: fixed;
-        top: 72px;
-        left: 0;
-        right: 0;
-        background: var(--white);
-        flex-direction: column;
-        gap: 0;
-        padding: 16px 24px 24px;
-        border-bottom: 1px solid var(--gray-200);
-        transform: translateY(-150%);
-        transition: transform 0.3s ease;
-        box-shadow: var(--shadow);
+      .mobile-cta { display: flex; align-items: center; justify-content: center; gap: 8px; }
+      .wa { bottom: 16px; right: 16px; width: 56px; height: 56px; }
+    }
+
+    /* ============================================
+       CALENDLY POPUP TRIGGER - section discrète
+       ============================================ */
+    .cal-section {
+      padding: 80px 32px;
+      background: var(--bg-soft);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      text-align: center;
+    }
+    .cal-section .eyebrow { justify-content: center; margin-bottom: 18px; }
+    .cal-section h3 {
+      font-family: var(--serif);
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.05;
+      margin-bottom: 16px;
+      max-width: 22ch;
+      margin-left: auto; margin-right: auto;
+    }
+    .cal-section h3 .accent { color: var(--blue); }
+    .cal-section p {
+      color: var(--text-dim);
+      font-size: 1.0625rem;
+      line-height: 1.6;
+      max-width: 56ch;
+      margin: 0 auto 28px;
+    }
+    .cal-section .btn { padding: 16px 32px; }
+
+    /* ============================================
+       TRUST BADGES (sous hero)
+       ============================================ */
+    .trust-bar {
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+      padding: 24px 32px;
+    }
+    .trust-bar-inner {
+      max-width: var(--container);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.875rem; font-weight: 600;
+      color: var(--text-dim);
+      letter-spacing: -0.005em;
+    }
+    .trust-item .check {
+      width: 22px; height: 22px;
+      flex-shrink: 0;
+      background: rgba(0, 212, 255, 0.12);
+      color: var(--blue);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid rgba(0, 212, 255, 0.3);
+    }
+    .trust-item .check svg { width: 12px; height: 12px; }
+    @media (max-width: 900px) {
+      .trust-bar-inner { grid-template-columns: 1fr 1fr; gap: 16px; }
+    }
+    @media (max-width: 480px) {
+      .trust-bar-inner { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================
+       COOKIE BANNER RGPD
+       ============================================ */
+    .cookie-banner {
+      position: fixed;
+      left: 16px; right: 16px; bottom: 16px;
+      z-index: 200;
+      background: var(--bg-card);
+      border: 1px solid var(--line-strong);
+      border-radius: 18px;
+      padding: 20px 24px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      max-width: 520px;
+      margin-left: auto;
+      display: none;
+      animation: cookieSlideUp 0.5s var(--ease);
+    }
+    @keyframes cookieSlideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    .cookie-banner.is-visible { display: block; }
+    .cookie-banner h4 {
+      font-size: 0.9375rem; font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+    .cookie-banner p {
+      font-size: 0.8125rem;
+      color: var(--text-dim);
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+    .cookie-banner p a { color: var(--orange); text-decoration: underline; }
+    .cookie-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    .cookie-actions button {
+      flex: 1;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.25s var(--ease);
+      border: none;
+      min-width: 120px;
+    }
+    .cookie-btn-accept {
+      background: var(--orange);
+      color: white;
+    }
+    .cookie-btn-accept:hover { background: var(--orange-bright); }
+    .cookie-btn-reject {
+      background: transparent;
+      color: var(--text-dim);
+      border: 1px solid var(--line-strong);
+    }
+    .cookie-btn-reject:hover { border-color: var(--text); color: var(--text); }
+    @media (max-width: 600px) {
+      .cookie-banner { left: 8px; right: 8px; bottom: 8px; padding: 16px 20px; }
+    }
+
+    /* ============================================
+       REDUCED MOTION - accessibilité
+       Désactive toutes les animations pour utilisateurs sensibles
+       ============================================ */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
       }
-      .nav-links.open { transform: translateY(0); }
-      .nav-links a {
-        padding: 14px 0;
-        border-bottom: 1px solid var(--gray-100);
-        width: 100%;
-      }
-      .nav-links .btn {
-        margin-top: 12px;
-        width: 100%;
-        justify-content: center;
-      }
-      .menu-toggle { display: flex; }
-      .pour-qui-grid,
-      .pourquoi-grid,
-      .publics-grid,
-      .steps-grid,
-      .refs-grid,
-      .videos-grid,
-      .animations-grid,
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-      .pourquoi-card.featured { grid-column: span 1; }
-      .hero h1 { font-size: 2.25rem; }
-      .hero-stats { grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
-      .hero-stat .num { font-size: 1.5rem; }
-      .contact-form { padding: 24px; }
-      .footer-bottom { flex-direction: column; text-align: center; }
+      [data-reveal] { opacity: 1 !important; transform: none !important; }
+      .split-word { transform: none !important; }
+      .hero-bg video, .manifeste-bg video { display: none; }
+      .hero-bg::after, .manifeste-bg::after { background: var(--bg) !important; }
+      .cursor, .cursor-ring { display: none !important; }
+      body { cursor: auto !important; }
     }
   </style>
 </head>
 <body>
+  <a href="#main" class="skip-link">Aller au contenu principal</a>
 
-  <!-- ============================================
-       HEADER / NAV
-       ============================================ -->
-  <header class="site-header">
-    <div class="container nav">
-      <a href="#" class="logo">Inter<span>Actis</span></a>
-      <nav class="nav-links" id="navLinks">
-        <a href="#publics">Nos publics</a>
-        <a href="#particuliers">Particuliers</a>
-        <a href="#fonctionnement">Fonctionnement</a>
-        <a href="#animations">Animations</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact" class="btn btn-primary">Devis</a>
-      </nav>
-      <button class="menu-toggle" id="menuToggle" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
+  <div class="cursor" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="hd">
+    <a href="#" class="hd-logo" data-hover>Inter<span>Actis</span></a>
+    <nav class="hd-nav">
+      <a href="#publics" data-hover>Publics</a>
+      <a href="#particuliers" data-hover>Particuliers</a>
+      <a href="#fonctionnement" data-hover>Process</a>
+      <a href="#animations" data-hover>Jeux</a>
+      <a href="#faq" data-hover>FAQ</a>
+      <a href="#appel" data-hover>Appel</a>
+      <a href="/nl/" data-hover style="opacity:0.6;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;font-size:0.75rem;" hreflang="nl" title="Nederlandse versie">NL</a>
+      <a href="#contact" class="btn btn-primary hd-cta" data-hover>Devis <span class="arrow">→</span></a>
+    </nav>
+    <button class="hd-burger" id="burger" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="menuOverlay"><span></span><span></span><span></span></button>
   </header>
 
+  <div class="menu-overlay" id="menuOverlay">
+    <nav>
+      <a href="#publics">Nos publics</a>
+      <a href="#particuliers">Particuliers</a>
+      <a href="#fonctionnement">Process</a>
+      <a href="#animations">Jeux</a>
+      <a href="#faq">FAQ</a>
+      <a href="#appel">Appel 15 min</a>
+      <a href="#contact">Devis</a>
+    </nav>
+  </div>
+
+  <main id="main">
+
   <!-- ============================================
-       HERO PRINCIPAL
+       HERO
        ============================================ -->
   <section class="hero">
-    <div class="container">
-      <div class="hero-grid">
-        <div class="hero-content">
-          <span class="eyebrow" style="color: var(--orange);">Animation interactive mobile</span>
-          <h1>Transformez n'importe quel mur en <span class="accent">terrain de jeu interactif</span>.</h1>
-          <p class="lead">InterActis se déplace chez vous et crée de l'ambiance en 15 minutes. Plus de 30 jeux, 100 % accessibles, pour 2 à 30+ joueurs - de 5 à 95 ans.</p>
-          <div class="hero-ctas">
-            <a href="#contact" class="btn btn-primary">Demander un devis</a>
-            <a href="tel:+32488435342" class="btn btn-secondary">+32 488 43 53 42</a>
-          </div>
-          <div class="hero-stats">
-            <div class="hero-stat">
-              <div class="num">100%</div>
-              <div class="label">Inclusif</div>
-            </div>
-            <div class="hero-stat">
-              <div class="num">15 min</div>
-              <div class="label">Installation</div>
-            </div>
-            <div class="hero-stat">
-              <div class="num">30+</div>
-              <div class="label">Jeux</div>
-            </div>
-          </div>
-        </div>
-        <div class="hero-image">
-          <img src="assets/hero.jpg" alt="Mur de projection interactive InterActis - jeu de mémoire en pleine action" />
-        </div>
-      </div>
+    <div class="hero-bg">
+      <video autoplay muted loop playsinline poster="assets/hero.jpg" preload="metadata">
+        <source src="assets/video-montage.mp4" type="video/mp4" />
+      </video>
     </div>
-  </section>
-
-  <!-- ============================================
-       SECONDARY HERO - POUR QUI ?
-       ============================================ -->
-  <section class="pour-qui">
-    <div class="container">
-      <h2 class="reveal">Une animation qui rassemble tous les publics</h2>
-      <div class="pour-qui-grid">
-        <div class="pour-qui-card reveal">
-          <h3>Pour les professionnels</h3>
-          <p>Team buildings qui marquent, animations qui rassemblent les équipes, expériences qui valorisent vos événements corporate.</p>
-        </div>
-        <div class="pour-qui-card reveal">
-          <h3>Pour les particuliers</h3>
-          <p>L'anniversaire dont vos enfants vont se rappeler, les fêtes de famille où même Mamy joue, les soirées entre amis qui sortent du lot.</p>
-        </div>
-        <div class="pour-qui-card reveal">
-          <h3>Pour les institutions</h3>
-          <p>Maisons de repos, écoles spécialisées, centres sociaux - une animation pensée pour rassembler tous les publics, sans exception.</p>
-        </div>
-      </div>
-      <div class="pour-qui-tagline reveal">De 5 à 95 ans. <span class="accent">Sans exception.</span></div>
-    </div>
-  </section>
-
-  <!-- ============================================
-       NOS PUBLICS PRO (6 cibles)
-       ============================================ -->
-  <section id="publics">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="eyebrow">Pour qui</span>
-        <h2>Une animation adaptée à tous les contextes</h2>
-        <p>Six univers professionnels, une même animation modulable qui s'adapte à votre public et à vos objectifs.</p>
-      </div>
-      <div class="publics-grid">
-        <div class="public-card reveal">
-          <div class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
-          <h3>Écoles</h3>
-          <p>Primaire et secondaire - récréation active, motricité, calcul mental et coopération de classe.</p>
-        </div>
-        <div class="public-card reveal">
-          <div class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-          <h3>Entreprises</h3>
-          <p>Team buildings, séminaires, kick-off, salons : une animation qui rassemble vos équipes.</p>
-        </div>
-        <div class="public-card reveal">
-          <div class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-          <h3>Maisons de repos</h3>
-          <p>Animation seniors douce et stimulante. Mémoire, motricité, lien social - debout ou assis.</p>
-        </div>
-        <div class="public-card reveal">
-          <div class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="9"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></div>
-          <h3>PMR & accessibilité</h3>
-          <p>Personnes à mobilité réduite, fauteuils roulants : 100 % des jeux sont accessibles.</p>
-        </div>
-        <div class="public-card reveal">
-          <div class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-          <h3>Événements</h3>
-          <p>Fêtes communales, kermesses, foires, festivals : un stand qui crée la file d'attente.</p>
-        </div>
-        <div class="public-card reveal">
-          <div class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.5-2 2-3.5 2-5a7 7 0 1 0-14 0c0 1.5.5 3 2 5l5 7z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
-          <h3>Centres sociaux, médicaux et spécialisés</h3>
-          <p>IME, CPAS, centres de jour, foyers - une animation pensée pour tous les profils.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================
-       PARTICULIERS - Animations privées
-       ============================================ -->
-  <section id="particuliers" class="particuliers">
-    <div class="container">
-      <div class="particuliers-grid">
-        <div class="particuliers-content">
-          <span class="eyebrow reveal">Animations privées</span>
-          <h2 class="reveal">Animations privées et anniversaires</h2>
-          <p class="subtitle reveal">Une animation inoubliable pour les fêtes en famille ou entre amis</p>
-          <p class="reveal">Vous cherchez une animation originale qui va vraiment marquer l'anniversaire de votre enfant ? InterActis transforme votre salle de fête, votre garage ou votre salon en terrain de jeu interactif géant.</p>
-          <p class="reveal">Plus de 30 jeux adaptés de 3 à 99 ans, sans manette, sans complexité. Les enfants courent, sautent, visent, calculent - ensemble.</p>
-          <ul class="features-list reveal">
-            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Idéal pour 8 à 30 enfants</li>
-            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Animation de 2 h ou 4 h</li>
-            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Installation chez vous ou en salle de fête</li>
-            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Toutes thématiques : anniversaire, fête de famille, baby shower, cousinade</li>
-            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>100 % accessible aux enfants en situation de handicap</li>
-          </ul>
-          <div class="particuliers-ctas reveal">
-            <a href="#contact" class="btn btn-primary">Réserver mon animation</a>
-            <a href="tel:+32488435342" class="btn btn-dark">+32 488 43 53 42</a>
-          </div>
-        </div>
-        <div class="particuliers-visual reveal">
-          <video controls playsinline preload="metadata" poster="assets/video-anniversaire-poster.jpg">
-            <source src="assets/video-anniversaire.mp4" type="video/mp4" />
-            Votre navigateur ne supporte pas la lecture de vidéos.
-          </video>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================
-       POURQUOI INTERACTIS (5 blocs)
-       ============================================ -->
-  <section class="pourquoi">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="eyebrow">La différence</span>
-        <h2>Pourquoi InterActis ?</h2>
-        <p>Une animation <strong>UNIQUE</strong> en Belgique francophone.</p>
-      </div>
-      <div class="pourquoi-grid">
-        <div class="pourquoi-card reveal">
-          <div class="num-badge">1</div>
-          <h3>Un format unique</h3>
-          <p>Pas un château gonflable. Pas un escape game classique. InterActis combine la projection murale et la détection de mouvement pour créer une expérience hybride physique-numérique encore peu répandue en Belgique.</p>
-        </div>
-        <div class="pourquoi-card featured reveal">
-          <div class="num-badge">2</div>
-          <h3>Multi-générationnel</h3>
-          <p>Enfants ET seniors, équipes mixtes, familles complètes. Vos invités jouent ENSEMBLE, peu importe leur âge ou leur condition physique. Aucune autre animation ne permet ça.</p>
-        </div>
-        <div class="pourquoi-card reveal">
-          <div class="num-badge">3</div>
-          <h3>Mobilité totale</h3>
-          <p>Une seule valise. 15 minutes d'installation. Aucun matériel requis de votre côté - juste un mur d'environ 3 m et une prise électrique. Nous nous déplaçons partout en Belgique francophone.</p>
-        </div>
-        <div class="pourquoi-card reveal">
-          <div class="num-badge">4</div>
-          <h3>100 % accessible</h3>
-          <p>PMR, fauteuils roulants, mobilité réduite : tout le monde joue. C'est notre engagement et notre différence.</p>
-        </div>
-        <div class="pourquoi-card reveal">
-          <div class="num-badge">5</div>
-          <h3>Plus de 30 jeux</h3>
-          <p>Calcul mental, mémoire, adresse, réflexes, coopération, sport... Le panel s'adapte à votre public et à vos objectifs.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================
-       FONCTIONNEMENT
-       ============================================ -->
-  <section id="fonctionnement" class="fonctionnement">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="eyebrow">Comment ça marche</span>
-        <h2>Trois étapes, zéro complication</h2>
-        <p>Vous nous appelez, on vient, on joue. C'est tout.</p>
-      </div>
-      <div class="steps-grid">
-        <div class="step reveal">
-          <div class="step-num">1</div>
-          <h3>On en parle</h3>
-          <p>Vous nous décrivez votre événement (public, durée, lieu) et on adapte la sélection de jeux.</p>
-        </div>
-        <div class="step reveal">
-          <div class="step-num">2</div>
-          <h3>On installe</h3>
-          <p>Notre animateur arrive avec tout le matériel. 15 minutes plus tard, le mur est prêt à jouer.</p>
-        </div>
-        <div class="step reveal">
-          <div class="step-num">3</div>
-          <h3>On joue</h3>
-          <p>L'animateur reste sur place pour gérer les jeux et l'ambiance. Vous, vous profitez.</p>
-        </div>
-      </div>
-
-      <!-- VIDÉO DÉMO MONTAGE -->
-      <div class="montage-demo reveal">
-        <div class="montage-demo-content">
-          <span class="eyebrow">Vu de l'intérieur</span>
-          <h3>Voyez par vous-même : le montage en quelques minutes</h3>
-          <p>Pas de promesses en l'air. Voici exactement à quoi ressemble notre installation : une valise, un trépied, un mur, et c'est parti. Aucun matériel à préparer de votre côté.</p>
-          <div class="demo-meta">
-            <span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-              15 min chrono
-            </span>
-            <span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              Zéro préparation
-            </span>
-            <span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-              Une seule valise
-            </span>
-          </div>
-        </div>
-        <div class="montage-demo-video">
-          <video controls preload="metadata" playsinline>
-            <source src="assets/video-montage.mp4" type="video/mp4" />
-            Votre navigateur ne supporte pas la lecture de vidéos.
-          </video>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================
-       ANIMATIONS / JEUX
-       ============================================ -->
-  <section id="animations">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="eyebrow">Catalogue</span>
-        <h2>Plus de 30 jeux interactifs</h2>
-        <p>Du calcul mental au tir à l'arc, en passant par le basket et la mémoire - on sélectionne ensemble selon votre public.</p>
-      </div>
-
-      <div class="gallery-wrap reveal">
-        <button class="gallery-arrow prev" id="galleryPrev" aria-label="Photo précédente">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    <div class="hero-content">
+      <div class="hero-eyebrow eyebrow">Animation interactive mobile · Belgique</div>
+      <h1 class="display" data-split>
+        Le mur qui<br/>
+        <span class="glow">transforme</span><br/>
+        <span class="accent">tout.</span>
+      </h1>
+      <p class="hero-sub">
+        InterActis débarque chez vous avec une seule valise. 15 minutes plus tard, n'importe quel mur devient un terrain de jeu interactif géant. De 5 à 95 ans. Sans manette. Sans exception.
+      </p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary" data-hover data-magnetic>
+          Recevoir mon devis sous 24h
+          <span class="arrow">→</span>
+        </a>
+        <button type="button" class="btn btn-ghost" data-hover data-magnetic onclick="return openCalendly();" aria-label="Réserver un appel découverte de 15 minutes">
+          📞 Appel 15 min
         </button>
-        <div class="gallery-track" id="galleryTrack">
-          <div class="gallery-slide"><img src="assets/gallery/jeu-03.jpg" alt="Menu Neo Play - catalogue de tous les jeux" loading="lazy" /><div class="gallery-slide-caption">Le menu : tous les jeux</div></div>
-          <div class="gallery-slide"><img src="assets/gallery/jeu-10.jpg" alt="Cake Odyssey - jeu d'anniversaire" loading="lazy" /><div class="gallery-slide-caption">Cake Odyssey</div></div>
-          <div class="gallery-slide"><img src="assets/gallery/jeu-11.jpg" alt="King Hoops - basket interactif" loading="lazy" /><div class="gallery-slide-caption">King Hoops - basket</div></div>
-          <div class="gallery-slide"><img src="assets/gallery/jeu-04.jpg" alt="Skillz Up - basket interactif" loading="lazy" /><div class="gallery-slide-caption">Skillz Up - basket</div></div>
-          <div class="gallery-slide"><img src="assets/gallery/jeu-14.jpg" alt="Rival Goals - football interactif" loading="lazy" /><div class="gallery-slide-caption">Rival Goals - football</div></div>
-          <div class="gallery-slide"><img src="assets/gallery/jeu-15.jpg" alt="Virtual Dart - fléchettes" loading="lazy" /><div class="gallery-slide-caption">Virtual Dart - fléchettes</div></div>
-          <div class="gallery-slide"><img src="assets/gallery/jeu-08.jpg" alt="Break-It Rugby" loading="lazy" /><div class="gallery-slide-caption">Break-It Rugby</div></div>
-          <div class="gallery-slide"><img src="assets/gallery/jeu-12.jpg" alt="Magic Paint Brush - jeu créatif" loading="lazy" /><div class="gallery-slide-caption">Magic Paint Brush</div></div>
-          <div class="gallery-slide"><img src="assets/gallery/jeu-13.jpg" alt="Ice Cream Factory - jeu coloré multi-joueurs" loading="lazy" /><div class="gallery-slide-caption">Ice Cream Factory</div></div>
-          <div class="gallery-slide"><img src="assets/gallery/jeu-06.jpg" alt="Angry Birds Dream Blast - jeu de bulles" loading="lazy" /><div class="gallery-slide-caption">Angry Birds Dream Blast</div></div>
-          <div class="gallery-slide"><img src="assets/gallery/jeu-07.jpg" alt="Angry Birds Smash" loading="lazy" /><div class="gallery-slide-caption">Angry Birds Smash</div></div>
-          <div class="gallery-slide"><img src="assets/gallery/jeu-05.jpg" alt="Arena Masters Drone Evolution - jeu futuriste" loading="lazy" /><div class="gallery-slide-caption">Arena Masters - drones</div></div>
-          <div class="gallery-slide"><img src="assets/gallery/jeu-16.jpg" alt="Hit Your Rival - combat futuriste" loading="lazy" /><div class="gallery-slide-caption">Hit Your Rival</div></div>
-          <div class="gallery-slide"><img src="assets/gallery/jeu-17.jpg" alt="Nexus Survivors - combat aliens" loading="lazy" /><div class="gallery-slide-caption">Nexus Survivors</div></div>
-          <div class="gallery-slide"><img src="assets/gallery/jeu-18.jpg" alt="Nightmare 1347 - jeu d'horreur 16+" loading="lazy" /><div class="gallery-slide-caption">Nightmare 1347 · 16+</div></div>
-        </div>
-        <button class="gallery-arrow next" id="galleryNext" aria-label="Photo suivante">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-        </button>
-        <div class="gallery-hint">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          <span>Faites défiler pour voir les autres jeux</span>
-        </div>
+        <a href="tel:+32488435342" class="btn btn-ghost" data-hover aria-label="Appeler InterActis au +32 488 43 53 42">
+          +32 488 43 53 42
+        </a>
       </div>
+    </div>
 
-      <div class="animations-grid">
-        <div class="game-card reveal">
-          <div class="game-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
-          <h4>Basket interactif</h4>
-          <p>Visez, marquez, gagnez</p>
-        </div>
-        <div class="game-card reveal">
-          <div class="game-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
-          <h4>Tir à l'arc</h4>
-          <p>Précision et concentration</p>
-        </div>
-        <div class="game-card reveal">
-          <div class="game-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div>
-          <h4>Mémoire</h4>
-          <p>Solo ou en équipe</p>
-        </div>
-        <div class="game-card reveal">
-          <div class="game-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
-          <h4>Calcul mental</h4>
-          <p>Adapté tous niveaux</p>
-        </div>
-        <div class="game-card reveal">
-          <div class="game-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
-          <h4>Réflexes</h4>
-          <p>Vitesse et coordination</p>
-        </div>
-        <div class="game-card reveal">
-          <div class="game-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-          <h4>Coopération</h4>
-          <p>Réussir ensemble</p>
-        </div>
-        <div class="game-card reveal">
-          <div class="game-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-          <h4>Sport chrono</h4>
-          <p>Battre le record</p>
-        </div>
-        <div class="game-card reveal">
-          <div class="game-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15 8 22 9 17 14 18 21 12 18 6 21 7 14 2 9 9 8 12 2"/></svg></div>
-          <h4>... et 20+ autres</h4>
-          <p>On choisit ensemble</p>
-        </div>
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="hero-scroll-line"></div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="n" data-count="100">100<span style="color:var(--blue);font-size:0.7em">%</span></div>
+        <div class="l">Inclusif PMR</div>
+      </div>
+      <div class="hero-stat">
+        <div class="n" data-count="15">15<span style="color:var(--blue);font-size:0.5em;margin-left:4px">min</span></div>
+        <div class="l">Installation</div>
+      </div>
+      <div class="hero-stat">
+        <div class="n" data-count="30">30<span style="color:var(--blue);font-size:0.7em">+</span></div>
+        <div class="l">Jeux interactifs</div>
+      </div>
+      <div class="hero-stat">
+        <div class="n">5-95</div>
+        <div class="l">Ans, sans exception</div>
       </div>
     </div>
   </section>
 
   <!-- ============================================
-       VIDÉOS
+       TRUST BAR (sous hero)
        ============================================ -->
-  <section class="videos">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="eyebrow">En images</span>
-        <h2>Regardez nos animations en vidéo</h2>
-        <p>Bouzanton, Palais des Congrès de Mons - l'ambiance parle d'elle-même.</p>
+  <div class="trust-bar">
+    <div class="trust-bar-inner">
+      <div class="trust-item">
+        <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+        Réponse sous 24h
       </div>
-      <div class="videos-grid">
-        <div class="video-card reveal">
-          <video controls playsinline preload="metadata" poster="assets/video-bouzanton-1-poster.jpg">
-            <source src="assets/video-bouzanton-1.mp4" type="video/mp4" />
-          </video>
+      <div class="trust-item">
+        <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+        Devis 100% gratuit
+      </div>
+      <div class="trust-item">
+        <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+        Sans engagement
+      </div>
+      <div class="trust-item">
+        <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+        100% accessible PMR
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       MANIFESTE
+       ============================================ -->
+  <section class="manifeste">
+    <div class="manifeste-bg">
+      <video autoplay muted loop playsinline preload="metadata" poster="assets/hero.jpg">
+        <source src="assets/video-montage.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <div class="manifeste-inner">
+      <div class="manifeste-label eyebrow">Notre conviction</div>
+      <p class="manifeste-text" data-words>
+        On ne vend pas un jeu. On vend un moment où <span class="orange">tout le monde rit</span> en même temps. Où <span class="italic">Mamy</span> joue avec son <span class="italic">petit-fils</span>. Où le collègue timide se révèle. Où le <span class="blue">fauteuil roulant</span> n'est plus une frontière. Juste un mur. Juste 15 minutes. Et soudain, <span class="orange">la magie opère</span>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================
+       POUR QUI
+       ============================================ -->
+  <section class="for-who" id="publics">
+    <div class="for-who-header">
+      <h2 data-reveal>Vous êtes<br/>au bon endroit si</h2>
+      <p data-reveal>
+        Une animation, six univers. On adapte le format, la durée, la sélection de jeux et le ton à votre public. Voici les contextes où InterActis a déjà fait ses preuves.
+      </p>
+    </div>
+
+    <div class="for-who-list">
+      <a href="#contact" class="for-who-item" data-hover>
+        <div class="for-who-num">01</div>
+        <div>
+          <div class="for-who-title">Vous organisez un anniversaire d'enfant.</div>
+          <div class="for-who-desc">Salle de fête, garage ou salon. 8 à 30 enfants. 2h ou 4h. Et zéro stress côté animation.</div>
         </div>
-        <div class="video-card reveal">
-          <video controls playsinline preload="metadata" poster="assets/video-bouzanton-2-poster.jpg">
-            <source src="assets/video-bouzanton-2.mp4" type="video/mp4" />
-          </video>
+        <div class="for-who-arrow">→</div>
+      </a>
+
+      <a href="#contact" class="for-who-item" data-hover>
+        <div class="for-who-num">02</div>
+        <div>
+          <div class="for-who-title">Vous cherchez un team building qui marque.</div>
+          <div class="for-who-desc">Pas un autre escape game. Une expérience neuve, mémorable, qui rassemble vraiment vos équipes.</div>
         </div>
-        <!-- Palais des Congrès - vidéo réelle -->
-        <div class="video-card reveal">
-          <video controls playsinline preload="metadata" poster="assets/video-palais-1-poster.jpg">
-            <source src="assets/video-palais-1.mp4" type="video/mp4" />
-          </video>
+        <div class="for-who-arrow">→</div>
+      </a>
+
+      <a href="#contact" class="for-who-item" data-hover>
+        <div class="for-who-num">03</div>
+        <div>
+          <div class="for-who-title">Vous animez une maison de repos.</div>
+          <div class="for-who-desc">Une après-midi qui réveille les sourires. Mémoire, motricité, lien social. Fauteuils bienvenus.</div>
         </div>
-        <div class="video-card reveal">
-          <video controls playsinline preload="metadata" poster="assets/video-palais-2-poster.jpg">
-            <source src="assets/video-palais-2.mp4" type="video/mp4" />
-          </video>
+        <div class="for-who-arrow">→</div>
+      </a>
+
+      <a href="#contact" class="for-who-item" data-hover>
+        <div class="for-who-num">04</div>
+        <div>
+          <div class="for-who-title">Vous dirigez une école.</div>
+          <div class="for-who-desc">Primaire ou secondaire. Récréation active, motricité, calcul mental, coopération de classe.</div>
         </div>
+        <div class="for-who-arrow">→</div>
+      </a>
+
+      <a href="#contact" class="for-who-item" data-hover>
+        <div class="for-who-num">05</div>
+        <div>
+          <div class="for-who-title">Vous mettez sur pied un événement.</div>
+          <div class="for-who-desc">Kermesse, fête communale, foire, salon. Un stand qui crée la file d'attente.</div>
+        </div>
+        <div class="for-who-arrow">→</div>
+      </a>
+
+      <a href="#contact" class="for-who-item" data-hover>
+        <div class="for-who-num">06</div>
+        <div>
+          <div class="for-who-title">Vous coordonnez un centre spécialisé.</div>
+          <div class="for-who-desc">IME, CPAS, centres de jour, foyers. Une animation pensée pour tous les profils.</div>
+        </div>
+        <div class="for-who-arrow">→</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============================================
+       PARTICULIERS / ANNIVERSAIRE
+       ============================================ -->
+  <section class="anniv" id="particuliers">
+    <div class="anniv-grid">
+      <div class="anniv-video">
+        <div class="anniv-badge">Vu en vrai</div>
+        <video autoplay muted loop playsinline poster="assets/video-anniversaire-poster.jpg" preload="metadata">
+          <source src="assets/video-anniversaire.mp4" type="video/mp4" />
+        </video>
+      </div>
+
+      <div class="anniv-content">
+        <div class="eyebrow" data-reveal>L'anniversaire dont on parle encore</div>
+        <h2 data-reveal>Pour les <span class="accent">fêtes</span> qu'on n'oublie pas.</h2>
+        <p data-reveal>Vos enfants vont se rappeler de leur anniversaire pour la décennie qui vient. Pas d'une animation classique. D'un mur géant qui s'illumine, qui réagit, qui les fait courir, viser, calculer ensemble.</p>
+        <p data-reveal>InterActis transforme votre salle de fête, votre garage ou même votre salon en terrain de jeu interactif. Plus de 30 jeux, sans manette, accessibles dès 3 ans.</p>
+
+        <ul class="anniv-features">
+          <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Idéal pour 8 à 30 enfants</li>
+          <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Animation de 2h ou 4h</li>
+          <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Chez vous ou en salle de fête</li>
+          <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Accessible aux enfants en situation de handicap</li>
+        </ul>
+
+        <a href="#contact" class="btn btn-primary" data-hover data-magnetic>
+          Réserver l'anniversaire <span class="arrow">→</span>
+        </a>
       </div>
     </div>
   </section>
 
   <!-- ============================================
-       RÉFÉRENCES - Ils nous ont accueillis
+       BOUZANTON - cas client immersif
        ============================================ -->
-  <section class="references">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="eyebrow">Références</span>
-        <h2>Ils nous ont accueillis</h2>
-        <p>Quelques lieux où InterActis a déjà installé son mur interactif.</p>
+  <section class="bouz">
+    <div class="bouz-bg">
+      <img src="assets/bouzanton.jpg" alt="Animation InterActis à la Bonne Maison de Bouzanton - résidents en fauteuil roulant" />
+    </div>
+    <div class="bouz-content">
+      <div class="bouz-tag">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Bonne Maison de Bouzanton · Mons
       </div>
+      <h2 data-reveal>Aucune autre animation ne fait jouer une mamy de 92 ans avec son petit-fils.</h2>
+      <p data-reveal>Une après-midi à la Bonne Maison de Bouzanton. Résidents en fauteuil, debout, assis. Animateur InterActis sur le côté. Et soudain : tout le monde sur le même mur, même jeu, même sourire. C'est ce qu'on appelle l'inclusion.</p>
+    </div>
+  </section>
 
-      <div class="ref-feature reveal">
-        <img src="assets/bouzanton.jpg" alt="Animation InterActis à la Bonne Maison de Bouzanton - résidents en fauteuil roulant participant à un jeu projeté sur mur" />
-        <div class="ref-feature-overlay">
-          <span class="badge">En action</span>
-          <h3>Bonne Maison de Bouzanton</h3>
-          <p>Une après-midi d'animation en maison de repos. Résidents en fauteuil roulant, debout, assis - tout le monde participe au même jeu, sur le même mur.</p>
+  <!-- ============================================
+       PROCESS
+       ============================================ -->
+  <section class="process" id="fonctionnement">
+    <div class="process-header">
+      <div class="eyebrow" data-reveal>Comment ça marche</div>
+      <h2 data-reveal>Trois étapes.<br/><span class="accent">Zéro complication.</span></h2>
+    </div>
+
+    <div class="process-steps">
+      <div class="process-step" data-reveal>
+        <div class="process-step-num">01</div>
+        <h3>On en parle</h3>
+        <p>Vous nous décrivez votre événement : public, lieu, durée, ambiance recherchée. En 5 minutes au téléphone, on sait quoi prévoir.</p>
+      </div>
+      <div class="process-step" data-reveal>
+        <div class="process-step-num">02</div>
+        <h3>On installe</h3>
+        <p>Notre animateur arrive avec une seule valise. 15 minutes plus tard, votre mur est devenu un terrain de jeu interactif. Vous n'avez rien à préparer.</p>
+      </div>
+      <div class="process-step" data-reveal>
+        <div class="process-step-num">03</div>
+        <h3>On joue</h3>
+        <p>L'animateur reste sur place, pilote les jeux, gère l'ambiance. Vous, vous profitez. Vos invités s'amusent. Tout le monde repart avec quelque chose.</p>
+      </div>
+    </div>
+
+    <div class="process-proof" data-reveal>
+      <div class="process-proof-text">
+        <div class="eyebrow">Vu de l'intérieur</div>
+        <h3>15 minutes chrono.<br/>Aucune préparation.</h3>
+        <p>Pas de promesses en l'air. Voici exactement à quoi ressemble notre installation. Une valise, un trépied, un mur. Aucun matériel à préparer de votre côté.</p>
+        <div class="process-proof-meta">
+          <span>⏱ 15 min chrono</span>
+          <span>📦 Une seule valise</span>
+          <span>🔌 Une prise suffit</span>
         </div>
       </div>
+      <div class="process-proof-video">
+        <video autoplay muted loop playsinline preload="metadata">
+          <source src="assets/video-montage.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </div>
+  </section>
 
-      <div class="refs-grid">
-        <div class="ref-card reveal">
-          <div class="ref-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/><path d="M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/></svg></div>
-          <h4>Palais des Congrès de Mons</h4>
-          <span>Mons</span>
-        </div>
-        <div class="ref-card reveal">
-          <div class="ref-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-          <h4>Bonne Maison de Bouzanton</h4>
-          <span>Maison de repos</span>
-        </div>
-        <div class="ref-card reveal">
-          <div class="ref-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-          <h4>Résidence Gabrielle Passelecq</h4>
-          <span>Résidence seniors</span>
-        </div>
+  <!-- ============================================
+       VIDÉOS - preuves en images
+       (Anciennement la galerie de 11 jeux précédait cette section.
+        Elle a été retirée — la promesse "30+ jeux" reste portée par
+        le hero stats et la section anniv. Les vidéos clients sont
+        désormais la preuve visuelle principale.)
+       ============================================ -->
+  <section class="videos" id="animations">
+    <div class="videos-header">
+      <div class="eyebrow" data-reveal>30+ jeux interactifs · En images</div>
+      <h2 data-reveal>Regardez. C'est ça <span class="accent">qu'on vend.</span></h2>
+      <p data-reveal style="color:var(--text-dim);max-width:640px;margin:16px auto 0;font-size:1rem;line-height:1.6;">Sport, créatif, mémoire, coopération, fléchettes, basket, drones, peinture… On compose la sélection en fonction de votre public, de l'âge moyen et de l'ambiance recherchée.</p>
+    </div>
+    <div class="videos-grid">
+      <div class="vcard" data-reveal>
+        <video controls playsinline preload="metadata" poster="assets/video-bouzanton-1-poster.jpg">
+          <source src="assets/video-bouzanton-1.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="vcard" data-reveal>
+        <video controls playsinline preload="metadata" poster="assets/video-bouzanton-2-poster.jpg">
+          <source src="assets/video-bouzanton-2.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="vcard" data-reveal>
+        <video controls playsinline preload="metadata" poster="assets/video-palais-1-poster.jpg">
+          <source src="assets/video-palais-1.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="vcard" data-reveal>
+        <video controls playsinline preload="metadata" poster="assets/video-palais-2-poster.jpg">
+          <source src="assets/video-palais-2.mp4" type="video/mp4" />
+        </video>
       </div>
     </div>
   </section>
@@ -1672,300 +2017,555 @@
   <!-- ============================================
        FAQ
        ============================================ -->
-  <section id="faq" class="faq">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="eyebrow">Questions fréquentes</span>
-        <h2>Tout ce que vous voulez savoir</h2>
-        <p>Une question qui n'est pas dans la liste ? Appelez-nous directement.</p>
+  <section class="faq" id="faq">
+    <div class="faq-wrap">
+      <div class="faq-header">
+        <div class="eyebrow" data-reveal>Questions fréquentes</div>
+        <h2 data-reveal>Tout ce que vous voulez savoir.</h2>
       </div>
-      <div class="faq-list">
-        <div class="faq-item reveal">
-          <button class="faq-question">
-            <span>Comment ça marche concrètement ?</span>
-            <span class="icon-plus"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </button>
-          <div class="faq-answer"><div class="faq-answer-inner">Nous projetons les jeux sur un mur (3 m de large suffisent). Une caméra détecte les mouvements des joueurs : ils tapent, courent, sautent - le mur réagit en direct. Aucune manette, aucun écran, aucune complexité côté joueur.</div></div>
-        </div>
-        <div class="faq-item reveal">
-          <button class="faq-question">
-            <span>Combien de personnes peuvent jouer en même temps ?</span>
-            <span class="icon-plus"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </button>
-          <div class="faq-answer"><div class="faq-answer-inner">De 2 à 12 joueurs simultanément selon le jeu, mais les rotations sont rapides : on peut faire passer 30 à 50 personnes dans une heure facilement.</div></div>
-        </div>
-        <div class="faq-item reveal">
-          <button class="faq-question">
-            <span>Quelle est la durée d'une animation ?</span>
-            <span class="icon-plus"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </button>
-          <div class="faq-answer"><div class="faq-answer-inner">Format standard : 2 h ou 4 h. On adapte aussi à la demi-journée ou à la journée complète selon votre événement.</div></div>
-        </div>
-        <div class="faq-item reveal">
-          <button class="faq-question">
-            <span>De quoi avez-vous besoin sur place ?</span>
-            <span class="icon-plus"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </button>
-          <div class="faq-answer"><div class="faq-answer-inner">Un mur clair d'environ 3 m de large, une pièce qu'on peut tamiser un peu, et une prise électrique. C'est tout. Le reste, on l'apporte.</div></div>
-        </div>
-        <div class="faq-item reveal">
-          <button class="faq-question">
-            <span>L'animation est-elle accessible aux PMR ?</span>
-            <span class="icon-plus"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </button>
-          <div class="faq-answer"><div class="faq-answer-inner">Oui, à 100 %. Tous les jeux peuvent être joués debout, assis, en fauteuil roulant. C'est même l'une de nos différences phares.</div></div>
-        </div>
-        <div class="faq-item reveal">
-          <button class="faq-question">
-            <span>Quelle zone géographique couvrez-vous ?</span>
-            <span class="icon-plus"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </button>
-          <div class="faq-answer"><div class="faq-answer-inner">Toute la Belgique francophone, le Grand-Duché de Luxembourg et le nord de la France. Au-delà, contactez-nous, on étudie au cas par cas.</div></div>
-        </div>
+
+      <div class="faq-item">
+        <button class="faq-q" data-hover><span>Comment ça marche, concrètement ?</span><span class="faq-q-icon"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Nous projetons les jeux sur un mur (3 m de large suffisent). Une caméra détecte les mouvements des joueurs : ils tapent, courent, sautent, le mur réagit en direct. Aucune manette, aucun écran, aucune complexité côté joueur.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" data-hover><span>Combien de personnes peuvent jouer en même temps ?</span><span class="faq-q-icon"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">De 2 à 12 joueurs simultanément selon le jeu, et les rotations sont rapides : 30 à 50 personnes passent dans l'heure facilement.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" data-hover><span>Quelle est la durée d'une animation ?</span><span class="faq-q-icon"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Format standard : 2 h ou 4 h. On adapte à la demi-journée ou à la journée complète selon votre événement.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" data-hover><span>De quoi avez-vous besoin sur place ?</span><span class="faq-q-icon"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Un mur clair d'environ 3 m de large, une pièce qu'on peut tamiser un peu, et une prise électrique. C'est tout. Le reste, on l'apporte.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" data-hover><span>L'animation est-elle accessible aux PMR ?</span><span class="faq-q-icon"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Oui, à 100 %. Tous les jeux sont jouables debout, assis, en fauteuil roulant. C'est l'une de nos différences phares.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" data-hover><span>Quelle zone géographique couvrez-vous ?</span><span class="faq-q-icon"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Toute la Belgique francophone, le Grand-Duché de Luxembourg et le nord de la France. Au-delà, contactez-nous, on étudie au cas par cas.</div></div>
       </div>
     </div>
   </section>
 
   <!-- ============================================
-       CONTACT / DEVIS
+       CALENDLY - appel découverte (soft CTA)
        ============================================ -->
-  <section id="contact" class="contact">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="eyebrow" style="color: var(--orange);">Demande de devis</span>
-        <h2>Parlons de votre événement</h2>
-        <p>Réponse sous 24 h ouvrables. Devis personnalisé et gratuit.</p>
+  <section class="cal-section" id="appel">
+    <div class="eyebrow" data-reveal>Pas encore prêt pour un devis ?</div>
+    <h3 data-reveal>Discutons <span class="accent">15 minutes</span>, sans engagement.</h3>
+    <p data-reveal>Vous avez une idée vague d'événement, des questions sur les âges, le lieu, les tarifs ? Réservez un créneau et on en parle au téléphone. Pas de devis demandé, pas d'obligation.</p>
+    <button type="button" class="btn btn-ghost" data-hover data-magnetic onclick="return openCalendly();" aria-label="Réserver un créneau d'appel découverte de 15 minutes">
+      Réserver mon créneau
+      <span class="arrow">→</span>
+    </button>
+  </section>
+
+  <!-- ============================================
+       CONTACT
+       ============================================ -->
+  <section class="contact" id="contact">
+    <div class="contact-wrap">
+      <div class="contact-left">
+        <div class="eyebrow">Demande de devis</div>
+        <h2>Parlons de votre <span class="accent">événement.</span></h2>
+        <p>Réponse sous 24 h ouvrables. Devis personnalisé et gratuit. Vous nous décrivez votre projet, on vous fait une proposition adaptée.</p>
+
+        <div class="contact-channel">
+          <div class="contact-channel-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div><small>Téléphone</small><a href="tel:+32488435342" data-hover>+32 488 43 53 42</a></div>
+        </div>
+        <div class="contact-channel">
+          <div class="contact-channel-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div><small>Email</small><a href="mailto:contact@interactis.be" data-hover>contact@interactis.be</a></div>
+        </div>
+        <div class="contact-channel">
+          <div class="contact-channel-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+          <div><small>WhatsApp</small><a href="https://wa.me/32488435342?text=Bonjour%20Ubeyd%2C%20je%20m%27int%C3%A9resse%20%C3%A0%20une%20animation%20InterActis%20pour%20%5Btype%20d%27%C3%A9v%C3%A9nement%5D%20le%20%5Bdate%5D%20%C3%A0%20%5Bville%5D.%20Pouvez-vous%20me%20proposer%20un%20devis%20%3F" target="_blank" rel="noopener" data-hover>Discuter maintenant</a></div>
+        </div>
+        <div class="contact-channel">
+          <div class="contact-channel-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><small>Zone d'intervention</small><p>Belgique · Luxembourg · Nord France</p></div>
+        </div>
       </div>
-      <div class="contact-grid">
-        <div class="contact-info">
-          <h3>Nous joindre directement</h3>
-          <div class="contact-method">
-            <div class="ci-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg></div>
-            <div>
-              <strong>Téléphone</strong>
-              <a href="tel:+32488435342">+32 488 43 53 42</a>
-            </div>
+
+      <!--
+        FORMULAIRE FONCTIONNEL via Formsubmit.co (gratuit, aucun compte, illimité)
+        IMPORTANT : à la PREMIÈRE soumission après mise en ligne, vous recevrez
+        un email de Formsubmit à contact@interactis.be pour confirmer l'adresse
+        (cliquez juste sur le lien). Après ça, tous les devis arrivent direct.
+      -->
+      <form class="contact-form" action="https://formsubmit.co/contact@interactis.be" method="POST">
+        <input type="hidden" name="_subject" value="Nouvelle demande de devis - InterActis" />
+        <input type="hidden" name="_next" value="https://www.interactis.be/merci" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="text" name="_honey" style="display:none;" tabindex="-1" autocomplete="off" />
+
+        <div class="form-field">
+          <label for="nom">Nom complet *</label>
+          <input id="nom" type="text" name="nom" required autocomplete="name" />
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="email">Email *</label>
+            <input id="email" type="email" name="email" required autocomplete="email" inputmode="email" />
           </div>
-          <div class="contact-method">
-            <div class="ci-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-            <div>
-              <strong>Email</strong>
-              <a href="mailto:contact@interactis.be">contact@interactis.be</a>
-            </div>
-          </div>
-          <div class="contact-method">
-            <div class="ci-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
-            <div>
-              <strong>WhatsApp</strong>
-              <a href="https://wa.me/32488435342" target="_blank" rel="noopener">Discuter maintenant</a>
-            </div>
-          </div>
-          <div class="contact-method">
-            <div class="ci-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-            <div>
-              <strong>Zone</strong>
-              <p>Belgique, Luxembourg, nord de la France</p>
-            </div>
+          <div class="form-field">
+            <label for="tel">Téléphone *</label>
+            <input id="tel" type="tel" name="tel" required autocomplete="tel" inputmode="tel" placeholder="+32 …" />
+            <small class="form-helper">On vous rappelle sous 24 h ouvrables</small>
           </div>
         </div>
 
-        <form class="contact-form" action="#" method="post" onsubmit="event.preventDefault(); alert('Merci ! Votre demande a bien été envoyée.');">
-          <div class="form-row">
-            <div class="form-field">
-              <label for="prenom">Prénom *</label>
-              <input id="prenom" type="text" name="prenom" required />
-            </div>
-            <div class="form-field">
-              <label for="nom">Nom *</label>
-              <input id="nom" type="text" name="nom" required />
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-field">
-              <label for="email">Email *</label>
-              <input id="email" type="email" name="email" required />
-            </div>
-            <div class="form-field">
-              <label for="tel">Téléphone</label>
-              <input id="tel" type="tel" name="tel" />
-            </div>
-          </div>
-          <div class="form-field">
-            <label for="type">Type d'événement *</label>
-            <select id="type" name="type" required>
-              <option value="">Sélectionner...</option>
-              <option>Anniversaire / fête privée</option>
-              <option>Team building / entreprise</option>
-              <option>Maison de repos</option>
-              <option>École</option>
-              <option>Événement public (fête, kermesse, salon)</option>
-              <option>Centre social / spécialisé</option>
-              <option>Autre</option>
-            </select>
-          </div>
-          <div class="form-row">
-            <div class="form-field">
-              <label for="date">Date souhaitée</label>
-              <input id="date" type="date" name="date" />
-            </div>
-            <div class="form-field">
-              <label for="participants">Nombre de participants</label>
-              <input id="participants" type="text" name="participants" placeholder="ex. 20 enfants" />
-            </div>
-          </div>
-          <div class="form-field">
-            <label for="message">Votre message</label>
-            <textarea id="message" name="message" placeholder="Lieu, durée, attentes particulières..."></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary form-submit">Envoyer ma demande de devis</button>
-        </form>
-      </div>
+        <div class="form-field">
+          <label for="type">Type d'événement *</label>
+          <select id="type" name="type" required>
+            <option value="">Sélectionner…</option>
+            <option>Anniversaire enfant</option>
+            <option>Anniversaire adulte / famille</option>
+            <option>Team building / entreprise</option>
+            <option>Maison de repos</option>
+            <option>École / centre spécialisé</option>
+            <option>Événement public</option>
+            <option>Autre</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="part">Nombre de participants</label>
+          <input id="part" type="number" name="part" min="2" max="200" inputmode="numeric" placeholder="ex. 20" />
+        </div>
+
+        <div class="form-field">
+          <label for="message">Votre message</label>
+          <textarea id="message" name="message" rows="3" placeholder="Quelques mots sur votre événement (lieu, date, ambiance recherchée…)"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary form-submit" data-hover data-magnetic>
+          Recevoir mon devis sous 24h <span class="arrow">→</span>
+        </button>
+        <p class="form-trust">🔒 Vos infos restent confidentielles · Devis gratuit · Sans engagement</p>
+      </form>
     </div>
   </section>
+
+  </main>
 
   <!-- ============================================
        FOOTER
        ============================================ -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="#" class="logo">Inter<span style="color: var(--orange);">Actis</span></a>
-          <p>Animation interactive mobile en Belgique. Transformez n'importe quel mur en terrain de jeu - pour tous les publics, sans exception.</p>
-        </div>
-        <div class="footer-col">
-          <h4>Navigation</h4>
-          <ul>
-            <li><a href="#publics">Nos publics</a></li>
-            <li><a href="#particuliers">Particuliers</a></li>
-            <li><a href="#fonctionnement">Fonctionnement</a></li>
-            <li><a href="#animations">Animations</a></li>
-            <li><a href="#faq">FAQ</a></li>
-            <li><a href="#contact">Devis</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Contact</h4>
-          <ul>
-            <li><a href="tel:+32488435342">+32 488 43 53 42</a></li>
-            <li><a href="mailto:contact@interactis.be">contact@interactis.be</a></li>
-            <li><a href="https://wa.me/32488435342" target="_blank" rel="noopener">WhatsApp</a></li>
-          </ul>
-          <h4 style="margin-top: 24px;">Suivez-nous</h4>
-          <div class="social-links">
-            <a href="https://www.instagram.com/interactis.be/" aria-label="Instagram" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg>
-            </a>
-            <a href="https://www.linkedin.com/in/ubeyd-uckoz" aria-label="LinkedIn" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-            </a>
-            <a href="https://www.facebook.com/profile.php?id=61586234006690" aria-label="Facebook" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-            </a>
-            <a href="https://www.tiktok.com/@interactisbe" aria-label="TikTok" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43V8.42a8.16 8.16 0 0 0 4.77 1.52V6.69h-1.84z"/></svg>
-            </a>
-          </div>
+  <footer class="ft">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <h3>Inter<span>Actis</span></h3>
+        <p>L'animation interactive mobile qui transforme n'importe quel mur en terrain de jeu. Pour tous les publics. Sans exception.</p>
+        <div class="ft-socials">
+          <a href="https://www.instagram.com/interactis.be/" target="_blank" rel="noopener" data-hover aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/ubeyd-uckoz" target="_blank" rel="noopener" data-hover aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=61586234006690" target="_blank" rel="noopener" data-hover aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@interactisbe" target="_blank" rel="noopener" data-hover aria-label="TikTok">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43V8.42a8.16 8.16 0 0 0 4.77 1.52V6.69h-1.84z"/></svg>
+          </a>
         </div>
       </div>
-      <div class="footer-bottom">
-        <span>© <span id="year"></span> InterActis. Tous droits réservés.</span>
-        <span>
-          <a href="/mentions-legales" style="color: inherit; text-decoration: none; margin: 0 6px;">Mentions légales</a> ·
-          <a href="/confidentialite" style="color: inherit; text-decoration: none; margin: 0 6px;">Confidentialité</a> ·
-          <a href="/cgv" style="color: inherit; text-decoration: none; margin: 0 6px;">CGV</a>
-        </span>
+      <div class="ft-col">
+        <h4>Le site</h4>
+        <ul>
+          <li><a href="#publics" data-hover>Nos publics</a></li>
+          <li><a href="#particuliers" data-hover>Particuliers</a></li>
+          <li><a href="#fonctionnement" data-hover>Fonctionnement</a></li>
+          <li><a href="#animations" data-hover>Jeux</a></li>
+          <li><a href="#faq" data-hover>FAQ</a></li>
+        </ul>
       </div>
+      <div class="ft-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+32488435342" data-hover>+32 488 43 53 42</a></li>
+          <li><a href="mailto:contact@interactis.be" data-hover>contact@interactis.be</a></li>
+          <li><a href="https://wa.me/32488435342?text=Bonjour%20Ubeyd%2C%20je%20m%27int%C3%A9resse%20%C3%A0%20une%20animation%20InterActis%20pour%20%5Btype%20d%27%C3%A9v%C3%A9nement%5D%20le%20%5Bdate%5D%20%C3%A0%20%5Bville%5D.%20Pouvez-vous%20me%20proposer%20un%20devis%20%3F" target="_blank" rel="noopener" data-hover>WhatsApp</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h4>Légal</h4>
+        <ul>
+          <li><a href="/mentions-legales" data-hover>Mentions légales</a></li>
+          <li><a href="/confidentialite" data-hover>Confidentialité</a></li>
+          <li><a href="/cgv" data-hover>CGV</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <span>© <span id="yr"></span> InterActis · Tous droits réservés</span>
+      <span>Animation interactive mobile · Belgique · Luxembourg · Nord France</span>
     </div>
   </footer>
 
-  <!-- ============================================
-       WHATSAPP FLOATING BUTTON
-       ============================================ -->
-  <a href="https://wa.me/32488435342" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contacter sur WhatsApp">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0 0 20.464 3.488"/></svg>
+  <!-- Sticky CTA mobile -->
+  <a href="#contact" class="mobile-cta" id="mobileCta" data-hover data-track="mobile_cta_devis">
+    Demander un devis
+    <span class="arrow">→</span>
   </a>
 
   <!-- ============================================
-       JAVASCRIPT
+       COOKIE BANNER RGPD
        ============================================ -->
+  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Consentement cookies">
+    <h4>🍪 On respecte votre vie privée</h4>
+    <p>Nous utilisons des cookies pour analyser le trafic et améliorer votre expérience. Aucune publicité, aucun pistage tiers. <a href="/confidentialite" data-hover>En savoir plus</a></p>
+    <div class="cookie-actions">
+      <button type="button" class="cookie-btn-reject" id="cookieReject" data-hover>Refuser</button>
+      <button type="button" class="cookie-btn-accept" id="cookieAccept" data-hover>Accepter</button>
+    </div>
+  </div>
+
+  <a href="https://wa.me/32488435342?text=Bonjour%20Ubeyd%2C%20je%20m%27int%C3%A9resse%20%C3%A0%20une%20animation%20InterActis%20pour%20%5Btype%20d%27%C3%A9v%C3%A9nement%5D%20le%20%5Bdate%5D%20%C3%A0%20%5Bville%5D.%20Pouvez-vous%20me%20proposer%20un%20devis%20%3F" class="wa" target="_blank" rel="noopener" aria-label="Nous contacter sur WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0 0 20.464 3.488"/></svg>
+  </a>
+
+  <!-- Librairies CDN - defer pour ne pas bloquer le first paint -->
+  <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.16/dist/lenis.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
   <script>
-    // Menu mobile
-    const menuToggle = document.getElementById('menuToggle');
-    const navLinks = document.getElementById('navLinks');
-    menuToggle.addEventListener('click', () => {
-      menuToggle.classList.toggle('active');
-      navLinks.classList.toggle('open');
-    });
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        menuToggle.classList.remove('active');
-        navLinks.classList.remove('open');
-      });
-    });
+  // Attend que GSAP/Lenis (chargés en defer) soient disponibles.
+  document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('yr').textContent = new Date().getFullYear();
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined' || typeof Lenis === 'undefined') {
+      console.warn('[InterActis] Librairies d\'animation non chargées, fallback statique.');
+      return;
+    }
+    gsap.registerPlugin(ScrollTrigger);
+    const isCoarse = window.matchMedia('(pointer: coarse)').matches;
 
-    // FAQ accordéon
-    document.querySelectorAll('.faq-item').forEach(item => {
-      const question = item.querySelector('.faq-question');
-      question.addEventListener('click', () => {
-        const wasOpen = item.classList.contains('open');
-        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-        if (!wasOpen) item.classList.add('open');
-      });
+    // ============================================
+    // LENIS - smooth scroll
+    // ============================================
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      smoothTouch: false,
     });
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => lenis.raf(time * 1000));
+    gsap.ticker.lagSmoothing(0);
 
-    // Reveal au scroll
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
+    // Smooth scroll pour les ancres
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          lenis.scrollTo(target, { offset: -20, duration: 1.4 });
+          // Close mobile menu
+          document.getElementById('menuOverlay').classList.remove('is-open');
+          document.getElementById('burger').classList.remove('is-open');
         }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    });
 
-    // Vidéo placeholder hide quand vidéo charge
-    document.querySelectorAll('.video-card video').forEach(video => {
-      video.addEventListener('loadeddata', () => {
-        const placeholder = video.parentElement.querySelector('.video-placeholder');
-        if (placeholder) placeholder.style.display = 'none';
+    // ============================================
+    // CURSEUR CUSTOM
+    // ============================================
+    if (!isCoarse) {
+      const cursor = document.querySelector('.cursor');
+      const ring = document.querySelector('.cursor-ring');
+      let mx = 0, my = 0, cx = 0, cy = 0, rx = 0, ry = 0;
+      window.addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; });
+      function animateCursor() {
+        cx += (mx - cx) * 0.55;
+        cy += (my - cy) * 0.55;
+        rx += (mx - rx) * 0.18;
+        ry += (my - ry) * 0.18;
+        cursor.style.transform = `translate(${cx}px, ${cy}px) translate(-50%, -50%)`;
+        ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
+        requestAnimationFrame(animateCursor);
+      }
+      animateCursor();
+
+      document.querySelectorAll('[data-hover]').forEach(el => {
+        el.addEventListener('mouseenter', () => { cursor.classList.add('is-hover'); ring.classList.add('is-hover'); });
+        el.addEventListener('mouseleave', () => { cursor.classList.remove('is-hover'); ring.classList.remove('is-hover'); });
       });
-      video.addEventListener('error', () => {
-        // garde le placeholder visible
+    }
+
+    // ============================================
+    // MAGNETIC BUTTONS
+    // ============================================
+    if (!isCoarse) {
+      document.querySelectorAll('[data-magnetic]').forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+          const rect = btn.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
+          btn.style.transform = `translate(${x * 0.25}px, ${y * 0.35}px)`;
+        });
+        btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+      });
+    }
+
+    // ============================================
+    // SPLIT HERO TITLE (word by word reveal)
+    // ============================================
+    const h1 = document.querySelector('.hero h1.display');
+    if (h1) {
+      const lines = h1.innerHTML.split('<br>');
+      h1.innerHTML = lines.map(line => {
+        // Wrap each word in a span
+        const wrapped = line.replace(/(<span[^>]*>)?([^<\s]+)(<\/span>)?/g, (m) => {
+          // We can't perfectly handle nested spans, so simpler: just split on space if no html, else keep
+          return m;
+        });
+        // Wrap each line in mask + each word for reveal
+        return `<span class="split-line"><span class="split-word">${line}</span></span>`;
+      }).join('');
+      const words = h1.querySelectorAll('.split-word');
+      words.forEach((w, i) => {
+        setTimeout(() => w.classList.add('in'), 200 + i * 180);
+      });
+    }
+
+    // ============================================
+    // MANIFESTE - mots qui s'activent au scroll
+    // ============================================
+    const manifeste = document.querySelector('[data-words]');
+    if (manifeste) {
+      const html = manifeste.innerHTML;
+      // Split par mots tout en préservant les spans
+      const tokens = html.match(/<span[^>]*>.*?<\/span>|\S+|\s+/g);
+      manifeste.innerHTML = '';
+      tokens.forEach(tok => {
+        if (/^\s+$/.test(tok)) { manifeste.innerHTML += tok; return; }
+        if (tok.startsWith('<span')) {
+          // wrap in word
+          const tmp = document.createElement('div'); tmp.innerHTML = tok;
+          const sp = tmp.firstChild;
+          sp.classList.add('word');
+          manifeste.appendChild(sp);
+          manifeste.innerHTML += ' ';
+        } else {
+          const w = document.createElement('span');
+          w.className = 'word';
+          w.textContent = tok;
+          manifeste.appendChild(w);
+          manifeste.innerHTML += ' ';
+        }
+      });
+      const allWords = manifeste.querySelectorAll('.word');
+      allWords.forEach((w, i) => {
+        ScrollTrigger.create({
+          trigger: w,
+          start: 'top 80%',
+          end: 'top 50%',
+          scrub: true,
+          onUpdate: (self) => {
+            if (self.progress > 0.3) w.classList.add('is-active');
+            else w.classList.remove('is-active');
+          }
+        });
+      });
+    }
+
+    // ============================================
+    // REVEAL au scroll
+    // ============================================
+    document.querySelectorAll('[data-reveal]').forEach((el, i) => {
+      ScrollTrigger.create({
+        trigger: el,
+        start: 'top 85%',
+        onEnter: () => el.classList.add('in'),
       });
     });
 
-    // Hero image fallback déjà géré via onerror inline
+    // ============================================
+    // PARALLAX galerie
+    // ============================================
+    document.querySelectorAll('[data-parallax]').forEach(el => {
+      const intensity = parseFloat(el.dataset.parallax) || 0.3;
+      gsap.fromTo(el, { y: 80 * intensity }, {
+        y: -80 * intensity,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1,
+        }
+      });
+    });
 
-    // Galerie carrousel
+    // ============================================
+    // BOUZANTON - parallax sur l'image de fond
+    // ============================================
+    const bouzImg = document.querySelector('.bouz-bg img');
+    if (bouzImg) {
+      gsap.fromTo(bouzImg, { scale: 1.15, y: '-5%' }, {
+        scale: 1.25, y: '5%', ease: 'none',
+        scrollTrigger: {
+          trigger: '.bouz', start: 'top bottom', end: 'bottom top', scrub: 1
+        }
+      });
+    }
+
+    // ============================================
+    // COUNTERS stats hero
+    // ============================================
+    document.querySelectorAll('[data-count]').forEach(el => {
+      const target = parseInt(el.dataset.count);
+      const suffix = el.querySelector('span') ? el.querySelector('span').outerHTML : '';
+      let started = false;
+      ScrollTrigger.create({
+        trigger: el, start: 'top 95%',
+        onEnter: () => {
+          if (started) return; started = true;
+          let v = { n: 0 };
+          gsap.to(v, {
+            n: target, duration: 1.6, ease: 'power2.out',
+            onUpdate: () => { el.innerHTML = Math.round(v.n) + suffix; }
+          });
+        }
+      });
+    });
+
+    // ============================================
+    // FAQ accordion
+    // ============================================
+    document.querySelectorAll('.faq-item').forEach(item => {
+      const q = item.querySelector('.faq-q');
+      q.addEventListener('click', () => {
+        const wasOpen = item.classList.contains('is-open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('is-open'));
+        if (!wasOpen) item.classList.add('is-open');
+      });
+    });
+
+    // ============================================
+    // BURGER mobile
+    // ============================================
+    const burger = document.getElementById('burger');
+    const menuOverlay = document.getElementById('menuOverlay');
+    burger.addEventListener('click', () => {
+      const isOpen = burger.classList.toggle('is-open');
+      menuOverlay.classList.toggle('is-open');
+      burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      burger.setAttribute('aria-label', isOpen ? 'Fermer le menu de navigation' : 'Ouvrir le menu de navigation');
+    });
+
+    // ============================================
+    // COOKIE BANNER RGPD
+    // ============================================
     (function() {
-      const track = document.getElementById('galleryTrack');
-      const prev = document.getElementById('galleryPrev');
-      const next = document.getElementById('galleryNext');
-      if (!track || !prev || !next) return;
-
-      function step() {
-        const slide = track.querySelector('.gallery-slide');
-        if (!slide) return 320;
-        const styles = getComputedStyle(track);
-        const gap = parseInt(styles.gap) || 16;
-        return slide.getBoundingClientRect().width + gap;
+      const banner = document.getElementById('cookieBanner');
+      const accept = document.getElementById('cookieAccept');
+      const reject = document.getElementById('cookieReject');
+      if (!banner || !accept || !reject) return;
+      const stored = localStorage.getItem('cookie-consent');
+      if (!stored) {
+        setTimeout(() => banner.classList.add('is-visible'), 1500);
       }
-      function updateArrows() {
-        const max = track.scrollWidth - track.clientWidth - 2;
-        prev.disabled = track.scrollLeft <= 2;
-        next.disabled = track.scrollLeft >= max;
+      function loadAnalytics() {
+        // Cette fonction sera appelée si l'utilisateur accepte.
+        // Décommentez les blocs Google Analytics / Microsoft Clarity dans le <head> pour les activer.
+        // Ils ne seront chargés que si l'utilisateur a donné son consentement.
+        if (typeof gtag === 'function') {
+          gtag('consent', 'update', {
+            'analytics_storage': 'granted',
+            'ad_storage': 'denied'
+          });
+        }
       }
-      prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
-      next.addEventListener('click', () => track.scrollBy({ left: step(), behavior: 'smooth' }));
-      track.addEventListener('scroll', updateArrows, { passive: true });
-      window.addEventListener('resize', updateArrows);
-      updateArrows();
+      accept.addEventListener('click', () => {
+        localStorage.setItem('cookie-consent', 'accepted');
+        banner.classList.remove('is-visible');
+        loadAnalytics();
+      });
+      reject.addEventListener('click', () => {
+        localStorage.setItem('cookie-consent', 'rejected');
+        banner.classList.remove('is-visible');
+      });
+      if (stored === 'accepted') loadAnalytics();
     })();
 
-    // Année footer
-    document.getElementById('year').textContent = new Date().getFullYear();
+    // ============================================
+    // EVENT TRACKING - clic sur CTAs importants
+    // S'active automatiquement quand GA4 ou Clarity est branché
+    // ============================================
+    function trackEvent(name, params) {
+      // Google Analytics 4
+      if (typeof gtag === 'function') {
+        gtag('event', name, params || {});
+      }
+      // Microsoft Clarity
+      if (typeof clarity === 'function') {
+        clarity('event', name);
+      }
+      // Console log en dev (utile pour vérifier)
+      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        console.log('[TRACK]', name, params);
+      }
+    }
+
+    // Track clics CTA principal (Devis)
+    document.querySelectorAll('a[href="#contact"], a[href*="contact"]').forEach(el => {
+      el.addEventListener('click', () => trackEvent('cta_devis_click', { location: el.closest('section')?.className || 'header' }));
+    });
+    // Track clics téléphone
+    document.querySelectorAll('a[href^="tel:"]').forEach(el => {
+      el.addEventListener('click', () => trackEvent('phone_click', { number: el.getAttribute('href').replace('tel:', '') }));
+    });
+    // Track clics WhatsApp
+    document.querySelectorAll('a[href*="wa.me"]').forEach(el => {
+      el.addEventListener('click', () => trackEvent('whatsapp_click', { location: el.closest('section')?.className || 'header' }));
+    });
+    // Track clics email
+    document.querySelectorAll('a[href^="mailto:"]').forEach(el => {
+      el.addEventListener('click', () => trackEvent('email_click'));
+    });
+    // Track clics Calendly
+    document.querySelectorAll('button[onclick*="Calendly"]').forEach(el => {
+      el.addEventListener('click', () => trackEvent('calendly_open'));
+    });
+    // Track soumission formulaire
+    document.querySelectorAll('form.contact-form').forEach(form => {
+      form.addEventListener('submit', () => trackEvent('form_submit_devis'));
+    });
+    // Track changement de langue
+    document.querySelectorAll('a[hreflang]').forEach(el => {
+      el.addEventListener('click', () => trackEvent('language_switch', { to: el.getAttribute('hreflang') }));
+    });
+
+    // ============================================
+    // STICKY CTA MOBILE - apparaît après scroll du hero
+    // ============================================
+    const mobileCta = document.getElementById('mobileCta');
+    if (mobileCta) {
+      ScrollTrigger.create({
+        trigger: '.hero',
+        start: 'bottom 80%',
+        onEnter: () => mobileCta.classList.add('is-visible'),
+        onLeaveBack: () => mobileCta.classList.remove('is-visible'),
+      });
+      ScrollTrigger.create({
+        trigger: '#contact',
+        start: 'top 60%',
+        onEnter: () => mobileCta.classList.remove('is-visible'),
+        onLeaveBack: () => mobileCta.classList.add('is-visible'),
+      });
+    }
+  }); // fin DOMContentLoaded
   </script>
 
 </body>
