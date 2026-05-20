@@ -44,7 +44,8 @@
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
   <script>
     function openCalendly(isRetry) {
-      var CAL_URL = 'https://calendly.com/uckoz-interactis/30min';
+      // ?locale=fr force l'interface Calendly en français
+      var CAL_URL = 'https://calendly.com/uckoz-interactis/30min?locale=fr';
       if (typeof Calendly !== 'undefined' && Calendly.initPopupWidget) {
         Calendly.initPopupWidget({url: CAL_URL});
       } else if (!isRetry) {
@@ -1704,24 +1705,6 @@
 </head>
 <body>
   <a href="#main" class="skip-link">Aller au contenu principal</a>
-
-  <!-- DEBUG : logger global de tous les clics, phase de capture (avant tout autre handler) -->
-  <script>
-    document.addEventListener('click', function(e) {
-      var t = e.target && e.target.closest ? e.target.closest('button, a, input, [role=button]') : null;
-      if (t) {
-        console.log('%c[InterActis] CLICK', 'color:#ff7a18;font-weight:bold;',
-                    'tag=' + t.tagName,
-                    '| class=' + (t.className || '').slice(0,60),
-                    '| onclick=' + (t.getAttribute('onclick') || '-'),
-                    '| href=' + (t.getAttribute('href') || '-'),
-                    '| type=' + (t.getAttribute('type') || '-'));
-      } else {
-        console.log('%c[InterActis] CLICK (hors bouton/lien)', 'color:#888;', 'target=' + (e.target && e.target.tagName));
-      }
-    }, true);
-    console.log('[InterActis] click logger installé');
-  </script>
 
   <div class="cursor" aria-hidden="true"></div>
   <div class="cursor-ring" aria-hidden="true"></div>
