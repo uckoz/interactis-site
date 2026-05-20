@@ -36,7 +36,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="dns-prefetch" href="https://assets.calendly.com" />
   <link rel="dns-prefetch" href="https://embed.tawk.to" />
-  <link rel="dns-prefetch" href="https://formsubmit.co" />
+  <link rel="dns-prefetch" href="https://api.web3forms.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Bricolage+Grotesque:wght@700&display=swap" rel="stylesheet" />
 
   <!-- Calendly popup widget : CSS + JS chargés ensemble pour que le popup ait ses styles dès le 1er clic -->
@@ -2139,12 +2139,19 @@
         un email de Formsubmit à contact@interactis.be pour confirmer l'adresse
         (cliquez juste sur le lien). Après ça, tous les devis arrivent direct.
       -->
-      <form class="contact-form" action="https://formsubmit.co/uckoz@interactis.be" method="POST">
-        <input type="hidden" name="_subject" value="Nouvelle demande de devis - InterActis" />
-        <input type="hidden" name="_next" value="https://www.interactis.be/merci" />
-        <input type="hidden" name="_template" value="table" />
-        <input type="hidden" name="_captcha" value="false" />
-        <input type="text" name="_honey" style="display:none;" tabindex="-1" autocomplete="off" />
+      <!--
+        FORMULAIRE via Web3Forms (https://web3forms.com)
+        Service fiable, gratuit, illimité. Aucune validation préalable.
+        Les devis arrivent directement à uckoz@interactis.be (adresse liée
+        à l'access_key ci-dessous, configurée chez Web3Forms).
+      -->
+      <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="f08ff9b7-efb2-4e47-bd2c-d79267ffee7a" />
+        <input type="hidden" name="subject" value="Nouvelle demande de devis - InterActis" />
+        <input type="hidden" name="from_name" value="Formulaire interactis.be" />
+        <input type="hidden" name="redirect" value="https://www.interactis.be/merci" />
+        <!-- Honeypot anti-spam (Web3Forms ignore les soumissions qui le remplissent) -->
+        <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off" />
 
         <div class="form-field">
           <label for="nom">Nom complet *</label>
