@@ -39,26 +39,19 @@
   <link rel="dns-prefetch" href="https://formsubmit.co" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Bricolage+Grotesque:wght@700&display=swap" rel="stylesheet" />
 
-  <!-- Calendly popup widget : JS chargé en async, CSS chargé à la demande au 1er clic -->
+  <!-- Calendly popup widget : CSS + JS chargés ensemble pour que le popup ait ses styles dès le 1er clic -->
+  <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css" />
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
   <script>
     function openCalendly(isRetry) {
-      console.log('[InterActis] openCalendly appelée, isRetry=' + isRetry + ', Calendly=' + (typeof Calendly));
       var CAL_URL = 'https://calendly.com/uckoz-interactis/30min';
-      if (!document.querySelector('link[href*="calendly.com"]')) {
-        var link = document.createElement('link');
-        link.rel = 'stylesheet';
-        link.href = 'https://assets.calendly.com/assets/external/widget.css';
-        document.head.appendChild(link);
-      }
       if (typeof Calendly !== 'undefined' && Calendly.initPopupWidget) {
-        console.log('[InterActis] Calendly chargé, ouverture popup');
         Calendly.initPopupWidget({url: CAL_URL});
       } else if (!isRetry) {
-        console.log('[InterActis] Calendly pas encore chargé, retry dans 600ms');
+        // Le widget JS est encore en train de se charger, on retente dans 600 ms
         setTimeout(function(){ openCalendly(true); }, 600);
       } else {
-        console.log('[InterActis] Fallback: ouverture nouvel onglet');
+        // Fallback ultime : ouvre Calendly dans un nouvel onglet
         window.open(CAL_URL, '_blank', 'noopener,noreferrer');
       }
       return false;
@@ -266,15 +259,22 @@
     ::selection { background: var(--orange); color: white; }
 
     /* ============================================
-       SÉCURITÉ CLIC - garantir que tous les boutons restent cliquables
+       SÉCURITÉ CLIC - garantir que les CTAs principaux restent cliquables
+       (scopé aux classes spécifiques pour ne pas interférer avec Calendly/Tawk)
        ============================================ */
-    .btn, button, a[href] {
+    .hero-ctas .btn,
+    .contact-form .form-submit,
+    .cal-section .btn,
+    .mobile-cta,
+    .wa,
+    .anniv-content .btn,
+    .bouz-content .btn {
       pointer-events: auto !important;
       position: relative;
     }
     .hero-ctas { position: relative; z-index: 10; }
-    .contact-form button[type="submit"] { position: relative; z-index: 10; }
-    .cal-section button { position: relative; z-index: 10; }
+    .contact-form .form-submit { z-index: 10; }
+    .cal-section .btn { z-index: 10; }
 
     /* ============================================
        ACCESSIBILITÉ - skip link + focus visible
