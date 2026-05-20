@@ -42,15 +42,22 @@
   <!-- Calendly popup widget : JS chargé en async, CSS chargé à la demande au 1er clic -->
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
   <script>
-    function openCalendly() {
+    function openCalendly(isRetry) {
+      var CAL_URL = 'https://calendly.com/uckoz-interactis/30min';
       if (!document.querySelector('link[href*="calendly.com"]')) {
         var link = document.createElement('link');
         link.rel = 'stylesheet';
         link.href = 'https://assets.calendly.com/assets/external/widget.css';
         document.head.appendChild(link);
       }
-      if (typeof Calendly !== 'undefined') {
-        Calendly.initPopupWidget({url:'https://calendly.com/uckoz-interactis/30min'});
+      if (typeof Calendly !== 'undefined' && Calendly.initPopupWidget) {
+        Calendly.initPopupWidget({url: CAL_URL});
+      } else if (!isRetry) {
+        // Widget pas encore chargé, on retente dans 600 ms
+        setTimeout(function(){ openCalendly(true); }, 600);
+      } else {
+        // Fallback ultime : ouvre Calendly dans un nouvel onglet
+        window.open(CAL_URL, '_blank', 'noopener,noreferrer');
       }
       return false;
     }
@@ -468,7 +475,10 @@
       min-height: 100svh;
       overflow: hidden;
       display: flex; align-items: center;
-      padding: 0 32px;
+      padding: 0 32px 160px; /* padding-bottom réserve l'espace pour .hero-stats */
+    }
+    @media (max-width: 720px) {
+      .hero { padding-bottom: 220px; } /* stats grid passe en 2 colonnes = plus haut */
     }
     .hero-bg {
       position: absolute; inset: 0;
@@ -1487,16 +1497,16 @@
     @media (max-width: 900px) { .ft-grid { grid-template-columns: 1fr 1fr; gap: 32px; } }
     @media (max-width: 600px) { .ft-grid { grid-template-columns: 1fr; } .ft-bottom { flex-direction: column; text-align: center; } }
 
-    /* WhatsApp float */
+    /* WhatsApp float - remonté pour ne pas être masqué par Tawk.to */
     .wa {
-      position: fixed; bottom: 24px; right: 24px;
+      position: fixed; bottom: 100px; right: 24px;
       width: 56px; height: 56px;
       background: #25d366;
       color: white;
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       box-shadow: 0 12px 32px rgba(37, 211, 102, 0.4);
-      z-index: 70;
+      z-index: 2147483000; /* au-dessus de Tawk.to */
       transition: transform 0.3s var(--ease);
     }
     .wa:hover { transform: scale(1.1); }
@@ -1529,7 +1539,7 @@
     .mobile-cta.is-visible { transform: translateY(0); }
     @media (max-width: 720px) {
       .mobile-cta { display: flex; align-items: center; justify-content: center; gap: 8px; }
-      .wa { bottom: 16px; right: 16px; width: 56px; height: 56px; }
+      .wa { bottom: 86px; right: 16px; width: 52px; height: 52px; } /* au-dessus du sticky CTA mobile */
     }
 
     /* ============================================
@@ -2098,7 +2108,7 @@
         un email de Formsubmit à contact@interactis.be pour confirmer l'adresse
         (cliquez juste sur le lien). Après ça, tous les devis arrivent direct.
       -->
-      <form class="contact-form" action="https://formsubmit.co/contact@interactis.be" method="POST">
+      <form class="contact-form" action="https://formsubmit.co/uckoz@interactis.be" method="POST">
         <input type="hidden" name="_subject" value="Nouvelle demande de devis - InterActis" />
         <input type="hidden" name="_next" value="https://www.interactis.be/merci" />
         <input type="hidden" name="_template" value="table" />
@@ -2146,7 +2156,7 @@
           <textarea id="message" name="message" rows="3" placeholder="Quelques mots sur votre événement (lieu, date, ambiance recherchée…)"></textarea>
         </div>
 
-        <button type="submit" class="btn btn-primary form-submit" data-hover data-magnetic>
+        <button type="submit" class="btn btn-primary form-submit" data-hover>
           Recevoir mon devis sous 24h <span class="arrow">→</span>
         </button>
         <p class="form-trust">🔒 Vos infos restent confidentielles · Devis gratuit · Sans engagement</p>
