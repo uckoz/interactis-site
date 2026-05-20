@@ -43,6 +43,7 @@
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
   <script>
     function openCalendly(isRetry) {
+      console.log('[InterActis] openCalendly appelée, isRetry=' + isRetry + ', Calendly=' + (typeof Calendly));
       var CAL_URL = 'https://calendly.com/uckoz-interactis/30min';
       if (!document.querySelector('link[href*="calendly.com"]')) {
         var link = document.createElement('link');
@@ -51,12 +52,13 @@
         document.head.appendChild(link);
       }
       if (typeof Calendly !== 'undefined' && Calendly.initPopupWidget) {
+        console.log('[InterActis] Calendly chargé, ouverture popup');
         Calendly.initPopupWidget({url: CAL_URL});
       } else if (!isRetry) {
-        // Widget pas encore chargé, on retente dans 600 ms
+        console.log('[InterActis] Calendly pas encore chargé, retry dans 600ms');
         setTimeout(function(){ openCalendly(true); }, 600);
       } else {
-        // Fallback ultime : ouvre Calendly dans un nouvel onglet
+        console.log('[InterActis] Fallback: ouverture nouvel onglet');
         window.open(CAL_URL, '_blank', 'noopener,noreferrer');
       }
       return false;
@@ -262,6 +264,17 @@
     ul { list-style: none; }
 
     ::selection { background: var(--orange); color: white; }
+
+    /* ============================================
+       SÉCURITÉ CLIC - garantir que tous les boutons restent cliquables
+       ============================================ */
+    .btn, button, a[href] {
+      pointer-events: auto !important;
+      position: relative;
+    }
+    .hero-ctas { position: relative; z-index: 10; }
+    .contact-form button[type="submit"] { position: relative; z-index: 10; }
+    .cal-section button { position: relative; z-index: 10; }
 
     /* ============================================
        ACCESSIBILITÉ - skip link + focus visible
@@ -1692,6 +1705,24 @@
 <body>
   <a href="#main" class="skip-link">Aller au contenu principal</a>
 
+  <!-- DEBUG : logger global de tous les clics, phase de capture (avant tout autre handler) -->
+  <script>
+    document.addEventListener('click', function(e) {
+      var t = e.target && e.target.closest ? e.target.closest('button, a, input, [role=button]') : null;
+      if (t) {
+        console.log('%c[InterActis] CLICK', 'color:#ff7a18;font-weight:bold;',
+                    'tag=' + t.tagName,
+                    '| class=' + (t.className || '').slice(0,60),
+                    '| onclick=' + (t.getAttribute('onclick') || '-'),
+                    '| href=' + (t.getAttribute('href') || '-'),
+                    '| type=' + (t.getAttribute('type') || '-'));
+      } else {
+        console.log('%c[InterActis] CLICK (hors bouton/lien)', 'color:#888;', 'target=' + (e.target && e.target.tagName));
+      }
+    }, true);
+    console.log('[InterActis] click logger installé');
+  </script>
+
   <div class="cursor" aria-hidden="true"></div>
   <div class="cursor-ring" aria-hidden="true"></div>
   <div class="grain" aria-hidden="true"></div>
@@ -1745,11 +1776,11 @@
         InterActis débarque chez vous avec une seule valise. 15 minutes plus tard, n'importe quel mur devient un terrain de jeu interactif géant. De 5 à 95 ans. Sans manette. Sans exception.
       </p>
       <div class="hero-ctas">
-        <a href="#contact" class="btn btn-primary" data-hover data-magnetic>
+        <a href="#contact" class="btn btn-primary" data-hover>
           Recevoir mon devis sous 24h
           <span class="arrow">→</span>
         </a>
-        <button type="button" class="btn btn-ghost" data-hover data-magnetic onclick="return openCalendly();" aria-label="Réserver un appel découverte de 15 minutes">
+        <button type="button" class="btn btn-ghost" data-hover onclick="return openCalendly();" aria-label="Réserver un appel découverte de 15 minutes">
           📞 Appel 15 min
         </button>
         <a href="tel:+32488435342" class="btn btn-ghost" data-hover aria-label="Appeler InterActis au +32 488 43 53 42">
@@ -1917,7 +1948,7 @@
           <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Accessible aux enfants en situation de handicap</li>
         </ul>
 
-        <a href="#contact" class="btn btn-primary" data-hover data-magnetic>
+        <a href="#contact" class="btn btn-primary" data-hover>
           Réserver l'anniversaire <span class="arrow">→</span>
         </a>
       </div>
@@ -2068,7 +2099,7 @@
     <div class="eyebrow" data-reveal>Pas encore prêt pour un devis ?</div>
     <h3 data-reveal>Discutons <span class="accent">15 minutes</span>, sans engagement.</h3>
     <p data-reveal>Vous avez une idée vague d'événement, des questions sur les âges, le lieu, les tarifs ? Réservez un créneau et on en parle au téléphone. Pas de devis demandé, pas d'obligation.</p>
-    <button type="button" class="btn btn-ghost" data-hover data-magnetic onclick="return openCalendly();" aria-label="Réserver un créneau d'appel découverte de 15 minutes">
+    <button type="button" class="btn btn-ghost" data-hover onclick="return openCalendly();" aria-label="Réserver un créneau d'appel découverte de 15 minutes">
       Réserver mon créneau
       <span class="arrow">→</span>
     </button>
