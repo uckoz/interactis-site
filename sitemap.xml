@@ -31,6 +31,26 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.interactis.be/animation-mons</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.interactis.be/animation-bruxelles</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.interactis.be/animation-liege</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.interactis.be/animation-charleroi</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.interactis.be/mentions-legales</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
