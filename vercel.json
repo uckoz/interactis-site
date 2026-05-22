@@ -9,6 +9,10 @@
     { "source": "/animation-ecole.html", "destination": "/animation-ecole", "permanent": true },
     { "source": "/animation-evenement.html", "destination": "/animation-evenement", "permanent": true },
     { "source": "/animation-anniversaire.html", "destination": "/animation-anniversaire", "permanent": true },
-    { "source": "/animation-entreprise.html", "destination": "/animation-entreprise", "permanent": true }
+    { "source": "/animation-entreprise.html", "destination": "/animation-entreprise", "permanent": true },
+    { "source": "/animation-mons.html", "destination": "/animation-mons", "permanent": true },
+    { "source": "/animation-bruxelles.html", "destination": "/animation-bruxelles", "permanent": true },
+    { "source": "/animation-liege.html", "destination": "/animation-liege", "permanent": true },
+    { "source": "/animation-charleroi.html", "destination": "/animation-charleroi", "permanent": true }
   ]
 }
