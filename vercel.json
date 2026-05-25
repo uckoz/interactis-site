@@ -15,6 +15,7 @@
     { "source": "/animation-liege.html", "destination": "/animation-liege", "permanent": true },
     { "source": "/animation-charleroi.html", "destination": "/animation-charleroi", "permanent": true },
     { "source": "/blog.html", "destination": "/blog", "permanent": true },
-    { "source": "/blog-organiser-anniversaire-enfant.html", "destination": "/blog-organiser-anniversaire-enfant", "permanent": true }
+    { "source": "/blog-organiser-anniversaire-enfant.html", "destination": "/blog-organiser-anniversaire-enfant", "permanent": true },
+    { "source": "/blog-animation-maison-de-repos.html", "destination": "/blog-animation-maison-de-repos", "permanent": true }
   ]
 }
