@@ -13,6 +13,8 @@
     { "source": "/animation-mons.html", "destination": "/animation-mons", "permanent": true },
     { "source": "/animation-bruxelles.html", "destination": "/animation-bruxelles", "permanent": true },
     { "source": "/animation-liege.html", "destination": "/animation-liege", "permanent": true },
-    { "source": "/animation-charleroi.html", "destination": "/animation-charleroi", "permanent": true }
+    { "source": "/animation-charleroi.html", "destination": "/animation-charleroi", "permanent": true },
+    { "source": "/blog.html", "destination": "/blog", "permanent": true },
+    { "source": "/blog-organiser-anniversaire-enfant.html", "destination": "/blog-organiser-anniversaire-enfant", "permanent": true }
   ]
 }
