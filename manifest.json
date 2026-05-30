@@ -1,0 +1,20 @@
+{
+  "name": "InterActis - Animation interactive mobile",
+  "short_name": "InterActis",
+  "description": "Animation interactive mobile pour anniversaires, team building, maisons de repos et écoles. Belgique, Luxembourg, Nord France.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0a0e1a",
+  "theme_color": "#ff7a18",
+  "lang": "fr",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/images/logo-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
