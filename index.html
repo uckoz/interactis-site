@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  <!-- Cookie consent + chargement conditionnel Google Ads & Tawk -->
+  <script src="/assets/consent.js" defer></script>
+
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0a0e1a" />
@@ -58,21 +62,6 @@
     }
   </script>
 
-  <!-- LIVE CHAT TAWK.TO : différé de 3 secondes pour libérer le first paint -->
-  <script type="text/javascript">
-    window.addEventListener('load', function(){
-      setTimeout(function(){
-        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-        s1.async=true;
-        s1.src='https://embed.tawk.to/6a0b93230ff9d11c35914030/1joujdgtg';
-        s1.charset='UTF-8';
-        s1.setAttribute('crossorigin','*');
-        s0.parentNode.insertBefore(s1,s0);
-      }, 3000);
-    });
-  </script>
-
   <!-- ================================================
        PLACEHOLDERS ANALYTICS - À ACTIVER QUAND VOUS AUREZ LES IDs
        ================================================
@@ -81,14 +70,6 @@
        2. Microsoft Clarity : créez un compte sur clarity.microsoft.com,
           récupérez le project ID, et remplacez ci-dessous.
   -->
-  <!-- Google tag (gtag.js) - Google Ads -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18186820643"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'AW-18186820643');
-  </script>
 
   <!-- MICROSOFT CLARITY (décommentez et remplacez XXXXXXXXXX par votre Project ID) -->
   <!--
