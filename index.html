@@ -42,11 +42,18 @@
   <link rel="dns-prefetch" href="https://api.web3forms.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Bricolage+Grotesque:wght@700&display=swap" rel="stylesheet" />
 
-  <!-- Calendly popup widget : CSS + JS chargés ensemble pour que le popup ait ses styles dès le 1er clic -->
-  <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css" />
-  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <!-- Calendly : JS asynchrone, CSS chargé à la demande au 1er clic (voir openCalendly) -->
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" defer></script>
   <script>
     function openCalendly(isRetry) {
+      // Charge le CSS Calendly à la demande (1er clic seulement) pour libérer le first paint
+      if (!window._calendlyCssLoaded) {
+        var l = document.createElement('link');
+        l.rel = 'stylesheet';
+        l.href = 'https://assets.calendly.com/assets/external/widget.css';
+        document.head.appendChild(l);
+        window._calendlyCssLoaded = true;
+      }
       // ?locale=fr force l'interface Calendly en français
       var CAL_URL = 'https://calendly.com/uckoz-interactis/30min?locale=fr';
       if (typeof Calendly !== 'undefined' && Calendly.initPopupWidget) {
@@ -205,8 +212,8 @@
       --bg-soft: #0a0e1a;
       --bg-card: #0f1424;
       --text: #f5f7fb;
-      --text-dim: rgba(245, 247, 251, 0.65);
-      --text-faded: rgba(245, 247, 251, 0.35);
+      --text-dim: rgba(245, 247, 251, 0.82);
+      --text-faded: rgba(245, 247, 251, 0.72);
       --line: rgba(245, 247, 251, 0.08);
       --line-strong: rgba(245, 247, 251, 0.15);
       --serif: 'Bricolage Grotesque', system-ui, sans-serif;
