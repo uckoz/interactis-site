@@ -21,6 +21,7 @@
     { "source": "/blog-animation-ecole.html", "destination": "/blog-animation-ecole", "permanent": true },
     { "source": "/blog-animation-evenement.html", "destination": "/blog-animation-evenement", "permanent": true },
     { "source": "/nl", "destination": "/", "permanent": true },
+    { "source": "/nl/", "destination": "/", "permanent": true },
     { "source": "/nl/:path*", "destination": "/", "permanent": true }
   ]
 }
