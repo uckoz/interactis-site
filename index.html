@@ -1685,12 +1685,151 @@
       .hero-bg::after, .manifeste-bg::after { background: var(--bg) !important; }
       .cursor, .cursor-ring { display: none !important; }
       body { cursor: auto !important; }
+      .hero-canvas { display: none !important; }
+      .orb { display: none !important; }
+      .marquee-track { animation: none !important; }
     }
+
+    /* ============================================
+       WOW EFFECTS — ajouts 2026
+       ============================================ */
+
+    /* Barre de progression de lecture (haut de page) */
+    .scroll-progress {
+      position: fixed; top: 0; left: 0;
+      height: 3px; width: 0%;
+      z-index: 9999;
+      background: linear-gradient(90deg, var(--orange), var(--blue));
+      box-shadow: 0 0 12px var(--orange-glow);
+      pointer-events: none;
+      will-change: width;
+    }
+
+    /* Canvas "mur interactif" du hero — réagit à la souris */
+    .hero-canvas {
+      position: absolute; inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      mix-blend-mode: screen;
+      opacity: 0.85;
+    }
+
+    /* Orbes lumineux ambiants flottants */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(70px);
+      pointer-events: none;
+      z-index: 0;
+      will-change: transform;
+      opacity: 0.55;
+    }
+    .orb-1 { width: 460px; height: 460px; top: -120px; left: -100px;
+      background: radial-gradient(circle, var(--orange) 0%, transparent 70%); }
+    .orb-2 { width: 520px; height: 520px; bottom: -160px; right: -120px;
+      background: radial-gradient(circle, var(--blue) 0%, transparent 70%); opacity: 0.4; }
+
+    /* Halo animé derrière le titre hero */
+    .hero h1 .glow {
+      animation: glowShift 6s ease-in-out infinite alternate;
+    }
+    @keyframes glowShift {
+      0%   { filter: drop-shadow(0 0 24px rgba(0,212,255,0.30)); }
+      100% { filter: drop-shadow(0 0 40px rgba(255,122,24,0.40)); }
+    }
+
+    /* Tilt 3D générique (vidéos, étapes process) */
+    [data-tilt] {
+      transform-style: preserve-3d;
+      transition: transform 0.35s var(--ease), box-shadow 0.4s var(--ease), border-color 0.35s var(--ease);
+      will-change: transform;
+    }
+    .vcard:hover {
+      border-color: rgba(255,122,24,0.55);
+      box-shadow: 0 28px 70px rgba(0,0,0,0.55), 0 0 46px rgba(255,122,24,0.16);
+    }
+    .vcard::after {
+      content: '';
+      position: absolute; inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(255,122,24,0.18), transparent 45%);
+      opacity: 0; transition: opacity 0.35s var(--ease);
+      pointer-events: none; z-index: 1;
+    }
+    .vcard:hover::after { opacity: 1; }
+
+    /* Bandeau défilant (marquee) */
+    .marquee {
+      overflow: hidden;
+      padding: 30px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, var(--bg-soft), var(--bg));
+      position: relative;
+    }
+    .marquee::before, .marquee::after {
+      content: ''; position: absolute; top: 0; bottom: 0; width: 140px; z-index: 2; pointer-events: none;
+    }
+    .marquee::before { left: 0;  background: linear-gradient(90deg, var(--bg), transparent); }
+    .marquee::after  { right: 0; background: linear-gradient(270deg, var(--bg), transparent); }
+    .marquee-track {
+      display: inline-flex; align-items: center; gap: 0;
+      white-space: nowrap;
+      animation: marquee 32s linear infinite;
+      will-change: transform;
+    }
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+    .marquee-track span {
+      font-family: var(--serif);
+      font-size: clamp(1.4rem, 3vw, 2.4rem);
+      font-weight: 700; letter-spacing: -0.02em;
+      color: var(--text);
+      display: inline-flex; align-items: center;
+      padding: 0 28px;
+    }
+    .marquee-track span::after {
+      content: '✦'; color: var(--orange);
+      font-size: 0.55em; margin-left: 56px;
+      transform: translateY(-2px);
+    }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+
+    /* Section vidéo promo — réintégrée au thème dark */
+    .promo {
+      padding: 120px 32px;
+      text-align: center;
+      position: relative;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(255,122,24,0.10), transparent 55%),
+        var(--bg);
+    }
+    .promo-eyebrow {
+      color: var(--orange); font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.14em;
+      font-size: 0.8rem; margin-bottom: 14px;
+    }
+    .promo h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      font-weight: 700; letter-spacing: -0.03em;
+      line-height: 1.05; margin: 0 auto 40px;
+      max-width: 20ch;
+    }
+    .promo h2 .accent { color: var(--orange); }
+    .promo-video {
+      max-width: 380px; margin: 0 auto;
+      border-radius: 24px; overflow: hidden;
+      border: 1px solid var(--line-strong);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 60px rgba(0,212,255,0.12);
+    }
+    .promo-video video { width: 100%; display: block; }
+    .promo-hint { font-size: 0.8125rem; color: var(--text-faded); margin-top: 18px; }
   </style>
 </head>
 <body>
   <a href="#main" class="skip-link">Aller au contenu principal</a>
 
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
   <div class="cursor" aria-hidden="true"></div>
   <div class="cursor-ring" aria-hidden="true"></div>
   <div class="grain" aria-hidden="true"></div>
@@ -1734,6 +1873,9 @@
         <source src="assets/video-montage.mp4" type="video/mp4" />
       </video>
     </div>
+    <span class="orb orb-1" aria-hidden="true"></span>
+    <span class="orb orb-2" aria-hidden="true"></span>
+    <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
     <div class="hero-content">
       <div class="hero-eyebrow eyebrow">Animation interactive mobile · Belgique</div>
       <h1 class="display" data-split>
@@ -1783,16 +1925,16 @@
     </div>
   </section>
   <!-- VIDEO PROMO -->
-  <section style="padding:80px 24px; background: linear-gradient(135deg,#fff7ed 0%,#fdf2f8 50%,#faf5ff 100%); text-align:center;">
+  <section class="promo">
     <div style="max-width:900px; margin:0 auto;">
-      <p style="color:#ea580c; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; font-size:14px; margin:0 0 12px;">Découvrez InterActis en vidéo</p>
-      <h2 style="font-size:clamp(28px,4vw,40px); font-weight:900; margin:0 0 32px; line-height:1.2;">L'animation qui rassemble tout le monde</h2>
-      <div style="max-width:380px; margin:0 auto; border-radius:24px; overflow:hidden; box-shadow:0 25px 50px -12px rgba(0,0,0,0.25);">
-        <video autoplay muted loop playsinline controls preload="metadata" poster="/assets/interactis-promo-poster.jpg" style="width:100%; display:block;">
+      <p class="promo-eyebrow" data-reveal>Découvrez InterActis en vidéo</p>
+      <h2 data-reveal>L'animation qui <span class="accent">rassemble tout le monde</span></h2>
+      <div class="promo-video" data-reveal data-tilt>
+        <video autoplay muted loop playsinline controls preload="metadata" poster="/assets/interactis-promo-poster.jpg">
           <source src="/assets/interactis-promo.mp4" type="video/mp4" />
         </video>
       </div>
-      <p style="font-size:13px; color:#6b7280; margin:16px 0 0;">Activez le son 🔊 pour entendre l'ambiance</p>
+      <p class="promo-hint">Activez le son 🔊 pour entendre l'ambiance</p>
     </div>
   </section>
 
@@ -1838,6 +1980,16 @@
       </p>
     </div>
   </section>
+
+  <!-- ============================================
+       MARQUEE — bandeau défilant des univers
+       ============================================ -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Anniversaires</span><span>Team building</span><span>Maisons de repos</span><span>Écoles</span><span>Événements publics</span><span>Centres spécialisés</span>
+      <span>Anniversaires</span><span>Team building</span><span>Maisons de repos</span><span>Écoles</span><span>Événements publics</span><span>Centres spécialisés</span>
+    </div>
+  </div>
 
   <!-- ============================================
        POUR QUI
@@ -1966,17 +2118,17 @@
     </div>
 
     <div class="process-steps">
-      <div class="process-step" data-reveal>
+      <div class="process-step" data-reveal data-tilt>
         <div class="process-step-num">01</div>
         <h3>On en parle</h3>
         <p>Vous nous décrivez votre événement : public, lieu, durée, ambiance recherchée. En 5 minutes au téléphone, on sait quoi prévoir.</p>
       </div>
-      <div class="process-step" data-reveal>
+      <div class="process-step" data-reveal data-tilt>
         <div class="process-step-num">02</div>
         <h3>On installe</h3>
         <p>Notre animateur arrive avec une seule valise. 15 minutes plus tard, votre mur est devenu un terrain de jeu interactif. Vous n'avez rien à préparer.</p>
       </div>
-      <div class="process-step" data-reveal>
+      <div class="process-step" data-reveal data-tilt>
         <div class="process-step-num">03</div>
         <h3>On joue</h3>
         <p>L'animateur reste sur place, pilote les jeux, gère l'ambiance. Vous, vous profitez. Vos invités s'amusent. Tout le monde repart avec quelque chose.</p>
@@ -2016,27 +2168,27 @@
       <p data-reveal style="color:var(--text-dim);max-width:640px;margin:16px auto 0;font-size:1rem;line-height:1.6;">Sport, créatif, mémoire, coopération, fléchettes, basket, drones, peinture… On compose la sélection en fonction de votre public, de l'âge moyen et de l'ambiance recherchée.</p>
     </div>
     <div class="videos-grid">
-      <div class="vcard" data-reveal>
+      <div class="vcard" data-reveal data-tilt>
         <video controls playsinline preload="metadata" poster="assets/video-bouzanton-1-poster.webp">
           <source src="assets/video-bouzanton-1.mp4" type="video/mp4" />
         </video>
       </div>
-      <div class="vcard" data-reveal>
+      <div class="vcard" data-reveal data-tilt>
         <video controls playsinline preload="metadata" poster="assets/video-bouzanton-2-poster.webp">
           <source src="assets/video-bouzanton-2.mp4" type="video/mp4" />
         </video>
       </div>
-      <div class="vcard" data-reveal>
+      <div class="vcard" data-reveal data-tilt>
         <video controls playsinline preload="metadata" poster="assets/video-palais-1-poster.webp">
           <source src="assets/video-palais-1.mp4" type="video/mp4" />
         </video>
       </div>
-      <div class="vcard" data-reveal>
+      <div class="vcard" data-reveal data-tilt>
         <video controls playsinline preload="metadata" poster="assets/video-palais-2-poster.webp">
           <source src="assets/video-palais-2.mp4" type="video/mp4" />
         </video>
       </div>
-      <div class="vcard" data-reveal>
+      <div class="vcard" data-reveal data-tilt>
         <video controls playsinline preload="metadata" poster="assets/video-jeu-action-poster.webp">
           <source src="assets/video-jeu-action.mp4" type="video/mp4" />
         </video>
@@ -2614,6 +2766,124 @@
         onLeaveBack: () => mobileCta.classList.add('is-visible'),
       });
     }
+
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // ============================================
+    // BARRE DE PROGRESSION DE LECTURE
+    // ============================================
+    const progress = document.getElementById('scrollProgress');
+    if (progress) {
+      const updateProgress = () => {
+        const h = document.documentElement.scrollHeight - window.innerHeight;
+        const p = h > 0 ? (window.scrollY / h) * 100 : 0;
+        progress.style.width = p.toFixed(2) + '%';
+      };
+      lenis.on('scroll', updateProgress);
+      window.addEventListener('resize', updateProgress);
+      updateProgress();
+    }
+
+    // ============================================
+    // ORBES AMBIANTS - léger parallaxe à la souris
+    // ============================================
+    if (!isCoarse && !prefersReduced) {
+      const orbs = document.querySelectorAll('.orb');
+      window.addEventListener('mousemove', (e) => {
+        const dx = (e.clientX / window.innerWidth - 0.5);
+        const dy = (e.clientY / window.innerHeight - 0.5);
+        orbs.forEach((orb, i) => {
+          const f = (i + 1) * 26;
+          orb.style.transform = `translate(${dx * f}px, ${dy * f}px)`;
+        });
+      });
+    }
+
+    // ============================================
+    // TILT 3D (vidéos, étapes, promo) + halo qui suit la souris
+    // ============================================
+    if (!isCoarse && !prefersReduced) {
+      document.querySelectorAll('[data-tilt]').forEach(card => {
+        const MAX = 8; // degrés
+        card.addEventListener('mousemove', (e) => {
+          const r = card.getBoundingClientRect();
+          const px = (e.clientX - r.left) / r.width;
+          const py = (e.clientY - r.top) / r.height;
+          const rx = (0.5 - py) * 2 * MAX;
+          const ry = (px - 0.5) * 2 * MAX;
+          card.style.transform = `perspective(900px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) translateY(-4px)`;
+          card.style.setProperty('--mx', (px * 100).toFixed(1) + '%');
+          card.style.setProperty('--my', (py * 100).toFixed(1) + '%');
+        });
+        card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+      });
+    }
+
+    // ============================================
+    // CANVAS "MUR INTERACTIF" DU HERO
+    // Grille de points qui s'illuminent au passage de la souris
+    // ============================================
+    (function heroWall() {
+      const canvas = document.getElementById('heroCanvas');
+      if (!canvas || prefersReduced) return;
+      const ctx = canvas.getContext('2d', { alpha: true });
+      const hero = canvas.closest('.hero');
+      let w = 0, h = 0; const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      let cols = 0, rows = 0, dots = [];
+      const GAP = 46, R = 1.4;
+      const mouse = { x: -9999, y: -9999, on: false };
+      const RADIUS = 150; // rayon d'influence souris
+
+      function build() {
+        const rect = hero.getBoundingClientRect();
+        w = rect.width; h = rect.height;
+        canvas.width = w * dpr; canvas.height = h * dpr;
+        canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        cols = Math.ceil(w / GAP) + 1;
+        rows = Math.ceil(h / GAP) + 1;
+        dots = [];
+        for (let y = 0; y < rows; y++) {
+          for (let x = 0; x < cols; x++) {
+            dots.push({ x: x * GAP, y: y * GAP });
+          }
+        }
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, w, h);
+        for (const d of dots) {
+          let alpha = 0.06, rad = R, col = '0,212,255';
+          if (mouse.on) {
+            const dx = d.x - mouse.x, dy = d.y - mouse.y;
+            const dist = Math.hypot(dx, dy);
+            if (dist < RADIUS) {
+              const t = 1 - dist / RADIUS;
+              alpha = 0.06 + t * 0.85;
+              rad = R + t * 2.6;
+              col = t > 0.55 ? '255,122,24' : '0,212,255';
+            }
+          }
+          ctx.beginPath();
+          ctx.arc(d.x, d.y, rad, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${col},${alpha})`;
+          ctx.fill();
+        }
+        requestAnimationFrame(draw);
+      }
+
+      hero.addEventListener('mousemove', (e) => {
+        const rect = hero.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+        mouse.on = true;
+      });
+      hero.addEventListener('mouseleave', () => { mouse.on = false; mouse.x = mouse.y = -9999; });
+
+      build();
+      window.addEventListener('resize', build);
+      draw();
+    })();
   }); // fin DOMContentLoaded
   </script>
 
