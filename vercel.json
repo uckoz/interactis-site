@@ -20,6 +20,7 @@
     { "source": "/blog-animation-team-building.html", "destination": "/blog-animation-team-building", "permanent": true },
     { "source": "/blog-animation-ecole.html", "destination": "/blog-animation-ecole", "permanent": true },
     { "source": "/blog-animation-evenement.html", "destination": "/blog-animation-evenement", "permanent": true },
+    { "source": "/devis.html", "destination": "/devis", "permanent": true },
     { "source": "/nl", "destination": "/", "permanent": true },
     { "source": "/nl/", "destination": "/", "permanent": true },
     { "source": "/nl/:path*", "destination": "/", "permanent": true }

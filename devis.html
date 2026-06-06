@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!-- Cookie consent + chargement conditionnel Google Ads & Tawk -->
+  <script src="/assets/consent.js" defer></script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a0e1a" />
+  <title>Devis animation interactive sur mesure - InterActis</title>
+  <meta name="description" content="Demandez votre devis pour une animation InterActis : anniversaires, team buildings, maisons de repos, écoles. Réponse personnalisée sous 24 h. Gratuit et sans engagement. Belgique, Luxembourg, Nord France." />
+  <link rel="canonical" href="https://www.interactis.be/devis" />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="apple-touch-icon" href="/assets/hero.jpg" />
+
+  <meta property="og:title" content="Devis animation interactive sur mesure - InterActis" />
+  <meta property="og:description" content="Devis personnalisé sous 24 h, gratuit et sans engagement. Animation interactive mobile pour tous publics." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.interactis.be/devis" />
+  <meta property="og:image" content="https://www.interactis.be/assets/hero.jpg" />
+  <meta property="og:locale" content="fr_BE" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://www.interactis.be/assets/hero.jpg" />
+
+  <!-- Fonts (mêmes que index.html) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="dns-prefetch" href="https://api.web3forms.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Bricolage+Grotesque:wght@700&display=swap" rel="stylesheet" />
+
+  <!-- Système de design partagé (extrait de index.html) -->
+  <link rel="stylesheet" href="/assets/site.css" />
+
+  <!-- Schema.org : page de demande de devis -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Demander un devis - InterActis",
+    "url": "https://www.interactis.be/devis",
+    "description": "Page de demande de devis pour une animation interactive InterActis.",
+    "inLanguage": "fr-BE",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "InterActis",
+      "url": "https://www.interactis.be/"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://www.interactis.be/"},{"@type":"ListItem","position":2,"name":"Devis","item":"https://www.interactis.be/devis"}]}
+  </script>
+
+  <!-- Styles spécifiques à cette landing page -->
+  <style>
+    /* Hero compact : centré sur le formulaire, pas de vidéo de fond pour priorité chargement */
+    .devis-hero {
+      position: relative;
+      min-height: 70vh;
+      padding: 140px 32px 60px;
+      display: flex; align-items: center;
+      background:
+        radial-gradient(ellipse at 20% 30%, rgba(0,212,255,0.18), transparent 55%),
+        radial-gradient(ellipse at 80% 70%, rgba(255,122,24,0.15), transparent 55%),
+        var(--bg);
+      overflow: hidden;
+    }
+    .devis-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(0,212,255,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,212,255,0.05) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .devis-hero-inner {
+      max-width: var(--container);
+      margin: 0 auto;
+      position: relative; z-index: 2;
+      width: 100%;
+    }
+    .devis-hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.25rem, 5.5vw, 4.5rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      max-width: 18ch;
+      margin: 28px 0 24px;
+    }
+    .devis-hero h1 .accent { color: var(--orange); }
+    .devis-hero h1 .glow {
+      color: transparent;
+      background: linear-gradient(135deg, var(--blue) 0%, #fff 60%, var(--orange-bright) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+    .devis-hero-sub {
+      font-size: clamp(1rem, 1.5vw, 1.1875rem);
+      color: var(--text-dim);
+      max-width: 60ch;
+      margin-bottom: 32px;
+      line-height: 1.55;
+    }
+
+    /* Badges de confiance sous le titre */
+    .trust-badges {
+      display: flex; flex-wrap: wrap; gap: 12px;
+      margin-bottom: 24px;
+    }
+    .trust-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 14px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--text-dim);
+    }
+    .trust-badge svg { width: 14px; height: 14px; color: var(--blue); flex-shrink: 0; }
+
+    /* Bloc principal : formulaire à gauche, preuves sociales à droite */
+    .devis-main {
+      padding: 80px 32px 120px;
+      background: var(--bg);
+      position: relative;
+    }
+    .devis-grid {
+      max-width: var(--container);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 0.9fr;
+      gap: 64px;
+      align-items: start;
+    }
+    @media (max-width: 980px) {
+      .devis-grid { grid-template-columns: 1fr; gap: 48px; }
+    }
+
+    /* Formulaire en carte mise en valeur */
+    .devis-form-card {
+      background: var(--bg-card);
+      border: 1px solid var(--line-strong);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+    @media (max-width: 720px) {
+      .devis-form-card { padding: 28px 20px; border-radius: 14px; }
+    }
+    .devis-form-card h2 {
+      font-family: var(--serif);
+      font-size: 1.625rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    .devis-form-card h2 .accent { color: var(--orange); }
+    .devis-form-card .form-intro {
+      color: var(--text-dim);
+      font-size: 0.9375rem;
+      margin-bottom: 28px;
+    }
+
+    /* Champs du formulaire */
+    .devis-form-card .form-field {
+      margin-bottom: 18px;
+      display: flex; flex-direction: column;
+    }
+    .devis-form-card .form-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+    }
+    @media (max-width: 540px) {
+      .devis-form-card .form-row { grid-template-columns: 1fr; }
+    }
+    .devis-form-card label {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--text-dim);
+      margin-bottom: 6px;
+      letter-spacing: 0.01em;
+    }
+    .devis-form-card input,
+    .devis-form-card select,
+    .devis-form-card textarea {
+      width: 100%;
+      padding: 12px 14px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line-strong);
+      border-radius: 10px;
+      color: var(--text);
+      font: inherit;
+      font-size: 0.9375rem;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+    .devis-form-card input:focus,
+    .devis-form-card select:focus,
+    .devis-form-card textarea:focus {
+      outline: none;
+      border-color: var(--orange);
+      background: rgba(255,255,255,0.06);
+    }
+    .devis-form-card textarea { resize: vertical; min-height: 80px; }
+    .devis-form-card select { cursor: pointer; }
+    @media (pointer: coarse) { .devis-form-card select { cursor: auto; } }
+    .devis-form-card .form-helper {
+      font-size: 0.75rem;
+      color: var(--text-faded);
+      margin-top: 4px;
+    }
+    .devis-form-card .form-submit {
+      width: 100%;
+      margin-top: 12px;
+      padding: 18px 24px;
+      font-size: 1rem;
+    }
+    .devis-form-card .form-trust {
+      text-align: center;
+      font-size: 0.8125rem;
+      color: var(--text-faded);
+      margin-top: 16px;
+    }
+
+    /* Colonne droite : preuves sociales */
+    .devis-proof h3 {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+    .devis-proof h3 .accent { color: var(--orange); }
+    .proof-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .proof-stat {
+      padding: 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+    }
+    .proof-stat .n {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--blue) 0%, white 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 6px;
+    }
+    .proof-stat .l {
+      font-size: 0.8125rem;
+      color: var(--text-faded);
+      font-weight: 500;
+    }
+    .proof-quote {
+      padding: 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      margin-bottom: 16px;
+      position: relative;
+    }
+    .proof-quote::before {
+      content: '"';
+      position: absolute;
+      top: 4px; left: 14px;
+      font-family: var(--serif);
+      font-size: 3rem;
+      color: var(--orange);
+      opacity: 0.5;
+      line-height: 1;
+    }
+    .proof-quote-text {
+      font-size: 0.9375rem;
+      color: var(--text-dim);
+      line-height: 1.55;
+      margin: 8px 0 12px;
+      padding-left: 24px;
+    }
+    .proof-quote-author {
+      display: flex; align-items: center; gap: 10px;
+      padding-left: 24px;
+    }
+    .proof-quote-name {
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .proof-quote-role {
+      font-size: 0.75rem;
+      color: var(--text-faded);
+    }
+    .proof-stars {
+      display: inline-flex; gap: 2px;
+      margin-left: auto;
+      color: #fbbf24;
+    }
+    .proof-stars svg { width: 14px; height: 14px; }
+
+    /* Section "comment ça marche" courte */
+    .devis-how {
+      padding: 80px 32px;
+      background: var(--bg-soft);
+      border-top: 1px solid var(--line);
+    }
+    .devis-how-inner {
+      max-width: var(--container);
+      margin: 0 auto;
+      text-align: center;
+    }
+    .devis-how h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 16px 0 16px;
+    }
+    .devis-how h2 .accent { color: var(--orange); }
+    .devis-how p.sub {
+      color: var(--text-dim);
+      max-width: 56ch;
+      margin: 0 auto 56px;
+    }
+    .devis-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      text-align: left;
+    }
+    @media (max-width: 720px) {
+      .devis-steps { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .devis-step {
+      padding: 28px;
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      position: relative;
+    }
+    .devis-step-n {
+      font-family: var(--serif);
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--orange);
+      margin-bottom: 12px;
+    }
+    .devis-step h4 {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    .devis-step p {
+      color: var(--text-dim);
+      font-size: 0.9375rem;
+      line-height: 1.55;
+    }
+
+    /* Header simplifié sur cette landing : on garde le logo mais on dégage la nav qui distrait */
+    .devis-header {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 90;
+      padding: 18px 32px;
+      display: flex; align-items: center; justify-content: space-between;
+      mix-blend-mode: difference;
+      color: white;
+    }
+    .devis-header .hd-logo {
+      font-family: var(--serif);
+      font-size: 1.5rem; font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .devis-header .hd-logo span { color: var(--orange); }
+    .devis-header .header-cta {
+      font-size: 0.875rem;
+      font-weight: 600;
+      padding: 8px 14px;
+    }
+    @media (max-width: 540px) {
+      .devis-header { padding: 14px 18px; }
+      .devis-header .header-cta { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#devis-form" class="skip-link">Aller au formulaire</a>
+
+  <div class="cursor" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- Header simplifié : logo + lien retour accueil -->
+  <header class="devis-header">
+    <a href="/" class="hd-logo" data-hover>Inter<span>Actis</span></a>
+    <a href="tel:+32488435342" class="btn btn-ghost header-cta" data-hover aria-label="Appeler InterActis">
+      +32 488 43 53 42
+    </a>
+  </header>
+
+  <main id="main">
+
+  <!-- ============================================
+       HERO LANDING : titre + sous-titre + badges
+       ============================================ -->
+  <section class="devis-hero">
+    <div class="devis-hero-inner">
+      <div class="eyebrow">Devis sur mesure · Réponse sous 24 h</div>
+      <h1>
+        Votre événement, <br/>
+        <span class="glow">notre animation</span> <span class="accent">interactive.</span>
+      </h1>
+      <p class="devis-hero-sub">
+        Anniversaires, team buildings, maisons de repos, écoles… on adapte le mur interactif à votre format, votre lieu et votre budget. Devis gratuit, réponse personnalisée sous 24 h ouvrables.
+      </p>
+      <div class="trust-badges">
+        <span class="trust-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Réponse sous 24 h
+        </span>
+        <span class="trust-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Devis gratuit
+        </span>
+        <span class="trust-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Sans engagement
+        </span>
+        <span class="trust-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          100 % accessible PMR
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       BLOC FORMULAIRE + PREUVES SOCIALES
+       ============================================ -->
+  <section class="devis-main" id="devis-form">
+    <div class="devis-grid">
+
+      <!-- Colonne gauche : formulaire mis en carte -->
+      <div class="devis-form-card">
+        <h2>Décrivez votre <span class="accent">projet.</span></h2>
+        <p class="form-intro">Plus vous donnez de détails, plus notre proposition sera précise dès le premier échange.</p>
+
+        <!--
+          Formulaire via Web3Forms (https://web3forms.com)
+          Service fiable, gratuit, illimité. Aucune validation préalable.
+          Les devis arrivent directement à uckoz@interactis.be.
+          Le champ "source" permet d'identifier les leads venant de cette landing.
+        -->
+        <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="f08ff9b7-efb2-4e47-bd2c-d79267ffee7a" />
+          <input type="hidden" name="subject" value="Nouvelle demande de devis - Landing /devis" />
+          <input type="hidden" name="from_name" value="Landing devis interactis.be" />
+          <input type="hidden" name="source" value="landing-devis" />
+          <input type="hidden" name="redirect" value="https://www.interactis.be/merci" />
+          <!-- Honeypot anti-spam (Web3Forms ignore les soumissions qui le remplissent) -->
+          <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off" />
+
+          <div class="form-field">
+            <label for="nom">Nom complet *</label>
+            <input id="nom" type="text" name="nom" required autocomplete="name" />
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="email">Email *</label>
+              <input id="email" type="email" name="email" required autocomplete="email" inputmode="email" />
+            </div>
+            <div class="form-field">
+              <label for="tel">Téléphone *</label>
+              <input id="tel" type="tel" name="tel" required autocomplete="tel" inputmode="tel" placeholder="+32 …" />
+              <small class="form-helper">On vous rappelle sous 24 h ouvrables</small>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="type">Type d'événement *</label>
+            <select id="type" name="type" required>
+              <option value="">Sélectionner…</option>
+              <option>Anniversaire enfant</option>
+              <option>Anniversaire adulte / famille</option>
+              <option>Team building / entreprise</option>
+              <option>Maison de repos</option>
+              <option>École / centre spécialisé</option>
+              <option>Événement public</option>
+              <option>Autre</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="part">Nombre de participants</label>
+            <input id="part" type="number" name="part" min="2" max="200" inputmode="numeric" placeholder="ex. 20" />
+          </div>
+
+          <div class="form-field">
+            <label for="lieu">Adresse ou lieu de l'événement *</label>
+            <input id="lieu" type="text" name="lieu" required autocomplete="street-address" placeholder="ex. Rue de la Station 12, 7000 Mons" />
+          </div>
+
+          <div class="form-field">
+            <label for="message">Votre message</label>
+            <textarea id="message" name="message" rows="3" placeholder="Quelques mots sur votre événement (date, ambiance recherchée…)"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary form-submit" data-hover>
+            Recevoir mon devis sous 24h <span class="arrow">→</span>
+          </button>
+          <p class="form-trust">🔒 Vos infos restent confidentielles · Devis gratuit · Sans engagement</p>
+        </form>
+      </div>
+
+      <!-- Colonne droite : stats + témoignages -->
+      <div class="devis-proof">
+        <h3>Ils nous ont <span class="accent">déjà fait confiance</span></h3>
+
+        <div class="proof-stats">
+          <div class="proof-stat">
+            <div class="n">30+</div>
+            <div class="l">Jeux interactifs</div>
+          </div>
+          <div class="proof-stat">
+            <div class="n">100%</div>
+            <div class="l">Inclusif PMR</div>
+          </div>
+          <div class="proof-stat">
+            <div class="n">15 min</div>
+            <div class="l">Installation chrono</div>
+          </div>
+          <div class="proof-stat">
+            <div class="n">5-95</div>
+            <div class="l">Ans, sans exception</div>
+          </div>
+        </div>
+
+        <div class="proof-quote">
+          <p class="proof-quote-text">
+            Les résidents en ont parlé pendant des jours. Même ceux qui restent habituellement en retrait ont participé. On reprend pour le mois prochain.
+          </p>
+          <div class="proof-quote-author">
+            <div>
+              <div class="proof-quote-name">Directrice d'EHPAD</div>
+              <div class="proof-quote-role">Maison de repos · Hainaut</div>
+            </div>
+            <div class="proof-stars" aria-label="5 étoiles sur 5">
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="proof-quote">
+          <p class="proof-quote-text">
+            Pour l'anniversaire de ma fille (8 ans), c'était parfait. Aucun écran, juste les enfants qui couraient devant le mur. Tous les parents nous ont demandé le contact.
+          </p>
+          <div class="proof-quote-author">
+            <div>
+              <div class="proof-quote-name">Sophie L.</div>
+              <div class="proof-quote-role">Anniversaire enfant · Mons</div>
+            </div>
+            <div class="proof-stars" aria-label="5 étoiles sur 5">
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="proof-quote">
+          <p class="proof-quote-text">
+            Format idéal pour notre team building. Les équipes se sont mélangées naturellement, ça a débloqué des conversations entre services qui ne se parlaient jamais.
+          </p>
+          <div class="proof-quote-author">
+            <div>
+              <div class="proof-quote-name">RH PME</div>
+              <div class="proof-quote-role">Team building · Bruxelles</div>
+            </div>
+            <div class="proof-stars" aria-label="5 étoiles sur 5">
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       COMMENT ÇA MARCHE - 3 étapes rapides
+       ============================================ -->
+  <section class="devis-how">
+    <div class="devis-how-inner">
+      <div class="eyebrow" style="justify-content: center;">Comment ça marche</div>
+      <h2>De la demande à <span class="accent">l'événement.</span></h2>
+      <p class="sub">Un processus simple, sans paperasse, sans surprise.</p>
+
+      <div class="devis-steps">
+        <div class="devis-step">
+          <div class="devis-step-n">Étape 1</div>
+          <h4>Vous décrivez votre projet</h4>
+          <p>Vous remplissez le formulaire ci-dessus en 2 minutes. Type d'événement, lieu, nombre de participants, date approximative.</p>
+        </div>
+        <div class="devis-step">
+          <div class="devis-step-n">Étape 2</div>
+          <h4>On vous répond sous 24 h</h4>
+          <p>Réponse par mail ou téléphone avec une proposition adaptée. Si on a besoin de détails, on en parle directement.</p>
+        </div>
+        <div class="devis-step">
+          <div class="devis-step-n">Étape 3</div>
+          <h4>Le jour J, on installe en 15 min</h4>
+          <p>On arrive avec une valise, on déploie le système, et le mur devient un terrain de jeu. Pas de stress de votre côté.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- ============================================
+       FOOTER (version simplifiée pour landing)
+       ============================================ -->
+  <footer class="ft">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <h3>Inter<span>Actis</span></h3>
+        <p>L'animation interactive mobile qui transforme n'importe quel mur en terrain de jeu. Pour tous les publics. Sans exception.</p>
+        <div class="ft-socials">
+          <a href="https://www.instagram.com/interactis.be/" target="_blank" rel="noopener" data-hover aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=61586234006690" target="_blank" rel="noopener" data-hover aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@interactisbe" target="_blank" rel="noopener" data-hover aria-label="TikTok">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43V8.42a8.16 8.16 0 0 0 4.77 1.52V6.69h-1.84z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="ft-col">
+        <h4>Le site</h4>
+        <ul>
+          <li><a href="/" data-hover>Accueil</a></li>
+          <li><a href="/animation-anniversaire" data-hover>Anniversaires</a></li>
+          <li><a href="/animation-entreprise" data-hover>Team building</a></li>
+          <li><a href="/animation-maison-de-repos" data-hover>Maisons de repos</a></li>
+          <li><a href="/animation-ecole" data-hover>Écoles</a></li>
+          <li><a href="/blog" data-hover>Blog</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+32488435342" data-hover>+32 488 43 53 42</a></li>
+          <li><a href="mailto:uckoz@interactis.be" data-hover>uckoz@interactis.be</a></li>
+          <li><a href="https://wa.me/32488435342?text=Bonjour%20Ubeyd%2C%20je%20m%27int%C3%A9resse%20%C3%A0%20une%20animation%20InterActis%20pour%20%5Btype%20d%27%C3%A9v%C3%A9nement%5D%20le%20%5Bdate%5D%20%C3%A0%20%5Bville%5D.%20Pouvez-vous%20me%20proposer%20un%20devis%20%3F" target="_blank" rel="noopener" data-hover>WhatsApp</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h4>Légal</h4>
+        <ul>
+          <li><a href="/mentions-legales" data-hover>Mentions légales</a></li>
+          <li><a href="/confidentialite" data-hover>Confidentialité</a></li>
+          <li><a href="/cgv" data-hover>CGV</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <span>© <span id="yr"></span> InterActis · Tous droits réservés</span>
+      <span>Animation interactive mobile · Belgique · Luxembourg · Nord France</span>
+    </div>
+  </footer>
+
+  <!-- WhatsApp flottant -->
+  <a href="https://wa.me/32488435342?text=Bonjour%20Ubeyd%2C%20je%20viens%20de%20la%20page%20devis%20et%20j%27aimerais%20discuter%20de%20mon%20%C3%A9v%C3%A9nement." class="wa" target="_blank" rel="noopener" aria-label="Nous contacter sur WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0 0 20.464 3.488"/></svg>
+  </a>
+
+  <!-- ============================================
+       COOKIE BANNER RGPD
+       ============================================ -->
+  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Consentement cookies">
+    <h4>🍪 On respecte votre vie privée</h4>
+    <p>Nous utilisons des cookies pour analyser le trafic et améliorer votre expérience. <a href="/confidentialite" data-hover>En savoir plus</a></p>
+    <div class="cookie-actions">
+      <button type="button" class="cookie-btn-reject" id="cookieReject" data-hover>Refuser</button>
+      <button type="button" class="cookie-btn-accept" id="cookieAccept" data-hover>Accepter</button>
+    </div>
+  </div>
+
+  <!-- JS partagé : curseur custom, menu burger, année footer -->
+  <script src="/assets/site.js" defer></script>
+</body>
+</html>

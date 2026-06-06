@@ -4,177 +4,419 @@
   <!-- Cookie consent + chargement conditionnel Google Ads & Tawk -->
   <script src="/assets/consent.js" defer></script>
 
-
-
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a0e1a" />
   <title>Blog | Conseils animation & événements — InterActis</title>
-  <meta name="description" content="Conseils pratiques pour organiser anniversaires, team building, animations en maison de repos et à l'école. Le blog InterActis, animation interactive mobile en Belgique.">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://www.interactis.be/blog">
-  <meta property="og:title" content="Blog | Conseils animation & événements — InterActis">
-  <meta property="og:description" content="Conseils pratiques pour organiser vos événements et animations.">
-  <meta property="og:url" content="https://www.interactis.be/blog">
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="fr_BE">
-  <meta property="og:site_name" content="InterActis">
-  <meta property="og:image" content="https://www.interactis.be/images/hero.jpg">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://www.interactis.be/images/hero.jpg">
-  <link rel="icon" type="image/png" href="/images/logo-icon.png">
-  <link rel="apple-touch-icon" href="/images/logo-icon.png">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="description" content="Conseils pratiques pour organiser anniversaires, team building, animations en maison de repos et à l'école. Le blog InterActis, animation interactive mobile en Belgique." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.interactis.be/blog" />
+  <meta property="og:title" content="Blog | Conseils animation & événements — InterActis" />
+  <meta property="og:description" content="Conseils pratiques pour organiser vos événements et animations." />
+  <meta property="og:url" content="https://www.interactis.be/blog" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="fr_BE" />
+  <meta property="og:site_name" content="InterActis" />
+  <meta property="og:image" content="https://www.interactis.be/assets/hero.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://www.interactis.be/assets/hero.jpg" />
+  <link rel="apple-touch-icon" href="/assets/hero.jpg" />
+
+  <!-- Fonts (mêmes que index.html) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Bricolage+Grotesque:wght@700&display=swap" rel="stylesheet" />
+
+  <!-- Système de design partagé -->
+  <link rel="stylesheet" href="/assets/site.css" />
+
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Blog","name":"Blog InterActis","url":"https://www.interactis.be/blog","description":"Conseils pour organiser anniversaires, team building et animations.","publisher":{"@type":"Organization","name":"InterActis","logo":{"@type":"ImageObject","url":"https://www.interactis.be/images/logo-icon.png"}}}
+  {"@context":"https://schema.org","@type":"Blog","name":"Blog InterActis","url":"https://www.interactis.be/blog","description":"Conseils pour organiser anniversaires, team building et animations.","publisher":{"@type":"Organization","name":"InterActis","logo":{"@type":"ImageObject","url":"https://www.interactis.be/assets/hero.jpg"}}}
   </script>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://www.interactis.be/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://www.interactis.be/blog"}]}
   </script>
+
+  <!-- Styles spécifiques à la page blog (grille d'articles) -->
+  <style>
+    /* Hero compact pour le blog */
+    .blog-hero {
+      position: relative;
+      padding: 160px 32px 80px;
+      background:
+        radial-gradient(ellipse at 25% 40%, rgba(0,212,255,0.18), transparent 55%),
+        radial-gradient(ellipse at 80% 60%, rgba(255,122,24,0.15), transparent 55%),
+        var(--bg);
+      overflow: hidden;
+      text-align: center;
+    }
+    .blog-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(0,212,255,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,212,255,0.05) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .blog-hero-inner { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; }
+    .blog-hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.25rem, 5vw, 4rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin: 28px 0 20px;
+    }
+    .blog-hero h1 .accent { color: var(--orange); }
+    .blog-hero p.sub {
+      color: var(--text-dim);
+      font-size: clamp(1rem, 1.4vw, 1.125rem);
+      max-width: 56ch;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Grille d'articles */
+    .blog-grid-section {
+      padding: 80px 32px 120px;
+      background: var(--bg);
+    }
+    .blog-grid {
+      max-width: var(--container);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 28px;
+    }
+    .blog-card {
+      display: flex; flex-direction: column;
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+      transition: border-color 0.3s var(--ease), transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+      position: relative;
+    }
+    .blog-card:hover {
+      border-color: var(--orange);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(255,122,24,0.12);
+    }
+    .blog-card-img {
+      height: 200px;
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+      background:
+        radial-gradient(ellipse at center, rgba(255,122,24,0.25), transparent 70%),
+        linear-gradient(135deg, #1a1f35 0%, #0f1424 100%);
+      overflow: hidden;
+    }
+    .blog-card-img::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(0,212,255,0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,212,255,0.08) 1px, transparent 1px);
+      background-size: 32px 32px;
+      mask-image: radial-gradient(ellipse at center, black 0%, transparent 75%);
+    }
+    .blog-card-emoji {
+      position: relative; z-index: 1;
+      font-size: 4rem;
+      filter: drop-shadow(0 6px 20px rgba(0,0,0,0.5));
+    }
+    .blog-card-content {
+      padding: 26px 24px 28px;
+      display: flex; flex-direction: column; flex: 1;
+    }
+    .blog-card-cat {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 12px;
+    }
+    .blog-card h2 {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+    .blog-card p {
+      color: var(--text-dim);
+      font-size: 0.9375rem;
+      line-height: 1.55;
+      margin-bottom: 20px;
+      flex: 1;
+    }
+    .blog-card-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: var(--orange);
+      font-size: 0.875rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+    .blog-card-cta .arrow {
+      transition: transform 0.3s var(--ease);
+    }
+    .blog-card:hover .blog-card-cta .arrow {
+      transform: translateX(4px);
+    }
+    .blog-soon {
+      text-align: center;
+      color: var(--text-faded);
+      font-size: 0.875rem;
+      margin-top: 56px;
+      font-style: italic;
+    }
+
+    /* Section CTA finale */
+    .blog-cta {
+      padding: 100px 32px;
+      background: var(--bg-soft);
+      border-top: 1px solid var(--line);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .blog-cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 50%, rgba(255,122,24,0.12), transparent 60%);
+      pointer-events: none;
+    }
+    .blog-cta-inner { position: relative; z-index: 2; max-width: 720px; margin: 0 auto; }
+    .blog-cta h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.875rem, 4vw, 2.75rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin: 16px 0 16px;
+    }
+    .blog-cta h2 .accent { color: var(--orange); }
+    .blog-cta p {
+      color: var(--text-dim);
+      margin-bottom: 32px;
+      max-width: 50ch;
+      margin-left: auto; margin-right: auto;
+    }
+    .blog-cta-actions {
+      display: flex; flex-wrap: wrap; gap: 14px;
+      justify-content: center;
+    }
+  </style>
 </head>
-<body class="bg-white text-gray-900 antialiased">
-  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
-      <a href="/" class="font-black text-xl">Inter<span class="text-orange-500">Actis</span></a>
-      <nav class="hidden sm:flex items-center gap-6 text-sm font-semibold">
-        <a href="/animation-anniversaire" class="hover:text-orange-500 transition">Anniversaire</a>
-        <a href="/animation-entreprise" class="hover:text-orange-500 transition">Team building</a>
-        <a href="/animation-maison-de-repos" class="hover:text-orange-500 transition">Maison de repos</a>
-        <a href="/animation-ecole" class="hover:text-orange-500 transition">École</a>
-        <a href="/blog" class="text-orange-500">Blog</a>
-        <a href="/#contact" class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg transition">Devis gratuit</a>
-      </nav>
-    </div>
+<body>
+  <a href="#main" class="skip-link">Aller au contenu principal</a>
+
+  <div class="cursor" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- Header (même que index.html) -->
+  <header class="hd">
+    <a href="/" class="hd-logo" data-hover>Inter<span>Actis</span></a>
+    <nav class="hd-nav">
+      <a href="/animation-anniversaire" data-hover>Anniversaire</a>
+      <a href="/animation-entreprise" data-hover>Team building</a>
+      <a href="/animation-maison-de-repos" data-hover>Maison de repos</a>
+      <a href="/animation-ecole" data-hover>École</a>
+      <a href="/blog" data-hover>Blog</a>
+      <a href="/devis" class="btn btn-primary hd-cta" data-hover>Devis <span class="arrow">→</span></a>
+    </nav>
+    <button class="hd-burger" id="burger" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="menuOverlay"><span></span><span></span><span></span></button>
   </header>
 
-  <section class="bg-gradient-to-br from-orange-50 via-pink-50 to-purple-50 py-20 sm:py-24">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-      <p class="text-orange-600 font-bold uppercase tracking-wide text-sm mb-4">Le blog InterActis</p>
-      <h1 class="text-4xl sm:text-5xl font-black mb-6 leading-tight">Conseils pour des événements réussis</h1>
-      <p class="text-lg text-gray-600 max-w-2xl mx-auto">Anniversaires, team building, animations en maison de repos ou à l'école : nos guides pratiques pour organiser des moments inoubliables.</p>
-    </div>
-  </section>
-  <!-- VIDEO PROMO -->
-  <section class="py-16 sm:py-20 bg-gradient-to-br from-orange-50 via-pink-50 to-purple-50">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-      <p class="text-orange-600 font-bold uppercase tracking-wide text-sm mb-3">Découvrez InterActis en vidéo</p>
-      <h2 class="text-3xl sm:text-4xl font-black mb-8">L'animation qui rassemble tout le monde</h2>
-      <div class="max-w-sm mx-auto rounded-2xl overflow-hidden shadow-2xl">
-        <video autoplay muted loop playsinline controls preload="metadata" poster="/assets/interactis-promo-poster.jpg" class="w-full block">
-          <source src="/assets/interactis-promo.mp4" type="video/mp4" />
-        </video>
-      </div>
-      <p class="text-sm text-gray-500 mt-4">Activez le son 🔊 pour entendre l'ambiance</p>
-    </div>
-  </section>
+  <div class="menu-overlay" id="menuOverlay">
+    <nav>
+      <a href="/">Accueil</a>
+      <a href="/animation-anniversaire">Anniversaire</a>
+      <a href="/animation-entreprise">Team building</a>
+      <a href="/animation-maison-de-repos">Maison de repos</a>
+      <a href="/animation-ecole">École</a>
+      <a href="/blog">Blog</a>
+      <a href="/devis">Devis</a>
+    </nav>
+  </div>
 
+  <main id="main">
 
-
-  <section class="py-16 max-w-5xl mx-auto px-4 sm:px-6">
-    <div class="grid gap-8 sm:grid-cols-2">
-      <a href="/blog-organiser-anniversaire-enfant" class="block rounded-2xl border border-gray-200 hover:border-orange-400 hover:shadow-lg transition-all bg-white overflow-hidden">
-        <div class="bg-gradient-to-br from-orange-100 to-pink-100 h-44 flex items-center justify-center">
-          <span class="text-5xl">🎂</span>
-        </div>
-        <div class="p-6">
-          <span class="text-xs font-bold uppercase tracking-wide text-orange-600">Anniversaire</span>
-          <h2 class="font-bold text-xl text-gray-900 mt-2 mb-2">Comment organiser un anniversaire d'enfant inoubliable (guide 2026)</h2>
-          <p class="text-gray-600 text-sm">Date, invités, animation, goûter, timing : le guide simple et complet pour une fête réussie sans stress.</p>
-          <span class="inline-block mt-4 text-orange-600 font-semibold text-sm">Lire l'article &rarr;</span>
-        </div>
-      </a>
-      <a href="/blog-animation-maison-de-repos" class="block rounded-2xl border border-gray-200 hover:border-orange-400 hover:shadow-lg transition-all bg-white overflow-hidden">
-        <div class="bg-gradient-to-br from-orange-100 to-pink-100 h-44 flex items-center justify-center">
-          <span class="text-5xl">🧓</span>
-        </div>
-        <div class="p-6">
-          <span class="text-xs font-bold uppercase tracking-wide text-orange-600">Maison de repos</span>
-          <h2 class="font-bold text-xl text-gray-900 mt-2 mb-2">Quelles animations proposer en maison de repos ? Idées et conseils</h2>
-          <p class="text-gray-600 text-sm">Activités classiques, animations interactives et conseils d'accessibilité pour des moments réussis avec les résidents.</p>
-          <span class="inline-block mt-4 text-orange-600 font-semibold text-sm">Lire l'article &rarr;</span>
-        </div>
-      </a>
-      <a href="/blog-animation-team-building" class="block rounded-2xl border border-gray-200 hover:border-orange-400 hover:shadow-lg transition-all bg-white overflow-hidden">
-        <div class="bg-gradient-to-br from-orange-100 to-pink-100 h-44 flex items-center justify-center">
-          <span class="text-5xl">🤝</span>
-        </div>
-        <div class="p-6">
-          <span class="text-xs font-bold uppercase tracking-wide text-orange-600">Team building</span>
-          <h2 class="font-bold text-xl text-gray-900 mt-2 mb-2">Organiser un team building réussi : idées et conseils</h2>
-          <p class="text-gray-600 text-sm">Objectifs, choix de l'activité, esprit collaboratif et logistique : la méthode pour un team building qui ressoude vraiment.</p>
-          <span class="inline-block mt-4 text-orange-600 font-semibold text-sm">Lire l'article &rarr;</span>
-        </div>
-      </a>
-      <a href="/blog-animation-ecole" class="block rounded-2xl border border-gray-200 hover:border-orange-400 hover:shadow-lg transition-all bg-white overflow-hidden">
-        <div class="bg-gradient-to-br from-orange-100 to-pink-100 h-44 flex items-center justify-center">
-          <span class="text-5xl">🏫</span>
-        </div>
-        <div class="p-6">
-          <span class="text-xs font-bold uppercase tracking-wide text-orange-600">École</span>
-          <h2 class="font-bold text-xl text-gray-900 mt-2 mb-2">Quelles animations interactives proposer à l'école ?</h2>
-          <p class="text-gray-600 text-sm">Journée récréative, porte ouverte, fancy fair : les meilleures animations alliant sport, amusement et cohésion sociale.</p>
-          <span class="inline-block mt-4 text-orange-600 font-semibold text-sm">Lire l'article &rarr;</span>
-        </div>
-      </a>
-      <a href="/blog-animation-evenement" class="block rounded-2xl border border-gray-200 hover:border-orange-400 hover:shadow-lg transition-all bg-white overflow-hidden">
-        <div class="bg-gradient-to-br from-orange-100 to-pink-100 h-44 flex items-center justify-center">
-          <span class="text-5xl">🎪</span>
-        </div>
-        <div class="p-6">
-          <span class="text-xs font-bold uppercase tracking-wide text-orange-600">Événement</span>
-          <h2 class="font-bold text-xl text-gray-900 mt-2 mb-2">Animer une kermesse ou un événement communal : nos conseils</h2>
-          <p class="text-gray-600 text-sm">Kermesse, fancy fair, fête de quartier : les bonnes pratiques pour une animation qui rassemble toutes les générations.</p>
-          <span class="inline-block mt-4 text-orange-600 font-semibold text-sm">Lire l'article &rarr;</span>
-        </div>
-      </a>
-    </div>
-    <p class="text-center text-gray-500 mt-12 text-sm">D'autres articles arrivent bientôt : accessibilité, animations multigénérationnelles et bien plus.</p>
-  </section>
-
-  <section id="contact" class="py-20 bg-gradient-to-r from-orange-500 to-red-500 text-white">
-    <div class="max-w-2xl mx-auto px-4 sm:px-6 text-center">
-      <h2 class="text-3xl sm:text-4xl font-black mb-4">Une animation en tête ?</h2>
-      <p class="text-white/90 mb-8">Devis gratuit et personnalisé sous 24 h ouvrables. Sans engagement.</p>
-      <div class="flex flex-wrap gap-4 justify-center">
-        <a href="https://www.interactis.be/#contact" class="bg-white text-orange-600 px-8 py-4 rounded-xl font-bold hover:bg-gray-100 transition shadow-lg">Demander un devis</a>
-        <a href="https://wa.me/32488435342" class="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-xl font-bold transition">WhatsApp</a>
-      </div>
+  <!-- ============================================
+       HERO BLOG
+       ============================================ -->
+  <section class="blog-hero">
+    <div class="blog-hero-inner">
+      <div class="eyebrow" style="justify-content:center;">Le blog InterActis</div>
+      <h1>Conseils pour des <span class="accent">événements</span> réussis</h1>
+      <p class="sub">Anniversaires, team building, animations en maison de repos ou à l'école : nos guides pratiques pour organiser des moments inoubliables.</p>
     </div>
   </section>
 
-  <footer class="bg-gray-900 text-gray-400 py-12">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="grid md:grid-cols-3 gap-8 mb-8">
-        <div>
-          <h3 class="text-white font-bold text-lg mb-3">InterActis</h3>
-          <p class="text-sm">Animation interactive mobile accessible à tous. Basés à Mons, nous intervenons en Belgique, au Luxembourg et dans le Nord de la France.</p>
-        </div>
-        <div>
-          <h4 class="text-white font-bold mb-3">Nos animations</h4>
-          <ul class="space-y-2 text-sm">
-            <li><a href="/animation-anniversaire" class="hover:text-orange-400 transition">Animation anniversaire</a></li>
-            <li><a href="/animation-entreprise" class="hover:text-orange-400 transition">Animation team building</a></li>
-            <li><a href="/animation-maison-de-repos" class="hover:text-orange-400 transition">Animation maison de repos</a></li>
-            <li><a href="/animation-ecole" class="hover:text-orange-400 transition">Animation école</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="text-white font-bold mb-3">Ressources</h4>
-          <ul class="space-y-2 text-sm">
-            <li><a href="/blog" class="hover:text-orange-400 transition">Blog</a></li>
-            <li><a href="/animation-mons" class="hover:text-orange-400 transition">Animation Mons</a></li>
-            <li><a href="/" class="hover:text-orange-400 transition">Accueil</a></li>
-          </ul>
-        </div>
-      </div>
+  <!-- ============================================
+       GRILLE DES ARTICLES
+       ============================================ -->
+  <section class="blog-grid-section">
+    <div class="blog-grid">
 
-      <div class="flex justify-center items-center gap-5 mb-6">
-        <a href="https://www.instagram.com/interactis.be/" target="_blank" rel="noopener" aria-label="Instagram InterActis" class="text-gray-400 hover:text-orange-400 transition" data-track="social_instagram"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2c2.7 0 3 .01 4.05.06 1.07.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.55.55.89 1.11 1.15 1.77.25.64.42 1.36.47 2.43.05 1.05.06 1.35.06 4.05s-.01 3-.06 4.05c-.05 1.07-.22 1.79-.47 2.43a4.9 4.9 0 0 1-1.15 1.77c-.55.55-1.11.89-1.77 1.15-.64.25-1.36.42-2.43.47-1.05.05-1.35.06-4.05.06s-3-.01-4.05-.06c-1.07-.05-1.79-.22-2.43-.47a4.9 4.9 0 0 1-1.77-1.15 4.9 4.9 0 0 1-1.15-1.77c-.25-.64-.42-1.36-.47-2.43C2.01 15 2 14.7 2 12s.01-3 .06-4.05c.05-1.07.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77.55-.55 1.11-.89 1.77-1.15.64-.25 1.36-.42 2.43-.47C9 2.01 9.3 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7zm5.13-9.63a1.17 1.17 0 1 0 0 2.34 1.17 1.17 0 0 0 0-2.34z"/></svg></a>
-        <a href="https://www.facebook.com/profile.php?id=61586234006690" target="_blank" rel="noopener" aria-label="Facebook InterActis" class="text-gray-400 hover:text-orange-400 transition" data-track="social_facebook"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12c0-6.63-5.37-12-12-12S0 5.37 0 12c0 5.99 4.39 10.95 10.13 11.85v-8.38H7.08V12h3.05V9.36c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.69.23 2.69.23v2.95h-1.52c-1.49 0-1.95.92-1.95 1.87V12h3.33l-.53 3.47h-2.8v8.38C19.61 22.95 24 17.99 24 12z"/></svg></a>
-        <a href="https://www.tiktok.com/@interactisbe" target="_blank" rel="noopener" aria-label="TikTok InterActis" class="text-gray-400 hover:text-orange-400 transition" data-track="social_tiktok"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.84-.1z"/></svg></a>
+      <a href="/blog-organiser-anniversaire-enfant" class="blog-card" data-hover>
+        <div class="blog-card-img">
+          <span class="blog-card-emoji" aria-hidden="true">🎂</span>
+        </div>
+        <div class="blog-card-content">
+          <span class="blog-card-cat">Anniversaire</span>
+          <h2>Comment organiser un anniversaire d'enfant inoubliable (guide 2026)</h2>
+          <p>Date, invités, animation, goûter, timing : le guide simple et complet pour une fête réussie sans stress.</p>
+          <span class="blog-card-cta">Lire l'article <span class="arrow">→</span></span>
+        </div>
+      </a>
+
+      <a href="/blog-animation-maison-de-repos" class="blog-card" data-hover>
+        <div class="blog-card-img">
+          <span class="blog-card-emoji" aria-hidden="true">🧓</span>
+        </div>
+        <div class="blog-card-content">
+          <span class="blog-card-cat">Maison de repos</span>
+          <h2>Quelles animations proposer en maison de repos ? Idées et conseils</h2>
+          <p>Activités classiques, animations interactives et conseils d'accessibilité pour des moments réussis avec les résidents.</p>
+          <span class="blog-card-cta">Lire l'article <span class="arrow">→</span></span>
+        </div>
+      </a>
+
+      <a href="/blog-animation-team-building" class="blog-card" data-hover>
+        <div class="blog-card-img">
+          <span class="blog-card-emoji" aria-hidden="true">🤝</span>
+        </div>
+        <div class="blog-card-content">
+          <span class="blog-card-cat">Team building</span>
+          <h2>Organiser un team building réussi : idées et conseils</h2>
+          <p>Objectifs, choix de l'activité, esprit collaboratif et logistique : la méthode pour un team building qui ressoude vraiment.</p>
+          <span class="blog-card-cta">Lire l'article <span class="arrow">→</span></span>
+        </div>
+      </a>
+
+      <a href="/blog-animation-ecole" class="blog-card" data-hover>
+        <div class="blog-card-img">
+          <span class="blog-card-emoji" aria-hidden="true">🏫</span>
+        </div>
+        <div class="blog-card-content">
+          <span class="blog-card-cat">École</span>
+          <h2>Quelles animations interactives proposer à l'école ?</h2>
+          <p>Journée récréative, porte ouverte, fancy fair : les meilleures animations alliant sport, amusement et cohésion sociale.</p>
+          <span class="blog-card-cta">Lire l'article <span class="arrow">→</span></span>
+        </div>
+      </a>
+
+      <a href="/blog-animation-evenement" class="blog-card" data-hover>
+        <div class="blog-card-img">
+          <span class="blog-card-emoji" aria-hidden="true">🎪</span>
+        </div>
+        <div class="blog-card-content">
+          <span class="blog-card-cat">Événement</span>
+          <h2>Animer une kermesse ou un événement communal : nos conseils</h2>
+          <p>Kermesse, fancy fair, fête de quartier : les bonnes pratiques pour une animation qui rassemble toutes les générations.</p>
+          <span class="blog-card-cta">Lire l'article <span class="arrow">→</span></span>
+        </div>
+      </a>
+
+    </div>
+    <p class="blog-soon">D'autres articles arrivent bientôt : accessibilité, animations multigénérationnelles et bien plus.</p>
+  </section>
+
+  <!-- ============================================
+       CTA FINAL
+       ============================================ -->
+  <section class="blog-cta">
+    <div class="blog-cta-inner">
+      <div class="eyebrow" style="justify-content:center;">Une animation en tête ?</div>
+      <h2>Parlons de votre <span class="accent">événement.</span></h2>
+      <p>Devis gratuit et personnalisé sous 24 h ouvrables. Sans engagement.</p>
+      <div class="blog-cta-actions">
+        <a href="/devis" class="btn btn-primary" data-hover>Demander un devis <span class="arrow">→</span></a>
+        <a href="https://wa.me/32488435342?text=Bonjour%20Ubeyd%2C%20je%20viens%20du%20blog%20et%20j%27aimerais%20discuter%20de%20mon%20%C3%A9v%C3%A9nement." class="btn btn-ghost" target="_blank" rel="noopener" data-hover>WhatsApp</a>
       </div>
-      <hr class="border-gray-700 my-6">
-      <p class="text-center text-xs text-gray-500">&copy; 2026 InterActis &middot; Animation interactive mobile &middot; Belgique &middot; Luxembourg &middot; Nord France</p>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- ============================================
+       FOOTER (même que index.html)
+       ============================================ -->
+  <footer class="ft">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <h3>Inter<span>Actis</span></h3>
+        <p>L'animation interactive mobile qui transforme n'importe quel mur en terrain de jeu. Pour tous les publics. Sans exception.</p>
+        <div class="ft-socials">
+          <a href="https://www.instagram.com/interactis.be/" target="_blank" rel="noopener" data-hover aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=61586234006690" target="_blank" rel="noopener" data-hover aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@interactisbe" target="_blank" rel="noopener" data-hover aria-label="TikTok">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43V8.42a8.16 8.16 0 0 0 4.77 1.52V6.69h-1.84z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="ft-col">
+        <h4>Nos animations</h4>
+        <ul>
+          <li><a href="/animation-anniversaire" data-hover>Anniversaire</a></li>
+          <li><a href="/animation-entreprise" data-hover>Team building</a></li>
+          <li><a href="/animation-maison-de-repos" data-hover>Maison de repos</a></li>
+          <li><a href="/animation-ecole" data-hover>École</a></li>
+          <li><a href="/animation-evenement" data-hover>Événement</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+32488435342" data-hover>+32 488 43 53 42</a></li>
+          <li><a href="mailto:uckoz@interactis.be" data-hover>uckoz@interactis.be</a></li>
+          <li><a href="https://wa.me/32488435342?text=Bonjour%20Ubeyd%2C%20je%20m%27int%C3%A9resse%20%C3%A0%20une%20animation%20InterActis%20pour%20%5Btype%20d%27%C3%A9v%C3%A9nement%5D%20le%20%5Bdate%5D%20%C3%A0%20%5Bville%5D.%20Pouvez-vous%20me%20proposer%20un%20devis%20%3F" target="_blank" rel="noopener" data-hover>WhatsApp</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h4>Légal</h4>
+        <ul>
+          <li><a href="/mentions-legales" data-hover>Mentions légales</a></li>
+          <li><a href="/confidentialite" data-hover>Confidentialité</a></li>
+          <li><a href="/cgv" data-hover>CGV</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <span>© <span id="yr"></span> InterActis · Tous droits réservés</span>
+      <span>Animation interactive mobile · Belgique · Luxembourg · Nord France</span>
     </div>
   </footer>
+
+  <!-- WhatsApp flottant -->
+  <a href="https://wa.me/32488435342?text=Bonjour%20Ubeyd%2C%20je%20viens%20du%20blog%20et%20j%27aimerais%20discuter%20de%20mon%20%C3%A9v%C3%A9nement." class="wa" target="_blank" rel="noopener" aria-label="Nous contacter sur WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0 0 20.464 3.488"/></svg>
+  </a>
+
+  <!-- ============================================
+       COOKIE BANNER RGPD
+       ============================================ -->
+  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Consentement cookies">
+    <h4>🍪 On respecte votre vie privée</h4>
+    <p>Nous utilisons des cookies pour analyser le trafic. <a href="/confidentialite" data-hover>En savoir plus</a></p>
+    <div class="cookie-actions">
+      <button type="button" class="cookie-btn-reject" id="cookieReject" data-hover>Refuser</button>
+      <button type="button" class="cookie-btn-accept" id="cookieAccept" data-hover>Accepter</button>
+    </div>
+  </div>
+
+  <!-- JS partagé : curseur custom, menu burger, année footer -->
+  <script src="/assets/site.js" defer></script>
 </body>
 </html>
