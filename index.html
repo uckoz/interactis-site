@@ -1828,7 +1828,9 @@
       border: 1px solid var(--line-strong);
       box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 60px rgba(0,212,255,0.12);
     }
-    .promo-video video { width: 100%; display: block; }
+    /* aspect-ratio reserve la hauteur avant que la lazy-video charge sa src (evite CLS) */
+    .promo-video { aspect-ratio: 9 / 16; }
+    .promo-video video { width: 100%; height: 100%; display: block; object-fit: cover; }
     .promo-hint { font-size: 0.8125rem; color: var(--text-faded); margin-top: 18px; }
   </style>
 </head>
