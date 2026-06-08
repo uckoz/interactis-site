@@ -1,0 +1,208 @@
+/* ============================================
+   InterActis - CSS CRO
+   Charge dynamiquement par /assets/cro.js
+   ============================================ */
+
+   CRO : BANNER D'URGENCE STICKY (calendrier qui se remplit)
+   Injecte dynamiquement par /assets/cro.js
+   ============================================ */
+.urgency-banner {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 95;
+  background: linear-gradient(90deg, var(--orange) 0%, #ff9347 50%, var(--orange-bright) 100%);
+  color: #1a0e02;
+  font-size: 0.875rem;
+  font-weight: 600;
+  box-shadow: 0 4px 16px rgba(255,122,24,0.35);
+  animation: bannerSlideDown 0.4s var(--ease);
+  transform-origin: top;
+}
+@keyframes bannerSlideDown {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
+}
+.urgency-banner.is-closing {
+  animation: bannerSlideUp 0.25s ease-in forwards;
+}
+@keyframes bannerSlideUp {
+  to { transform: translateY(-100%); opacity: 0; }
+}
+.urgency-banner-inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 11px 56px 11px 24px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  position: relative;
+}
+.urgency-banner-emoji {
+  font-size: 1.125rem;
+  flex-shrink: 0;
+}
+.urgency-banner-text { flex: 1; min-width: 200px; line-height: 1.35; }
+.urgency-banner-text strong { font-weight: 800; }
+.urgency-banner-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 14px;
+  background: #1a0e02;
+  color: #fff;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.8125rem;
+  transition: transform 0.2s ease, background 0.2s ease;
+  flex-shrink: 0;
+}
+.urgency-banner-link:hover {
+  background: #000;
+  transform: translateX(2px);
+}
+.urgency-banner-close {
+  position: absolute;
+  top: 50%; right: 16px;
+  transform: translateY(-50%);
+  width: 28px; height: 28px;
+  background: rgba(0,0,0,0.15);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #1a0e02;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s ease;
+}
+@media (pointer: coarse) { .urgency-banner-close { cursor: auto; } }
+.urgency-banner-close:hover { background: rgba(0,0,0,0.3); }
+
+/* Pousse le header fixe vers le bas quand banner present */
+body.has-urgency-banner .hd { top: 46px; }
+body.has-urgency-banner .devis-header { top: 46px; }
+
+@media (max-width: 720px) {
+  .urgency-banner-inner { padding: 10px 48px 10px 16px; gap: 10px; font-size: 0.8125rem; }
+  .urgency-banner-link { padding: 5px 12px; font-size: 0.75rem; }
+  body.has-urgency-banner .hd,
+  body.has-urgency-banner .devis-header { top: 68px; }
+}
+
+/* ============================================
+   CRO : POP-UP EXIT-INTENT (recupere les leads sortants)
+   Injecte dynamiquement par /assets/cro.js
+   ============================================ */
+.exit-popup-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  background: rgba(5, 7, 13, 0.85);
+  backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.3s var(--ease);
+}
+.exit-popup-overlay.is-visible { opacity: 1; }
+.exit-popup-overlay.is-closing { opacity: 0; }
+.exit-popup {
+  position: relative;
+  max-width: 440px;
+  width: 100%;
+  background: var(--bg-card);
+  border: 1px solid var(--line-strong);
+  border-radius: 20px;
+  padding: 36px 32px 30px;
+  text-align: center;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,122,24,0.2);
+  transform: scale(0.92) translateY(20px);
+  transition: transform 0.35s var(--ease);
+}
+.exit-popup-overlay.is-visible .exit-popup { transform: scale(1) translateY(0); }
+.exit-popup-overlay.is-closing .exit-popup { transform: scale(0.95) translateY(10px); }
+.exit-popup-close {
+  position: absolute;
+  top: 12px; right: 12px;
+  width: 32px; height: 32px;
+  background: rgba(255,255,255,0.08);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--text);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s ease;
+}
+@media (pointer: coarse) { .exit-popup-close { cursor: auto; } }
+.exit-popup-close:hover { background: rgba(255,255,255,0.18); }
+.exit-popup-emoji {
+  font-size: 3rem;
+  line-height: 1;
+  margin-bottom: 14px;
+  filter: drop-shadow(0 6px 16px rgba(255,122,24,0.4));
+}
+.exit-popup h3 {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+  color: var(--text);
+}
+.exit-popup p {
+  font-size: 0.9375rem;
+  color: var(--text-dim);
+  line-height: 1.55;
+  margin-bottom: 22px;
+}
+.exit-popup p strong { color: var(--orange); font-weight: 700; }
+.exit-popup-form {
+  display: flex; flex-direction: column; gap: 10px;
+  margin-bottom: 14px;
+}
+.exit-popup-form input[type="email"] {
+  width: 100%;
+  padding: 14px 16px;
+  background: rgba(255,255,255,0.04);
+  border: 1.5px solid var(--line-strong);
+  border-radius: 12px;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.9375rem;
+  text-align: center;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.exit-popup-form input[type="email"]:focus {
+  outline: none;
+  border-color: var(--orange);
+  background: rgba(255,255,255,0.07);
+}
+.exit-popup-submit {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 8px;
+  padding: 14px 20px;
+  background: var(--orange);
+  color: white;
+  border: none;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s var(--ease);
+  box-shadow: 0 12px 28px rgba(255,122,24,0.35);
+}
+@media (pointer: coarse) { .exit-popup-submit { cursor: auto; } }
+.exit-popup-submit:hover {
+  background: var(--orange-bright);
+  box-shadow: 0 16px 36px rgba(255,122,24,0.5);
+  transform: translateY(-1px);
+}
+.exit-popup-trust {
+  font-size: 0.75rem;
+  color: var(--text-faded);
+  margin: 0;
+}
