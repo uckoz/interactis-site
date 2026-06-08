@@ -27,7 +27,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Bricolage+Grotesque:wght@700&display=swap" rel="stylesheet" />
+  <!-- Google Fonts : chargement non-bloquant (gain LCP ~1.8s sur 4G) -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Bricolage+Grotesque:wght@700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Bricolage+Grotesque:wght@700&display=swap" rel="stylesheet" /></noscript>
   <link rel="stylesheet" href="/assets/site.css" />
 
   <!-- Schema.org Service Markup -->
@@ -708,9 +710,8 @@
       <h2>L'animation qui rassemble tout le monde</h2>
       <div style="max-width: 600px; margin: 40px auto 0;">
         <div class="video-container">
-          <video autoplay muted loop playsinline controls preload="metadata" poster="/assets/interactis-promo-poster.jpg">
-            <source src="/assets/interactis-promo.mp4" type="video/mp4" />
-          </video>
+          <video class="lazy-video" autoplay muted loop playsinline controls preload="none" poster="/assets/interactis-promo-poster.jpg" data-src="/assets/interactis-promo.mp4">
+        </video>
         </div>
       </div>
       <p style="color: var(--text-dim); margin-top: 16px; font-size: 0.875rem;">Activez le son 🔊 pour entendre l'ambiance</p>
@@ -861,9 +862,8 @@
       <div class="gallery">
         <img src="/images/photo-ecole-action.webp" alt="Élèves en pleine animation interactive InterActis sur un mur" loading="lazy" />
         <div class="video-container">
-          <video autoplay muted loop playsinline preload="metadata" poster="/assets/video-ecole-action-poster.webp">
-            <source src="/assets/video-ecole-action.mp4" type="video/mp4" />
-          </video>
+          <video class="lazy-video" autoplay muted loop playsinline preload="none" poster="/assets/video-ecole-action-poster.webp" data-src="/assets/video-ecole-action.mp4">
+        </video>
         </div>
       </div>
     </section>

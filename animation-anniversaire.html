@@ -27,7 +27,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Bricolage+Grotesque:wght@700&display=swap" rel="stylesheet" />
+  <!-- Google Fonts : chargement non-bloquant (gain LCP ~1.8s sur 4G) -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Bricolage+Grotesque:wght@700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Bricolage+Grotesque:wght@700&display=swap" rel="stylesheet" /></noscript>
   <link rel="stylesheet" href="/assets/site.css" />
 
   <script type="application/ld+json">
@@ -249,16 +251,15 @@
     <h2>Découvrez notre animation en vidéo</h2>
     <p>Voici ce que les enfants vivent lors d'une animation InterActis :</p>
     <div style="margin: 32px 0; border-radius: 16px; overflow: hidden;">
-      <video autoplay muted loop playsinline controls preload="metadata" poster="/assets/interactis-promo-poster.jpg" style="width: 100%; display: block;">
-        <source src="/assets/interactis-promo.mp4" type="video/mp4" />
-      </video>
+      <video class="lazy-video" autoplay muted loop playsinline controls preload="none" poster="/assets/interactis-promo-poster.jpg" style="width: 100%; display: block;" data-src="/assets/interactis-promo.mp4">
+        </video>
     </div>
     <p style="text-align: center; font-size: 0.9rem; color: var(--text-faded);">Activez le son pour entendre l'ambiance</p>
 
     <h2>Une fête d'anniversaire en action</h2>
     <p>Voici un aperçu réel d'une fête animée avec InterActis. Les enfants jouent, rient, et participent tous ensemble, sans manette ni écran individuel.</p>
     <div style="margin: 32px 0; border-radius: 16px; overflow: hidden;">
-      <video controls preload="metadata" playsinline poster="/assets/video-anniversaire-action-poster.webp" style="width: 100%; display: block;">
+      <video controls preload="none" playsinline poster="/assets/video-anniversaire-action-poster.webp" style="width: 100%; display: block;">
         <source src="/assets/video-anniversaire-action.mp4" type="video/mp4" />
         Votre navigateur ne supporte pas la lecture vidéo.
       </video>

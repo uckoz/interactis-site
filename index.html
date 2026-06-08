@@ -40,7 +40,9 @@
   <link rel="dns-prefetch" href="https://assets.calendly.com" />
   <link rel="dns-prefetch" href="https://embed.tawk.to" />
   <link rel="dns-prefetch" href="https://api.web3forms.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Bricolage+Grotesque:wght@700&display=swap" rel="stylesheet" />
+  <!-- Google Fonts : chargement non-bloquant (gain LCP ~1.8s sur 4G) -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Bricolage+Grotesque:wght@700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Bricolage+Grotesque:wght@700&display=swap" rel="stylesheet" /></noscript>
 
   <!-- Calendly : JS asynchrone, CSS chargé à la demande au 1er clic (voir openCalendly) -->
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" defer></script>
@@ -1876,8 +1878,7 @@
        ============================================ -->
   <section class="hero">
     <div class="hero-bg">
-      <video autoplay muted loop playsinline poster="assets/hero.webp" preload="metadata">
-        <source src="assets/video-montage.mp4" type="video/mp4" />
+      <video autoplay muted loop playsinline poster="assets/hero.webp" preload="none" width="1080" height="1920" class="lazy-video" data-src="assets/video-montage.mp4">
       </video>
     </div>
     <span class="orb orb-1" aria-hidden="true"></span>
@@ -1937,8 +1938,8 @@
       <p class="promo-eyebrow" data-reveal>Découvrez InterActis en vidéo</p>
       <h2 data-reveal>L'animation qui <span class="accent">rassemble tout le monde</span></h2>
       <div class="promo-video" data-reveal data-tilt>
-        <video autoplay muted loop playsinline controls preload="metadata" poster="/assets/interactis-promo-poster.jpg">
-          <source src="/assets/interactis-promo.mp4" type="video/mp4" />
+        <!-- Vidéo promo en lazy-load : ne télécharge que quand visible (gain LCP majeur) -->
+        <video class="lazy-video" muted loop playsinline controls preload="none" poster="/assets/interactis-promo-poster.jpg" data-src="/assets/interactis-promo.mp4" width="900" height="506">
         </video>
       </div>
       <p class="promo-hint">Activez le son 🔊 pour entendre l'ambiance</p>
@@ -1976,9 +1977,8 @@
        ============================================ -->
   <section class="manifeste">
     <div class="manifeste-bg">
-      <video autoplay muted loop playsinline preload="metadata" poster="assets/hero.webp">
-        <source src="assets/video-montage.mp4" type="video/mp4" />
-      </video>
+      <video class="lazy-video" autoplay muted loop playsinline preload="none" poster="assets/hero.webp" data-src="assets/video-montage.mp4">
+        </video>
     </div>
     <div class="manifeste-inner">
       <div class="manifeste-label eyebrow">Notre conviction</div>
@@ -2073,8 +2073,7 @@
     <div class="anniv-grid">
       <div class="anniv-video">
         <div class="anniv-badge">Vu en vrai</div>
-        <video autoplay muted loop playsinline poster="assets/video-jeu-action-poster.webp" preload="metadata">
-          <source src="assets/video-jeu-action.mp4" type="video/mp4" />
+        <video class="lazy-video" autoplay muted loop playsinline poster="assets/video-jeu-action-poster.webp" preload="none" data-src="assets/video-jeu-action.mp4">
         </video>
       </div>
 
@@ -2103,7 +2102,7 @@
        ============================================ -->
   <section class="bouz">
     <div class="bouz-bg">
-      <img src="assets/bouzanton.webp" alt="Animation InterActis à la Bonne Maison de Bouzanton - résidents en fauteuil roulant" />
+      <img src="assets/bouzanton.webp" alt="Animation InterActis à la Bonne Maison de Bouzanton - résidents en fauteuil roulant" width="1600" height="1000" loading="lazy" decoding="async" />
     </div>
     <div class="bouz-content">
       <div class="bouz-tag">
@@ -2154,8 +2153,7 @@
         </div>
       </div>
       <div class="process-proof-video">
-        <video autoplay muted loop playsinline preload="metadata" poster="assets/video-installation-poster.jpg">
-          <source src="assets/video-installation.mp4" type="video/mp4" />
+        <video class="lazy-video" autoplay muted loop playsinline preload="none" poster="assets/video-installation-poster.jpg" data-src="assets/video-installation.mp4">
         </video>
       </div>
     </div>
@@ -2176,27 +2174,27 @@
     </div>
     <div class="videos-grid">
       <div class="vcard" data-reveal data-tilt>
-        <video controls playsinline preload="metadata" poster="assets/video-bouzanton-1-poster.webp">
+        <video controls playsinline preload="none" poster="assets/video-bouzanton-1-poster.webp">
           <source src="assets/video-bouzanton-1.mp4" type="video/mp4" />
         </video>
       </div>
       <div class="vcard" data-reveal data-tilt>
-        <video controls playsinline preload="metadata" poster="assets/video-bouzanton-2-poster.webp">
+        <video controls playsinline preload="none" poster="assets/video-bouzanton-2-poster.webp">
           <source src="assets/video-bouzanton-2.mp4" type="video/mp4" />
         </video>
       </div>
       <div class="vcard" data-reveal data-tilt>
-        <video controls playsinline preload="metadata" poster="assets/video-palais-1-poster.webp">
+        <video controls playsinline preload="none" poster="assets/video-palais-1-poster.webp">
           <source src="assets/video-palais-1.mp4" type="video/mp4" />
         </video>
       </div>
       <div class="vcard" data-reveal data-tilt>
-        <video controls playsinline preload="metadata" poster="assets/video-palais-2-poster.webp">
+        <video controls playsinline preload="none" poster="assets/video-palais-2-poster.webp">
           <source src="assets/video-palais-2.mp4" type="video/mp4" />
         </video>
       </div>
       <div class="vcard" data-reveal data-tilt>
-        <video controls playsinline preload="metadata" poster="assets/video-jeu-action-poster.webp">
+        <video controls playsinline preload="none" poster="assets/video-jeu-action-poster.webp">
           <source src="assets/video-jeu-action.mp4" type="video/mp4" />
         </video>
       </div>

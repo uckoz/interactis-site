@@ -2,10 +2,48 @@
    InterActis - CRO (Conversion Rate Optimization)
    - Banner d'urgence sticky en haut
    - Pop-up exit-intent (recupere leads sortants)
+   - Lazy-load des videos (gain LCP / data mobile)
    ============================================ */
 
 (function() {
   'use strict';
+
+  // ============================================
+  // LAZY-LOAD DES VIDEOS DECORATIVES
+  // Charge la source uniquement quand la video est sur le point d'etre visible.
+  // Gain massif sur le LCP mobile (4G) car on n'attend pas la fin du download
+  // de plusieurs MB de video avant d'afficher le contenu critique.
+  // ============================================
+  function initLazyVideos() {
+    var vids = document.querySelectorAll('video.lazy-video[data-src]');
+    if (!vids.length) return;
+    if (!('IntersectionObserver' in window)) {
+      vids.forEach(function(v){
+        var src = v.getAttribute('data-src');
+        if (src && !v.src) { v.src = src; v.load(); v.play().catch(function(){}); }
+      });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        var v = e.target;
+        var src = v.getAttribute('data-src');
+        if (src && !v.src) {
+          v.src = src;
+          v.load();
+          v.play().catch(function(){});
+        }
+        io.unobserve(v);
+      });
+    }, { rootMargin: '400px 0px' });
+    vids.forEach(function(v){ io.observe(v); });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initLazyVideos);
+  } else {
+    initLazyVideos();
+  }
 
   // ============================================
   // 0) CHARGE LE CSS CRO (banner + popup styles)
