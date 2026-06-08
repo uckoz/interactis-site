@@ -391,6 +391,145 @@
       .devis-header { padding: 14px 18px; }
       .devis-header .header-cta { display: none; }
     }
+
+    /* ============================================
+       FORMULAIRE 3 ETAPES (multi-step CRO)
+       ============================================ */
+
+    /* Barre de progression */
+    .form-progress {
+      position: relative;
+      margin-bottom: 8px;
+      padding: 0 4px;
+    }
+    .form-progress::before {
+      content: '';
+      position: absolute;
+      top: 16px; left: 4px; right: 4px;
+      height: 3px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 999px;
+      z-index: 0;
+    }
+    .form-progress-bar {
+      position: absolute;
+      top: 16px; left: 4px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--orange), var(--blue));
+      border-radius: 999px;
+      transition: width 0.4s var(--ease);
+      z-index: 1;
+    }
+    .form-progress-steps {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+    }
+    .form-progress-step {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 2px solid rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700;
+      font-size: 0.9375rem;
+      color: var(--text-faded);
+      transition: all 0.3s var(--ease);
+    }
+    .form-progress-step.is-active {
+      background: var(--orange);
+      border-color: var(--orange);
+      color: white;
+      box-shadow: 0 0 0 6px rgba(255,122,24,0.18);
+    }
+    .form-progress-step.is-done {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: var(--bg);
+    }
+    .form-step-label {
+      text-align: center;
+      font-size: 0.8125rem;
+      color: var(--text-faded);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin: 14px 0 24px;
+    }
+
+    /* Etapes - une seule visible à la fois */
+    .form-step {
+      display: none;
+      animation: stepFadeIn 0.4s var(--ease);
+    }
+    .form-step.is-active { display: block; }
+    @keyframes stepFadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .form-step-intro {
+      font-size: 0.9375rem;
+      color: var(--text-dim);
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    /* Cards de type d'evenement (etape 1) */
+    .type-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    .type-card {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 10px;
+      padding: 18px 12px;
+      background: rgba(255,255,255,0.03);
+      border: 1.5px solid rgba(255,255,255,0.12);
+      border-radius: 14px;
+      cursor: pointer;
+      transition: all 0.25s var(--ease);
+      font: inherit;
+      color: var(--text);
+      text-align: center;
+    }
+    @media (pointer: coarse) { .type-card { cursor: auto; } }
+    .type-card:hover {
+      border-color: var(--orange);
+      background: rgba(255,122,24,0.10);
+      transform: translateY(-2px);
+    }
+    .type-card.is-selected {
+      border-color: var(--orange);
+      background: rgba(255,122,24,0.18);
+      box-shadow: 0 0 0 3px rgba(255,122,24,0.25);
+    }
+    .type-card-emoji {
+      font-size: 1.875rem;
+      line-height: 1;
+    }
+    .type-card-label {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    /* Navigation entre etapes */
+    .form-nav {
+      display: flex;
+      gap: 12px;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 24px;
+    }
+    .form-nav .btn { flex: 1; padding: 14px 20px; }
+    .form-nav .form-back { flex: 0 0 auto; padding: 14px 20px; }
+    @media (max-width: 540px) {
+      .form-nav { flex-direction: column-reverse; }
+      .form-nav .btn, .form-nav .form-back { width: 100%; flex: 1; }
+    }
   </style>
 </head>
 <body>
@@ -456,30 +595,115 @@
         <p class="form-intro">Plus vous donnez de détails, plus notre proposition sera précise dès le premier échange.</p>
 
         <!--
-          Formulaire via Web3Forms (https://web3forms.com)
-          Service fiable, gratuit, illimité. Aucune validation préalable.
-          Les devis arrivent directement à uckoz@interactis.be.
-          Le champ "source" permet d'identifier les leads venant de cette landing.
+          Formulaire 3 etapes via Web3Forms (https://web3forms.com)
+          Etape 1 : type d'evenement (clic = engagement, micro-commitment)
+          Etape 2 : details (date, lieu, participants, message)
+          Etape 3 : coordonnees (nom, email, tel) + submit final
+          Le champ "source" identifie les leads venant de cette landing.
         -->
-        <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+
+        <!-- Barre de progression -->
+        <div class="form-progress" aria-hidden="true">
+          <div class="form-progress-bar" id="progressBar" style="width: 33%;"></div>
+          <div class="form-progress-steps">
+            <span class="form-progress-step is-active" data-step="1">1</span>
+            <span class="form-progress-step" data-step="2">2</span>
+            <span class="form-progress-step" data-step="3">3</span>
+          </div>
+        </div>
+        <p class="form-step-label" id="stepLabel">Étape 1 sur 3 · Type d'événement</p>
+
+        <form class="contact-form multi-step-form" id="devisForm" action="https://api.web3forms.com/submit" method="POST">
           <input type="hidden" name="access_key" value="f08ff9b7-efb2-4e47-bd2c-d79267ffee7a" />
           <input type="hidden" name="subject" value="Nouvelle demande de devis - Landing /devis" />
           <input type="hidden" name="from_name" value="Landing devis interactis.be" />
           <input type="hidden" name="source" value="landing-devis" />
           <input type="hidden" name="redirect" value="https://www.interactis.be/merci" />
-          <!-- Honeypot anti-spam (Web3Forms ignore les soumissions qui le remplissent) -->
+          <!-- Honeypot anti-spam -->
           <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off" />
 
-          <div class="form-field">
-            <label for="nom">Nom complet *</label>
-            <input id="nom" type="text" name="nom" required autocomplete="name" />
+          <!-- ============================================
+               ETAPE 1 : Type d'evenement (cards cliquables)
+               ============================================ -->
+          <div class="form-step is-active" data-step="1">
+            <p class="form-step-intro">Quel type d'événement souhaitez-vous animer ? Choisissez pour commencer.</p>
+            <input type="hidden" name="type" id="typeInput" required />
+            <div class="type-cards">
+              <button type="button" class="type-card" data-type="Anniversaire enfant">
+                <span class="type-card-emoji">🎂</span>
+                <span class="type-card-label">Anniversaire enfant</span>
+              </button>
+              <button type="button" class="type-card" data-type="Anniversaire adulte / famille">
+                <span class="type-card-emoji">🎉</span>
+                <span class="type-card-label">Anniversaire adulte</span>
+              </button>
+              <button type="button" class="type-card" data-type="Team building / entreprise">
+                <span class="type-card-emoji">🤝</span>
+                <span class="type-card-label">Team building</span>
+              </button>
+              <button type="button" class="type-card" data-type="Maison de repos">
+                <span class="type-card-emoji">🧓</span>
+                <span class="type-card-label">Maison de repos</span>
+              </button>
+              <button type="button" class="type-card" data-type="École / centre spécialisé">
+                <span class="type-card-emoji">🏫</span>
+                <span class="type-card-label">École / centre</span>
+              </button>
+              <button type="button" class="type-card" data-type="Événement public">
+                <span class="type-card-emoji">🎪</span>
+                <span class="type-card-label">Événement public</span>
+              </button>
+              <button type="button" class="type-card" data-type="Autre">
+                <span class="type-card-emoji">✨</span>
+                <span class="type-card-label">Autre</span>
+              </button>
+            </div>
           </div>
 
-          <div class="form-row">
+          <!-- ============================================
+               ETAPE 2 : Details de l'evenement
+               ============================================ -->
+          <div class="form-step" data-step="2">
+            <p class="form-step-intro">Parlez-nous de votre événement. Plus c'est précis, mieux on adapte.</p>
+
+            <div class="form-field">
+              <label for="date">Date souhaitée *</label>
+              <input id="date" type="text" name="date" required placeholder="ex. samedi 14 septembre, ou « entre mi-septembre et mi-octobre »" />
+            </div>
+
+            <div class="form-row">
+              <div class="form-field">
+                <label for="lieu">Lieu ou ville *</label>
+                <input id="lieu" type="text" name="lieu" required autocomplete="street-address" placeholder="ex. Mons, Bruxelles…" />
+              </div>
+              <div class="form-field">
+                <label for="part">Nombre de participants</label>
+                <input id="part" type="number" name="part" min="2" max="200" inputmode="numeric" placeholder="ex. 20" />
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="message">Votre message (facultatif)</label>
+              <textarea id="message" name="message" rows="3" placeholder="Ambiance recherchée, contraintes particulières, accès PMR…"></textarea>
+            </div>
+          </div>
+
+          <!-- ============================================
+               ETAPE 3 : Coordonnees (submit final)
+               ============================================ -->
+          <div class="form-step" data-step="3">
+            <p class="form-step-intro">Dernière étape. Comment on vous recontacte ?</p>
+
+            <div class="form-field">
+              <label for="nom">Nom complet *</label>
+              <input id="nom" type="text" name="nom" required autocomplete="name" placeholder="Prénom Nom" />
+            </div>
+
             <div class="form-field">
               <label for="email">Email *</label>
-              <input id="email" type="email" name="email" required autocomplete="email" inputmode="email" />
+              <input id="email" type="email" name="email" required autocomplete="email" inputmode="email" placeholder="vous@exemple.com" />
             </div>
+
             <div class="form-field">
               <label for="tel">Téléphone *</label>
               <input id="tel" type="tel" name="tel" required autocomplete="tel" inputmode="tel" placeholder="+32 …" />
@@ -487,38 +711,20 @@
             </div>
           </div>
 
-          <div class="form-field">
-            <label for="type">Type d'événement *</label>
-            <select id="type" name="type" required>
-              <option value="">Sélectionner…</option>
-              <option>Anniversaire enfant</option>
-              <option>Anniversaire adulte / famille</option>
-              <option>Team building / entreprise</option>
-              <option>Maison de repos</option>
-              <option>École / centre spécialisé</option>
-              <option>Événement public</option>
-              <option>Autre</option>
-            </select>
+          <!-- ============================================
+               Boutons de navigation
+               ============================================ -->
+          <div class="form-nav">
+            <button type="button" class="btn btn-ghost form-back" id="btnBack" data-hover style="display: none;">
+              ← Retour
+            </button>
+            <button type="button" class="btn btn-primary form-next" id="btnNext" data-hover style="display: none;">
+              Continuer <span class="arrow">→</span>
+            </button>
+            <button type="submit" class="btn btn-primary form-submit" id="btnSubmit" data-hover style="display: none;">
+              Recevoir mon devis sous 24h <span class="arrow">→</span>
+            </button>
           </div>
-
-          <div class="form-field">
-            <label for="part">Nombre de participants</label>
-            <input id="part" type="number" name="part" min="2" max="200" inputmode="numeric" placeholder="ex. 20" />
-          </div>
-
-          <div class="form-field">
-            <label for="lieu">Adresse ou lieu de l'événement *</label>
-            <input id="lieu" type="text" name="lieu" required autocomplete="street-address" placeholder="ex. Rue de la Station 12, 7000 Mons" />
-          </div>
-
-          <div class="form-field">
-            <label for="message">Votre message</label>
-            <textarea id="message" name="message" rows="3" placeholder="Quelques mots sur votre événement (date, ambiance recherchée…)"></textarea>
-          </div>
-
-          <button type="submit" class="btn btn-primary form-submit" data-hover>
-            Recevoir mon devis sous 24h <span class="arrow">→</span>
-          </button>
           <p class="form-trust">🔒 Vos infos restent confidentielles · Devis gratuit · Sans engagement</p>
         </form>
       </div>
@@ -711,5 +917,120 @@
 
   <!-- JS partagé : curseur custom, menu burger, année footer -->
   <script src="/assets/site.js" defer></script>
+
+  <!-- ============================================
+       JS du formulaire 3 etapes
+       ============================================ -->
+  <script>
+    (function() {
+      var form = document.getElementById('devisForm');
+      if (!form) return;
+
+      var currentStep = 1;
+      var totalSteps = 3;
+      var stepLabels = {
+        1: 'Étape 1 sur 3 · Type d\'événement',
+        2: 'Étape 2 sur 3 · Détails',
+        3: 'Étape 3 sur 3 · Vos coordonnées'
+      };
+
+      var btnNext = document.getElementById('btnNext');
+      var btnBack = document.getElementById('btnBack');
+      var btnSubmit = document.getElementById('btnSubmit');
+      var progressBar = document.getElementById('progressBar');
+      var stepLabel = document.getElementById('stepLabel');
+      var typeInput = document.getElementById('typeInput');
+      var steps = form.querySelectorAll('.form-step');
+      var progressSteps = document.querySelectorAll('.form-progress-step');
+      var typeCards = form.querySelectorAll('.type-card');
+
+      // Initialise les boutons sur l'etape 1
+      updateButtons();
+
+      // ---- Selection d'un type d'evenement (etape 1) ----
+      typeCards.forEach(function(card) {
+        card.addEventListener('click', function() {
+          // Reset visual selection
+          typeCards.forEach(function(c) { c.classList.remove('is-selected'); });
+          card.classList.add('is-selected');
+          // Save value
+          typeInput.value = card.getAttribute('data-type');
+          // Auto-advance apres 250ms pour effet visuel
+          setTimeout(function() { goToStep(2); }, 280);
+        });
+      });
+
+      // ---- Bouton Suivant ----
+      btnNext.addEventListener('click', function() {
+        if (!validateCurrentStep()) return;
+        goToStep(currentStep + 1);
+      });
+
+      // ---- Bouton Retour ----
+      btnBack.addEventListener('click', function() {
+        goToStep(currentStep - 1);
+      });
+
+      // ---- Validation de l'etape courante ----
+      function validateCurrentStep() {
+        var activeStep = form.querySelector('.form-step.is-active');
+        if (!activeStep) return true;
+        var requiredFields = activeStep.querySelectorAll('input[required], select[required], textarea[required]');
+        for (var i = 0; i < requiredFields.length; i++) {
+          var field = requiredFields[i];
+          if (!field.value.trim()) {
+            field.focus();
+            field.reportValidity();
+            return false;
+          }
+          if (field.type === 'email' && !field.checkValidity()) {
+            field.focus();
+            field.reportValidity();
+            return false;
+          }
+        }
+        return true;
+      }
+
+      // ---- Changement d'etape ----
+      function goToStep(targetStep) {
+        if (targetStep < 1 || targetStep > totalSteps) return;
+        // Hide current, show target
+        steps.forEach(function(s) { s.classList.remove('is-active'); });
+        var target = form.querySelector('.form-step[data-step="' + targetStep + '"]');
+        if (target) target.classList.add('is-active');
+        currentStep = targetStep;
+        updateProgress();
+        updateButtons();
+        // Scroll doux vers le haut du formulaire sur mobile
+        if (window.innerWidth < 980) {
+          form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+
+      // ---- Mise a jour de la barre de progression ----
+      function updateProgress() {
+        var percent = (currentStep / totalSteps) * 100;
+        progressBar.style.width = percent + '%';
+        stepLabel.textContent = stepLabels[currentStep] || '';
+        progressSteps.forEach(function(s) {
+          var n = parseInt(s.getAttribute('data-step'), 10);
+          s.classList.remove('is-active', 'is-done');
+          if (n < currentStep) s.classList.add('is-done');
+          if (n === currentStep) s.classList.add('is-active');
+        });
+      }
+
+      // ---- Affichage des boutons selon l'etape ----
+      function updateButtons() {
+        // Retour visible des l'etape 2
+        btnBack.style.display = currentStep > 1 ? 'inline-flex' : 'none';
+        // Suivant visible aux etapes 2 (etape 1 = auto-advance via card click)
+        btnNext.style.display = (currentStep === 2) ? 'inline-flex' : 'none';
+        // Submit visible uniquement a l'etape 3
+        btnSubmit.style.display = (currentStep === totalSteps) ? 'inline-flex' : 'none';
+      }
+    })();
+  </script>
 </body>
 </html>
