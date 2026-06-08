@@ -390,15 +390,9 @@
       line-height: 0.95;
     }
 
-    /* Split text - visible par defaut (gain LCP). L'animation .in
-       n'apparait que si JS l'active explicitement via prefers-reduced-motion: no-preference */
+    /* Split text - retire pour ne pas penaliser le LCP. Le H1 reste static. */
     .split-line { display: block; }
     .split-word { display: inline-block; }
-    @media (prefers-reduced-motion: no-preference) {
-      .split-word.is-hidden { transform: translateY(110%); will-change: transform; }
-      .split-line.has-split { overflow: hidden; }
-      .split-word.is-hidden.in { transform: translateY(0); transition: transform 0.8s var(--ease); }
-    }
 
     /* Header / Nav */
     .hd {
@@ -2527,32 +2521,8 @@
       });
     }
 
-    // ============================================
-    // SPLIT HERO TITLE (word by word reveal)
-    // Anime APRES le LCP pour ne pas retarder le first contentful paint.
-    // Si l'utilisateur prefere reduce-motion, on saute l'animation.
-    // ============================================
-    const h1 = document.querySelector('.hero h1.display');
-    if (h1 && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
-      // Attend que le LCP soit mesure (post-load) avant de bricoler le DOM
-      const playSplit = () => {
-        const lines = h1.innerHTML.split('<br>');
-        h1.innerHTML = lines.map(line =>
-          `<span class="split-line has-split"><span class="split-word is-hidden">${line}</span></span>`
-        ).join('');
-        const words = h1.querySelectorAll('.split-word');
-        // Force reflow puis ajoute .in pour declencher la transition
-        // (les mots ne sont pas "hidden" longtemps : ~50ms)
-        requestAnimationFrame(() => {
-          words.forEach((w, i) => {
-            setTimeout(() => w.classList.add('in'), i * 120);
-          });
-        });
-      };
-      // Defere apres le load pour ne pas penaliser le LCP
-      if (document.readyState === 'complete') setTimeout(playSplit, 100);
-      else window.addEventListener('load', () => setTimeout(playSplit, 100));
-    }
+    // SPLIT HERO TITLE : desactive pour preserver le LCP.
+    // Le H1 reste statique = paint instantane.
 
     // ============================================
     // MANIFESTE - mots qui s'activent au scroll
