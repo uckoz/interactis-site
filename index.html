@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="https://www.interactis.be/assets/hero.jpg" />
 
-  <!-- Préchargement du LCP (hero image) -->
+  <!-- Préchargement du LCP (hero image, sert de poster video) -->
   <link rel="preload" as="image" href="/assets/hero.webp" fetchpriority="high" type="image/webp" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -390,14 +390,15 @@
       line-height: 0.95;
     }
 
-    /* Split text - chaque mot dans un span pour animation */
-    .split-line { display: block; overflow: hidden; }
-    .split-word {
-      display: inline-block;
-      transform: translateY(110%);
-      will-change: transform;
+    /* Split text - visible par defaut (gain LCP). L'animation .in
+       n'apparait que si JS l'active explicitement via prefers-reduced-motion: no-preference */
+    .split-line { display: block; }
+    .split-word { display: inline-block; }
+    @media (prefers-reduced-motion: no-preference) {
+      .split-word.is-hidden { transform: translateY(110%); will-change: transform; }
+      .split-line.has-split { overflow: hidden; }
+      .split-word.is-hidden.in { transform: translateY(0); transition: transform 0.8s var(--ease); }
     }
-    .split-word.in { transform: translateY(0); transition: transform 1s var(--ease); }
 
     /* Header / Nav */
     .hd {
@@ -2104,7 +2105,7 @@
        ============================================ -->
   <section class="bouz">
     <div class="bouz-bg">
-      <img src="assets/bouzanton.webp" alt="Animation InterActis à la Bonne Maison de Bouzanton - résidents en fauteuil roulant" width="1600" height="1000" loading="lazy" decoding="async" />
+      <img src="assets/bouzanton.webp" srcset="assets/bouzanton-mobile.webp 800w, assets/bouzanton.webp 1600w" sizes="(max-width: 720px) 100vw, 1600px" alt="Animation InterActis à la Bonne Maison de Bouzanton - résidents en fauteuil roulant" width="1600" height="1000" loading="lazy" decoding="async" />
     </div>
     <div class="bouz-content">
       <div class="bouz-tag">
@@ -2528,23 +2529,29 @@
 
     // ============================================
     // SPLIT HERO TITLE (word by word reveal)
+    // Anime APRES le LCP pour ne pas retarder le first contentful paint.
+    // Si l'utilisateur prefere reduce-motion, on saute l'animation.
     // ============================================
     const h1 = document.querySelector('.hero h1.display');
-    if (h1) {
-      const lines = h1.innerHTML.split('<br>');
-      h1.innerHTML = lines.map(line => {
-        // Wrap each word in a span
-        const wrapped = line.replace(/(<span[^>]*>)?([^<\s]+)(<\/span>)?/g, (m) => {
-          // We can't perfectly handle nested spans, so simpler: just split on space if no html, else keep
-          return m;
+    if (h1 && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+      // Attend que le LCP soit mesure (post-load) avant de bricoler le DOM
+      const playSplit = () => {
+        const lines = h1.innerHTML.split('<br>');
+        h1.innerHTML = lines.map(line =>
+          `<span class="split-line has-split"><span class="split-word is-hidden">${line}</span></span>`
+        ).join('');
+        const words = h1.querySelectorAll('.split-word');
+        // Force reflow puis ajoute .in pour declencher la transition
+        // (les mots ne sont pas "hidden" longtemps : ~50ms)
+        requestAnimationFrame(() => {
+          words.forEach((w, i) => {
+            setTimeout(() => w.classList.add('in'), i * 120);
+          });
         });
-        // Wrap each line in mask + each word for reveal
-        return `<span class="split-line"><span class="split-word">${line}</span></span>`;
-      }).join('');
-      const words = h1.querySelectorAll('.split-word');
-      words.forEach((w, i) => {
-        setTimeout(() => w.classList.add('in'), 200 + i * 180);
-      });
+      };
+      // Defere apres le load pour ne pas penaliser le LCP
+      if (document.readyState === 'complete') setTimeout(playSplit, 100);
+      else window.addEventListener('load', () => setTimeout(playSplit, 100));
     }
 
     // ============================================
