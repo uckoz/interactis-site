@@ -171,12 +171,12 @@
       {
         "@type": "Question",
         "name": "Combien de personnes peuvent jouer en même temps ?",
-        "acceptedAnswer": {"@type": "Answer", "text": "Le format standard accueille 10 à 15 participants par session de 1h30. Pour des groupes plus importants, on adapte avec des rotations ou plusieurs sessions, à voir au moment du devis."}
+        "acceptedAnswer": {"@type": "Answer", "text": "De 2 à 12 joueurs simultanément selon le jeu, et les rotations sont rapides : 30 à 50 personnes passent dans l'heure facilement."}
       },
       {
         "@type": "Question",
         "name": "Quelle est la durée d'une animation ?",
-        "acceptedAnswer": {"@type": "Answer", "text": "Format standard : 1h30. Si vous avez besoin de plus (demi-journée, journée complète), on adapte le programme selon votre événement."}
+        "acceptedAnswer": {"@type": "Answer", "text": "Format standard : 2 h ou 4 h. On adapte à la demi-journée ou à la journée complète selon votre événement."}
       },
       {
         "@type": "Question",
@@ -1779,15 +1779,22 @@
       will-change: transform;
     }
     .marquee:hover .marquee-track { animation-play-state: paused; }
-    .marquee-track span {
+    .marquee-track span,
+    .marquee-track a {
       font-family: var(--serif);
       font-size: clamp(1.4rem, 3vw, 2.4rem);
       font-weight: 700; letter-spacing: -0.02em;
       color: var(--text);
       display: inline-flex; align-items: center;
       padding: 0 28px;
+      text-decoration: none;
+      transition: color 0.25s var(--ease);
     }
-    .marquee-track span::after {
+    .marquee-track a:hover {
+      color: var(--orange);
+    }
+    .marquee-track span::after,
+    .marquee-track a::after {
       content: '✦'; color: var(--orange);
       font-size: 0.55em; margin-left: 56px;
       transform: translateY(-2px);
@@ -1982,12 +1989,12 @@
   </section>
 
   <!-- ============================================
-       MARQUEE — bandeau défilant des univers
+       MARQUEE — bandeau défilant des univers (cliquable)
        ============================================ -->
-  <div class="marquee" aria-hidden="true">
+  <div class="marquee" aria-label="Nos univers d'animation">
     <div class="marquee-track">
-      <span>Anniversaires</span><span>Team building</span><span>Maisons de repos</span><span>Écoles</span><span>Événements publics</span><span>Centres spécialisés</span>
-      <span>Anniversaires</span><span>Team building</span><span>Maisons de repos</span><span>Écoles</span><span>Événements publics</span><span>Centres spécialisés</span>
+      <a href="/animation-anniversaire" data-hover>Anniversaires</a><a href="/animation-entreprise" data-hover>Team building</a><a href="/animation-maison-de-repos" data-hover>Maisons de repos</a><a href="/animation-ecole" data-hover>Écoles</a><a href="/animation-evenement" data-hover>Événements publics</a><a href="/animation-ecole" data-hover>Centres spécialisés</a>
+      <a href="/animation-anniversaire" data-hover>Anniversaires</a><a href="/animation-entreprise" data-hover>Team building</a><a href="/animation-maison-de-repos" data-hover>Maisons de repos</a><a href="/animation-ecole" data-hover>Écoles</a><a href="/animation-evenement" data-hover>Événements publics</a><a href="/animation-ecole" data-hover>Centres spécialisés</a>
     </div>
   </div>
 
@@ -2212,11 +2219,11 @@
       </div>
       <div class="faq-item">
         <button class="faq-q" data-hover><span>Combien de personnes peuvent jouer en même temps ?</span><span class="faq-q-icon"></span></button>
-        <div class="faq-a"><div class="faq-a-inner">Le format standard accueille 10 à 15 participants par session de 1h30. Pour des groupes plus importants, on adapte avec des rotations ou plusieurs sessions, à voir au moment du devis.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">De 2 à 12 joueurs simultanément selon le jeu, et les rotations sont rapides : 30 à 50 personnes passent dans l'heure facilement.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" data-hover><span>Quelle est la durée d'une animation ?</span><span class="faq-q-icon"></span></button>
-        <div class="faq-a"><div class="faq-a-inner">Format standard : 1h30. Si vous avez besoin de plus (demi-journée, journée complète), on adapte le programme selon votre événement.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Format standard : 2 h ou 4 h. On adapte à la demi-journée ou à la journée complète selon votre événement.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" data-hover><span>De quoi avez-vous besoin sur place ?</span><span class="faq-q-icon"></span></button>

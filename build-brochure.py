@@ -452,7 +452,7 @@ def page_prices(c):
     render_price_card(
         MARGIN + card_w + GAP, "MAISON DE REPOS", BLUE, "249€", "HT",
         "pour 1h30 sur place",
-        ["100% accessible PMR", "Stimulation cognitive", "10 à 15 résidents"]
+        ["100% accessible PMR", "Stimulation cognitive", "Animateur formé seniors"]
     )
     # ÉVÉNEMENT / TEAM BUILDING / ÉCOLE (sur devis)
     render_price_card(
