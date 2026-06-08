@@ -1,54 +1,35 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <!-- Cookie consent + chargement conditionnel Google Ads & Tawk -->
   <script src="/assets/consent.js" defer></script>
 
-
-
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a0e1a" />
   <title>Animation anniversaire enfant en Belgique | InterActis</title>
-  <meta name="description" content="Animation interactive originale pour anniversaires d'enfants et d'ados. Jeux projetés sur un mur, on se déplace chez vous en Belgique, Luxembourg et Nord France. Devis gratuit sous 24h.">
-  <meta name="robots" content="index, follow">
-  <meta name="keywords" content="animation anniversaire, animation anniversaire enfant, animateur anniversaire, organiser un anniversaire, animation fête enfant">
-  <link rel="canonical" href="https://www.interactis.be/animation-anniversaire">
+  <meta name="description" content="Animation interactive originale pour anniversaires d'enfants et d'ados. Jeux projetés sur un mur, on se déplace chez vous en Belgique, Luxembourg et Nord France. Devis gratuit sous 24h." />
+  <meta name="robots" content="index, follow" />
+  <meta name="keywords" content="animation anniversaire, animation anniversaire enfant, animateur anniversaire, organiser un anniversaire, animation fête enfant" />
+  <link rel="canonical" href="https://www.interactis.be/animation-anniversaire" />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Animation anniversaire enfant en Belgique | InterActis">
-  <meta property="og:description" content="Animation interactive originale pour anniversaires d'enfants et d'ados. On se déplace chez vous en Belgique, Luxembourg et Nord France.">
-  <meta property="og:url" content="https://www.interactis.be/animation-anniversaire">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://www.interactis.be/images/hero.jpg">
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="fr_BE">
-  <meta property="og:site_name" content="Interactis">
-  <meta property="og:image" content="https://www.interactis.be/images/hero.jpg">
+  <meta property="og:title" content="Animation anniversaire enfant en Belgique | InterActis" />
+  <meta property="og:description" content="Animation interactive originale pour anniversaires d'enfants et d'ados. On se déplace chez vous en Belgique, Luxembourg et Nord France." />
+  <meta property="og:url" content="https://www.interactis.be/animation-anniversaire" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="fr_BE" />
+  <meta property="og:site_name" content="InterActis" />
+  <meta property="og:image" content="https://www.interactis.be/images/hero.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://www.interactis.be/images/hero.jpg" />
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="/images/logo-icon.png">
-  <link rel="apple-touch-icon" href="/images/logo-icon.png">
+  <link rel="icon" type="image/png" href="/images/logo-icon.png" />
+  <link rel="apple-touch-icon" href="/images/logo-icon.png" />
 
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              orange: '#f97316',
-              red: '#dc2626',
-              dark: '#0f172a',
-              light: '#fff7ed'
-            }
-          }
-        }
-      }
-    }
-  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Bricolage+Grotesque:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/site.css" />
 
-  <!-- Schema.org - LocalBusiness & BreadcrumbList -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -117,570 +98,295 @@
     }
   }
   </script>
-
-  <style>
-    html { scroll-behavior: smooth; }
-
-    /* Animations */
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    .animate-fade-in-up { animation: fadeInUp 0.6s ease-out forwards; }
-    .animate-fade-in { animation: fadeIn 0.5s ease-out forwards; }
-
-    /* Scroll animations */
-    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s ease-out; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    /* Gradient text */
-    .gradient-text {
-      background: linear-gradient(135deg, #f97316, #dc2626);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    /* Card hover */
-    .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-    .card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
-
-    /* Sticky nav background */
-    .nav-scrolled { background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
-  </style>
 </head>
-<body class="bg-white text-gray-900 font-sans">
+<body>
+  <a href="#main" class="skip-link">Aller au contenu principal</a>
 
-  <!-- NAVIGATION -->
-  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-3">
-        <img src="/images/logo-icon.webp" alt="Interactis Logo" class="w-10 h-10 object-contain">
-        <div>
-          <span class="text-xl font-bold gradient-text">Interactis</span>
-          <span class="block text-xs text-gray-500">Animation Interactive</span>
-        </div>
-      </a>
+  <div class="cursor" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
 
-      <!-- Desktop nav -->
-      <div class="hidden md:flex items-center gap-8">
-        <a href="/#publics" class="text-sm font-medium text-gray-700 hover:text-orange-600 transition-colors">Nos publics</a>
-        <a href="/#fonctionnement" class="text-sm font-medium text-gray-700 hover:text-orange-600 transition-colors">Comment ça marche</a>
-        <a href="/#animations" class="text-sm font-medium text-gray-700 hover:text-orange-600 transition-colors">Animations</a>
-        <a href="/#faq" class="text-sm font-medium text-gray-700 hover:text-orange-600 transition-colors">FAQ</a>
-        <a href="#contact" class="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-5 py-2.5 rounded-lg font-semibold text-sm transition-colors shadow-lg shadow-orange-500/25">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-          Demander un devis
-        </a>
-      </div>
+  <header class="hd">
+    <a href="/" class="hd-logo" data-hover>Inter<span>Actis</span></a>
+    <nav class="hd-nav">
+      <a href="/animation-anniversaire" data-hover>Anniversaire</a>
+      <a href="/animation-entreprise" data-hover>Team building</a>
+      <a href="/animation-maison-de-repos" data-hover>Maison de repos</a>
+      <a href="/animation-ecole" data-hover>École</a>
+      <a href="/blog" data-hover>Blog</a>
+      <a href="/devis" class="btn btn-primary hd-cta" data-hover>Devis <span class="arrow">→</span></a>
+    </nav>
+    <button class="hd-burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menuOverlay"><span></span><span></span><span></span></button>
+  </header>
 
-      <!-- Mobile menu button -->
-      <button id="menuBtn" class="md:hidden p-2 rounded-lg hover:bg-gray-100" aria-label="Menu">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-      </button>
+  <div class="menu-overlay" id="menuOverlay">
+    <nav>
+      <a href="/">Accueil</a>
+      <a href="/animation-anniversaire">Anniversaire</a>
+      <a href="/animation-entreprise">Team building</a>
+      <a href="/animation-maison-de-repos">Maison de repos</a>
+      <a href="/animation-ecole">École</a>
+      <a href="/blog">Blog</a>
+      <a href="/devis">Devis</a>
+    </nav>
+  </div>
+
+  <main id="main">
+
+  <section class="article-hero">
+    <div class="article-hero-inner">
+      <nav class="article-breadcrumb">
+        <a href="/" data-hover>Accueil</a><span class="sep">›</span>
+        <span>Animation Anniversaire</span>
+      </nav>
+      <p class="article-cat">Anniversaire enfant</p>
+      <h1>Animation Interactive pour Anniversaires et Fêtes Privées</h1>
     </div>
-
-    <!-- Mobile menu -->
-    <div id="mobileMenu" class="hidden md:hidden bg-white border-t shadow-lg">
-      <div class="px-4 py-4 space-y-3">
-        <a href="/#publics" class="block py-2 text-gray-700 font-medium">Nos publics</a>
-        <a href="/#fonctionnement" class="block py-2 text-gray-700 font-medium">Comment ça marche</a>
-        <a href="/#animations" class="block py-2 text-gray-700 font-medium">Animations</a>
-        <a href="/#faq" class="block py-2 text-gray-700 font-medium">FAQ</a>
-        <a href="#contact" class="block py-3 bg-orange-500 text-white text-center rounded-lg font-semibold">Demander un devis</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <section class="relative overflow-hidden bg-gradient-to-br from-orange-50 via-pink-50 to-purple-50 pt-28 pb-20 sm:pt-36 sm:pb-28">
-    <!-- Background decoration -->
-    <div class="absolute -top-40 -right-40 w-80 h-80 bg-orange-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
-    <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div class="animate-fade-in-up">
-          <div class="inline-flex items-center gap-2 bg-white/80 backdrop-blur px-4 py-2 rounded-full text-sm font-medium text-gray-700 mb-6 shadow-sm">
-            <svg class="w-5 h-5 text-orange-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-            Anniversaire inoubliable pour vos enfants
-          </div>
-
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight mb-6">
-            <span class="gradient-text">Animation Interactive pour Anniversaires et Fêtes Privées</span>
-          </h1>
-
-          <p class="text-lg text-gray-600 mb-8 max-w-xl">
-            Offrez une animation unique pour l'anniversaire de votre enfant ! Des jeux interactifs projetés sur un mur qui font bouger et s'amuser tous les invités.
-          </p>
-
-          <div class="flex flex-col sm:flex-row gap-4 mb-10">
-            <a href="#contact" class="inline-flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg shadow-orange-500/30 hover:shadow-xl hover:shadow-orange-500/40">
-              Recevoir un devis pour votre fête
-            </a>
-            <a href="tel:+32488435342" class="inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-gray-800 px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-md border border-gray-200">
-              <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-              Être rappelé
-            </a>
-          </div>
-
-          <!-- Stats -->
-          <div class="grid grid-cols-3 gap-4">
-            <div class="text-center p-3 bg-white/60 backdrop-blur rounded-xl">
-              <div class="text-2xl font-black text-orange-600">100%</div>
-              <div class="text-xs text-gray-600 font-medium">Tous les enfants</div>
-            </div>
-            <div class="text-center p-3 bg-white/60 backdrop-blur rounded-xl">
-              <div class="text-2xl font-black text-orange-600">&lt;3min</div>
-              <div class="text-xs text-gray-600 font-medium">Installation</div>
-            </div>
-            <div class="text-center p-3 bg-white/60 backdrop-blur rounded-xl">
-              <div class="text-2xl font-black text-orange-600">36</div>
-              <div class="text-xs text-gray-600 font-medium">Jeux disponibles</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="animate-fade-in relative">
-          <img src="/images/photo-anniversaire.webp" alt="Animation anniversaire interactive pour enfants" class="rounded-2xl shadow-2xl w-full object-cover" loading="eager">
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- VIDEO PROMO -->
-  <section class="py-16 sm:py-20 bg-gradient-to-br from-orange-50 via-pink-50 to-purple-50">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-      <p class="text-orange-600 font-bold uppercase tracking-wide text-sm mb-3">Découvrez InterActis en vidéo</p>
-      <h2 class="text-3xl sm:text-4xl font-black mb-8">L'animation qui rassemble tout le monde</h2>
-      <div class="max-w-sm mx-auto rounded-2xl overflow-hidden shadow-2xl">
-        <video autoplay muted loop playsinline controls preload="metadata" poster="/assets/interactis-promo-poster.jpg" class="w-full block">
-          <source src="/assets/interactis-promo.mp4" type="video/mp4" />
-        </video>
-      </div>
-      <p class="text-sm text-gray-500 mt-4">Activez le son 🔊 pour entendre l'ambiance</p>
-    </div>
+    <img src="/images/photo-anniversaire.webp" alt="Animation anniversaire interactive pour enfants" class="article-cover" loading="eager" />
   </section>
 
+  <article class="article-body">
+    <p class="lead">Offrez une animation unique pour l'anniversaire de votre enfant ! Des jeux interactifs projetés sur un mur qui font bouger et s'amuser tous les invités. Fini les animations traditionnelles : avec InterActis, créez un moment magique où chaque enfant devient acteur et participe pleinement à la fête.</p>
 
+    <h2>Pourquoi choisir InterActis pour l'anniversaire</h2>
+    <p>Une bonne animation anniversaire doit remplir trois conditions : tous les enfants participent (aucun de côté), l'effet « waouh » est garanti, et la logistique est simple. InterActis coche ces trois cases. La projection murale transforme une salle ordinaire en terrain de jeu géant. Les enfants contrôlent les jeux avec leurs mains ou des ballons, sans équipement spécial à porter. Et nous gérons l'installation et le rangement : vous n'avez qu'à profiter de la fête.</p>
 
-  <!-- UN ANNIVERSAIRE INOUBLIABLE -->
-  <section class="py-20 sm:py-28 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div class="order-2 lg:order-1">
-          <img src="/images/hero.webp" alt="Enfants jouant à l'animation anniversaire" class="rounded-2xl shadow-2xl w-full object-cover" loading="lazy">
-        </div>
+    <h2>Un anniversaire inoubliable pour votre enfant</h2>
+    <p>Projection murale, interaction ludique, et ambiance festive : ce que propose InterActis crée un souvenir durable. Voici ce qui rend notre animation différente :</p>
+    <ul>
+      <li><strong>Aucun enfant de côté :</strong> Tous les invités jouent et participent, même les timides !</li>
+      <li><strong>Effet spectaculaire :</strong> Les jeux projetés sur un mur créent une ambiance magique et immersive.</li>
+      <li><strong>Jeux adaptés :</strong> Rires, mouvements, amusement - chaque enfant trouve son bonheur parmi les 36 jeux proposés.</li>
+      <li><strong>Sans équipement spécial :</strong> Pas de casque, pas de ceinture - seulement leurs mains, des ballons et l'écran projeté !</li>
+    </ul>
 
-        <div class="order-1 lg:order-2 reveal">
-          <div class="inline-flex items-center gap-2 bg-orange-100 text-orange-700 px-4 py-2 rounded-full text-sm font-semibold mb-6">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-            Différent des animations classiques
-          </div>
+    <h2>Comment ça marche</h2>
+    <p>Installation simple et rapide directement chez vous.</p>
 
-          <h2 class="text-3xl sm:text-4xl font-black mb-6">
-            Un anniversaire <span class="gradient-text">inoubliable</span> pour votre enfant
-          </h2>
-
-          <p class="text-lg text-gray-600 mb-6">
-            Fini les animations traditionnelles ! Avec Interactis, créez un moment magique où chaque enfant devient acteur et participe pleinement à la fête. Projection murale, interaction ludique, et effet « waouh » garanti !
-          </p>
-
-          <ul class="space-y-4 mb-8">
-            <li class="flex items-start gap-3">
-              <svg class="w-6 h-6 text-orange-500 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-              <span><strong>Aucun enfant de côté :</strong> Tous les invités jouent et participent, même les timides !</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-6 h-6 text-orange-500 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-              <span><strong>Effet spectaculaire :</strong> Les jeux projetés sur un mur créent une ambiance magique et immersive.</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-6 h-6 text-orange-500 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-              <span><strong>Jeux adaptés :</strong> Rires, mouvements, amusement - chaque enfant trouve son bonheur parmi les 36 jeux proposés.</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-6 h-6 text-orange-500 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-              <span><strong>Sans équipement spécial :</strong> Pas de casque, pas de ceinture - seulement leurs mains, des ballons et l'écran projeté !</span>
-            </li>
-          </ul>
-
-          <a href="#contact" class="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-xl font-bold transition-all shadow-lg shadow-orange-500/30">
-            Réserver une animation
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-          </a>
-        </div>
+    <div class="article-cards">
+      <div class="article-card">
+        <h4>1. Projection murale</h4>
+        <p>Un projecteur crée un grand écran de jeux amusants directement sur le mur de votre salle.</p>
+      </div>
+      <div class="article-card">
+        <h4>2. Interaction mains & ballons</h4>
+        <p>Les enfants jouent avec leurs mains ou des ballons pour contrôler les jeux. Aucun équipement à porter !</p>
+      </div>
+      <div class="article-card">
+        <h4>3. On se déplace chez vous</h4>
+        <p>Installation en moins de 3 minutes. Nous livrons, installons et animons. Vous profitez sereinement !</p>
       </div>
     </div>
-  </section>
 
-  <!-- COMMENT CA MARCHE -->
-  <section id="fonctionnement" class="py-20 sm:py-28 bg-gradient-to-br from-slate-50 to-orange-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-16 reveal">
-        <h2 class="text-3xl sm:text-4xl font-black mb-4">
-          Comment <span class="gradient-text">ça marche</span> ?
-        </h2>
-        <p class="text-lg text-gray-600">Installation simple et rapide directement chez vous</p>
+    <h3>Déroulement de la fête</h3>
+    <p>Voici comment se déroule une animation anniversaire InterActis :</p>
+    <ol>
+      <li>Nous arrivons 15 minutes avant l'heure pour installer le matériel</li>
+      <li>Les enfants jouent à tour de rôle ou en petits groupes à différents jeux</li>
+      <li>Rires, mouvements et ambiance festive pendant 30 à 60 minutes selon votre choix</li>
+      <li>Démontage rapide et discret du matériel</li>
+    </ol>
+
+    <h2>Pour tous les âges</h2>
+    <p>Des enfants dès 6 ans jusqu'aux ados et familles. Nous adaptons les jeux à chaque groupe d'âge :</p>
+
+    <div class="article-cards">
+      <div class="article-card">
+        <h4>Petits (6-8 ans)</h4>
+        <p>Jeux simples, couleurs vives, mouvements amusants. Parfait pour faire découvrir l'animation interactive.</p>
       </div>
+      <div class="article-card">
+        <h4>Enfants (9-11 ans)</h4>
+        <p>Jeux avec défis et compétitions. L'âge idéal pour s'amuser en groupe et partager des moments ensemble !</p>
+      </div>
+      <div class="article-card">
+        <h4>Préados/Ados (12-16 ans)</h4>
+        <p>Jeux plus stratégiques et dynamiques. L'animation anniversaire parfaite pour impressionner ses copains !</p>
+      </div>
+      <div class="article-card">
+        <h4>Familles</h4>
+        <p>Parents et enfants ensemble ! Une animation qui crée des moments de partage inoubliables.</p>
+      </div>
+    </div>
 
-      <div class="grid md:grid-cols-3 gap-8 reveal">
-        <!-- Step 1 -->
-        <div class="bg-white rounded-2xl p-8 shadow-sm">
-          <div class="w-16 h-16 bg-orange-500 text-white rounded-2xl flex items-center justify-center text-2xl font-black mx-auto mb-6 shadow-lg shadow-orange-500/30">1</div>
-          <h3 class="text-xl font-bold mb-3 text-center">Projection murale</h3>
-          <p class="text-gray-600 text-center">Un projecteur crée un grand écran de jeux amusants directement sur le mur de votre salle.</p>
-        </div>
+    <h2>Ce qui nous rend différents</h2>
+    <p>Ce qui rend InterActis unique pour les anniversaires :</p>
 
-        <!-- Step 2 -->
-        <div class="bg-white rounded-2xl p-8 shadow-sm">
-          <div class="w-16 h-16 bg-orange-500 text-white rounded-2xl flex items-center justify-center text-2xl font-black mx-auto mb-6 shadow-lg shadow-orange-500/30">2</div>
-          <h3 class="text-xl font-bold mb-3 text-center">Interaction mains & ballons</h3>
-          <p class="text-gray-600 text-center">Les enfants jouent avec leurs mains ou des ballons pour contrôler les jeux. Aucun équipement à porter !</p>
-        </div>
+    <div class="article-callout">
+      <h3>Vraiment interactif</h3>
+      <p>Pas de casques VR ni d'équipement encombrant. Juste du plaisir pur avec les mains ou des ballons.</p>
+    </div>
 
-        <!-- Step 3 -->
-        <div class="bg-white rounded-2xl p-8 shadow-sm">
-          <div class="w-16 h-16 bg-orange-500 text-white rounded-2xl flex items-center justify-center text-2xl font-black mx-auto mb-6 shadow-lg shadow-orange-500/30">3</div>
-          <h3 class="text-xl font-bold mb-3 text-center">On se déplace chez vous</h3>
-          <p class="text-gray-600 text-center">Installation en moins de 3 minutes. Nous livrons, installons et animons. Vous profitez sereinement !</p>
+    <div class="article-callout">
+      <h3>Installation en 3 minutes</h3>
+      <p>Nous gérons tout de l'installation au rangement. Vous n'avez qu'à profiter de la fête !</p>
+    </div>
+
+    <div class="article-callout">
+      <h3>36 jeux différents</h3>
+      <p>Nous adaptons les jeux à l'âge des enfants pour un plaisir maximal et aucun ennui.</p>
+    </div>
+
+    <div class="article-callout">
+      <h3>100% accessible</h3>
+      <p>Jeux adaptés pour tous les enfants, y compris ceux en fauteuil roulant ou avec des besoins spécifiques.</p>
+    </div>
+
+    <h2>Découvrez notre animation en vidéo</h2>
+    <p>Voici ce que les enfants vivent lors d'une animation InterActis :</p>
+    <div style="margin: 32px 0; border-radius: 16px; overflow: hidden;">
+      <video autoplay muted loop playsinline controls preload="metadata" poster="/assets/interactis-promo-poster.jpg" style="width: 100%; display: block;">
+        <source src="/assets/interactis-promo.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <p style="text-align: center; font-size: 0.9rem; color: var(--text-faded);">Activez le son pour entendre l'ambiance</p>
+
+    <h2>Réserver votre animation anniversaire</h2>
+
+    <div class="article-cta">
+      <h3>Prêt à faire une fête inoubliable ?</h3>
+      <p style="margin-bottom: 20px;">Remplissez le formulaire ci-dessous et recevez un devis gratuit dans les 24 heures. Ou appelez-nous directement : nous vous proposerons les meilleures options pour votre groupe.</p>
+      <div class="article-cta-actions">
+        <a href="/devis" class="btn btn-primary" data-hover>Demander un devis <span class="arrow">→</span></a>
+        <a href="tel:+32488435342" class="btn btn-ghost" data-hover>+32 488 43 53 42</a>
+        <a href="https://wa.me/32488435342" target="_blank" rel="noopener" class="btn btn-ghost" data-hover>WhatsApp</a>
+      </div>
+    </div>
+
+    <h2>Questions fréquentes sur les animations anniversaire</h2>
+
+    <div class="article-callout orange">
+      <h3>Combien d'enfants max pour une animation ?</h3>
+      <p>Pas de limite théorique, mais l'animation est optimale entre 6 et 20 enfants. Au-delà de 20, on peut faire deux sessions courtes ou prolonger la durée. Le jeu se fait à tour de rôle ou en petits groupes (3-5 enfants) pour que chacun ait son moment de gloire.</p>
+    </div>
+
+    <div class="article-callout orange">
+      <h3>Quelle est la durée recommandée ?</h3>
+      <p>Nous proposons des sessions de 30, 45 ou 60 minutes. Pour les petits (6-8 ans), 45 minutes c'est parfait. Pour les plus grands, 60 minutes permet plus de jeux et de compétitions amicales. C'est à vous de voir selon votre emploi du temps.</p>
+    </div>
+
+    <div class="article-callout orange">
+      <h3>Avons-nous besoin d'une grande salle ?</h3>
+      <p>Une salle de 20 m² avec un mur libre de 2m x 2m suffît. Salon, salle de réception, salle de jeux : n'importe quel espace fait l'affaire. On s'adapte !</p>
+    </div>
+
+    <div class="article-callout orange">
+      <h3>Peut-on faire une animation outside ?</h3>
+      <p>Non, c'est impossible. Les jeux reposent sur la projection murale, qui nécessite une obscurité relative. À l'extérieur ou en plein soleil, ça ne marche pas.</p>
+    </div>
+
+    <div class="article-callout orange">
+      <h3>Avez-vous d'autres animations pour anniversaires ?</h3>
+      <p>Non, nous ne proposons que les jeux interactifs projetés sur mur. C'est notre spécialité, et c'est ce qui fonctionne le mieux pour créer un souvenir inoubliable.</p>
+    </div>
+
+    <h2>Nos autres animations</h2>
+    <p>InterActis propose aussi des animations pour d'autres publics :</p>
+    <ul>
+      <li><a href="/animation-entreprise">Animation team building</a> pour les entreprises et événements corporate</li>
+      <li><a href="/animation-maison-de-repos">Animation maison de repos</a> pour les seniors et résidents</li>
+      <li><a href="/animation-ecole">Animation école</a> pour primaire, secondaire et spécialisé</li>
+      <li><a href="/animation-evenement">Animation événement</a> pour fêtes, festivals et public</li>
+    </ul>
+
+    <h2>Témoignages de parents</h2>
+    <p>Voici ce que disent les parents qui ont choisi InterActis pour l'anniversaire de leurs enfants :</p>
+
+    <div class="article-cards">
+      <div class="article-card">
+        <p style="font-style: italic;">"Les enfants en parlent encore. C'était tellement fun, ils voulaient continuer."</p>
+        <p style="margin-top: 12px; font-weight: 600; color: var(--orange);">— Sarah M., Mons</p>
+      </div>
+      <div class="article-card">
+        <p style="font-style: italic;">"Super simple, on n'avait rien à faire. Vous installez, on profite. Merci !"</p>
+        <p style="margin-top: 12px; font-weight: 600; color: var(--orange);">— Jean D., Liège</p>
+      </div>
+      <div class="article-card">
+        <p style="font-style: italic;">"Exactement ce qu'il fallait pour les 10 ans de Léa. Tous les copains ont adoré."</p>
+        <p style="margin-top: 12px; font-weight: 600; color: var(--orange);">— Marie L., Arlon</p>
+      </div>
+    </div>
+
+    <h2>En résumé</h2>
+    <p>Un anniversaire réussi avec InterActis, c'est :</p>
+    <ul>
+      <li>Tous les enfants qui jouent et s'amusent ensemble</li>
+      <li>Une ambiance magique et immersive grâce à la projection murale</li>
+      <li>Pas de préparation logistique compliquée : on gère tout</li>
+      <li>Un souvenir que les enfants gardent longtemps</li>
+      <li>Des parents tranquilles qui profitent aussi de la fête</li>
+    </ul>
+
+    <p>Alors, prêt à faire une fête inoubliable ? <a href="/devis">Demandez un devis gratuit</a> ou <a href="tel:+32488435342">appelez-nous directement</a>. On vous répond sous 24 heures.</p>
+
+    <div class="article-cta">
+      <h3>Besoin d'un devis ? Réponse gratuite sous 24 h.</h3>
+      <div class="article-cta-actions">
+        <a href="/devis" class="btn btn-primary" data-hover>Demander un devis <span class="arrow">→</span></a>
+        <a href="tel:+32488435342" class="btn btn-ghost" data-hover>+32 488 43 53 42</a>
+      </div>
+    </div>
+  </article>
+
+  </main>
+
+  <footer class="ft">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <h3>Inter<span>Actis</span></h3>
+        <p>Animation interactive mobile accessible à tous. Basés à Mons, nous intervenons en Belgique, au Luxembourg et dans le Nord de la France.</p>
+        <div class="ft-socials">
+          <a href="https://www.instagram.com/interactis.be/" target="_blank" rel="noopener" data-hover aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg></a>
+          <a href="https://www.facebook.com/profile.php?id=61586234006690" target="_blank" rel="noopener" data-hover aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://www.tiktok.com/@interactisbe" target="_blank" rel="noopener" data-hover aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43V8.42a8.16 8.16 0 0 0 4.77 1.52V6.69h-1.84z"/></svg></a>
         </div>
       </div>
-
-      <div class="mt-12 bg-orange-50 border-2 border-orange-200 rounded-2xl p-8 reveal">
-        <h3 class="text-2xl font-bold mb-4">Déroulement de la fête</h3>
-        <ul class="space-y-3">
-          <li class="flex items-start gap-3">
-            <span class="inline-flex items-center justify-center w-8 h-8 bg-orange-500 text-white rounded-full font-bold flex-shrink-0">1</span>
-            <span>Nous arrivons 15 minutes avant l'heure pour installer le matériel</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="inline-flex items-center justify-center w-8 h-8 bg-orange-500 text-white rounded-full font-bold flex-shrink-0">2</span>
-            <span>Les enfants jouent à tour de rôle ou en petits groupes à différents jeux</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="inline-flex items-center justify-center w-8 h-8 bg-orange-500 text-white rounded-full font-bold flex-shrink-0">3</span>
-            <span>Rires, mouvements et ambiance festive pendant 30 à 60 minutes selon votre choix</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="inline-flex items-center justify-center w-8 h-8 bg-orange-500 text-white rounded-full font-bold flex-shrink-0">4</span>
-            <span>Démontage rapide et discret du matériel</span>
-          </li>
+      <div class="ft-col">
+        <h4>Nos animations</h4>
+        <ul>
+          <li><a href="/animation-anniversaire" data-hover>Anniversaire</a></li>
+          <li><a href="/animation-entreprise" data-hover>Team building</a></li>
+          <li><a href="/animation-maison-de-repos" data-hover>Maison de repos</a></li>
+          <li><a href="/animation-ecole" data-hover>École</a></li>
+          <li><a href="/animation-evenement" data-hover>Événement</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+32488435342" data-hover>+32 488 43 53 42</a></li>
+          <li><a href="mailto:uckoz@interactis.be" data-hover>uckoz@interactis.be</a></li>
+          <li><a href="https://wa.me/32488435342" target="_blank" rel="noopener" data-hover>WhatsApp</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h4>Légal</h4>
+        <ul>
+          <li><a href="/mentions-legales" data-hover>Mentions légales</a></li>
+          <li><a href="/confidentialite" data-hover>Confidentialité</a></li>
+          <li><a href="/cgv" data-hover>CGV</a></li>
         </ul>
       </div>
     </div>
-  </section>
-
-  <!-- POUR TOUS LES AGES -->
-  <section id="ages" class="py-20 sm:py-28 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-16 reveal">
-        <h2 class="text-3xl sm:text-4xl font-black mb-4">
-          Pour <span class="gradient-text">tous les âges</span>
-        </h2>
-        <p class="text-lg text-gray-600">Des enfants dès 6 ans jusqu'aux ados et familles</p>
-      </div>
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
-        <!-- Card 1 -->
-        <div class="card-hover bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
-          <div class="w-12 h-12 bg-pink-100 rounded-xl flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-          </div>
-          <h3 class="text-lg font-bold mb-2">Petits (6-8 ans)</h3>
-          <p class="text-gray-600 text-sm">Jeux simples, couleurs vives, mouvements amusants. Parfait pour faire découvrir l'animation interactive.</p>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="card-hover bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
-          <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          </div>
-          <h3 class="text-lg font-bold mb-2">Enfants (9-11 ans)</h3>
-          <p class="text-gray-600 text-sm">Jeux avec défis et compétitions. L'âge idéal pour s'amuser en groupe et partager des moments ensemble !</p>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="card-hover bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
-          <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-          </div>
-          <h3 class="text-lg font-bold mb-2">Préados/Ados (12-16 ans)</h3>
-          <p class="text-gray-600 text-sm">Jeux plus stratégiques et dynamiques. L'animation anniversaire parfaite pour impressionner ses copains !</p>
-        </div>
-
-        <!-- Card 4 -->
-        <div class="card-hover bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
-          <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-          </div>
-          <h3 class="text-lg font-bold mb-2">Familles</h3>
-          <p class="text-gray-600 text-sm">Parents et enfants ensemble ! Une animation qui crée des moments de partage inoubliables.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- POURQUOI INTERACTIS -->
-  <section id="pourquoi" class="py-20 sm:py-28 bg-gradient-to-br from-orange-50 to-pink-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-16 reveal">
-        <h2 class="text-3xl sm:text-4xl font-black mb-4">
-          Pourquoi <span class="gradient-text">Interactis</span> ?
-        </h2>
-        <p class="text-lg text-gray-600">Ce qui nous rend différents des autres animations anniversaire</p>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-8 reveal">
-        <div class="bg-white rounded-2xl p-8 shadow-sm">
-          <div class="flex items-start gap-4">
-            <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0">
-              <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
-            </div>
-            <div>
-              <h3 class="text-lg font-bold mb-2">Vraiment interactif</h3>
-              <p class="text-gray-600">Pas de casques VR ni d'équipement encombrant. Juste du plaisir pur avec les mains ou des ballons.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-2xl p-8 shadow-sm">
-          <div class="flex items-start gap-4">
-            <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
-              <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
-            </div>
-            <div>
-              <h3 class="text-lg font-bold mb-2">Installation en 3 minutes</h3>
-              <p class="text-gray-600">Nous gérons tout de l'installation au rangement. Vous n'avez qu'à profiter de la fête !</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-2xl p-8 shadow-sm">
-          <div class="flex items-start gap-4">
-            <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center flex-shrink-0">
-              <svg class="w-6 h-6 text-purple-600" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
-            </div>
-            <div>
-              <h3 class="text-lg font-bold mb-2">36 jeux différents</h3>
-              <p class="text-gray-600">Nous adaptons les jeux à l'âge des enfants pour un plaisir maximal et aucun ennui.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-2xl p-8 shadow-sm">
-          <div class="flex items-start gap-4">
-            <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center flex-shrink-0">
-              <svg class="w-6 h-6 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
-            </div>
-            <div>
-              <h3 class="text-lg font-bold mb-2">100% accessible</h3>
-              <p class="text-gray-600">Jeux adaptés pour tous les enfants, y compris ceux en fauteuil roulant ou avec des besoins spécifiques.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT FORM -->
-  <section id="contact" class="py-20 sm:py-28 bg-white">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-12 reveal">
-        <h2 class="text-3xl sm:text-4xl font-black mb-4">
-          Prêt à <span class="gradient-text">faire la fête</span> ?
-        </h2>
-        <p class="text-lg text-gray-600">Remplissez le formulaire ci-dessous et recevez un devis gratuit dans les 24 heures</p>
-      </div>
-
-      <div class="bg-gradient-to-br from-orange-50 to-pink-50 rounded-2xl p-8 shadow-lg reveal">
-        <form class="space-y-6" action="https://www.interactis.be" method="POST">
-          <div class="grid sm:grid-cols-2 gap-6">
-            <div>
-              <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">Votre nom</label>
-              <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="Jean Dupont">
-            </div>
-            <div>
-              <label for="phone" class="block text-sm font-semibold text-gray-700 mb-2">Téléphone</label>
-              <input type="tel" id="phone" name="phone" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="+32 4XX XXX XXX">
-            </div>
-          </div>
-
-          <div>
-            <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Adresse email</label>
-            <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="vous@email.com">
-          </div>
-
-          <div class="grid sm:grid-cols-2 gap-6">
-            <div>
-              <label for="date" class="block text-sm font-semibold text-gray-700 mb-2">Date souhaitée</label>
-              <input type="date" id="date" name="date" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500">
-            </div>
-            <div>
-              <label for="age" class="block text-sm font-semibold text-gray-700 mb-2">Âge du/des enfants</label>
-              <input type="text" id="age" name="age" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="ex: 8 ans, 6 et 10 ans">
-            </div>
-          </div>
-
-          <div>
-            <label for="place" class="block text-sm font-semibold text-gray-700 mb-2">Lieu de la fête</label>
-            <input type="text" id="place" name="place" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="Votre adresse ou lieu de la fête">
-          </div>
-
-          <div>
-            <label for="guests" class="block text-sm font-semibold text-gray-700 mb-2">Nombre d'enfants attendus</label>
-            <input type="number" id="guests" name="guests" min="1" max="50" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="8">
-          </div>
-
-          <div>
-            <label for="message" class="block text-sm font-semibold text-gray-700 mb-2">Message (optionnel)</label>
-            <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="Questions, détails spécifiques..."></textarea>
-          </div>
-
-          <div class="flex items-start gap-3">
-            <input type="checkbox" id="terms" name="terms" required class="mt-1">
-            <label for="terms" class="text-sm text-gray-600">
-              Je suis d'accord pour que InterActis me contacte et me propose un devis pour cette animation anniversaire. Nous respectons votre vie privée. <a href="/confidentialite" class="text-orange-600 hover:underline">Politique de confidentialité</a>.
-            </label>
-          </div>
-
-          <button type="submit" class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-orange-500/30 text-lg">
-            Demander un devis gratuit
-          </button>
-        </form>
-
-        <div class="mt-8 pt-8 border-t border-orange-200 space-y-3 text-center text-sm text-gray-600">
-          <p><strong>Vous préférez un appel ?</strong></p>
-          <a href="tel:+32488435342" class="inline-flex items-center justify-center gap-2 text-orange-600 font-semibold hover:text-orange-700">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-            +32 488 435 342
-          </a>
-          <p>Du lundi au vendredi, 9h à 18h</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- MAILLAGE INTERNE - nos autres animations -->
-  <section class="py-16 bg-white border-t border-gray-100">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6">
-      <h2 class="text-2xl sm:text-3xl font-black mb-8 text-center text-gray-900">Découvrez nos autres animations</h2>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <a href="/animation-entreprise" class="block p-5 rounded-xl border border-gray-200 hover:border-orange-400 hover:shadow-md transition-all">
-          <span class="block font-bold text-gray-900">Animation team building</span>
-          <span class="block text-sm text-gray-500 mt-1">Événements d'entreprise</span>
-        </a>
-        <a href="/animation-maison-de-repos" class="block p-5 rounded-xl border border-gray-200 hover:border-orange-400 hover:shadow-md transition-all">
-          <span class="block font-bold text-gray-900">Animation maison de repos</span>
-          <span class="block text-sm text-gray-500 mt-1">Seniors & résidents</span>
-        </a>
-        <a href="/animation-ecole" class="block p-5 rounded-xl border border-gray-200 hover:border-orange-400 hover:shadow-md transition-all">
-          <span class="block font-bold text-gray-900">Animation école</span>
-          <span class="block text-sm text-gray-500 mt-1">Primaire, secondaire, spécialisé</span>
-        </a>
-        <a href="/animation-evenement" class="block p-5 rounded-xl border border-gray-200 hover:border-orange-400 hover:shadow-md transition-all">
-          <span class="block font-bold text-gray-900">Animation événement</span>
-          <span class="block text-sm text-gray-500 mt-1">Fêtes, festivals, public</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="bg-gray-900 text-gray-300 py-12">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-        <div>
-          <h3 class="text-white font-bold mb-4">Interactis</h3>
-          <p class="text-sm">Animation interactive mobile pour tous les publics en Belgique, Luxembourg et France.</p>
-        </div>
-
-        <div>
-          <h3 class="text-white font-bold mb-4">Pages SEO</h3>
-          <ul class="space-y-2 text-sm">
-            <li><a href="/animation-anniversaire" class="hover:text-orange-500 transition">Animation Anniversaire</a></li>
-            <li><a href="/" class="hover:text-orange-500 transition">Accueil</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h3 class="text-white font-bold mb-4">Legal</h3>
-          <ul class="space-y-2 text-sm">
-            <li><a href="/mentions-legales" class="hover:text-orange-500 transition">Mentions Légales</a></li>
-            <li><a href="/confidentialite" class="hover:text-orange-500 transition">Confidentialité</a></li>
-            <li><a href="/cgv" class="hover:text-orange-500 transition">Conditions Générales</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h3 class="text-white font-bold mb-4">Contact</h3>
-          <ul class="space-y-2 text-sm">
-            <li><a href="tel:+32488435342" class="hover:text-orange-500 transition">+32 488 435 342</a></li>
-            <li><a href="mailto:uckoz@interactis.be" class="hover:text-orange-500 transition">uckoz@interactis.be</a></li>
-            <li>Mons, Belgique</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="flex justify-center items-center gap-5 mb-6">
-        <a href="https://www.instagram.com/interactis.be/" target="_blank" rel="noopener" aria-label="Instagram InterActis" class="text-gray-400 hover:text-orange-400 transition" data-track="social_instagram"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2c2.7 0 3 .01 4.05.06 1.07.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.55.55.89 1.11 1.15 1.77.25.64.42 1.36.47 2.43.05 1.05.06 1.35.06 4.05s-.01 3-.06 4.05c-.05 1.07-.22 1.79-.47 2.43a4.9 4.9 0 0 1-1.15 1.77c-.55.55-1.11.89-1.77 1.15-.64.25-1.36.42-2.43.47-1.05.05-1.35.06-4.05.06s-3-.01-4.05-.06c-1.07-.05-1.79-.22-2.43-.47a4.9 4.9 0 0 1-1.77-1.15 4.9 4.9 0 0 1-1.15-1.77c-.25-.64-.42-1.36-.47-2.43C2.01 15 2 14.7 2 12s.01-3 .06-4.05c.05-1.07.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77.55-.55 1.11-.89 1.77-1.15.64-.25 1.36-.42 2.43-.47C9 2.01 9.3 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7zm5.13-9.63a1.17 1.17 0 1 0 0 2.34 1.17 1.17 0 0 0 0-2.34z"/></svg></a>
-        <a href="https://www.facebook.com/profile.php?id=61586234006690" target="_blank" rel="noopener" aria-label="Facebook InterActis" class="text-gray-400 hover:text-orange-400 transition" data-track="social_facebook"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12c0-6.63-5.37-12-12-12S0 5.37 0 12c0 5.99 4.39 10.95 10.13 11.85v-8.38H7.08V12h3.05V9.36c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.69.23 2.69.23v2.95h-1.52c-1.49 0-1.95.92-1.95 1.87V12h3.33l-.53 3.47h-2.8v8.38C19.61 22.95 24 17.99 24 12z"/></svg></a>
-        <a href="https://www.tiktok.com/@interactisbe" target="_blank" rel="noopener" aria-label="TikTok InterActis" class="text-gray-400 hover:text-orange-400 transition" data-track="social_tiktok"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.84-.1z"/></svg></a>
-      </div>
-
-      <div class="pt-8 border-t border-gray-800 text-center text-sm">
-        <p>&copy; 2026 Interactis. Tous droits réservés.</p>
-        <p class="text-gray-500 mt-2">Animation Interactive Mobile | Belgique, Luxembourg, France</p>
-      </div>
+    <div class="ft-bottom">
+      <span>© <span id="yr"></span> InterActis · Tous droits réservés</span>
+      <span>Animation interactive mobile · Belgique · Luxembourg · Nord France</span>
     </div>
   </footer>
 
-  <!-- SCRIPTS -->
-  <script>
-    // Mobile menu toggle
-    const menuBtn = document.getElementById('menuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
+  <a href="https://wa.me/32488435342?text=Bonjour%20Ubeyd%2C%20je%20viens%20de%20l%27article%20%22animation%20anniversaire%22%20et%20j%27aimerais%20discuter%20d%27une%20animation%20pour%20l%27anniversaire%20de%20mes%20enfants." class="wa" target="_blank" rel="noopener" aria-label="Nous contacter sur WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0 0 20.464 3.488"/></svg>
+  </a>
 
-    menuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
+  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Consentement cookies">
+    <h4>🍪 On respecte votre vie privée</h4>
+    <p>Nous utilisons des cookies pour analyser le trafic. <a href="/confidentialite" data-hover>En savoir plus</a></p>
+    <div class="cookie-actions">
+      <button type="button" class="cookie-btn-reject" id="cookieReject" data-hover>Refuser</button>
+      <button type="button" class="cookie-btn-accept" id="cookieAccept" data-hover>Accepter</button>
+    </div>
+  </div>
 
-    // Close mobile menu when clicking on a link
-    document.querySelectorAll('#mobileMenu a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-      });
-    });
-
-    // Navbar scroll effect
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        navbar.classList.add('nav-scrolled');
-      } else {
-        navbar.classList.remove('nav-scrolled');
-      }
-    });
-
-    // Scroll reveal animation
-    const reveals = document.querySelectorAll('.reveal');
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, observerOptions);
-
-    reveals.forEach(reveal => observer.observe(reveal));
-  </script>
+  <script src="/assets/site.js" defer></script>
 </body>
 </html>

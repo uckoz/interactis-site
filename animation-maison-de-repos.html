@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <!-- Cookie consent + chargement conditionnel Google Ads & Tawk -->
   <script src="/assets/consent.js" defer></script>
 
-
-
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a0e1a" />
   <title>Animation maison de repos & seniors | InterActis</title>
   <meta name="description" content="Animation interactive pour maisons de repos et seniors en Belgique, Luxembourg et Nord France. Jeux projetés sur un mur, 100% accessible PMR. Démonstration gratuite, devis sous 24h.">
   <meta name="robots" content="index, follow">
@@ -31,24 +29,13 @@
   <link rel="icon" type="image/png" href="/images/logo-icon.png">
   <link rel="apple-touch-icon" href="/images/logo-icon.png">
 
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              orange: '#f97316',
-              red: '#dc2626',
-              dark: '#0f172a',
-              light: '#fff7ed'
-            }
-          }
-        }
-      }
-    }
-  </script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Bricolage+Grotesque:wght@700&display=swap" rel="stylesheet" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/assets/site.css" />
 
   <!-- Schema.org Service Markup -->
   <script type="application/ld+json">
@@ -127,697 +114,1263 @@
   </script>
 
   <style>
-    html { scroll-behavior: smooth; }
-
-    /* Animations */
+    /* Custom animations for this page */
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    .fade-in-up { animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+    /* Hero section custom styles */
+    .hero-section {
+      position: relative;
+      padding: 160px 32px 80px;
+      background:
+        radial-gradient(ellipse at 20% 30%, rgba(0,212,255,0.12), transparent 55%),
+        radial-gradient(ellipse at 80% 70%, rgba(255,122,24,0.1), transparent 55%),
+        var(--bg);
+      overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
     }
-    .animate-fade-in-up { animation: fadeInUp 0.6s ease-out forwards; }
-    .animate-fade-in { animation: fadeIn 0.5s ease-out forwards; }
-
-    /* Scroll animations */
-    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s ease-out; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    /* FAQ accordion */
-    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
-    .faq-answer.open { max-height: 200px; }
-
-    /* Gradient text */
-    .gradient-text {
-      background: linear-gradient(135deg, #f97316, #dc2626);
+    .hero-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(0,212,255,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,212,255,0.05) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative; z-index: 2;
+      max-width: 1280px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+    }
+    .hero-content h1 {
+      font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+      font-size: clamp(2.25rem, 5vw, 4rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+    .hero-content h1 .accent {
+      background: linear-gradient(135deg, var(--blue) 0%, var(--orange-bright) 100%);
       -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
       background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-sub {
+      font-size: 1.0625rem;
+      color: var(--text-dim);
+      margin-bottom: 32px;
+      line-height: 1.65;
+      max-width: 50ch;
+    }
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 48px;
+    }
+    @media (max-width: 600px) {
+      .hero-ctas { flex-direction: column; }
+      .hero-ctas .btn { width: 100%; }
+    }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 32px;
+    }
+    .hero-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 16px;
+      background: rgba(5,7,13,0.4);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+    .hero-stat .n {
+      font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--blue), var(--orange));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-stat .l {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-faded);
+    }
+    .hero-image {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+    }
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
 
-    /* Card hover */
-    .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-    .card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+    /* Video section */
+    .video-section {
+      padding: 100px 32px;
+      background: var(--bg);
+      text-align: center;
+    }
+    .video-section h2 {
+      font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 48px;
+    }
+    .video-wrapper {
+      max-width: 800px;
+      margin: 0 auto;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+    .video-wrapper video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .video-caption {
+      margin-top: 16px;
+      font-size: 0.875rem;
+      color: var(--text-dim);
+    }
 
-    /* Sticky nav background */
-    .nav-scrolled { background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+    /* Benefits grid */
+    .benefits-section {
+      padding: 120px 32px;
+      background: var(--bg-soft);
+    }
+    .benefits-header {
+      max-width: 1280px;
+      margin: 0 auto 80px;
+      text-align: center;
+    }
+    .benefits-header h2 {
+      font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+    .benefits-header p {
+      font-size: 1.0625rem;
+      color: var(--text-dim);
+      max-width: 60ch;
+      margin: 0 auto;
+    }
+    .benefits-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    .benefit-card {
+      padding: 32px 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      transition: all 0.4s var(--ease);
+    }
+    .benefit-card:hover {
+      border-color: var(--orange);
+      transform: translateY(-6px);
+    }
+    .benefit-icon {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,122,24,0.1);
+      color: var(--orange);
+      border-radius: 12px;
+      margin-bottom: 16px;
+      font-size: 1.5rem;
+    }
+    .benefit-card h3 {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .benefit-card p {
+      font-size: 0.9375rem;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+
+    /* How it works */
+    .howitworks-section {
+      padding: 120px 32px;
+      background: var(--bg);
+    }
+    .howitworks-header {
+      max-width: 1280px;
+      margin: 0 auto 80px;
+      text-align: center;
+    }
+    .howitworks-header h2 {
+      font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+    .steps-grid {
+      max-width: 1280px;
+      margin: 0 auto 64px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 32px;
+    }
+    .step {
+      text-align: center;
+    }
+    .step-number {
+      font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+      font-size: 3rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--orange), var(--blue));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 16px;
+    }
+    .step h3 {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+    .step p {
+      font-size: 0.9375rem;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+    .setup-box {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 32px;
+      background: rgba(255,122,24,0.08);
+      border: 1px solid rgba(255,122,24,0.2);
+      border-radius: 16px;
+    }
+    .setup-box h3 {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+    .setup-box p {
+      color: var(--text-dim);
+      margin-bottom: 12px;
+    }
+    .setup-box .check {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-dim);
+      font-size: 0.9375rem;
+    }
+
+    /* Videos in action */
+    .videos-section {
+      padding: 120px 32px;
+      background: var(--bg-soft);
+    }
+    .videos-header {
+      max-width: 1280px;
+      margin: 0 auto 64px;
+      text-align: center;
+    }
+    .videos-header h2 {
+      font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+    .videos-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .video-card {
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+    }
+    .video-card video {
+      width: 100%;
+      height: auto;
+      display: block;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+    }
+    .video-card-caption {
+      padding: 16px;
+      font-size: 0.9375rem;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* Adapted activities */
+    .adapted-section {
+      padding: 120px 32px;
+      background: var(--bg);
+    }
+    .adapted-header {
+      max-width: 1280px;
+      margin: 0 auto 80px;
+      text-align: center;
+    }
+    .adapted-header h2 {
+      font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+    .adapted-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+    .activity-card {
+      padding: 28px 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      transition: all 0.4s var(--ease);
+    }
+    .activity-card:hover {
+      border-color: var(--orange);
+      transform: translateY(-6px);
+    }
+    .activity-icon {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,122,24,0.1);
+      color: var(--orange);
+      border-radius: 12px;
+      margin-bottom: 16px;
+      font-size: 1.5rem;
+    }
+    .activity-card h3 {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .activity-card p {
+      font-size: 0.9375rem;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+
+    /* Benefits summary (dark) */
+    .benefits-dark {
+      padding: 120px 32px;
+      background: linear-gradient(135deg, rgba(5,7,13,0.9), rgba(15,20,36,0.9));
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .benefits-dark-header {
+      max-width: 1280px;
+      margin: 0 auto 80px;
+      text-align: center;
+    }
+    .benefits-dark-header h2 {
+      font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+    .benefits-dark-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 32px;
+    }
+    .benefit-dark-item {
+      text-align: center;
+    }
+    .benefit-dark-icon {
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,122,24,0.12);
+      color: var(--orange);
+      border-radius: 12px;
+      margin: 0 auto 16px;
+      font-size: 1.5rem;
+    }
+    .benefit-dark-item h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .benefit-dark-item p {
+      font-size: 0.875rem;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+
+    /* Gallery photos */
+    .gallery-section {
+      padding: 120px 32px;
+      background: var(--bg-soft);
+    }
+    .gallery-header {
+      max-width: 1280px;
+      margin: 0 auto 64px;
+      text-align: center;
+    }
+    .gallery-header h2 {
+      font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+    .gallery-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .gallery-item {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      transition: transform 0.6s var(--ease);
+    }
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Testimonials */
+    .testimonials-section {
+      padding: 120px 32px;
+      background: var(--bg);
+    }
+    .testimonials-header {
+      max-width: 1280px;
+      margin: 0 auto 64px;
+      text-align: center;
+    }
+    .testimonials-header h2 {
+      font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+    .testimonials-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .testimonial-card {
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+    }
+    .testimonial-card video {
+      width: 100%;
+      height: auto;
+      display: block;
+      aspect-ratio: 9/12;
+      object-fit: cover;
+    }
+    .testimonial-card-caption {
+      padding: 16px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* CTA section */
+    .cta-section {
+      padding: 120px 32px;
+      background: linear-gradient(135deg, var(--orange), #ff5722);
+      text-align: center;
+    }
+    .cta-section h2 {
+      font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: white;
+      margin-bottom: 24px;
+    }
+    .cta-section p {
+      font-size: 1.0625rem;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 32px;
+      max-width: 60ch;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-section .btn-white {
+      background: white;
+      color: var(--orange);
+      font-weight: 700;
+    }
+    .cta-section .btn-white:hover {
+      background: rgba(255,255,255,0.95);
+    }
+
+    /* FAQ */
+    .faq-section {
+      padding: 120px 32px;
+      background: var(--bg-soft);
+    }
+    .faq-header {
+      max-width: 1280px;
+      margin: 0 auto 80px;
+      text-align: center;
+    }
+    .faq-header h2 {
+      font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+    .faq-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--line);
+      padding: 24px 0;
+    }
+    .faq-q {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1.0625rem;
+      color: var(--text);
+      transition: color 0.3s var(--ease);
+      background: none;
+      border: none;
+      width: 100%;
+      padding: 0;
+      text-align: left;
+    }
+    .faq-q:hover {
+      color: var(--orange);
+    }
+    .faq-icon {
+      width: 32px;
+      height: 32px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,122,24,0.1);
+      color: var(--orange);
+      border-radius: 8px;
+      transition: transform 0.3s var(--ease);
+    }
+    .faq-item.open .faq-icon {
+      transform: rotate(180deg);
+    }
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s var(--ease);
+      font-size: 0.9375rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+      margin-top: 16px;
+    }
+    .faq-item.open .faq-a {
+      max-height: 500px;
+    }
+
+    /* Contact section */
+    .contact-section {
+      padding: 120px 32px;
+      background: var(--bg);
+      border-top: 1px solid var(--line);
+    }
+    .contact-header {
+      max-width: 1280px;
+      margin: 0 auto 80px;
+      text-align: center;
+    }
+    .contact-header h2 {
+      font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+    .contact-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 80px;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .contact-grid { grid-template-columns: 1fr; gap: 60px; }
+    }
+    .contact-info-box {
+      padding: 32px;
+      background: linear-gradient(135deg, var(--orange), #ff5722);
+      border-radius: 16px;
+      color: white;
+    }
+    .contact-info-box h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+    .contact-channel {
+      display: flex;
+      gap: 14px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+    .contact-channel:last-child {
+      border-bottom: none;
+    }
+    .contact-channel-icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.15);
+      border-radius: 10px;
+      flex-shrink: 0;
+      font-size: 1.25rem;
+    }
+    .contact-channel small {
+      display: block;
+      font-size: 0.75rem;
+      opacity: 0.85;
+      margin-bottom: 2px;
+    }
+    .contact-channel a,
+    .contact-channel p {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    .contact-form {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 40px;
+    }
+    .contact-form h3 {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+    .contact-form > p {
+      font-size: 0.875rem;
+      color: var(--text-dim);
+      margin-bottom: 24px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-faded);
+      margin-bottom: 8px;
+    }
+    .form-input,
+    .form-textarea,
+    .form-select {
+      width: 100%;
+      padding: 14px 16px;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.9375rem;
+      transition: all 0.3s var(--ease);
+    }
+    .form-input:focus,
+    .form-textarea:focus,
+    .form-select:focus {
+      outline: none;
+      border-color: var(--orange);
+      background: rgba(255,122,24,0.04);
+    }
+    .form-textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 600px) {
+      .form-row { grid-template-columns: 1fr; }
+    }
+    .form-submit {
+      width: 100%;
+      padding: 16px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+    .form-trust {
+      margin-top: 12px;
+      font-size: 0.75rem;
+      color: var(--text-faded);
+      text-align: center;
+    }
   </style>
 </head>
-<body class="bg-white text-gray-900 font-sans">
+<body>
+  <a href="#main" class="skip-link">Aller au contenu principal</a>
 
-  <!-- NAVIGATION -->
-  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-3">
-        <img src="/images/logo-icon.webp" alt="Interactis Logo" class="w-10 h-10 object-contain">
-        <div>
-          <span class="text-xl font-bold gradient-text">Interactis</span>
-          <span class="block text-xs text-gray-500">Animation Interactive</span>
-        </div>
-      </a>
+  <div class="cursor" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
 
-      <!-- Desktop nav -->
-      <div class="hidden md:flex items-center gap-8">
-        <a href="/#publics" class="text-sm font-medium text-gray-700 hover:text-orange-600 transition-colors">Nos publics</a>
-        <a href="/#fonctionnement" class="text-sm font-medium text-gray-700 hover:text-orange-600 transition-colors">Comment ça marche</a>
-        <a href="/#animations" class="text-sm font-medium text-gray-700 hover:text-orange-600 transition-colors">Animations</a>
-        <a href="/#faq" class="text-sm font-medium text-gray-700 hover:text-orange-600 transition-colors">FAQ</a>
-        <a href="#contact" class="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-5 py-2.5 rounded-lg font-semibold text-sm transition-colors shadow-lg shadow-orange-500/25">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-          Demander un devis
-        </a>
-      </div>
+  <!-- HEADER -->
+  <header class="hd">
+    <a href="/" class="hd-logo" data-hover>Inter<span>Actis</span></a>
+    <nav class="hd-nav">
+      <a href="/animation-anniversaire" data-hover>Anniversaire</a>
+      <a href="/animation-entreprise" data-hover>Team building</a>
+      <a href="/animation-maison-de-repos" data-hover>Maison de repos</a>
+      <a href="/animation-ecole" data-hover>École</a>
+      <a href="/blog" data-hover>Blog</a>
+      <a href="/devis" class="btn btn-primary hd-cta" data-hover>Devis <span class="arrow">→</span></a>
+    </nav>
+    <button class="hd-burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menuOverlay"><span></span><span></span><span></span></button>
+  </header>
 
-      <!-- Mobile menu button -->
-      <button id="menuBtn" class="md:hidden p-2 rounded-lg hover:bg-gray-100" aria-label="Menu">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-      </button>
-    </div>
+  <div class="menu-overlay" id="menuOverlay">
+    <nav>
+      <a href="/">Accueil</a>
+      <a href="/animation-anniversaire">Anniversaire</a>
+      <a href="/animation-entreprise">Team building</a>
+      <a href="/animation-maison-de-repos">Maison de repos</a>
+      <a href="/animation-ecole">École</a>
+      <a href="/blog">Blog</a>
+      <a href="/devis">Devis</a>
+    </nav>
+  </div>
 
-    <!-- Mobile menu -->
-    <div id="mobileMenu" class="hidden md:hidden bg-white border-t shadow-lg">
-      <div class="px-4 py-4 space-y-3">
-        <a href="/#publics" class="block py-2 text-gray-700 font-medium">Nos publics</a>
-        <a href="/#fonctionnement" class="block py-2 text-gray-700 font-medium">Comment ça marche</a>
-        <a href="/#animations" class="block py-2 text-gray-700 font-medium">Animations</a>
-        <a href="/#faq" class="block py-2 text-gray-700 font-medium">FAQ</a>
-        <a href="#contact" class="block py-3 bg-orange-500 text-white text-center rounded-lg font-semibold">Demander un devis</a>
-      </div>
-    </div>
-  </nav>
+  <main id="main">
 
   <!-- HERO -->
-  <section class="relative overflow-hidden bg-gradient-to-br from-orange-50 via-pink-50 to-purple-50 pt-28 pb-20 sm:pt-36 sm:pb-28">
-    <!-- Background decoration -->
-    <div class="absolute -top-40 -right-40 w-80 h-80 bg-orange-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
-    <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div class="animate-fade-in-up">
-          <div class="inline-flex items-center gap-2 bg-white/80 backdrop-blur px-4 py-2 rounded-full text-sm font-medium text-gray-700 mb-6 shadow-sm">
-            <svg class="w-5 h-5 text-orange-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-            100% Inclusif & PMR
+  <section class="hero-section">
+    <div class="hero-inner">
+      <div class="hero-content fade-in-up">
+        <p class="eyebrow" style="margin-bottom: 16px;">100% Inclusif & PMR</p>
+        <h1>Animation Interactive pour <span class="accent">Maisons de Repos et Seniors</span></h1>
+        <p class="hero-sub">Des jeux ludiques projetés sur un mur qui stimulent la mobilité, la mémoire et le lien social. 100% accessible aux personnes en fauteuil roulant.</p>
+        <div class="hero-ctas">
+          <a href="/devis" class="btn btn-primary" data-hover>Demander une démonstration gratuite <span class="arrow">→</span></a>
+          <a href="tel:+32488435342" class="btn btn-ghost" data-hover>+32 488 43 53 42</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="n">100%</div>
+            <div class="l">Inclusif & PMR</div>
           </div>
-
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight mb-6">
-            <span class="gradient-text">Animation Interactive pour Maisons de Repos et Seniors</span>
-          </h1>
-
-          <p class="text-lg text-gray-600 mb-8 max-w-xl">
-            Des jeux ludiques projetés sur un mur qui stimulent la mobilité, la mémoire et le lien social. 100% accessible aux personnes en fauteuil roulant.
-          </p>
-
-          <div class="flex flex-col sm:flex-row gap-4 mb-10">
-            <a href="#contact" class="inline-flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg shadow-orange-500/30 hover:shadow-xl hover:shadow-orange-500/40">
-              Demander une démonstration gratuite
-            </a>
-            <a href="tel:+32488435342" class="inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-gray-800 px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-md border border-gray-200">
-              <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-              Être rappelé
-            </a>
+          <div class="hero-stat">
+            <div class="n">&lt;3min</div>
+            <div class="l">Installation</div>
           </div>
-
-          <!-- Stats -->
-          <div class="grid grid-cols-3 gap-4">
-            <div class="text-center p-3 bg-white/60 backdrop-blur rounded-xl">
-              <div class="text-2xl font-black text-orange-600">100%</div>
-              <div class="text-xs text-gray-600 font-medium">Inclusif & PMR</div>
-            </div>
-            <div class="text-center p-3 bg-white/60 backdrop-blur rounded-xl">
-              <div class="text-2xl font-black text-orange-600">&lt;3min</div>
-              <div class="text-xs text-gray-600 font-medium">Installation</div>
-            </div>
-            <div class="text-center p-3 bg-white/60 backdrop-blur rounded-xl">
-              <div class="text-2xl font-black text-orange-600">36</div>
-              <div class="text-xs text-gray-600 font-medium">Jeux interactifs</div>
-            </div>
+          <div class="hero-stat">
+            <div class="n">36</div>
+            <div class="l">Jeux interactifs</div>
           </div>
         </div>
+      </div>
 
-        <div class="animate-fade-in relative">
-          <img src="/images/photo-maison-de-repos.webp" alt="Animation interactive pour maisons de repos et seniors" class="rounded-2xl shadow-2xl w-full object-cover" loading="eager">
-        </div>
+      <div class="hero-image fade-in-up" style="animation-delay: 0.1s;">
+        <img src="/images/photo-maison-de-repos.webp" alt="Animation interactive pour maisons de repos et seniors" loading="eager">
       </div>
     </div>
   </section>
-  <!-- VIDEO PROMO -->
-  <section class="py-16 sm:py-20 bg-gradient-to-br from-orange-50 via-pink-50 to-purple-50">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-      <p class="text-orange-600 font-bold uppercase tracking-wide text-sm mb-3">Découvrez InterActis en vidéo</p>
-      <h2 class="text-3xl sm:text-4xl font-black mb-8">L'animation qui rassemble tout le monde</h2>
-      <div class="max-w-sm mx-auto rounded-2xl overflow-hidden shadow-2xl">
-        <video autoplay muted loop playsinline controls preload="metadata" poster="/assets/interactis-promo-poster.jpg" class="w-full block">
-          <source src="/assets/interactis-promo.mp4" type="video/mp4" />
-        </video>
-      </div>
-      <p class="text-sm text-gray-500 mt-4">Activez le son 🔊 pour entendre l'ambiance</p>
+
+  <!-- PROMO VIDEO -->
+  <section class="video-section">
+    <p class="eyebrow" style="justify-content: center; margin-bottom: 20px;">Découvrez InterActis en vidéo</p>
+    <h2>L'animation qui rassemble tout le monde</h2>
+    <div class="video-wrapper">
+      <video autoplay muted loop playsinline controls preload="metadata" poster="/assets/interactis-promo-poster.jpg">
+        <source src="/assets/interactis-promo.mp4" type="video/mp4" />
+      </video>
     </div>
+    <p class="video-caption">Activez le son pour entendre l'ambiance</p>
   </section>
 
-
-
-  <!-- BENEFITS FOR SENIORS -->
-  <section class="py-20 sm:py-28 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-16 reveal">
-        <h2 class="text-3xl sm:text-4xl font-black mb-4">
-          Pourquoi choisir InterActis <span class="gradient-text">pour votre maison de repos ?</span>
-        </h2>
-        <p class="text-lg text-gray-600 max-w-2xl mx-auto">Une animation pensée spécialement pour nos aînés</p>
+  <!-- BENEFITS -->
+  <section class="benefits-section">
+    <div class="benefits-header">
+      <h2>Pourquoi choisir InterActis <span style="color: var(--orange);">pour votre maison de repos ?</span></h2>
+      <p>Une animation pensée spécialement pour nos aînés</p>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon">⚡</div>
+        <h3>Stimule la mobilité</h3>
+        <p>Des jeux qui encouragent les mouvements naturels et adaptés à chacun. Parfait pour maintenir l'activité physique.</p>
       </div>
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
-        <!-- Mobilité -->
-        <div class="card-hover bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
-          <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-          </div>
-          <h3 class="text-xl font-bold mb-2">Stimule la mobilité</h3>
-          <p class="text-gray-600">Des jeux qui encouragent les mouvements naturels et adaptés à chacun. Parfait pour maintenir l'activité physique.</p>
-        </div>
-
-        <!-- Mémoire -->
-        <div class="card-hover bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
-          <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-          </div>
-          <h3 class="text-xl font-bold mb-2">Aiguise la mémoire</h3>
-          <p class="text-gray-600">Jeux de mémoire et de culture générale adaptés. Stimule le cerveau de façon ludique et agréable.</p>
-        </div>
-
-        <!-- Lien social -->
-        <div class="card-hover bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
-          <div class="w-12 h-12 bg-pink-100 rounded-xl flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-          </div>
-          <h3 class="text-xl font-bold mb-2">Crée du lien social</h3>
-          <p class="text-gray-600">Des jeux en groupe qui favorisent les interactions et renforcent les liens entre résidents.</p>
-        </div>
-
-        <!-- PMR -->
-        <div class="card-hover bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
-          <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-          </div>
-          <h3 class="text-xl font-bold mb-2">100% Accessible PMR</h3>
-          <p class="text-gray-600">Jouable depuis une chaise roulante. Chaque résident, sans exception, peut participer activement.</p>
-        </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🧠</div>
+        <h3>Aiguise la mémoire</h3>
+        <p>Jeux de mémoire et de culture générale adaptés. Stimule le cerveau de façon ludique et agréable.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">👥</div>
+        <h3>Crée du lien social</h3>
+        <p>Des jeux en groupe qui favorisent les interactions et renforcent les liens entre résidents.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">♿</div>
+        <h3>100% Accessible PMR</h3>
+        <p>Jouable depuis une chaise roulante. Chaque résident, sans exception, peut participer activement.</p>
       </div>
     </div>
   </section>
 
   <!-- HOW IT WORKS -->
-  <section class="py-20 sm:py-28 bg-gradient-to-br from-slate-50 to-orange-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-16 reveal">
-        <h2 class="text-3xl sm:text-4xl font-black mb-4">
-          Comment <span class="gradient-text">ça marche</span> ?
-        </h2>
-        <p class="text-lg text-gray-600 max-w-2xl mx-auto">Une technologie simple et efficace, pensée pour nos aînés</p>
+  <section class="howitworks-section">
+    <div class="howitworks-header">
+      <h2>Comment <span style="color: var(--orange);">ça marche</span> ?</h2>
+      <p>Une technologie simple et efficace, pensée pour nos aînés</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>Jeux projetés</h3>
+        <p>Les jeux sont projetés sur un grand mur blanc ou un écran. Pas besoin de manettes, pas de technologie complexe.</p>
       </div>
-
-      <div class="bg-white rounded-2xl p-8 sm:p-12 shadow-sm reveal">
-        <div class="max-w-4xl mx-auto">
-          <div class="grid md:grid-cols-3 gap-8">
-            <!-- Projected games -->
-            <div class="text-center">
-              <div class="w-16 h-16 bg-orange-500 text-white rounded-2xl flex items-center justify-center text-2xl font-black mx-auto mb-6 shadow-lg shadow-orange-500/30">1</div>
-              <h3 class="text-xl font-bold mb-3">Jeux projetés</h3>
-              <p class="text-gray-600">Les jeux sont projetés sur un grand mur blanc ou un écran. Pas besoin de manettes, pas de technologie complexe.</p>
-            </div>
-
-            <!-- Interaction -->
-            <div class="text-center">
-              <div class="w-16 h-16 bg-orange-500 text-white rounded-2xl flex items-center justify-center text-2xl font-black mx-auto mb-6 shadow-lg shadow-orange-500/30">2</div>
-              <h3 class="text-xl font-bold mb-3">Interaction naturelle</h3>
-              <p class="text-gray-600">Les résidents interagissent avec leurs mains ou avec des ballons souples. Totalement naturel et sans danger.</p>
-            </div>
-
-            <!-- Installation -->
-            <div class="text-center">
-              <div class="w-16 h-16 bg-orange-500 text-white rounded-2xl flex items-center justify-center text-2xl font-black mx-auto mb-6 shadow-lg shadow-orange-500/30">3</div>
-              <h3 class="text-xl font-bold mb-3">Installation en 3 min</h3>
-              <p class="text-gray-600">Nous nous occupons de tout. Installation, configuration, démonstration. Zéro tracas pour vous.</p>
-            </div>
-          </div>
-
-          <div class="mt-12 p-8 bg-orange-50 rounded-xl border-2 border-orange-200">
-            <h3 class="text-xl font-bold mb-3 text-gray-900">Espace requis</h3>
-            <p class="text-gray-700 mb-4">Un simple espace d'environ 3x3 mètres et une prise électrique. C'est tout ! Nous apportons tout le matériel.</p>
-            <div class="flex items-center gap-3 text-gray-700">
-              <svg class="w-5 h-5 text-orange-600" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
-              <span>Montage et démontage en moins de 5 minutes</span>
-            </div>
-          </div>
-        </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>Interaction naturelle</h3>
+        <p>Les résidents interagissent avec leurs mains ou avec des ballons souples. Totalement naturel et sans danger.</p>
       </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>Installation en 3 min</h3>
+        <p>Nous nous occupons de tout. Installation, configuration, démonstration. Zéro tracas pour vous.</p>
+      </div>
+    </div>
+    <div class="setup-box">
+      <h3>Espace requis</h3>
+      <p>Un simple espace d'environ 3x3 mètres et une prise électrique. C'est tout ! Nous apportons tout le matériel.</p>
+      <div class="check">✓ Montage et démontage en moins de 5 minutes</div>
     </div>
   </section>
 
-  <!-- VIDEOS -->
-  <section class="py-20 sm:py-28 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-16 reveal">
-        <h2 class="text-3xl sm:text-4xl font-black mb-4">
-          Nos animations <span class="gradient-text">en action</span>
-        </h2>
-        <p class="text-lg text-gray-600 max-w-2xl mx-auto">Retour en images sur une animation interactive à La Bonne Maison de Bouzanton</p>
+  <!-- VIDEOS IN ACTION -->
+  <section class="videos-section">
+    <div class="videos-header">
+      <h2>Nos animations <span style="color: var(--orange);">en action</span></h2>
+      <p>Retour en images sur une animation interactive à La Bonne Maison de Bouzanton</p>
+    </div>
+    <div class="videos-grid">
+      <div class="video-card">
+        <video controls playsinline preload="metadata">
+          <source src="/animation-bouzanton-1.mp4" type="video/mp4">
+          Votre navigateur ne supporte pas la lecture vidéo.
+        </video>
+        <div class="video-card-caption">Les résidents jouent avec un ballon sur les jeux projetés au mur</div>
       </div>
-
-      <div class="grid sm:grid-cols-2 gap-8 reveal">
-        <div class="rounded-2xl overflow-hidden shadow-lg">
-          <video controls playsinline preload="metadata" poster="" class="w-full rounded-2xl" style="aspect-ratio: 16/9; object-fit: cover;">
-            <source src="/animation-bouzanton-1.mp4" type="video/mp4">
-            Votre navigateur ne supporte pas la lecture vidéo.
-          </video>
-          <div class="p-4 bg-gray-50">
-            <p class="text-gray-700 font-medium">Les résidents jouent avec un ballon sur les jeux projetés au mur</p>
-          </div>
-        </div>
-
-        <div class="rounded-2xl overflow-hidden shadow-lg">
-          <video controls playsinline preload="metadata" poster="" class="w-full rounded-2xl" style="aspect-ratio: 16/9; object-fit: cover;">
-            <source src="/animation-bouzanton-2.mp4" type="video/mp4">
-            Votre navigateur ne supporte pas la lecture vidéo.
-          </video>
-          <div class="p-4 bg-gray-50">
-            <p class="text-gray-700 font-medium">Moment de partage entre résidents et accompagnants</p>
-          </div>
-        </div>
+      <div class="video-card">
+        <video controls playsinline preload="metadata">
+          <source src="/animation-bouzanton-2.mp4" type="video/mp4">
+          Votre navigateur ne supporte pas la lecture vidéo.
+        </video>
+        <div class="video-card-caption">Moment de partage entre résidents et accompagnants</div>
       </div>
     </div>
   </section>
 
   <!-- ADAPTED ACTIVITIES -->
-  <section class="py-20 sm:py-28 bg-gradient-to-br from-slate-50 to-orange-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-16 reveal">
-        <h2 class="text-3xl sm:text-4xl font-black mb-4">
-          Des animations <span class="gradient-text">adaptées à vos résidents</span>
-        </h2>
-        <p class="text-lg text-gray-600 max-w-2xl mx-auto">36 jeux variés pour tous les niveaux et envies</p>
+  <section class="adapted-section">
+    <div class="adapted-header">
+      <h2>Des animations <span style="color: var(--orange);">adaptées à vos résidents</span></h2>
+      <p>36 jeux variés pour tous les niveaux et envies</p>
+    </div>
+    <div class="adapted-grid">
+      <div class="activity-card">
+        <div class="activity-icon">🎯</div>
+        <h3>Jeux de mémoire</h3>
+        <p>Memory visual, reconnaître les paires, jeux de concentration. Entraîne la mémoire et l'attention.</p>
       </div>
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
-        <!-- Memory Games -->
-        <div class="card-hover bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
-          <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          </div>
-          <h3 class="text-xl font-bold mb-2">Jeux de mémoire</h3>
-          <p class="text-gray-600">Memory visual, reconnaître les paires, jeux de concentration. Entraîne la mémoire et l'attention.</p>
-        </div>
-
-        <!-- Coordination -->
-        <div class="card-hover bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
-          <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>
-          </div>
-          <h3 class="text-xl font-bold mb-2">Jeux de coordination</h3>
-          <p class="text-gray-600">Cible, balle lancée, gestes adaptés. Améliore la coordination et maintient la flexibilité.</p>
-        </div>
-
-        <!-- Sport adapté -->
-        <div class="card-hover bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
-          <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-          </div>
-          <h3 class="text-xl font-bold mb-2">Sport adapté</h3>
-          <p class="text-gray-600">Jeux de balle, d'équilibre, d'activation. Encourage le mouvement dans une ambiance positive.</p>
-        </div>
-
-        <!-- Team games -->
-        <div class="card-hover bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
-          <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-          </div>
-          <h3 class="text-xl font-bold mb-2">Travail d'équipe</h3>
-          <p class="text-gray-600">Jeux collaboratifs, parcours collectifs. Favorise l'entraide et le renforcement du groupe.</p>
-        </div>
-
+      <div class="activity-card">
+        <div class="activity-icon">🎪</div>
+        <h3>Jeux de coordination</h3>
+        <p>Cible, balle lancée, gestes adaptés. Améliore la coordination et maintient la flexibilité.</p>
+      </div>
+      <div class="activity-card">
+        <div class="activity-icon">⚽</div>
+        <h3>Sport adapté</h3>
+        <p>Jeux de balle, d'équilibre, d'activation. Encourage le mouvement dans une ambiance positive.</p>
+      </div>
+      <div class="activity-card">
+        <div class="activity-icon">🤝</div>
+        <h3>Travail d'équipe</h3>
+        <p>Jeux collaboratifs, parcours collectifs. Favorise l'entraide et le renforcement du groupe.</p>
       </div>
     </div>
   </section>
 
-  <!-- BENEFITS SUMMARY -->
-  <section class="py-20 sm:py-28 bg-gradient-to-br from-gray-900 to-gray-800 text-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-16 reveal">
-        <h2 class="text-3xl sm:text-4xl font-black mb-4">
-          Les vrais <span class="text-orange-400">bénéfices</span> pour votre maison de repos
-        </h2>
-        <p class="text-lg text-gray-400">Des résultats visibles et durables</p>
+  <!-- BENEFITS SUMMARY (dark) -->
+  <section class="benefits-dark">
+    <div class="benefits-dark-header">
+      <h2>Les vrais <span style="color: var(--orange);">bénéfices</span> pour votre maison de repos</h2>
+      <p>Des résultats visibles et durables</p>
+    </div>
+    <div class="benefits-dark-grid">
+      <div class="benefit-dark-item">
+        <div class="benefit-dark-icon">😊</div>
+        <h3>Bien-être immédiat</h3>
+        <p>Sourires et rires garantis dès les premières secondes. Une ambiance positive pour toute la journée.</p>
       </div>
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 reveal">
-        <div class="text-center">
-          <div class="w-14 h-14 bg-orange-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <svg class="w-7 h-7 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          </div>
-          <h3 class="text-lg font-bold mb-2">Bien-être immédiat</h3>
-          <p class="text-gray-400 text-sm">Sourires et rires garantis dès les premières secondes. Une ambiance positive pour toute la journée.</p>
-        </div>
-
-        <div class="text-center">
-          <div class="w-14 h-14 bg-orange-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <svg class="w-7 h-7 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-          </div>
-          <h3 class="text-lg font-bold mb-2">Activation physique</h3>
-          <p class="text-gray-400 text-sm">Les résidents se lèvent, bougent, gesticulent. L'activité physique douce adaptée à chacun.</p>
-        </div>
-
-        <div class="text-center">
-          <div class="w-14 h-14 bg-orange-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <svg class="w-7 h-7 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
-          </div>
-          <h3 class="text-lg font-bold mb-2">Stimulation cognitive</h3>
-          <p class="text-gray-400 text-sm">Concentration, mémoire, réflexion. Les jeux gardent l'esprit alerte et actif.</p>
-        </div>
-
-        <div class="text-center">
-          <div class="w-14 h-14 bg-orange-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <svg class="w-7 h-7 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
-          </div>
-          <h3 class="text-lg font-bold mb-2">Lien social renforcé</h3>
-          <p class="text-gray-400 text-sm">Jeux en groupe, interactions, rires partagés. Renforce les liens entre résidents.</p>
-        </div>
-
-        <div class="text-center">
-          <div class="w-14 h-14 bg-orange-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <svg class="w-7 h-7 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
-          </div>
-          <h3 class="text-lg font-bold mb-2">Qualité de vie améliorée</h3>
-          <p class="text-gray-400 text-sm">Moments de détente, de plaisir et de partage. Crée des souvenirs positifs.</p>
-        </div>
-
-        <div class="text-center">
-          <div class="w-14 h-14 bg-orange-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <svg class="w-7 h-7 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-          </div>
-          <h3 class="text-lg font-bold mb-2">Facilité d'utilisation</h3>
-          <p class="text-gray-400 text-sm">Zéro complexité technique. Nous gérons tout du début à la fin. Vous profitez, c'est tout.</p>
-        </div>
+      <div class="benefit-dark-item">
+        <div class="benefit-dark-icon">💪</div>
+        <h3>Activation physique</h3>
+        <p>Les résidents se lèvent, bougent, gesticulent. L'activité physique douce adaptée à chacun.</p>
+      </div>
+      <div class="benefit-dark-item">
+        <div class="benefit-dark-icon">🧩</div>
+        <h3>Stimulation cognitive</h3>
+        <p>Concentration, mémoire, réflexion. Les jeux gardent l'esprit alerte et actif.</p>
+      </div>
+      <div class="benefit-dark-item">
+        <div class="benefit-dark-icon">🌟</div>
+        <h3>Lien social renforcé</h3>
+        <p>Jeux en groupe, interactions, rires partagés. Renforce les liens entre résidents.</p>
+      </div>
+      <div class="benefit-dark-item">
+        <div class="benefit-dark-icon">✨</div>
+        <h3>Qualité de vie améliorée</h3>
+        <p>Moments de détente, de plaisir et de partage. Crée des souvenirs positifs.</p>
+      </div>
+      <div class="benefit-dark-item">
+        <div class="benefit-dark-icon">🔧</div>
+        <h3>Facilité d'utilisation</h3>
+        <p>Zéro complexité technique. Nous gérons tout du début à la fin. Vous profitez, c'est tout.</p>
       </div>
     </div>
   </section>
 
-  <!-- GALERIE PHOTOS -->
-  <section class="py-20 sm:py-28 bg-white">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-12">
-        <p class="text-orange-600 font-bold uppercase tracking-wide text-sm mb-3">En images</p>
-        <h2 class="text-3xl sm:text-4xl font-black mb-4">L'animation en pleine action</h2>
-        <p class="text-lg text-gray-600 max-w-2xl mx-auto">Des résidents debout ou assis, en fauteuil ou avec leurs accessoires : tout le monde participe à son rythme.</p>
+  <!-- GALLERY -->
+  <section class="gallery-section">
+    <div class="gallery-header">
+      <h2>L'animation en pleine action</h2>
+      <p>Des résidents debout ou assis, en fauteuil ou avec leurs accessoires : tout le monde participe à son rythme.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="/images/photo-maison-action-1.webp" alt="Résidents en maison de repos jouant sur un mur interactif" loading="lazy">
       </div>
-      <div class="grid sm:grid-cols-2 gap-6">
-        <img src="/images/photo-maison-action-1.webp" alt="Résidents en maison de repos jouant sur un mur interactif" class="rounded-2xl shadow-lg w-full object-cover" loading="lazy">
-        <img src="/images/photo-maison-action-2.webp" alt="Résidents participant à l'animation interactive depuis leur fauteuil" class="rounded-2xl shadow-lg w-full object-cover" loading="lazy">
+      <div class="gallery-item">
+        <img src="/images/photo-maison-action-2.webp" alt="Résidents participant à l'animation interactive depuis leur fauteuil" loading="lazy">
       </div>
     </div>
   </section>
 
-  <!-- TEMOIGNAGES -->
-  <section class="py-20 sm:py-28 bg-gradient-to-br from-orange-50 via-pink-50 to-purple-50">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-12">
-        <p class="text-orange-600 font-bold uppercase tracking-wide text-sm mb-3">Témoignages</p>
-        <h2 class="text-3xl sm:text-4xl font-black mb-4">Ils en parlent mieux que nous</h2>
-        <p class="text-lg text-gray-600 max-w-2xl mx-auto">Le sourire et les mots des résidents valent tous les arguments. Voici leurs retours après une animation InterActis.</p>
+  <!-- TESTIMONIALS -->
+  <section class="testimonials-section">
+    <div class="testimonials-header">
+      <p class="eyebrow" style="justify-content: center;">Témoignages</p>
+      <h2>Ils en parlent mieux que nous</h2>
+      <p>Le sourire et les mots des résidents valent tous les arguments. Voici leurs retours après une animation InterActis.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <video controls preload="metadata" playsinline poster="/assets/temoignages/temoignage-maison-1-poster.jpg">
+          <source src="/assets/temoignages/temoignage-maison-1.mp4" type="video/mp4" />
+        </video>
+        <div class="testimonial-card-caption">Témoignage d'une résidente</div>
       </div>
-      <div class="grid sm:grid-cols-2 gap-6">
-        <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
-          <video controls preload="metadata" playsinline poster="/assets/temoignages/temoignage-maison-1-poster.jpg" class="w-full block">
-            <source src="/assets/temoignages/temoignage-maison-1.mp4" type="video/mp4" />
-          </video>
-          <div class="p-4">
-            <p class="text-sm font-semibold text-gray-800">Témoignage d'une résidente</p>
-          </div>
-        </div>
-        <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
-          <video controls preload="metadata" playsinline poster="/assets/temoignages/temoignage-maison-2-poster.jpg" class="w-full block">
-            <source src="/assets/temoignages/temoignage-maison-2.mp4" type="video/mp4" />
-          </video>
-          <div class="p-4">
-            <p class="text-sm font-semibold text-gray-800">Témoignage d'une résidente</p>
-          </div>
-        </div>
+      <div class="testimonial-card">
+        <video controls preload="metadata" playsinline poster="/assets/temoignages/temoignage-maison-2-poster.jpg">
+          <source src="/assets/temoignages/temoignage-maison-2.mp4" type="video/mp4" />
+        </video>
+        <div class="testimonial-card-caption">Témoignage d'une résidente</div>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="py-20 sm:py-28 bg-gradient-to-r from-orange-500 to-red-500 text-white">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center reveal">
-      <h2 class="text-4xl sm:text-5xl font-black mb-6">
-        Offrez à vos résidents une expérience inoubliable
-      </h2>
-      <p class="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
-        Une démonstration gratuite pour comprendre tout de suite les bénéfices. Sans engagement.
-      </p>
-      <a href="#contact" class="inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-100 text-orange-600 px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg">
-        Demander une démonstration gratuite
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-      </a>
-    </div>
+  <section class="cta-section">
+    <h2>Offrez à vos résidents une expérience inoubliable</h2>
+    <p>Une démonstration gratuite pour comprendre tout de suite les bénéfices. Sans engagement.</p>
+    <a href="/devis" class="btn btn-white" data-hover>Demander une démonstration gratuite <span class="arrow">→</span></a>
   </section>
 
   <!-- FAQ -->
-  <section class="py-20 sm:py-28 bg-gradient-to-br from-slate-50 to-orange-50">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-12 reveal">
-        <h2 class="text-3xl sm:text-4xl font-black mb-4">Questions fréquentes</h2>
-        <p class="text-lg text-gray-600">Tout ce que les maisons de repos nous demandent avant de réserver.</p>
+  <section class="faq-section">
+    <div class="faq-header">
+      <h2>Questions fréquentes</h2>
+      <p>Tout ce que les maisons de repos nous demandent avant de réserver.</p>
+    </div>
+    <div class="faq-wrap">
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          L'animation est-elle adaptée aux résidents à mobilité réduite ?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          Oui, à 100 %. Tous les jeux sont jouables assis, debout ou en fauteuil roulant. L'animation s'adapte au rythme et aux capacités de chaque résident, y compris les personnes atteintes de troubles cognitifs.
+        </div>
       </div>
-      <div class="space-y-4">
-        <details class="bg-white rounded-xl p-6 shadow-sm reveal">
-          <summary class="font-bold text-lg cursor-pointer">L'animation est-elle adaptée aux résidents à mobilité réduite ?</summary>
-          <p class="mt-4 text-gray-600">Oui, à 100 %. Tous les jeux sont jouables assis, debout ou en fauteuil roulant. L'animation s'adapte au rythme et aux capacités de chaque résident, y compris les personnes atteintes de troubles cognitifs.</p>
-        </details>
-        <details class="bg-white rounded-xl p-6 shadow-sm reveal">
-          <summary class="font-bold text-lg cursor-pointer">De quoi avez-vous besoin sur place dans la maison de repos ?</summary>
-          <p class="mt-4 text-gray-600">Un mur clair d'environ 3 mètres de large, une pièce qu'on peut tamiser légèrement et une prise électrique. L'installation prend 15 minutes et nous apportons tout le matériel.</p>
-        </details>
-        <details class="bg-white rounded-xl p-6 shadow-sm reveal">
-          <summary class="font-bold text-lg cursor-pointer">Combien de résidents peuvent participer à une animation ?</summary>
-          <p class="mt-4 text-gray-600">De 2 à 12 résidents jouent simultanément selon le jeu, et les rotations sont rapides. 30 à 50 personnes peuvent profiter de l'animation en une après-midi.</p>
-        </details>
-        <details class="bg-white rounded-xl p-6 shadow-sm reveal">
-          <summary class="font-bold text-lg cursor-pointer">Dans quelles régions intervenez-vous ?</summary>
-          <p class="mt-4 text-gray-600">Nous intervenons dans toute la Belgique francophone (Bruxelles, Liège, Mons, Charleroi, Namur…), au Grand-Duché de Luxembourg et dans le nord de la France.</p>
-        </details>
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          De quoi avez-vous besoin sur place dans la maison de repos ?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          Un mur clair d'environ 3 mètres de large, une pièce qu'on peut tamiser légèrement et une prise électrique. L'installation prend 15 minutes et nous apportons tout le matériel.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          Combien de résidents peuvent participer à une animation ?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          De 2 à 12 résidents jouent simultanément selon le jeu, et les rotations sont rapides. 30 à 50 personnes peuvent profiter de l'animation en une après-midi.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          Dans quelles régions intervenez-vous ?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          Nous intervenons dans toute la Belgique francophone (Bruxelles, Liège, Mons, Charleroi, Namur…), au Grand-Duché de Luxembourg et dans le nord de la France.
+        </div>
       </div>
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section id="contact" class="py-20 sm:py-28 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-16 reveal">
-        <h2 class="text-3xl sm:text-4xl font-black mb-4">
-          Démonstration <span class="gradient-text">gratuite</span>
-        </h2>
-        <p class="text-lg text-gray-600">Réponse rapide et devis adapté à votre maison de repos</p>
+  <section class="contact-section">
+    <div class="contact-header">
+      <h2>Démonstration <span style="color: var(--orange);">gratuite</span></h2>
+      <p>Réponse rapide et devis adapté à votre maison de repos</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info-box">
+        <h3>Contactez-nous directement</h3>
+        <div class="contact-channel">
+          <div class="contact-channel-icon">📞</div>
+          <div>
+            <small>Par téléphone</small>
+            <a href="tel:+32488435342">+32 488 43 53 42</a>
+          </div>
+        </div>
+        <div class="contact-channel">
+          <div class="contact-channel-icon">✉️</div>
+          <div>
+            <small>Par email</small>
+            <a href="mailto:uckoz@interactis.be">uckoz@interactis.be</a>
+          </div>
+        </div>
+        <div class="contact-channel">
+          <div class="contact-channel-icon">📍</div>
+          <div>
+            <small>Nous intervenons dans</small>
+            <p>Belgique, Luxembourg, Nord de la France</p>
+          </div>
+        </div>
       </div>
 
-      <div class="grid lg:grid-cols-2 gap-12 reveal">
-        <!-- Contact info -->
-        <div>
-          <div class="bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl p-8 text-white mb-6">
-            <h3 class="text-2xl font-bold mb-6">Contactez-nous directement</h3>
+      <form action="https://formsubmit.co/uckoz@interactis.be" method="POST" class="contact-form">
+        <h3>Formulaire de demande de démonstration</h3>
+        <p>Remplissez ce formulaire et nous vous recontacterons sous 24h</p>
 
-            <div class="space-y-6">
-              <div class="flex items-center gap-4">
-                <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                </div>
-                <div>
-                  <p class="text-white/70 text-sm">Par téléphone</p>
-                  <a href="tel:+32488435342" class="text-xl font-bold hover:underline">+32 488 43 53 42</a>
-                </div>
-              </div>
+        <!-- Anti-spam -->
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_subject" value="Nouvelle demande de démonstration - Animation Maison de Repos">
+        <input type="hidden" name="_next" value="https://www.interactis.be/merci.html">
+        <input type="text" name="_honey" style="display:none">
 
-              <div class="flex items-center gap-4">
-                <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                </div>
-                <div>
-                  <p class="text-white/70 text-sm">Par email</p>
-                  <a href="mailto:uckoz@interactis.be" class="text-xl font-bold hover:underline">uckoz@interactis.be</a>
-                </div>
-              </div>
+        <div class="form-group">
+          <label for="name" class="form-label">Nom complet *</label>
+          <input type="text" id="name" name="name" required placeholder="Jean Dupont" class="form-input">
+        </div>
 
-              <div class="flex items-center gap-4">
-                <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                </div>
-                <div>
-                  <p class="text-white/70 text-sm">Nous intervenons dans</p>
-                  <p class="text-lg font-bold">Belgique, Luxembourg, Nord de la France</p>
-                </div>
-              </div>
-            </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone" class="form-label">Téléphone *</label>
+            <input type="tel" id="phone" name="phone" required placeholder="+32 488 12 34 56" class="form-input">
+          </div>
+          <div class="form-group">
+            <label for="email" class="form-label">Email *</label>
+            <input type="email" id="email" name="email" required placeholder="jean.dupont@email.com" class="form-input">
           </div>
         </div>
 
-        <!-- Form -->
-        <div>
-          <form action="https://formsubmit.co/uckoz@interactis.be" method="POST" class="bg-gray-50 rounded-2xl p-8">
-            <h3 class="text-xl font-bold mb-6">Formulaire de demande de démonstration</h3>
-            <p class="text-gray-600 text-sm mb-6">Remplissez ce formulaire et nous vous recontacterons sous 24h</p>
-
-            <!-- Anti-spam -->
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_subject" value="Nouvelle demande de démonstration - Animation Maison de Repos">
-            <input type="hidden" name="_next" value="https://www.interactis.be/merci.html">
-            <input type="text" name="_honey" style="display:none">
-
-            <div class="space-y-4">
-              <div>
-                <label for="name" class="block text-sm font-semibold text-gray-700 mb-1">Nom complet *</label>
-                <input type="text" id="name" name="name" required placeholder="Jean Dupont" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all">
-              </div>
-
-              <div>
-                <label for="phone" class="block text-sm font-semibold text-gray-700 mb-1">Téléphone *</label>
-                <input type="tel" id="phone" name="phone" required placeholder="+32 488 12 34 56" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all">
-              </div>
-
-              <div>
-                <label for="email" class="block text-sm font-semibold text-gray-700 mb-1">Email *</label>
-                <input type="email" id="email" name="email" required placeholder="jean.dupont@email.com" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all">
-              </div>
-
-              <div>
-                <label for="residence" class="block text-sm font-semibold text-gray-700 mb-1">Nom de la maison de repos *</label>
-                <input type="text" id="residence" name="residence_name" required placeholder="Ex: Maison de repos Les Cèdres..." class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all">
-              </div>
-
-              <div>
-                <label for="residents" class="block text-sm font-semibold text-gray-700 mb-1">Nombre de résidents *</label>
-                <input type="text" id="residents" name="nb_residents" required placeholder="Ex: 30-40 résidents" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all">
-              </div>
-
-              <div>
-                <label for="message" class="block text-sm font-semibold text-gray-700 mb-1">Votre message *</label>
-                <textarea id="message" name="message" required rows="4" placeholder="Décrivez vos besoins : lieu, date souhaitée, particularités de vos résidents..." class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all resize-none"></textarea>
-              </div>
-
-              <button type="submit" class="w-full bg-orange-500 hover:bg-orange-600 text-white py-4 rounded-lg font-bold text-lg transition-all shadow-lg shadow-orange-500/30 hover:shadow-xl">
-                Demander une démonstration
-              </button>
-            </div>
-          </form>
+        <div class="form-group">
+          <label for="residence" class="form-label">Nom de la maison de repos *</label>
+          <input type="text" id="residence" name="residence_name" required placeholder="Ex: Maison de repos Les Cèdres..." class="form-input">
         </div>
-      </div>
+
+        <div class="form-group">
+          <label for="residents" class="form-label">Nombre de résidents *</label>
+          <input type="text" id="residents" name="nb_residents" required placeholder="Ex: 30-40 résidents" class="form-input">
+        </div>
+
+        <div class="form-group">
+          <label for="message" class="form-label">Votre message *</label>
+          <textarea id="message" name="message" required placeholder="Décrivez vos besoins : lieu, date souhaitée, particularités de vos résidents..." class="form-textarea"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary form-submit">
+          Demander une démonstration
+        </button>
+        <p class="form-trust">Vos données restent confidentielles. Nous les utilisons uniquement pour votre devis.</p>
+      </form>
     </div>
   </section>
 
+  </main>
+
   <!-- FOOTER -->
-  <footer class="bg-gray-900 text-gray-400 py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="grid md:grid-cols-4 gap-8 mb-12">
-        <!-- Brand -->
-        <div class="md:col-span-1">
-          <div class="flex items-center gap-3 mb-4">
-            <img src="/images/logo-icon.webp" alt="Interactis Logo" class="w-10 h-10 object-contain brightness-0 invert">
-            <span class="text-xl font-bold text-white">Interactis</span>
-          </div>
-          <p class="text-sm">Animation interactive mobile pour maisons de repos, seniors, écoles et événements. 100% accessible et inclusif.</p>
-        </div>
-
-        <!-- Navigation -->
-        <div>
-          <h4 class="text-white font-bold mb-4">Navigation</h4>
-          <ul class="space-y-2 text-sm">
-            <li><a href="/" class="hover:text-orange-400 transition-colors">Accueil</a></li>
-            <li><a href="/#publics" class="hover:text-orange-400 transition-colors">Nos publics</a></li>
-            <li><a href="/#animations" class="hover:text-orange-400 transition-colors">Animations</a></li>
-            <li><a href="#contact" class="hover:text-orange-400 transition-colors">Contact</a></li>
-          </ul>
-        </div>
-
-        <!-- Pages SEO -->
-        <div>
-          <h4 class="text-white font-bold mb-4">Nos secteurs</h4>
-          <ul class="space-y-2 text-sm">
-            <li><a href="/animation-maison-de-repos" class="hover:text-orange-400 transition-colors">Animation maison de repos</a></li>
-            <li><a href="/animation-anniversaire" class="hover:text-orange-400 transition-colors">Animation anniversaire</a></li>
-            <li><a href="/animation-entreprise" class="hover:text-orange-400 transition-colors">Animation team building</a></li>
-            <li><a href="/animation-ecole" class="hover:text-orange-400 transition-colors">Animation école</a></li>
-            <li><a href="/animation-evenement" class="hover:text-orange-400 transition-colors">Animation événement</a></li>
-          </ul>
-        </div>
-
-        <!-- Contact -->
-        <div>
-          <h4 class="text-white font-bold mb-4">Contact</h4>
-          <ul class="space-y-2 text-sm">
-            <li><a href="tel:+32488435342" class="hover:text-orange-400 transition-colors">+32 488 43 53 42</a></li>
-            <li><a href="mailto:uckoz@interactis.be" class="hover:text-orange-400 transition-colors">uckoz@interactis.be</a></li>
-            <li>Service mobile - Belgique</li>
-          </ul>
+  <footer class="ft">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <h3>Inter<span>Actis</span></h3>
+        <p>Animation interactive mobile accessible à tous. Basés à Mons, nous intervenons en Belgique, au Luxembourg et dans le Nord de la France.</p>
+        <div class="ft-socials">
+          <a href="https://www.instagram.com/interactis.be/" target="_blank" rel="noopener" data-hover aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg></a>
+          <a href="https://www.facebook.com/profile.php?id=61586234006690" target="_blank" rel="noopener" data-hover aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://www.tiktok.com/@interactisbe" target="_blank" rel="noopener" data-hover aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43V8.42a8.16 8.16 0 0 0 4.77 1.52V6.69h-1.84z"/></svg></a>
         </div>
       </div>
-
-      <div class="flex justify-center items-center gap-5 mb-6">
-        <a href="https://www.instagram.com/interactis.be/" target="_blank" rel="noopener" aria-label="Instagram InterActis" class="text-gray-400 hover:text-orange-400 transition" data-track="social_instagram"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2c2.7 0 3 .01 4.05.06 1.07.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.55.55.89 1.11 1.15 1.77.25.64.42 1.36.47 2.43.05 1.05.06 1.35.06 4.05s-.01 3-.06 4.05c-.05 1.07-.22 1.79-.47 2.43a4.9 4.9 0 0 1-1.15 1.77c-.55.55-1.11.89-1.77 1.15-.64.25-1.36.42-2.43.47-1.05.05-1.35.06-4.05.06s-3-.01-4.05-.06c-1.07-.05-1.79-.22-2.43-.47a4.9 4.9 0 0 1-1.77-1.15 4.9 4.9 0 0 1-1.15-1.77c-.25-.64-.42-1.36-.47-2.43C2.01 15 2 14.7 2 12s.01-3 .06-4.05c.05-1.07.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77.55-.55 1.11-.89 1.77-1.15.64-.25 1.36-.42 2.43-.47C9 2.01 9.3 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7zm5.13-9.63a1.17 1.17 0 1 0 0 2.34 1.17 1.17 0 0 0 0-2.34z"/></svg></a>
-        <a href="https://www.facebook.com/profile.php?id=61586234006690" target="_blank" rel="noopener" aria-label="Facebook InterActis" class="text-gray-400 hover:text-orange-400 transition" data-track="social_facebook"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12c0-6.63-5.37-12-12-12S0 5.37 0 12c0 5.99 4.39 10.95 10.13 11.85v-8.38H7.08V12h3.05V9.36c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.69.23 2.69.23v2.95h-1.52c-1.49 0-1.95.92-1.95 1.87V12h3.33l-.53 3.47h-2.8v8.38C19.61 22.95 24 17.99 24 12z"/></svg></a>
-        <a href="https://www.tiktok.com/@interactisbe" target="_blank" rel="noopener" aria-label="TikTok InterActis" class="text-gray-400 hover:text-orange-400 transition" data-track="social_tiktok"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.84-.1z"/></svg></a>
+      <div class="ft-col">
+        <h4>Nos animations</h4>
+        <ul>
+          <li><a href="/animation-anniversaire" data-hover>Anniversaire</a></li>
+          <li><a href="/animation-entreprise" data-hover>Team building</a></li>
+          <li><a href="/animation-maison-de-repos" data-hover>Maison de repos</a></li>
+          <li><a href="/animation-ecole" data-hover>École</a></li>
+          <li><a href="/animation-evenement" data-hover>Événement</a></li>
+        </ul>
       </div>
-
-      <div class="border-t border-gray-800 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-        <p class="text-sm">&copy; 2026 Interactis. Tous droits réservés.</p>
-        <div class="flex gap-6 text-sm">
-          <a href="/mentions-legales" class="hover:text-orange-400 transition-colors">Mentions légales</a>
-          <a href="/confidentialite" class="hover:text-orange-400 transition-colors">Confidentialité</a>
-          <a href="/cgv" class="hover:text-orange-400 transition-colors">CGV</a>
-        </div>
+      <div class="ft-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+32488435342" data-hover>+32 488 43 53 42</a></li>
+          <li><a href="mailto:uckoz@interactis.be" data-hover>uckoz@interactis.be</a></li>
+          <li><a href="https://wa.me/32488435342" target="_blank" rel="noopener" data-hover>WhatsApp</a></li>
+        </ul>
       </div>
+      <div class="ft-col">
+        <h4>Légal</h4>
+        <ul>
+          <li><a href="/mentions-legales" data-hover>Mentions légales</a></li>
+          <li><a href="/confidentialite" data-hover>Confidentialité</a></li>
+          <li><a href="/cgv" data-hover>CGV</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <span>© <span id="yr"></span> InterActis · Tous droits réservés</span>
+      <span>Animation interactive mobile · Belgique · Luxembourg · Nord France</span>
     </div>
   </footer>
 
-  <script>
-    // Sticky nav
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('nav-scrolled', window.scrollY > 50);
-    });
+  <!-- WHATSAPP FLOAT -->
+  <a href="https://wa.me/32488435342?text=Bonjour%20Ubeyd%2C%20je%20viens%20de%20la%20page%20%22maison%20de%20repos%22%20et%20j%27aimerais%20discuter%20de%20mon%20projet." class="wa" target="_blank" rel="noopener" aria-label="Nous contacter sur WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0 0 20.464 3.488"/></svg>
+  </a>
 
-    // Mobile menu
-    const menuBtn = document.getElementById('menuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    menuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
-    // Close mobile menu on link click
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-    });
+  <!-- COOKIE BANNER -->
+  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Consentement cookies">
+    <h4>🍪 On respecte votre vie privée</h4>
+    <p>Nous utilisons des cookies pour analyser le trafic. <a href="/confidentialite" data-hover>En savoir plus</a></p>
+    <div class="cookie-actions">
+      <button type="button" class="cookie-btn-reject" id="cookieReject" data-hover>Refuser</button>
+      <button type="button" class="cookie-btn-accept" id="cookieAccept" data-hover>Accepter</button>
+    </div>
+  </div>
 
-    // Scroll reveal
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
-    });
-  </script>
+  <script src="/assets/site.js" defer></script>
 </body>
 </html>
