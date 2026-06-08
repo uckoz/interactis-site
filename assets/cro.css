@@ -78,15 +78,21 @@
 @media (pointer: coarse) { .urgency-banner-close { cursor: auto; } }
 .urgency-banner-close:hover { background: rgba(0,0,0,0.3); }
 
-/* Pousse le header fixe vers le bas quand banner present */
-body.has-urgency-banner .hd { top: 46px; }
-body.has-urgency-banner .devis-header { top: 46px; }
+/* Pousse le header fixe vers le bas quand banner present.
+   On match aussi html.has-urgency-banner (set synchroneusement avant
+   le premier paint, voir <script> dans <head>) pour eviter le CLS. */
+body.has-urgency-banner .hd,
+html.has-urgency-banner .hd { top: 46px; }
+body.has-urgency-banner .devis-header,
+html.has-urgency-banner .devis-header { top: 46px; }
 
 @media (max-width: 720px) {
   .urgency-banner-inner { padding: 10px 48px 10px 16px; gap: 10px; font-size: 0.8125rem; }
   .urgency-banner-link { padding: 5px 12px; font-size: 0.75rem; }
   body.has-urgency-banner .hd,
-  body.has-urgency-banner .devis-header { top: 68px; }
+  body.has-urgency-banner .devis-header,
+  html.has-urgency-banner .hd,
+  html.has-urgency-banner .devis-header { top: 68px; }
 }
 
 /* ============================================

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  <!-- Pre-applique class urgency-banner si visible (evite CLS du header) -->
+  <script>(function(){try{if(localStorage.getItem('ia-urgency-dismissed')!=='1'){document.documentElement.classList.add('has-urgency-banner');}}catch(e){}})();</script>
   <script src="/assets/consent.js" defer></script>
 
   <meta charset="UTF-8" />
