@@ -17,23 +17,27 @@
   function initLazyVideos() {
     var vids = document.querySelectorAll('video.lazy-video[data-src]');
     if (!vids.length) return;
+    // Pour les videos "user-play" (.lazy-video-userplay) on ne fait QUE charger la
+    // src quand la video est visible -- pas d'autoplay programmatique. Comme ca,
+    // quand l'utilisateur clique play depuis les controls natifs, le navigateur
+    // considere que c'est un user-gesture et le son fonctionne tout de suite.
+    function loadSrc(v, autoplay) {
+      var src = v.getAttribute('data-src');
+      if (src && !v.src) {
+        v.src = src;
+        v.load();
+        if (autoplay) v.play().catch(function(){});
+      }
+    }
     if (!('IntersectionObserver' in window)) {
-      vids.forEach(function(v){
-        var src = v.getAttribute('data-src');
-        if (src && !v.src) { v.src = src; v.load(); v.play().catch(function(){}); }
-      });
+      vids.forEach(function(v){ loadSrc(v, !v.classList.contains('lazy-video-userplay')); });
       return;
     }
     var io = new IntersectionObserver(function(entries){
       entries.forEach(function(e){
         if (!e.isIntersecting) return;
         var v = e.target;
-        var src = v.getAttribute('data-src');
-        if (src && !v.src) {
-          v.src = src;
-          v.load();
-          v.play().catch(function(){});
-        }
+        loadSrc(v, !v.classList.contains('lazy-video-userplay'));
         io.unobserve(v);
       });
     }, { rootMargin: '400px 0px' });

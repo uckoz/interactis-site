@@ -1936,8 +1936,8 @@
       <p class="promo-eyebrow" data-reveal>Découvrez InterActis en vidéo</p>
       <h2 data-reveal>L'animation qui <span class="accent">rassemble tout le monde</span></h2>
       <div class="promo-video" data-reveal data-tilt>
-        <!-- Vidéo promo en lazy-load : ne télécharge que quand visible (gain LCP majeur) -->
-        <video class="lazy-video" muted loop playsinline controls preload="none" poster="/assets/interactis-promo-poster.jpg" data-src="/assets/interactis-promo.mp4" width="900" height="506">
+        <!-- Vidéo promo : lazy-load + lecture déclenchée par l'utilisateur (son actif au clic) -->
+        <video class="lazy-video lazy-video-userplay" loop playsinline controls preload="none" poster="/assets/interactis-promo-poster.jpg" data-src="/assets/interactis-promo.mp4" width="900" height="506">
         </video>
       </div>
       <p class="promo-hint">Activez le son 🔊 pour entendre l'ambiance</p>
