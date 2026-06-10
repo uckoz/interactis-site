@@ -274,5 +274,46 @@
       }
     });
   </script>
+
+  <!-- ============================================
+       Google Ads Conversion - Demande de devis envoyee
+       Fire un event explicite vers AW-18186820643 quand
+       gtag est charge (consent accepte). Renforce le suivi
+       de la conversion URL-based existante.
+       ============================================ -->
+  <script>
+    (function () {
+      var FIRED = false;
+      function fireConversion() {
+        if (FIRED) return;
+        if (typeof window.gtag === 'function') {
+          FIRED = true;
+          try {
+            window.gtag('event', 'conversion', {
+              'send_to': 'AW-18186820643',
+              'value': 50.0,
+              'currency': 'EUR'
+            });
+            // Backup: force aussi un page_view explicite
+            window.gtag('event', 'page_view', {
+              'send_to': 'AW-18186820643',
+              'page_location': window.location.href,
+              'page_path': '/merci'
+            });
+          } catch (e) { /* silent */ }
+        }
+      }
+      // Essaie immediatement (si consent deja accepte avant cette visite)
+      fireConversion();
+      // Re-essaie pendant 6s pour attraper le cas ou l'utilisateur
+      // vient d'accepter les cookies sur cette meme page
+      var attempts = 0;
+      var interval = setInterval(function () {
+        attempts++;
+        fireConversion();
+        if (FIRED || attempts > 30) clearInterval(interval);
+      }, 200);
+    })();
+  </script>
 </body>
 </html>
