@@ -10,7 +10,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0a0e1a" />
-  <title>InterActis - Le mur qui transforme tout</title>
+  <title>InterActis — L'animation où personne ne reste sur le côté</title>
   <meta name="description" content="L'animation interactive mobile qui transforme n'importe quel mur en terrain de jeu vivant. Anniversaires, entreprises, maisons de repos. De 5 à 95 ans, sans exception. Belgique, Luxembourg, Nord France." />
   <link rel="canonical" href="https://www.interactis.be/" />
   <link rel="alternate" hreflang="fr" href="https://www.interactis.be/" />
@@ -21,14 +21,14 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="InterActis" />
 
-  <meta property="og:title" content="InterActis - Le mur qui transforme tout" />
+  <meta property="og:title" content="InterActis — L'animation où personne ne reste sur le côté" />
   <meta property="og:description" content="Animation interactive mobile. Anniversaires, team buildings, maisons de repos. 100% accessible, installation en 15 minutes." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.interactis.be/" />
   <meta property="og:image" content="https://www.interactis.be/assets/hero.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="InterActis - Le mur qui transforme tout" />
+  <meta property="og:image:alt" content="InterActis — L'animation où personne ne reste sur le côté" />
   <meta property="og:locale" content="fr_BE" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="https://www.interactis.be/assets/hero.jpg" />
@@ -1832,9 +1832,81 @@
     .promo-video video { width: 100%; height: 100%; display: block; object-fit: cover; }
     .promo-hint { font-size: 0.8125rem; color: var(--text-faded); margin-top: 18px; }
   </style>
+  <!-- ===== Aiguillage Particulier / Professionnel : mode mémorisé appliqué avant le paint (zéro flash) ===== -->
+  <script>(function(){try{var m=localStorage.getItem('ia-mode');if(m==='part'||m==='pro'){document.documentElement.setAttribute('data-mode',m);}}catch(e){}})();</script>
+  <style>
+    /* ===== Gateway (écran de choix plein écran) ===== */
+    .gateway{position:fixed;inset:0;z-index:2000;background:radial-gradient(ellipse at 50% 20%, #0e1526 0%, #05070d 70%);display:flex;align-items:center;justify-content:center;padding:24px;opacity:1;transition:opacity .5s ease}
+    html[data-mode] .gateway{display:none}
+    .gateway.gw-hide{opacity:0;pointer-events:none}
+    .gateway-inner{max-width:980px;width:100%;text-align:center}
+    .gateway-eyebrow{font-size:.75rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-bottom:18px}
+    .gateway-title{font-family:var(--serif, 'Bricolage Grotesque', sans-serif);font-size:clamp(1.9rem,5vw,3.4rem);font-weight:700;letter-spacing:-.03em;line-height:1.1;color:var(--text,#f5f7fb);margin-bottom:14px}
+    .gateway-title .accent{color:var(--orange,#ff7a18)}
+    .gateway-sub{font-size:clamp(.95rem,1.6vw,1.0625rem);color:rgba(245,247,251,.72);max-width:56ch;margin:0 auto 40px;line-height:1.6}
+    .gateway-cards{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:820px;margin:0 auto}
+    @media(max-width:680px){.gateway-cards{grid-template-columns:1fr;gap:14px}}
+    .gateway-card{display:block;position:relative;padding:38px 28px;border-radius:22px;border:1px solid rgba(255,122,24,.35);background:linear-gradient(160deg,rgba(255,122,24,.14),rgba(0,212,255,.07));cursor:pointer;text-align:center;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+    .gateway-card:hover{transform:translateY(-6px);border-color:var(--orange,#ff7a18);box-shadow:0 24px 60px rgba(255,122,24,.18)}
+    .gateway-card .gw-emoji{font-size:2.6rem;display:block;margin-bottom:14px}
+    .gateway-card .gw-name{font-family:var(--serif,'Bricolage Grotesque',sans-serif);font-size:1.5rem;font-weight:700;color:var(--text,#f5f7fb);display:block;margin-bottom:10px}
+    .gateway-card .gw-desc{font-size:.9rem;color:rgba(245,247,251,.7);line-height:1.5;display:block;margin-bottom:16px}
+    .gateway-card .gw-go{font-size:.9rem;font-weight:700;color:var(--orange,#ff7a18)}
+    .gateway-skip{display:inline-block;margin-top:30px;font-size:.8125rem;color:rgba(245,247,251,.45);text-decoration:underline;cursor:pointer;background:none;border:none}
+    /* ===== Filtrage par univers ===== */
+    html[data-mode="part"] [data-aud="pro"]{display:none !important}
+    html[data-mode="pro"] [data-aud="part"]{display:none !important}
+    /* ===== Cartes d'univers sous le hero ===== */
+    .uni{padding:90px 32px;background:var(--bg-soft,#0a0e1a)}
+    .uni-inner{max-width:1280px;margin:0 auto}
+    .uni h2{text-align:center;font-family:var(--serif,'Bricolage Grotesque',sans-serif);font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:700;margin-bottom:14px}
+    .uni-sub{text-align:center;color:rgba(245,247,251,.7);max-width:60ch;margin:0 auto 44px;line-height:1.6}
+    .uni-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+    .uni-card{display:block;padding:26px 22px;border:1px solid var(--line,rgba(245,247,251,.12));border-radius:16px;text-decoration:none;background:rgba(245,247,251,.02);transition:transform .25s ease,border-color .25s ease}
+    .uni-card:hover{transform:translateY(-4px);border-color:var(--orange,#ff7a18)}
+    .uni-card .uc-emoji{font-size:1.7rem;display:block;margin-bottom:10px}
+    .uni-card .uc-title{display:block;font-weight:700;color:var(--text,#f5f7fb);margin-bottom:8px;font-size:1.05rem}
+    .uni-card .uc-desc{display:block;font-size:.875rem;color:rgba(245,247,251,.68);line-height:1.55;margin-bottom:10px}
+    .uni-card .uc-price{display:inline-block;font-size:.8125rem;font-weight:700;color:var(--orange,#ff7a18)}
+    .uni-card .uc-go{display:block;margin-top:6px;font-size:.875rem;font-weight:700;color:var(--orange,#ff7a18)}
+    /* ===== Pilule de bascule dans le header ===== */
+    .mode-pill{display:none;align-items:center;gap:8px;margin-left:14px;padding:7px 14px;border-radius:999px;border:1px solid rgba(255,122,24,.45);background:rgba(255,122,24,.10);font-size:.8125rem;font-weight:600;color:var(--text,#f5f7fb);cursor:pointer;white-space:nowrap}
+    .mode-pill:hover{border-color:var(--orange,#ff7a18)}
+    .mode-pill .mp-switch{color:var(--orange,#ff7a18);font-weight:700}
+    html[data-mode] .mode-pill{display:inline-flex}
+    @media(max-width:900px){.mode-pill{display:none !important}}
+    .mode-pill-mobile{display:none;margin:10px auto 0;padding:8px 16px;border-radius:999px;border:1px solid rgba(255,122,24,.45);background:rgba(255,122,24,.10);font-size:.8125rem;font-weight:600;color:var(--text,#f5f7fb);cursor:pointer}
+    @media(max-width:900px){html[data-mode] .mode-pill-mobile{display:inline-block}}
+  </style>
 </head>
 <body>
   <a href="#main" class="skip-link">Aller au contenu principal</a>
+
+  <!-- ============================================
+       GATEWAY - écran de choix Particulier / Pro
+       ============================================ -->
+  <div class="gateway" id="gateway" role="dialog" aria-label="Choisissez votre profil">
+    <div class="gateway-inner">
+      <div class="gateway-eyebrow">Animation interactive mobile · Belgique</div>
+      <h2 class="gateway-title">L'animation où <span class="accent">personne ne reste sur le côté.</span></h2>
+      <p class="gateway-sub">Plus de 35 jeux projetés sur un mur, sans manette ni écran. Installés en 15 minutes, jouables de 5 à 95 ans, debout ou en fauteuil. Dites-nous qui vous êtes, on vous montre ce qui vous concerne.</p>
+      <div class="gateway-cards">
+        <button type="button" class="gateway-card" onclick="iaSetMode('part')">
+          <span class="gw-emoji">🎉</span>
+          <span class="gw-name">Je suis un particulier</span>
+          <span class="gw-desc">Anniversaire (enfant ou adulte), baptême, communion, fête de famille ou de quartier.</span>
+          <span class="gw-go">C'est par ici →</span>
+        </button>
+        <button type="button" class="gateway-card" onclick="iaSetMode('pro')">
+          <span class="gw-emoji">🏢</span>
+          <span class="gw-name">Je suis un professionnel</span>
+          <span class="gw-desc">Team building, maison de repos, école, centre spécialisé, événement, family day.</span>
+          <span class="gw-go">C'est par ici →</span>
+        </button>
+      </div>
+      <button type="button" class="gateway-skip" onclick="iaSkipGateway()">Voir le site sans choisir</button>
+    </div>
+  </div>
 
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
   <div class="cursor" aria-hidden="true"></div>
@@ -1844,22 +1916,22 @@
   <header class="hd">
     <a href="#" class="hd-logo" data-hover>Inter<span>Actis</span></a>
     <nav class="hd-nav">
-      <a href="#publics" data-hover>Publics</a>
-      <a href="#particuliers" data-hover>Particuliers</a>
-      <a href="#fonctionnement" data-hover>Process</a>
+      <a href="/particuliers" data-hover>Particuliers</a>
+      <a href="/professionnels" data-hover>Professionnels</a>
       <a href="#animations" data-hover>Jeux</a>
       <a href="/blog" data-hover>Blog</a>
       <a href="#faq" data-hover>FAQ</a>
       <a href="#appel" data-hover>Appel</a>
       <a href="#contact" class="btn btn-primary hd-cta" data-hover>Devis <span class="arrow">→</span></a>
+      <button type="button" class="mode-pill" id="modePill" onclick="iaToggleMode()" aria-label="Changer de profil"></button>
     </nav>
     <button class="hd-burger" id="burger" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="menuOverlay"><span></span><span></span><span></span></button>
   </header>
 
   <div class="menu-overlay" id="menuOverlay">
     <nav>
-      <a href="#publics">Nos publics</a>
-      <a href="#particuliers">Particuliers</a>
+      <a href="/particuliers">Particuliers</a>
+      <a href="/professionnels">Professionnels</a>
       <a href="#fonctionnement">Process</a>
       <a href="#animations">Jeux</a>
       <a href="/blog">Blog</a>
@@ -1885,15 +1957,26 @@
     <div class="hero-content">
       <div class="hero-eyebrow eyebrow">Animation interactive mobile · Belgique</div>
       <h1 class="display" data-split>
-        Le mur qui<br/>
-        <span class="glow">transforme</span><br/>
-        <span class="accent">tout.</span>
+        L'animation où<br/>
+        <span class="glow">personne ne reste</span><br/>
+        <span class="accent">sur le côté.</span>
       </h1>
       <p class="hero-sub">
-        InterActis débarque chez vous avec une seule valise. 15 minutes plus tard, n'importe quel mur devient un terrain de jeu interactif géant. De 5 à 95 ans. Sans manette. Sans exception.
+        Plus de 35 jeux projetés sur n'importe quel mur, sans manette ni écran. InterActis débarque avec une seule valise, installe en 15 minutes — et tout le monde joue. De 5 à 95 ans, debout ou en fauteuil.
       </p>
+      <div class="hero-ctas" style="margin-bottom: 14px;">
+        <a href="/particuliers" class="btn btn-primary" data-hover onclick="return iaHeroChoice(event,'part');">
+          🎉 Je suis un particulier
+          <span class="arrow">→</span>
+        </a>
+        <a href="/professionnels" class="btn btn-primary" data-hover onclick="return iaHeroChoice(event,'pro');">
+          🏢 Je suis un professionnel
+          <span class="arrow">→</span>
+        </a>
+      </div>
+      <button type="button" class="mode-pill-mobile" id="modePillMobile" onclick="iaToggleMode()" aria-label="Changer de profil"></button>
       <div class="hero-ctas">
-        <a href="#contact" class="btn btn-primary" data-hover>
+        <a href="#contact" class="btn btn-ghost" data-hover>
           Recevoir mon devis sous 24h
           <span class="arrow">→</span>
         </a>
@@ -1921,7 +2004,7 @@
         <div class="l">Installation</div>
       </div>
       <div class="hero-stat">
-        <div class="n" data-count="30">30<span style="color:var(--blue);font-size:0.7em">+</span></div>
+        <div class="n" data-count="35">35<span style="color:var(--blue);font-size:0.7em">+</span></div>
         <div class="l">Jeux interactifs</div>
       </div>
       <div class="hero-stat">
@@ -1930,6 +2013,96 @@
       </div>
     </div>
   </section>
+
+  <!-- ============================================
+       UNIVERS - cartes selon le profil choisi
+       ============================================ -->
+  <section class="uni" id="univers" data-aud="part">
+    <div class="uni-inner">
+      <h2>Quelle est <span class="accent" style="color:var(--orange)">votre occasion</span> ?</h2>
+      <p class="uni-sub">Une fête de famille réussie, c'est une fête où tout le monde joue ensemble — les enfants, les parents, les grands-parents.</p>
+      <div class="uni-grid">
+        <a href="/animation-anniversaire" class="uni-card" data-hover>
+          <span class="uc-emoji">🎂</span>
+          <span class="uc-title">Anniversaire d'enfant</span>
+          <span class="uc-desc">1h30 d'animation pour 10 à 15 enfants, chez vous ou en salle. Aucun enfant de côté, même les timides.</span>
+          <span class="uc-price">À partir de 249€ TVAC</span>
+          <span class="uc-go">Voir l'offre →</span>
+        </a>
+        <a href="/particuliers" class="uni-card" data-hover>
+          <span class="uc-emoji">🥳</span>
+          <span class="uc-title">Anniversaire adulte</span>
+          <span class="uc-desc">30, 40, 50 ans ou plus : une fête qui fait jouer tous les invités ensemble, de l'apéro jusqu'au bout de la nuit.</span>
+          <span class="uc-go">En savoir plus →</span>
+        </a>
+        <a href="/particuliers" class="uni-card" data-hover>
+          <span class="uc-emoji">✨</span>
+          <span class="uc-title">Baptême & communion</span>
+          <span class="uc-desc">Pendant que les adultes discutent, les enfants vivent leur plus belle fête, encadrés par notre animateur.</span>
+          <span class="uc-go">En savoir plus →</span>
+        </a>
+        <a href="/particuliers" class="uni-card" data-hover>
+          <span class="uc-emoji">👨‍👩‍👧‍👦</span>
+          <span class="uc-title">Fête de famille</span>
+          <span class="uc-desc">Cousins, parents, grands-parents : enfin une activité que trois générations partagent vraiment.</span>
+          <span class="uc-go">En savoir plus →</span>
+        </a>
+        <a href="/animation-evenement" class="uni-card" data-hover>
+          <span class="uc-emoji">🏡</span>
+          <span class="uc-title">Fête de quartier</span>
+          <span class="uc-desc">Un mur, une prise, et toute la rue qui joue. Formats plus longs possibles, devis sur mesure.</span>
+          <span class="uc-go">En savoir plus →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="uni" id="univers-pro" data-aud="pro">
+    <div class="uni-inner">
+      <h2>Quelle est <span style="color:var(--orange)">votre structure</span> ?</h2>
+      <p class="uni-sub">Une prestation clé en main, 100% inclusive PMR, avec animateur professionnel. Devis détaillé sous 24h, facture en bonne et due forme.</p>
+      <div class="uni-grid">
+        <a href="/animation-entreprise" class="uni-card" data-hover>
+          <span class="uc-emoji">🏢</span>
+          <span class="uc-title">Team building</span>
+          <span class="uc-desc">L'activité à laquelle 100% de votre équipe participe vraiment — même les timides et les non-sportifs.</span>
+          <span class="uc-go">Voir l'offre →</span>
+        </a>
+        <a href="/animation-maison-de-repos" class="uni-card" data-hover>
+          <span class="uc-emoji">🏥</span>
+          <span class="uc-title">Maison de repos</span>
+          <span class="uc-desc">Mobilité, mémoire, lien social : vos résidents jouent et rient — même à 92 ans, même en fauteuil.</span>
+          <span class="uc-price">À partir de 249€ HTVA</span>
+          <span class="uc-go">Voir l'offre →</span>
+        </a>
+        <a href="/animation-ecole" class="uni-card" data-hover>
+          <span class="uc-emoji">🏫</span>
+          <span class="uc-title">École</span>
+          <span class="uc-desc">Une animation qui fait bouger ET réfléchir toute la classe : maths, logique, mémoire, coopération.</span>
+          <span class="uc-go">Voir l'offre →</span>
+        </a>
+        <a href="/animation-evenement" class="uni-card" data-hover>
+          <span class="uc-emoji">🎪</span>
+          <span class="uc-title">Événement public</span>
+          <span class="uc-desc">Kermesse, foire, festival, fête communale : l'attraction qui crée une file d'attente à votre stand.</span>
+          <span class="uc-go">Voir l'offre →</span>
+        </a>
+        <a href="/devis" class="uni-card" data-hover>
+          <span class="uc-emoji">🛍️</span>
+          <span class="uc-title">Family day & ouverture commerciale</span>
+          <span class="uc-desc">Journée du personnel, inauguration de magasin, action commerciale : attirez du monde et faites-le rester.</span>
+          <span class="uc-go">Demander un devis →</span>
+        </a>
+        <a href="/devis" class="uni-card" data-hover>
+          <span class="uc-emoji">🤝</span>
+          <span class="uc-title">Centre spécialisé</span>
+          <span class="uc-desc">IME, CPAS, centres de jour, foyers : une animation pensée pour que chacun participe à son rythme.</span>
+          <span class="uc-go">Demander un devis →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- VIDEO PROMO -->
   <section class="promo">
     <div style="max-width:900px; margin:0 auto;">
@@ -2009,7 +2182,7 @@
     </div>
 
     <div class="for-who-list">
-      <a href="/animation-anniversaire" class="for-who-item" data-hover>
+      <a href="/animation-anniversaire" class="for-who-item" data-aud="part" data-hover>
         <div class="for-who-num">01</div>
         <div>
           <div class="for-who-title">Vous organisez un anniversaire d'enfant.</div>
@@ -2018,7 +2191,7 @@
         <div class="for-who-arrow">→</div>
       </a>
 
-      <a href="/animation-entreprise" class="for-who-item" data-hover>
+      <a href="/animation-entreprise" class="for-who-item" data-aud="pro" data-hover>
         <div class="for-who-num">02</div>
         <div>
           <div class="for-who-title">Vous cherchez un team building qui marque.</div>
@@ -2027,7 +2200,7 @@
         <div class="for-who-arrow">→</div>
       </a>
 
-      <a href="/animation-maison-de-repos" class="for-who-item" data-hover>
+      <a href="/animation-maison-de-repos" class="for-who-item" data-aud="pro" data-hover>
         <div class="for-who-num">03</div>
         <div>
           <div class="for-who-title">Vous animez une maison de repos.</div>
@@ -2036,7 +2209,7 @@
         <div class="for-who-arrow">→</div>
       </a>
 
-      <a href="/animation-ecole" class="for-who-item" data-hover>
+      <a href="/animation-ecole" class="for-who-item" data-aud="pro" data-hover>
         <div class="for-who-num">04</div>
         <div>
           <div class="for-who-title">Vous dirigez une école.</div>
@@ -2054,7 +2227,7 @@
         <div class="for-who-arrow">→</div>
       </a>
 
-      <a href="#contact" class="for-who-item" data-hover>
+      <a href="#contact" class="for-who-item" data-aud="pro" data-hover>
         <div class="for-who-num">06</div>
         <div>
           <div class="for-who-title">Vous coordonnez un centre spécialisé.</div>
@@ -2068,7 +2241,7 @@
   <!-- ============================================
        PARTICULIERS / ANNIVERSAIRE
        ============================================ -->
-  <section class="anniv" id="particuliers">
+  <section class="anniv" id="particuliers" data-aud="part">
     <div class="anniv-grid">
       <div class="anniv-video">
         <div class="anniv-badge">Vu en vrai</div>
@@ -2080,7 +2253,7 @@
         <div class="eyebrow" data-reveal>L'anniversaire dont on parle encore</div>
         <h2 data-reveal>Pour les <span class="accent">fêtes</span> qu'on n'oublie pas.</h2>
         <p data-reveal>Vos enfants vont se rappeler de leur anniversaire pour la décennie qui vient. Pas d'une animation classique. D'un mur géant qui s'illumine, qui réagit, qui les fait courir, viser, calculer ensemble.</p>
-        <p data-reveal>InterActis transforme votre salle de fête, votre garage ou même votre salon en terrain de jeu interactif. Plus de 30 jeux, sans manette, accessibles dès 6 ans.</p>
+        <p data-reveal>InterActis transforme votre salle de fête, votre garage ou même votre salon en terrain de jeu interactif. Plus de 35 jeux, sans manette, accessibles dès 6 ans.</p>
 
         <ul class="anniv-features">
           <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Idéal pour 10 à 15 enfants</li>
@@ -2161,13 +2334,13 @@
   <!-- ============================================
        VIDÉOS - preuves en images
        (Anciennement la galerie de 11 jeux précédait cette section.
-        Elle a été retirée — la promesse "30+ jeux" reste portée par
+        Elle a été retirée — la promesse "35+ jeux" reste portée par
         le hero stats et la section anniv. Les vidéos clients sont
         désormais la preuve visuelle principale.)
        ============================================ -->
   <section class="videos" id="animations">
     <div class="videos-header">
-      <div class="eyebrow" data-reveal>30+ jeux interactifs · En images</div>
+      <div class="eyebrow" data-reveal>35+ jeux interactifs · En images</div>
       <h2 data-reveal>Regardez. C'est ça <span class="accent">qu'on vend.</span></h2>
       <p data-reveal style="color:var(--text-dim);max-width:640px;margin:16px auto 0;font-size:1rem;line-height:1.6;">Sport, créatif, mémoire, coopération, fléchettes, basket, drones, peinture… On compose la sélection en fonction de votre public, de l'âge moyen et de l'ambiance recherchée.</p>
     </div>
@@ -2891,5 +3064,50 @@
   <!-- CRO : Banner urgence + Pop-up exit-intent -->
   <script src="/assets/cro.js" defer></script>
 
+  <script>
+    /* ===== Aiguillage Particulier / Professionnel ===== */
+    function iaApplyMode(m){
+      if(m==='part'||m==='pro'){ document.documentElement.setAttribute('data-mode', m); }
+      else { document.documentElement.removeAttribute('data-mode'); }
+      var label = m==='part' ? '🎉 Vous êtes : Particulier' : '🏢 Vous êtes : Professionnel';
+      var html = label + ' · <span class="mp-switch">changer</span>';
+      var p = document.getElementById('modePill');
+      var pm = document.getElementById('modePillMobile');
+      if(m && p){ p.innerHTML = html; }
+      if(m && pm){ pm.innerHTML = html; }
+      /* Force le recalcul des animations au scroll (sections affichées/cachées) */
+      try{ if(window.ScrollTrigger){ ScrollTrigger.refresh(); } }catch(e){}
+    }
+    function iaSetMode(m){
+      try{ localStorage.setItem('ia-mode', m); }catch(e){}
+      iaApplyMode(m);
+      var gw = document.getElementById('gateway');
+      if(gw){ gw.classList.add('gw-hide'); setTimeout(function(){ gw.style.display='none'; }, 500); }
+      /* Amène le visiteur sur ses cartes d'univers */
+      var target = document.getElementById(m==='part' ? 'univers' : 'univers-pro');
+      if(target){ setTimeout(function(){ target.scrollIntoView({behavior:'smooth'}); }, 550); }
+    }
+    function iaSkipGateway(){
+      var gw = document.getElementById('gateway');
+      if(gw){ gw.classList.add('gw-hide'); setTimeout(function(){ gw.style.display='none'; }, 500); }
+    }
+    function iaToggleMode(){
+      var gw = document.getElementById('gateway');
+      if(gw){ gw.style.display='flex'; gw.classList.remove('gw-hide'); window.scrollTo({top:0}); }
+    }
+    function iaHeroChoice(ev, m){
+      ev.preventDefault();
+      iaSetMode(m);
+      return false;
+    }
+    /* Au chargement : si un mode est déjà mémorisé, mettre à jour la pilule */
+    (function(){
+      var m = null;
+      try{ m = localStorage.getItem('ia-mode'); }catch(e){}
+      if(m==='part'||m==='pro'){ iaApplyMode(m); }
+      /* Forcer l'écran de choix avec #choix dans l'URL */
+      if(location.hash==='#choix'){ iaToggleMode(); }
+    })();
+  </script>
 </body>
 </html>
