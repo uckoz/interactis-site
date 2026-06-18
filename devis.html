@@ -232,6 +232,81 @@
       .fast-contact-actions { width: 100%; }
       .fast-contact-btn { flex: 1; justify-content: center; }
     }
+
+    /* Bandeau de disponibilites : tres bonne micro-conversion (peur de manquer la
+       date), nous indique que le calendrier de juin se remplit. Volontairement
+       honnete, pas de faux compte a rebours. */
+    .availability-note {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      margin: 0 0 24px;
+      background: linear-gradient(135deg, rgba(255,213,128,0.10), rgba(255,122,24,0.06));
+      border: 1px dashed rgba(255,213,128,0.45);
+      border-radius: 12px;
+      font-size: 0.8125rem;
+      color: var(--text);
+      line-height: 1.4;
+    }
+    .availability-note-icon {
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .availability-note strong { color: var(--orange); font-weight: 700; }
+
+    /* Bloc Garantie / Risk-Reversal : reduit la friction au moment de cliquer
+       "Recevoir mon devis". Trois promesses concretes sans engagement. */
+    .risk-reversal {
+      margin-top: 22px;
+      padding: 18px 18px 16px;
+      background: rgba(0,212,255,0.04);
+      border: 1px solid rgba(0,212,255,0.22);
+      border-radius: 14px;
+    }
+    .risk-reversal-title {
+      display: flex; align-items: center; gap: 8px;
+      font-weight: 700; font-size: 0.875rem;
+      color: var(--text);
+      margin-bottom: 10px;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .risk-reversal-title svg {
+      width: 18px; height: 18px; color: #00d4ff;
+    }
+    .risk-reversal-list {
+      list-style: none; margin: 0; padding: 0;
+      display: grid; gap: 8px;
+    }
+    .risk-reversal-list li {
+      position: relative;
+      padding-left: 22px;
+      font-size: 0.8125rem;
+      color: var(--text-dim);
+      line-height: 1.45;
+    }
+    .risk-reversal-list li::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 7px;
+      width: 14px; height: 14px;
+      background: rgba(0,212,255,0.18);
+      border: 1px solid #00d4ff;
+      border-radius: 50%;
+      box-sizing: border-box;
+    }
+    .risk-reversal-list li::after {
+      content: "";
+      position: absolute;
+      left: 4px; top: 9px;
+      width: 6px; height: 3px;
+      border-left: 2px solid #00d4ff;
+      border-bottom: 2px solid #00d4ff;
+      transform: rotate(-45deg);
+    }
+    .risk-reversal-list strong { color: var(--text); font-weight: 700; }
+
     .devis-form-card h2 {
       font-family: var(--serif);
       font-size: 1.625rem;
@@ -721,6 +796,13 @@
           </div>
         </div>
 
+        <!-- Bandeau de disponibilites : honnete, sans faux compte a rebours.
+             Indique a l'utilisateur que les dates de juin/juillet partent vite. -->
+        <div class="availability-note" role="note">
+          <span class="availability-note-icon" aria-hidden="true">📅</span>
+          <span>Calendrier <strong>juin et juillet</strong> qui se remplit : il reste quelques créneaux. Demandez votre devis maintenant pour bloquer votre date.</span>
+        </div>
+
         <h2>Décrivez votre <span class="accent">projet.</span></h2>
         <p class="form-intro">Plus vous donnez de détails, plus notre proposition sera précise dès le premier échange.</p>
 
@@ -856,6 +938,20 @@
             </button>
           </div>
           <p class="form-trust">🔒 Vos infos restent confidentielles · Devis gratuit · Sans engagement</p>
+
+          <!-- Bloc Risk-Reversal : trois promesses concretes pour lever les freins
+               au moment du clic final. Ne pas alourdir, rester scannable. -->
+          <div class="risk-reversal" role="note">
+            <div class="risk-reversal-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+              Notre engagement
+            </div>
+            <ul class="risk-reversal-list">
+              <li><strong>Réponse personnalisée sous 24h.</strong> Pas de robot, c'est Ubeyd qui vous écrit lui-même.</li>
+              <li><strong>Devis 100% gratuit et sans engagement.</strong> Vous ne payez rien tant que vous n'avez pas signé un bon de commande.</li>
+              <li><strong>On vient chez vous, partout en Wallonie, Bruxelles et Nord de la France.</strong> Installation en 15 minutes, à votre date.</li>
+            </ul>
+          </div>
         </form>
       </div>
 

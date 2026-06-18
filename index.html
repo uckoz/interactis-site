@@ -1922,7 +1922,7 @@
       <a href="/blog" data-hover>Blog</a>
       <a href="#faq" data-hover>FAQ</a>
       <a href="#appel" data-hover>Appel</a>
-      <a href="#contact" class="btn btn-primary hd-cta" data-hover>Devis <span class="arrow">→</span></a>
+      <a href="/devis" class="btn btn-primary hd-cta" data-hover>Devis <span class="arrow">→</span></a>
       <button type="button" class="mode-pill" id="modePill" onclick="iaToggleMode()" aria-label="Changer de profil"></button>
     </nav>
     <button class="hd-burger" id="burger" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="menuOverlay"><span></span><span></span><span></span></button>
@@ -1937,7 +1937,7 @@
       <a href="/blog">Blog</a>
       <a href="#faq">FAQ</a>
       <a href="#appel">Appel 15 min</a>
-      <a href="#contact">Devis</a>
+      <a href="/devis">Devis</a>
     </nav>
   </div>
 
@@ -1976,7 +1976,7 @@
       </div>
       <button type="button" class="mode-pill-mobile" id="modePillMobile" onclick="iaToggleMode()" aria-label="Changer de profil"></button>
       <div class="hero-ctas">
-        <a href="#contact" class="btn btn-ghost" data-hover>
+        <a href="/devis" class="btn btn-ghost" data-hover>
           Recevoir mon devis sous 24h
           <span class="arrow">→</span>
         </a>
@@ -2227,7 +2227,7 @@
         <div class="for-who-arrow">→</div>
       </a>
 
-      <a href="#contact" class="for-who-item" data-aud="pro" data-hover>
+      <a href="/devis" class="for-who-item" data-aud="pro" data-hover>
         <div class="for-who-num">06</div>
         <div>
           <div class="for-who-title">Vous coordonnez un centre spécialisé.</div>
@@ -2262,7 +2262,7 @@
           <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Accessible aux enfants en situation de handicap</li>
         </ul>
 
-        <a href="#contact" class="btn btn-primary" data-hover>
+        <a href="/devis" class="btn btn-primary" data-hover>
           Réserver l'anniversaire <span class="arrow">→</span>
         </a>
       </div>
@@ -2621,7 +2621,7 @@
   </footer>
 
   <!-- Sticky CTA mobile -->
-  <a href="#contact" class="mobile-cta" id="mobileCta" data-hover data-track="mobile_cta_devis">
+  <a href="/devis" class="mobile-cta" id="mobileCta" data-hover data-track="mobile_cta_devis">
     Demander un devis
     <span class="arrow">→</span>
   </a>
@@ -2909,7 +2909,7 @@
     }
 
     // Track clics CTA principal (Devis)
-    document.querySelectorAll('a[href="#contact"], a[href*="contact"]').forEach(el => {
+    document.querySelectorAll('a[href="/devis"], a[href*="/devis"], a[href="#contact"], a[href*="contact"]').forEach(el => {
       el.addEventListener('click', () => trackEvent('cta_devis_click', { location: el.closest('section')?.className || 'header' }));
     });
     // Track clics téléphone
