@@ -125,6 +125,20 @@
       color: var(--text-dim);
     }
     .trust-badge svg { width: 14px; height: 14px; color: var(--blue); flex-shrink: 0; }
+    /* Variante rating : note Google mise en avant (CRO + credibilite) */
+    .trust-badge-rating {
+      background: linear-gradient(135deg, rgba(255,193,7,0.15), rgba(255,122,24,0.08));
+      border-color: rgba(255,193,7,0.45);
+      color: var(--text);
+      text-decoration: none;
+      transition: transform 0.18s var(--ease), box-shadow 0.18s var(--ease);
+    }
+    .trust-badge-rating:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(255,122,24,0.18);
+    }
+    .trust-badge-rating strong { color: var(--orange); font-weight: 800; }
+    .trust-badge-stars { font-size: 0.9rem; line-height: 1; }
 
     /* Bloc principal : formulaire à gauche, preuves sociales à droite */
     .devis-main {
@@ -154,6 +168,69 @@
     }
     @media (max-width: 720px) {
       .devis-form-card { padding: 28px 20px; border-radius: 14px; }
+    }
+
+    /* Bandeau Fast-Contact : alternative immediate au formulaire
+       (capture les visiteurs presses, gros gain CRO) */
+    .fast-contact {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      padding: 14px 18px;
+      margin: 0 0 28px;
+      background: linear-gradient(135deg, rgba(255,122,24,0.10), rgba(0,212,255,0.08));
+      border: 1px solid rgba(255,122,24,0.35);
+      border-radius: 14px;
+      font-size: 0.875rem;
+      line-height: 1.35;
+    }
+    .fast-contact-pulse {
+      width: 10px; height: 10px;
+      background: #25d366;
+      border-radius: 50%;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 0 rgba(37,211,102,0.7);
+      animation: fcPulse 2s infinite;
+    }
+    @keyframes fcPulse {
+      0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(37,211,102,0); }
+      100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+    }
+    .fast-contact-text {
+      flex: 1; min-width: 180px;
+      display: flex; flex-direction: column;
+    }
+    .fast-contact-text strong { font-weight: 700; color: var(--text); }
+    .fast-contact-text span { color: var(--text-dim); font-size: 0.8125rem; }
+    .fast-contact-actions {
+      display: flex; gap: 8px;
+      flex-wrap: wrap;
+    }
+    .fast-contact-btn {
+      display: inline-flex;
+      align-items: center; gap: 6px;
+      padding: 9px 14px;
+      background: var(--text);
+      color: var(--bg);
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.8125rem;
+      text-decoration: none;
+      transition: transform 0.18s var(--ease), background 0.18s var(--ease);
+    }
+    .fast-contact-btn:hover { transform: translateY(-1px); background: var(--orange); color: #1a0e02; }
+    .fast-contact-btn svg { width: 16px; height: 16px; }
+    .fast-contact-btn-wa {
+      background: #25d366; color: #fff;
+    }
+    .fast-contact-btn-wa:hover { background: #128c7e; color: #fff; }
+    @media (max-width: 480px) {
+      .fast-contact { padding: 12px 14px; }
+      .fast-contact-actions { width: 100%; }
+      .fast-contact-btn { flex: 1; justify-content: center; }
     }
     .devis-form-card h2 {
       font-family: var(--serif);
@@ -273,6 +350,30 @@
       border-radius: 14px;
       margin-bottom: 16px;
       position: relative;
+    }
+    /* Variante "featured" : temoignage mis en avant (Romina Loria Hainaut) */
+    .proof-quote-featured {
+      background: linear-gradient(135deg, rgba(255,122,24,0.08), rgba(0,212,255,0.05));
+      border: 1px solid rgba(255,122,24,0.45);
+      box-shadow: 0 8px 28px rgba(255,122,24,0.10);
+    }
+    .proof-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--orange);
+      background: rgba(255,122,24,0.12);
+      padding: 3px 8px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+    }
+    .proof-badge::before {
+      content: '⭐';
+      font-size: 0.75rem;
     }
     .proof-quote::before {
       content: '"';
@@ -567,6 +668,10 @@
         Anniversaires, team buildings, maisons de repos, écoles… on adapte le mur interactif à votre format, votre lieu et votre budget. Devis gratuit, réponse personnalisée sous 24 h ouvrables.
       </p>
       <div class="trust-badges">
+        <a href="https://g.page/r/CaGLdFils55zEBM/review" target="_blank" rel="noopener" class="trust-badge trust-badge-rating" aria-label="Voir les avis Google InterActis">
+          <span class="trust-badge-stars" aria-hidden="true">⭐⭐⭐⭐⭐</span>
+          <strong>5,0/5</strong> · 4 avis Google
+        </a>
         <span class="trust-badge">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
           Réponse sous 24 h
@@ -595,6 +700,27 @@
 
       <!-- Colonne gauche : formulaire mis en carte -->
       <div class="devis-form-card">
+        <!-- Bandeau "fast-contact" : capture les visiteurs presses qui n'ont pas envie
+             de remplir un formulaire. Phone + WhatsApp sont visibles en alternative
+             des le premier coup d'oeil. -->
+        <div class="fast-contact">
+          <div class="fast-contact-pulse" aria-hidden="true"></div>
+          <div class="fast-contact-text">
+            <strong>Vous préférez en parler directement&nbsp;?</strong>
+            <span>Réponse immédiate par téléphone ou WhatsApp</span>
+          </div>
+          <div class="fast-contact-actions">
+            <a href="tel:+32488435342" class="fast-contact-btn" data-hover aria-label="Appeler InterActis au +32 488 43 53 42">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              Appel
+            </a>
+            <a href="https://wa.me/32488435342?text=Bonjour%20Ubeyd%2C%20j%27aimerais%20un%20devis%20InterActis%20pour%20%5Btype%20d%27%C3%A9v%C3%A9nement%5D%20le%20%5Bdate%5D%20%C3%A0%20%5Bville%5D." target="_blank" rel="noopener" class="fast-contact-btn fast-contact-btn-wa" data-hover aria-label="Demander un devis via WhatsApp">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.1s-.8 1-1 1.2c-.2.2-.4.2-.6.1-.3-.2-1.2-.5-2.3-1.5-.9-.8-1.5-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.4.5-.6.1-.2.2-.3.3-.5.1-.2.1-.4 0-.6-.1-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5 0 1.5 1.1 2.9 1.2 3.1.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/><path d="M12 0C5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.7 1 3.7 1.5 5.7 1.5 6.6 0 12-5.4 12-12S18.6 0 12 0zm0 21.9c-1.9 0-3.6-.5-5.2-1.4l-.4-.2-3.7 1 1-3.6-.2-.4c-1-1.6-1.6-3.5-1.6-5.4C2 6.5 6.5 2 12 2s10 4.5 10 10-4.5 9.9-10 9.9z"/></svg>
+              WhatsApp
+            </a>
+          </div>
+        </div>
+
         <h2>Décrivez votre <span class="accent">projet.</span></h2>
         <p class="form-intro">Plus vous donnez de détails, plus notre proposition sera précise dès le premier échange.</p>
 
@@ -802,6 +928,26 @@
             <div>
               <div class="proof-quote-name">RH PME</div>
               <div class="proof-quote-role">Team building · Bruxelles</div>
+            </div>
+            <div class="proof-stars" aria-label="5 étoiles sur 5">
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="proof-quote proof-quote-featured">
+          <span class="proof-badge">Avis Google · juin 2026</span>
+          <p class="proof-quote-text">
+            Envie de vivre un moment drôle, ludique et convivial en famille ou entre amis ? Petits et grands y trouveront leur bonheur. N'hésitez plus !
+          </p>
+          <div class="proof-quote-author">
+            <div>
+              <div class="proof-quote-name">Romina Loria</div>
+              <div class="proof-quote-role">Cabinet Lavaux · Province de Hainaut</div>
             </div>
             <div class="proof-stars" aria-label="5 étoiles sur 5">
               <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
