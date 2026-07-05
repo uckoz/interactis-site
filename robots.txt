@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /merci
+Disallow: /nl
+Disallow: /nl/
 
 Sitemap: https://www.interactis.be/sitemap.xml
