@@ -191,3 +191,30 @@
     init();
   }
 })();
+
+/*
+ * Conversions ameliorees Google Ads : au moment ou un formulaire de devis
+ * est soumis, on memorise nom/email/telephone en sessionStorage.
+ * La page /merci les lit et les transmet a gtag via user_data
+ * (donnees hachees par la balise Google, jamais stockees ailleurs).
+ */
+(function () {
+  function grab(form, names) {
+    for (var i = 0; i < names.length; i++) {
+      var el = form.querySelector('[name="' + names[i] + '"]');
+      if (el && el.value) return el.value.trim();
+    }
+    return '';
+  }
+  document.addEventListener('submit', function (e) {
+    var form = e.target;
+    if (!form || !form.classList || !form.classList.contains('contact-form')) return;
+    try {
+      sessionStorage.setItem('ia_ec', JSON.stringify({
+        fn: grab(form, ['nom', 'name']),
+        em: grab(form, ['email']),
+        ph: grab(form, ['tel', 'phone'])
+      }));
+    } catch (err) { /* silent */ }
+  }, true);
+})();
