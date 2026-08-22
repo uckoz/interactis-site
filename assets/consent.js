@@ -42,7 +42,7 @@
     g.src = 'https://www.googletagmanager.com/gtag/js?id=' + GADS_ID;
     document.head.appendChild(g);
     window.gtag('js', new Date());
-    window.gtag('config', GADS_ID);
+    window.gtag('config', GADS_ID, { 'allow_enhanced_conversions': true });
     // Tawk.to (differe de 3s pour ne pas penaliser le first paint)
     setTimeout(function () {
       window.Tawk_API = window.Tawk_API || {};
