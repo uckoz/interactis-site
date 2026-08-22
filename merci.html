@@ -289,6 +289,29 @@
         if (typeof window.gtag === 'function') {
           FIRED = true;
           try {
+            // Conversions ameliorees : transmet les donnees du formulaire
+            // (posees en sessionStorage par cro.js) a la balise Google,
+            // qui les hache avant envoi. Ameliore l'attribution.
+            try {
+              var ec = JSON.parse(sessionStorage.getItem('ia_ec') || 'null');
+              if (ec && (ec.em || ec.ph)) {
+                var ud = {};
+                if (ec.em) ud.email = ec.em;
+                if (ec.ph) {
+                  var ph = ec.ph.replace(/[\s.\/-]/g, '');
+                  if (ph.charAt(0) === '0') ph = '+32' + ph.slice(1);
+                  ud.phone_number = ph;
+                }
+                if (ec.fn) {
+                  var parts = ec.fn.split(' ');
+                  ud.address = {
+                    first_name: parts[0] || '',
+                    last_name: parts.slice(1).join(' ') || ''
+                  };
+                }
+                window.gtag('set', 'user_data', ud);
+              }
+            } catch (e2) { /* silent */ }
             window.gtag('event', 'conversion', {
               'send_to': 'AW-18186820643',
               'value': 50.0,
