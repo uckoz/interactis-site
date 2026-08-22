@@ -1425,6 +1425,35 @@
       text-align: center;
       letter-spacing: 0.04em;
     }
+    /* Avis Google près du formulaire (preuve sociale) */
+    .greviews {
+      margin-top: 28px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+    }
+    .greviews-head {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+      font-size: 0.9375rem;
+    }
+    .greviews-stars { color: #fbbc04; letter-spacing: 2px; }
+    .greviews-head a { color: var(--orange); font-size: 0.8125rem; }
+    .greviews blockquote {
+      margin: 0 0 14px;
+      font-size: 0.875rem;
+      line-height: 1.55;
+      color: var(--text-dim);
+    }
+    .greviews blockquote:last-child { margin-bottom: 0; }
+    .greviews blockquote footer {
+      margin-top: 4px;
+      font-size: 0.8125rem;
+      color: var(--text-faded);
+    }
     @media (max-width: 900px) {
       .contact-wrap { grid-template-columns: 1fr; gap: 56px; }
       .contact-form { padding: 28px; }
@@ -2466,6 +2495,26 @@
         <div class="contact-channel">
           <div class="contact-channel-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
           <div><small>Zone d'intervention</small><p>Belgique · Luxembourg · Nord France</p></div>
+        </div>
+
+        <div class="greviews" aria-label="Avis Google InterActis">
+          <div class="greviews-head">
+            <span class="greviews-stars" aria-hidden="true">★★★★★</span>
+            <strong>5,0 sur Google</strong>
+            <a href="https://g.page/r/CaGLdFils55zEBM/review" target="_blank" rel="noopener" data-hover>9 avis</a>
+          </div>
+          <blockquote>
+            « Fête d’anniversaire de notre fille de 11 ans réussie. Très sympathique et ponctuel. À recommander sans hésiter. »
+            <footer>— Maryline, anniversaire enfant</footer>
+          </blockquote>
+          <blockquote>
+            « Super animation, animateur très sympa. Je recommande, pour un anniversaire ou comme nous, avec nos élèves. »
+            <footer>— Elo, sortie scolaire</footer>
+          </blockquote>
+          <blockquote>
+            « L’idée derrière InterActis est absolument nouvelle et géniale. Je la recommande : directions d’école, entreprises… »
+            <footer>— Pierre-Yves</footer>
+          </blockquote>
         </div>
       </div>
 
