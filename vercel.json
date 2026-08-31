@@ -1,48 +1,54 @@
-{
-  "cleanUrls": true,
-  "redirects": [
-    { "source": "/mentions-legales.html", "destination": "/mentions-legales", "permanent": true },
-    { "source": "/confidentialite.html", "destination": "/confidentialite", "permanent": true },
-    { "source": "/cgv.html", "destination": "/cgv", "permanent": true },
-    { "source": "/merci.html", "destination": "/merci", "permanent": true },
-    { "source": "/animation-maison-de-repos.html", "destination": "/animation-maison-de-repos", "permanent": true },
-    { "source": "/animation-ecole.html", "destination": "/animation-ecole", "permanent": true },
-    { "source": "/animation-evenement.html", "destination": "/animation-evenement", "permanent": true },
-    { "source": "/animation-anniversaire.html", "destination": "/animation-anniversaire", "permanent": true },
-    { "source": "/animation-entreprise.html", "destination": "/animation-entreprise", "permanent": true },
-    { "source": "/animation-mons.html", "destination": "/animation-mons", "permanent": true },
-    { "source": "/animation-bruxelles.html", "destination": "/animation-bruxelles", "permanent": true },
-    { "source": "/animation-liege.html", "destination": "/animation-liege", "permanent": true },
-    { "source": "/animation-charleroi.html", "destination": "/animation-charleroi", "permanent": true },
-    { "source": "/blog.html", "destination": "/blog", "permanent": true },
-    { "source": "/blog-organiser-anniversaire-enfant.html", "destination": "/blog-organiser-anniversaire-enfant", "permanent": true },
-    { "source": "/blog-animation-maison-de-repos.html", "destination": "/blog-animation-maison-de-repos", "permanent": true },
-    { "source": "/blog-animation-team-building.html", "destination": "/blog-animation-team-building", "permanent": true },
-    { "source": "/blog-animation-ecole.html", "destination": "/blog-animation-ecole", "permanent": true },
-    { "source": "/blog-animation-evenement.html", "destination": "/blog-animation-evenement", "permanent": true },
-    { "source": "/devis.html", "destination": "/devis", "permanent": true },
-    { "source": "/nl", "destination": "/", "permanent": true },
-    { "source": "/nl/", "destination": "/", "permanent": true },
-    { "source": "/nl/:path*", "destination": "/", "permanent": true }
-  ],
-  "headers": [
-    {
-      "source": "/assets/(.*)",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
-      ]
-    },
-    {
-      "source": "/images/(.*)",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
-      ]
-    },
-    {
-      "source": "/favicon.ico",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=86400" }
-      ]
-    }
-  ]
+
+"cleanUrls": true,
+"redirects": [
+  { "source": "/mentions-legales.html", "destination": "/mentions-legales", "permanent": true },
+  { "source": "/confidentialite.html", "destination": "/confidentialite", "permanent": true },
+  { "source": "/cgv.html", "destination": "/cgv", "permanent": true },
+  { "source": "/merci.html", "destination": "/merci", "permanent": true },
+  { "source": "/animation-maison-de-repos.html", "destination": "/animation-maison-de-repos", "permanent": true },
+  { "source": "/animation-ecole.html", "destination": "/animation-ecole", "permanent": true },
+  { "source": "/animation-evenement.html", "destination": "/animation-evenement", "permanent": true },
+  { "source": "/animation-anniversaire.html", "destination": "/animation-anniversaire", "permanent": true },
+  { "source": "/animation-entreprise.html", "destination": "/animation-entreprise", "permanent": true },
+  { "source": "/animation-mons.html", "destination": "/animation-mons", "permanent": true },
+  { "source": "/animation-bruxelles.html", "destination": "/animation-bruxelles", "permanent": true },
+  { "source": "/animation-liege.html", "destination": "/animation-liege", "permanent": true },
+  { "source": "/animation-charleroi.html", "destination": "/animation-charleroi", "permanent": true },
+  { "source": "/blog.html", "destination": "/blog", "permanent": true },
+  { "source": "/blog-organiser-anniversaire-enfant.html", "destination": "/blog-organiser-anniversaire-enfant", "permanent": true },
+  { "source": "/blog-animation-maison-de-repos.html", "destination": "/blog-animation-maison-de-repos", "permanent": true },
+  { "source": "/blog-animation-team-building.html", "destination": "/blog-animation-team-building", "permanent": true },
+  { "source": "/blog-animation-ecole.html", "destination": "/blog-animation-ecole", "permanent": true },
+  { "source": "/blog-animation-evenement.html", "destination": "/blog-animation-evenement", "permanent": true },
+  { "source": "/devis.html", "destination": "/devis", "permanent": true },
+  { "source": "/nl", "destination": "/", "permanent": true },
+  { "source": "/nl/", "destination": "/", "permanent": true },
+  { "source": "/nl/:path*", "destination": "/", "permanent": true }
+],
+"headers": [
+  {
+    "source": "/assets/(.*)",
+    "headers": [
+      { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+    ]
+  },
+  {
+    "source": "/assets/(.*)\\.js",
+    "headers": [
+      { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+    ]
+  },
+  {
+    "source": "/images/(.*)",
+    "headers": [
+      { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+    ]
+  },
+  {
+    "source": "/favicon.ico",
+    "headers": [
+      { "key": "Cache-Control", "value": "public, max-age=86400" }
+    ]
+  }
+]
 }
