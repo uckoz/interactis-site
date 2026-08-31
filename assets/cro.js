@@ -218,3 +218,19 @@
     } catch (err) { /* silent */ }
   }, true);
 })();
+
+
+/* ---- Conversion Google Ads : clic WhatsApp ---- */
+(function () {
+   document.addEventListener('click', function (e) {
+      var a = e.target && e.target.closest ? e.target.closest('a[href*="wa.me"], a[href*="api.whatsapp.com"]') : null;
+      if (!a) return;
+      if (window.gtag) {
+         window.gtag('event', 'conversion', {
+            'send_to': 'AW-18186820643/dWq4CIr9iuscEKO4k-BD',
+            'value': 1.0,
+            'currency': 'EUR'
+         });
+      }
+   }, true);
+})();
