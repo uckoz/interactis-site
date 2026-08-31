@@ -234,3 +234,19 @@
       }
    }, true);
 })();
+
+
+/* ---- Conversion Google Ads : clic telephone ---- */
+(function () {
+   document.addEventListener('click', function (e) {
+      var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null;
+      if (!a) return;
+      if (window.gtag) {
+         window.gtag('event', 'conversion', {
+            'send_to': 'AW-18186820643/_WXHCM3HpOscEKO4k-BD',
+            'value': 1.0,
+            'currency': 'EUR'
+         });
+      }
+   }, true);
+})();
