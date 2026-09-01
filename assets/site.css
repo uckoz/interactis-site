@@ -281,10 +281,16 @@
       min-height: 100svh;
       overflow: hidden;
       display: flex; align-items: center;
-      padding: 0 32px 160px; /* padding-bottom réserve l'espace pour .hero-stats */
+      /* padding-top : le header est fixe et flotte au-dessus du hero. Sans
+         reserve, le contenu centre verticalement passe dessous : le titre H1
+         se retrouvait recouvert de 22px sur mobile. --urgency-h est mesuree
+         par cro.js quand la banniere est presente, 0 sinon.
+         padding-bottom : reserve l'espace pour .hero-stats, en absolu. */
+      padding: calc(var(--urgency-h, 0px) + 96px) 32px 160px;
     }
     @media (max-width: 720px) {
-      .hero { padding-bottom: 220px; } /* stats grid passe en 2 colonnes = plus haut */
+      /* stats grid passe en 2 colonnes = plus haut */
+      .hero { padding: calc(var(--urgency-h, 0px) + 88px) 32px 220px; }
     }
     .hero-bg {
       position: absolute; inset: 0;
