@@ -1870,24 +1870,26 @@
   <!-- ===== Aiguillage Particulier / Professionnel : mode mémorisé appliqué avant le paint (zéro flash) ===== -->
   <script>(function(){try{var m=localStorage.getItem('ia-mode');if(m==='part'||m==='pro'){document.documentElement.setAttribute('data-mode',m);}}catch(e){}})();</script>
   <style>
-    /* ===== Gateway (écran de choix plein écran) ===== */
-    .gateway{position:fixed;inset:0;z-index:2000;background:radial-gradient(ellipse at 50% 20%, #0e1526 0%, #05070d 70%);display:flex;justify-content:center;padding:24px;opacity:1;transition:opacity .5s ease;overflow-y:auto;-webkit-overflow-scrolling:touch;touch-action:pan-y}
-    html[data-mode] .gateway{display:none}
-    .gateway.gw-hide{opacity:0;pointer-events:none}
-    .gateway-inner{max-width:980px;width:100%;text-align:center;margin:auto;padding:16px 0}
-    .gateway-eyebrow{font-size:.75rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-bottom:18px}
-    .gateway-title{font-family:var(--serif, 'Bricolage Grotesque', sans-serif);font-size:clamp(1.9rem,5vw,3.4rem);font-weight:700;letter-spacing:-.03em;line-height:1.1;color:var(--text,#f5f7fb);margin-bottom:14px}
-    .gateway-title .accent{color:var(--orange,#ff7a18)}
-    .gateway-sub{font-size:clamp(.95rem,1.6vw,1.0625rem);color:rgba(245,247,251,.72);max-width:56ch;margin:0 auto 40px;line-height:1.6}
-    .gateway-cards{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:820px;margin:0 auto}
-    @media(max-width:680px){.gateway-cards{grid-template-columns:1fr;gap:12px}.gateway-card{padding:22px 18px}.gateway-card .gw-emoji{font-size:1.9rem;margin-bottom:8px}.gateway-card .gw-name{font-size:1.2rem;margin-bottom:6px}.gateway-card .gw-desc{font-size:.8125rem;margin-bottom:10px}.gateway-sub{margin-bottom:24px}.gateway-skip{margin-top:18px}}
-    .gateway-card{display:block;position:relative;padding:38px 28px;border-radius:22px;border:1px solid rgba(255,122,24,.35);background:linear-gradient(160deg,rgba(255,122,24,.14),rgba(0,212,255,.07));cursor:pointer;text-align:center;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
-    .gateway-card:hover{transform:translateY(-6px);border-color:var(--orange,#ff7a18);box-shadow:0 24px 60px rgba(255,122,24,.18)}
-    .gateway-card .gw-emoji{font-size:2.6rem;display:block;margin-bottom:14px}
-    .gateway-card .gw-name{font-family:var(--serif,'Bricolage Grotesque',sans-serif);font-size:1.5rem;font-weight:700;color:var(--text,#f5f7fb);display:block;margin-bottom:10px}
-    .gateway-card .gw-desc{font-size:.9rem;color:rgba(245,247,251,.7);line-height:1.5;display:block;margin-bottom:16px}
-    .gateway-card .gw-go{font-size:.9rem;font-weight:700;color:var(--orange,#ff7a18)}
-    .gateway-skip{display:inline-block;margin-top:30px;font-size:.8125rem;color:rgba(245,247,251,.45);text-decoration:underline;cursor:pointer;background:none;border:none}
+    /* ===== Sélecteur de profil (non bloquant) =====
+       Remplace l'ancien écran d'accueil plein écran qui masquait tout le
+       site tant que le visiteur n'avait pas cliqué. Le contenu est
+       maintenant lisible immédiatement ; ce bloc ne fait que filtrer. */
+    .chooser{padding:34px 32px 6px;background:var(--bg-soft,#0a0e1a)}
+    .chooser-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap}
+    .chooser-label{font-size:.875rem;font-weight:600;color:rgba(245,247,251,.72);margin:0}
+    .chooser-btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+    .chooser-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;border:1px solid var(--line,rgba(245,247,251,.12));background:rgba(245,247,251,.03);color:var(--text,#f5f7fb);font:inherit;font-size:.9375rem;font-weight:600;cursor:pointer;transition:border-color .2s ease,background .2s ease}
+    .chooser-btn:hover{border-color:var(--orange,#ff7a18);background:rgba(255,122,24,.08)}
+    .chooser-btn[aria-pressed="true"]{border-color:var(--orange,#ff7a18);background:rgba(255,122,24,.14)}
+    .chooser-btn[aria-pressed="true"]::after{content:'✓';color:var(--orange,#ff7a18);font-weight:800}
+    .chooser-btn:focus-visible{outline:2px solid var(--orange,#ff7a18);outline-offset:3px}
+    @media(pointer:coarse){.chooser-btn{cursor:auto}}
+    @media(max-width:680px){
+      .chooser{padding:26px 20px 4px}
+      .chooser-inner{gap:12px}
+      .chooser-label{width:100%;text-align:center}
+      .chooser-btn{padding:9px 15px;font-size:.875rem}
+    }
     /* ===== Filtrage par univers ===== */
     html[data-mode="part"] [data-aud="pro"]{display:none !important}
     html[data-mode="pro"] [data-aud="part"]{display:none !important}
@@ -1917,31 +1919,12 @@
 <body>
   <a href="#main" class="skip-link">Aller au contenu principal</a>
 
-  <!-- ============================================
-       GATEWAY - écran de choix Particulier / Pro
-       ============================================ -->
-  <div class="gateway" id="gateway" role="dialog" aria-label="Choisissez votre profil" data-lenis-prevent>
-    <div class="gateway-inner">
-      <div class="gateway-eyebrow">Animation interactive mobile · Belgique</div>
-      <h2 class="gateway-title">L'animation où <span class="accent">personne ne reste sur le côté.</span></h2>
-      <p class="gateway-sub">Plus de 35 jeux projetés sur un mur, sans manette ni écran. Installés en 15 minutes, jouables de 5 à 95 ans, debout ou en fauteuil. Dites-nous qui vous êtes, on vous montre ce qui vous concerne.</p>
-      <div class="gateway-cards">
-        <button type="button" class="gateway-card" onclick="iaSetMode('part')">
-          <span class="gw-emoji">🎉</span>
-          <span class="gw-name">Je suis un particulier</span>
-          <span class="gw-desc">Anniversaire (enfant ou adulte), baptême, communion, fête de famille ou de quartier.</span>
-          <span class="gw-go">C'est par ici →</span>
-        </button>
-        <button type="button" class="gateway-card" onclick="iaSetMode('pro')">
-          <span class="gw-emoji">🏢</span>
-          <span class="gw-name">Je suis un professionnel</span>
-          <span class="gw-desc">Team building, maison de repos, école, centre spécialisé, événement, family day.</span>
-          <span class="gw-go">C'est par ici →</span>
-        </button>
-      </div>
-      <button type="button" class="gateway-skip" onclick="iaSkipGateway()">Voir le site sans choisir</button>
-    </div>
-  </div>
+  <!-- L'ancien écran de choix plein écran (.gateway) a été supprimé :
+       il masquait 100% du contenu au premier chargement, ne laissait que
+       3 éléments cliquables et, sur mobile, poussait la carte
+       « professionnel » sous la ligne de flottaison. Le choix de profil
+       est désormais un filtre en ligne, voir <section class="chooser">
+       juste avant les sections « univers ». -->
 
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
   <div class="cursor" aria-hidden="true"></div>
@@ -2045,6 +2028,26 @@
       <div class="hero-stat">
         <div class="n">5-95</div>
         <div class="l">Ans, sans exception</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SÉLECTEUR DE PROFIL - filtre, ne bloque rien
+       ============================================ -->
+  <section class="chooser" id="choix" aria-labelledby="choixLabel">
+    <div class="chooser-inner">
+      <p class="chooser-label" id="choixLabel">Affichez en priorité ce qui vous concerne :</p>
+      <div class="chooser-btns">
+        <button type="button" class="chooser-btn" id="choixPart" aria-pressed="false" onclick="iaSetMode('part')">
+          Particulier
+        </button>
+        <button type="button" class="chooser-btn" id="choixPro" aria-pressed="false" onclick="iaSetMode('pro')">
+          Professionnel
+        </button>
+        <button type="button" class="chooser-btn" id="choixTout" aria-pressed="true" onclick="iaSetMode('')">
+          Tout voir
+        </button>
       </div>
     </div>
   </section>
@@ -3086,54 +3089,67 @@
   <script src="/assets/cro.js" defer></script>
 
   <script>
-    /* ===== Aiguillage Particulier / Professionnel ===== */
+    /* ===== Aiguillage Particulier / Professionnel =====
+       'part' ou 'pro' filtrent la page ; toute autre valeur (y compris
+       aucun choix) affiche l'ensemble du contenu. Aucun état ne bloque
+       la lecture du site. */
     function iaApplyMode(m){
-      if(m==='part'||m==='pro'){ document.documentElement.setAttribute('data-mode', m); }
+      var known = (m === 'part' || m === 'pro');
+      if(known){ document.documentElement.setAttribute('data-mode', m); }
       else { document.documentElement.removeAttribute('data-mode'); }
-      var label = m==='part' ? '🎉 Vous êtes : Particulier' : '🏢 Vous êtes : Professionnel';
-      var html = label + ' · <span class="mp-switch">changer</span>';
-      var p = document.getElementById('modePill');
-      var pm = document.getElementById('modePillMobile');
-      if(m && p){ p.innerHTML = html; }
-      if(m && pm){ pm.innerHTML = html; }
-      /* Force le recalcul des animations au scroll (sections affichées/cachées) */
+
+      if(known){
+        var label = m === 'part' ? '🎉 Vous êtes : Particulier' : '🏢 Vous êtes : Professionnel';
+        var html = label + ' · <span class="mp-switch">changer</span>';
+        var p = document.getElementById('modePill');
+        var pm = document.getElementById('modePillMobile');
+        if(p){ p.innerHTML = html; }
+        if(pm){ pm.innerHTML = html; }
+      }
+
+      /* État visible du sélecteur en ligne */
+      var map = { part: 'choixPart', pro: 'choixPro' };
+      ['choixPart', 'choixPro', 'choixTout'].forEach(function(id){
+        var el = document.getElementById(id);
+        if(el){ el.setAttribute('aria-pressed', String(id === (map[m] || 'choixTout'))); }
+      });
+
+      /* Des sections viennent d'apparaître ou de disparaître : les
+         déclencheurs de scroll doivent recalculer leurs positions. */
       try{ if(window.ScrollTrigger){ ScrollTrigger.refresh(); } }catch(e){}
     }
-    function iaLockBg(lock){
-      try{ document.body.style.overflow = lock ? 'hidden' : ''; }catch(e){}
-    }
+
     function iaSetMode(m){
-      try{ localStorage.setItem('ia-mode', m); }catch(e){}
-      iaApplyMode(m);
-      var gw = document.getElementById('gateway');
-      if(gw){ gw.classList.add('gw-hide'); setTimeout(function(){ gw.style.display='none'; }, 500); }
-      iaLockBg(false);
-      /* Amène le visiteur sur ses cartes d'univers */
-      var target = document.getElementById(m==='part' ? 'univers' : 'univers-pro');
-      if(target){ setTimeout(function(){ target.scrollIntoView({behavior:'smooth'}); }, 550); }
+      var known = (m === 'part' || m === 'pro');
+      try{
+        if(known){ localStorage.setItem('ia-mode', m); }
+        else { localStorage.removeItem('ia-mode'); }
+      }catch(e){}
+      iaApplyMode(known ? m : '');
+      if(known){
+        var target = document.getElementById(m === 'part' ? 'univers' : 'univers-pro');
+        if(target){ target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      }
     }
-    function iaSkipGateway(){
-      var gw = document.getElementById('gateway');
-      if(gw){ gw.classList.add('gw-hide'); setTimeout(function(){ gw.style.display='none'; }, 500); }
-      iaLockBg(false);
-    }
+
+    /* La pilule du header ramène au sélecteur au lieu de rouvrir un
+       écran plein écran. */
     function iaToggleMode(){
-      var gw = document.getElementById('gateway');
-      if(gw){ gw.style.display='flex'; gw.classList.remove('gw-hide'); window.scrollTo({top:0}); iaLockBg(true); }
+      var c = document.getElementById('choix');
+      if(c){ c.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
     }
+
     function iaHeroChoice(ev, m){
       ev.preventDefault();
       iaSetMode(m);
       return false;
     }
-    /* Au chargement : si un mode est déjà mémorisé, mettre à jour la pilule */
+
+    /* Au chargement : réappliquer le choix mémorisé, s'il existe. */
     (function(){
       var m = null;
       try{ m = localStorage.getItem('ia-mode'); }catch(e){}
-      if(m==='part'||m==='pro'){ iaApplyMode(m); }
-      else { iaLockBg(true); } /* écran de choix visible : on fige le fond */
-      /* Forcer l'écran de choix avec #choix dans l'URL */
-      if(location.hash==='#choix'){ iaToggleMode(); }
+      iaApplyMode(m === 'part' || m === 'pro' ? m : '');
     })();
   </script>
 </body>

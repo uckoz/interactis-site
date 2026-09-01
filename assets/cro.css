@@ -81,11 +81,14 @@
 
 /* Pousse le header fixe vers le bas quand banner present.
    On match aussi html.has-urgency-banner (set synchroneusement avant
-   le premier paint, voir <script> dans <head>) pour eviter le CLS. */
+   le premier paint, voir <script> dans <head>) pour eviter le CLS.
+   --urgency-h est mesuree par cro.js des l'injection ; les valeurs de
+   repli (55px / 94px) correspondent a la hauteur reelle mesuree au
+   premier paint, avant que le script ne prenne le relais. */
 body.has-urgency-banner .hd,
-html.has-urgency-banner .hd { top: 46px; }
+html.has-urgency-banner .hd { top: var(--urgency-h, 55px); }
 body.has-urgency-banner .devis-header,
-html.has-urgency-banner .devis-header { top: 46px; }
+html.has-urgency-banner .devis-header { top: var(--urgency-h, 55px); }
 
 @media (max-width: 720px) {
   .urgency-banner-inner { padding: 10px 48px 10px 16px; gap: 10px; font-size: 0.8125rem; }
@@ -93,7 +96,7 @@ html.has-urgency-banner .devis-header { top: 46px; }
   body.has-urgency-banner .hd,
   body.has-urgency-banner .devis-header,
   html.has-urgency-banner .hd,
-  html.has-urgency-banner .devis-header { top: 68px; }
+  html.has-urgency-banner .devis-header { top: var(--urgency-h, 94px); }
 }
 
 /* ============================================

@@ -95,11 +95,34 @@
     document.body.insertBefore(banner, document.body.firstChild);
     document.body.classList.add('has-urgency-banner');
 
+    // Le header fixe doit descendre exactement de la hauteur de la banniere.
+    // Cette hauteur depend de la largeur de l'ecran et de la langue : sur un
+    // mobile de 390 px le texte passe sur deux lignes et la banniere fait 94 px,
+    // pas les 68 px codes en dur auparavant. Resultat : la banniere recouvrait
+    // le logo et le bouton menu. On mesure donc, et on remesure au redimensionnement.
+    function syncBannerHeight() {
+      if (!banner.isConnected) return;
+      var h = Math.round(banner.getBoundingClientRect().height);
+      if (h > 0) document.documentElement.style.setProperty('--urgency-h', h + 'px');
+    }
+    syncBannerHeight();
+    if (window.ResizeObserver) {
+      new ResizeObserver(syncBannerHeight).observe(banner);
+    } else {
+      window.addEventListener('resize', syncBannerHeight);
+    }
+    // Les polices web changent la hauteur du texte une fois chargees.
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(syncBannerHeight).catch(function() {});
+    }
+
     banner.querySelector('.urgency-banner-close').addEventListener('click', function() {
       banner.classList.add('is-closing');
       setTimeout(function() {
         banner.remove();
         document.body.classList.remove('has-urgency-banner');
+        document.documentElement.classList.remove('has-urgency-banner');
+        document.documentElement.style.removeProperty('--urgency-h');
       }, 250);
       try { localStorage.setItem('ia-urgency-dismissed', '1'); } catch (e) {}
     });
