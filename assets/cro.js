@@ -1,8 +1,12 @@
 /* ============================================
    InterActis - CRO (Conversion Rate Optimization)
-   - Banner d'urgence sticky en haut
-   - Pop-up exit-intent (recupere leads sortants)
+   - Bandeau de reassurance sticky en haut (faits verifiables uniquement)
+   - Pop-up de sortie : capture email PUIS remise immediate de la brochure
    - Lazy-load des videos (gain LCP / data mobile)
+
+   REGLE : aucun message de rarete, de compte a rebours ou de disponibilite
+   qui ne soit relie a une donnee reelle. Aucune promesse d'envoi qui ne
+   soit honoree dans la seconde.
    ============================================ */
 
 (function() {
@@ -64,7 +68,11 @@
   })();
 
   // ============================================
-  // 1) BANNER D'URGENCE (calendrier qui se remplit)
+  // 1) BANDEAU DE REASSURANCE
+  // Remplace l'ancien bandeau "calendrier qui se remplit", qui affichait une
+  // rarete inventee (texte fige, relie a aucun agenda). On n'affiche ici que
+  // des engagements que l'entreprise tient reellement et qui sont deja
+  // annonces ailleurs sur le site (devis gratuit, reponse sous 24 h).
   // ============================================
   function injectUrgencyBanner() {
     // Ne pas re-afficher si dejà fermé par l'utilisateur
@@ -75,12 +83,12 @@
     var banner = document.createElement('div');
     banner.className = 'urgency-banner';
     banner.setAttribute('role', 'region');
-    banner.setAttribute('aria-label', 'Information urgence');
+    banner.setAttribute('aria-label', 'Informations pratiques');
     banner.innerHTML = ''
       + '<div class="urgency-banner-inner">'
-      +   '<span class="urgency-banner-emoji" aria-hidden="true">🗓</span>'
-      +   '<span class="urgency-banner-text">Calendrier qui se remplit · <strong>quelques dates encore disponibles</strong></span>'
-      +   '<a href="/devis" class="urgency-banner-link">Réserver ma date <span aria-hidden="true">→</span></a>'
+      +   '<span class="urgency-banner-emoji" aria-hidden="true">✅</span>'
+      +   '<span class="urgency-banner-text">Devis gratuit et sans engagement · <strong>réponse sous 24 h</strong></span>'
+      +   '<a href="/devis" class="urgency-banner-link">Demander mon devis <span aria-hidden="true">→</span></a>'
       +   '<button type="button" class="urgency-banner-close" aria-label="Fermer la bannière">×</button>'
       + '</div>';
 
@@ -101,8 +109,6 @@
   // 2) POP-UP EXIT-INTENT (recupere les leads qui partent)
   // ============================================
   function setupExitIntent() {
-    // Pas sur mobile (pas de mouseleave fiable)
-    if (window.matchMedia('(pointer: coarse)').matches) return;
     // Pas si deja montré dans cette session
     try {
       if (sessionStorage.getItem('ia-exit-popup-shown') === '1') return;
@@ -112,14 +118,51 @@
     if (path.indexOf('/devis') === 0 || path.indexOf('/merci') === 0) return;
 
     var triggered = false;
-
-    document.addEventListener('mouseleave', function(e) {
+    function fire() {
       if (triggered) return;
-      // Trigger seulement si la souris sort par le haut (vers les onglets/barre URL)
-      if (e.clientY > 0) return;
       triggered = true;
       showExitPopup();
-    });
+    }
+
+    if (window.matchMedia('(pointer: coarse)').matches) {
+      // ---- MOBILE ----
+      // Il n'y a pas de mouseleave fiable sur ecran tactile. On considere que
+      // le visiteur "s'apprete a partir" quand il a lu une bonne partie de la
+      // page puis remonte franchement vers le haut (reflexe avant de fermer
+      // l'onglet ou de revenir en arriere).
+      var maxDepth = 0;
+      var lastY = window.scrollY;
+      var upward = 0;
+
+      window.addEventListener('scroll', function() {
+        if (triggered) return;
+        var y = window.scrollY;
+        var doc = document.documentElement.scrollHeight - window.innerHeight;
+        if (doc > 0) maxDepth = Math.max(maxDepth, y / doc);
+
+        if (y < lastY) {
+          upward += (lastY - y);
+        } else {
+          upward = 0;
+        }
+        lastY = y;
+
+        // A lu au moins 45 % de la page, puis est remonte de 500 px d'affilee
+        if (maxDepth > 0.45 && upward > 500) fire();
+      }, { passive: true });
+
+      // Filet : le visiteur bascule vers une autre appli / verrouille l'ecran
+      document.addEventListener('visibilitychange', function() {
+        if (document.visibilityState === 'hidden' && maxDepth > 0.35) fire();
+      });
+    } else {
+      // ---- DESKTOP ----
+      document.addEventListener('mouseleave', function(e) {
+        // Trigger seulement si la souris sort par le haut (vers les onglets/barre URL)
+        if (e.clientY > 0) return;
+        fire();
+      });
+    }
   }
 
   function showExitPopup() {
@@ -133,26 +176,20 @@
     overlay.innerHTML = ''
       + '<div class="exit-popup">'
       +   '<button type="button" class="exit-popup-close" aria-label="Fermer">×</button>'
-      +   '<div class="exit-popup-emoji" aria-hidden="true">🎁</div>'
+      +   '<div class="exit-popup-emoji" aria-hidden="true">📄</div>'
       +   '<h3 id="exitPopupTitle">Une dernière chose...</h3>'
-      +   '<p>Pas encore prêt à demander un devis ? Recevez notre <strong>brochure PDF</strong> par email pour y revenir plus tard.</p>'
-      +   '<form class="exit-popup-form" action="https://api.web3forms.com/submit" method="POST">'
-      +     '<input type="hidden" name="access_key" value="f08ff9b7-efb2-4e47-bd2c-d79267ffee7a" />'
-      +     '<input type="hidden" name="subject" value="Demande brochure - exit popup" />'
-      +     '<input type="hidden" name="from_name" value="Exit popup interactis.be" />'
-      +     '<input type="hidden" name="source" value="exit-popup" />'
-      +     '<input type="hidden" name="page" id="exitPopupPage" value="" />'
-      +     '<input type="hidden" name="redirect" value="https://www.interactis.be/merci" />'
+      +   '<p>Pas encore prêt à demander un devis ? Laissez votre email et <strong>téléchargez la brochure tout de suite</strong> pour y revenir plus tard.</p>'
+      +   '<form class="exit-popup-form" novalidate>'
       +     '<input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off" />'
       +     '<input type="email" name="email" required placeholder="vous@exemple.com" autocomplete="email" inputmode="email" aria-label="Votre adresse email" />'
       +     '<button type="submit" class="exit-popup-submit">Recevoir la brochure →</button>'
       +   '</form>'
-      +   '<p class="exit-popup-trust">🔒 Aucun spam · Désabonnement en 1 clic</p>'
+      +   '<p class="exit-popup-error" role="alert" hidden></p>'
+      +   '<p class="exit-popup-trust">🔒 Aucun spam · Désabonnement en 1 clic · <a href="/confidentialite">Vie privée</a></p>'
       + '</div>';
 
     document.body.appendChild(overlay);
-    var pageInput = document.getElementById('exitPopupPage');
-    if (pageInput) pageInput.value = location.pathname || '/';
+    setupBrochureForm(overlay);
 
     function close() {
       overlay.classList.add('is-closing');
@@ -175,6 +212,118 @@
       overlay.classList.add('is-visible');
       var emailInput = overlay.querySelector('input[type="email"]');
       if (emailInput) setTimeout(function() { emailInput.focus(); }, 300);
+    });
+  }
+
+  // ============================================
+  // 3) FORMULAIRE BROCHURE
+  // On enregistre l'email (base de donnees) PUIS on remet le PDF tout de
+  // suite. Point important : la brochure est remise MEME si l'enregistrement
+  // echoue. On a promis un telechargement immediat, on le tient ; c'est nous
+  // qui perdons le contact, pas le visiteur qui perd son document.
+  // ============================================
+  var BROCHURE_URL = '/assets/brochure-interactis.pdf';
+  var W3F_KEY = 'f08ff9b7-efb2-4e47-bd2c-d79267ffee7a';
+
+  function deliverBrochure() {
+    // Ouvre le PDF dans un nouvel onglet. On passe par un <a> temporaire
+    // plutot que window.open() : moins bloque par les popup blockers car
+    // l'action reste rattachee au clic de l'utilisateur.
+    var a = document.createElement('a');
+    a.href = BROCHURE_URL;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.download = 'brochure-interactis.pdf';
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function() { if (a.parentNode) a.remove(); }, 0);
+  }
+
+  function setupBrochureForm(overlay) {
+    var form = overlay.querySelector('.exit-popup-form');
+    var errorEl = overlay.querySelector('.exit-popup-error');
+    if (!form) return;
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      var emailInput = form.querySelector('input[type="email"]');
+      var submitBtn = form.querySelector('.exit-popup-submit');
+      var honeypot = form.querySelector('[name="botcheck"]');
+      var email = (emailInput && emailInput.value || '').trim();
+
+      // Validation simple cote client (le navigateur ne la fait pas : novalidate)
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+        if (errorEl) {
+          errorEl.textContent = 'Merci de saisir une adresse email valide.';
+          errorEl.hidden = false;
+        }
+        if (emailInput) emailInput.focus();
+        return;
+      }
+      if (errorEl) errorEl.hidden = true;
+
+      // Honeypot rempli = bot. On ne fait rien de visible.
+      if (honeypot && honeypot.checked) return;
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Préparation…';
+      }
+
+      var payload = {
+        access_key: W3F_KEY,
+        subject: 'Demande brochure - exit popup',
+        from_name: 'Exit popup interactis.be',
+        email: email,
+        source: 'exit-popup',
+        page: location.pathname || '/',
+        botcheck: ''
+      };
+
+      function done() {
+        showBrochureSuccess(overlay);
+        deliverBrochure();
+      }
+
+      var settled = false;
+      function once() {
+        if (settled) return;
+        settled = true;
+        done();
+      }
+
+      // Filet de securite : si l'API met plus de 6 s, on remet quand meme
+      // la brochure. La promesse passe avant la collecte.
+      var timer = setTimeout(once, 6000);
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      })
+      .then(function() { clearTimeout(timer); once(); })
+      .catch(function() { clearTimeout(timer); once(); });
+    });
+  }
+
+  function showBrochureSuccess(overlay) {
+    var card = overlay.querySelector('.exit-popup');
+    if (!card) return;
+    card.innerHTML = ''
+      + '<button type="button" class="exit-popup-close" aria-label="Fermer">×</button>'
+      + '<div class="exit-popup-emoji" aria-hidden="true">✅</div>'
+      + '<h3>Votre brochure arrive</h3>'
+      + '<p>Le téléchargement démarre automatiquement. Si rien ne se passe, utilisez le bouton ci-dessous.</p>'
+      + '<p><a class="exit-popup-submit exit-popup-download" href="' + BROCHURE_URL + '" target="_blank" rel="noopener" download>Télécharger la brochure (PDF)</a></p>'
+      + '<p class="exit-popup-trust">Une question d\'ici là ? <a href="/devis">Demander un devis gratuit</a></p>';
+
+    card.querySelector('.exit-popup-close').addEventListener('click', function() {
+      overlay.classList.add('is-closing');
+      setTimeout(function() { if (overlay.parentNode) overlay.remove(); }, 280);
     });
   }
 

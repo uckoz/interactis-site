@@ -192,24 +192,42 @@ html.has-urgency-banner .devis-header { top: 46px; }
   gap: 8px;
   padding: 14px 20px;
   background: var(--orange);
-  color: white;
+  /* Texte sombre et non blanc : blanc sur #ff7a18 donne 2.61:1, sous le
+     minimum WCAG AA de 4.5:1. Ce brun tres fonce donne 7.22:1. */
+  color: #1b0f00;
   border: none;
   border-radius: 999px;
   font: inherit;
   font-size: 0.9375rem;
   font-weight: 700;
   cursor: pointer;
+  text-decoration: none;
   transition: all 0.25s var(--ease);
   box-shadow: 0 12px 28px rgba(255,122,24,0.35);
 }
 @media (pointer: coarse) { .exit-popup-submit { cursor: auto; } }
 .exit-popup-submit:hover {
   background: var(--orange-bright);
+  color: #1b0f00;
   box-shadow: 0 16px 36px rgba(255,122,24,0.5);
   transform: translateY(-1px);
 }
+.exit-popup-submit:disabled {
+  opacity: 0.65;
+  cursor: default;
+  transform: none;
+}
+/* Message d'erreur du formulaire brochure (email invalide) */
+.exit-popup-error {
+  margin: 10px 0 0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #ffb4a2;
+}
+.exit-popup-error[hidden] { display: none; }
 .exit-popup-trust {
   font-size: 0.75rem;
   color: var(--text-faded);
   margin: 0;
 }
+.exit-popup-trust a { color: var(--text-dim); }
