@@ -84,8 +84,9 @@
      '.ia-banner a{color:#fb923c;text-decoration:underline}',
      '.ia-banner-actions{display:flex;gap:10px;flex-wrap:wrap}',
      '.ia-banner button{padding:10px 18px;border:none;border-radius:10px;font-weight:600;cursor:pointer;font-size:14px;font-family:inherit}',
-     '.ia-banner .ia-accept{background:#fb923c;color:#fff}',
-     '.ia-banner .ia-accept:hover{background:#ea580c}',
+     // Texte sombre : blanc sur #fb923c ne donne que 2.26:1 (min AA 4.5:1)
+     '.ia-banner .ia-accept{background:#fb923c;color:#1b0f00}',
+     '.ia-banner .ia-accept:hover{background:#ea580c;color:#1b0f00}',
      '.ia-banner .ia-refuse{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.3)}',
      '.ia-banner .ia-refuse:hover{background:rgba(255,255,255,.08)}',
      '.ia-cookies-link{position:fixed;left:16px;bottom:16px;background:#fff;color:#374151;border:1px solid #e5e7eb;padding:8px 12px;border-radius:8px;font-size:12px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.08);z-index:2147483500;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif}',

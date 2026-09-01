@@ -666,12 +666,13 @@
       font-size: clamp(2rem, 4.5vw, 3rem);
       font-weight: 700;
       letter-spacing: -0.03em;
-      color: white;
+      /* Texte sombre sur la bande orange : le blanc n'y donne que 2.61:1 */
+      color: var(--on-orange);
       margin-bottom: 24px;
     }
     .cta-section p {
       font-size: 1.0625rem;
-      color: rgba(255,255,255,0.9);
+      color: #3a1a00;
       margin-bottom: 32px;
       max-width: 60ch;
       margin-left: auto;
@@ -679,7 +680,8 @@
     }
     .cta-section .btn-white {
       background: white;
-      color: var(--orange);
+      /* Orange fonce : l'orange vif sur blanc ne donne que 2.61:1 */
+      color: #7a3000;
       font-weight: 700;
     }
     .cta-section .btn-white:hover {
@@ -793,7 +795,8 @@
       padding: 32px;
       background: linear-gradient(135deg, var(--orange), #ff5722);
       border-radius: 16px;
-      color: white;
+      /* Texte sombre : le blanc sur cet orange ne donne que 2.61:1 */
+      color: var(--on-orange);
     }
     .contact-info-box h3 {
       font-size: 1.25rem;
@@ -823,14 +826,19 @@
     .contact-channel small {
       display: block;
       font-size: 0.75rem;
-      opacity: 0.85;
+      /* Fond orange : on force un texte sombre, sinon les regles globales
+         reimposent le blanc casse du reste du site (2.43:1). */
+      color: #3a1a00;
       margin-bottom: 2px;
     }
     .contact-channel a,
     .contact-channel p {
       font-weight: 600;
       font-size: 1rem;
+      color: var(--on-orange);
     }
+    .contact-channel { border-bottom-color: rgba(27,15,0,0.25); }
+    .contact-channel-icon { background: rgba(27,15,0,0.14); }
     .contact-form {
       background: var(--bg-card);
       border: 1px solid var(--line);
@@ -1388,15 +1396,6 @@
   </a>
 
   <!-- COOKIE BANNER -->
-  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Consentement cookies">
-    <h4>🍪 On respecte votre vie privée</h4>
-    <p>Nous utilisons des cookies pour analyser le trafic. <a href="/confidentialite" data-hover>En savoir plus</a></p>
-    <div class="cookie-actions">
-      <button type="button" class="cookie-btn-reject" id="cookieReject" data-hover>Refuser</button>
-      <button type="button" class="cookie-btn-accept" id="cookieAccept" data-hover>Accepter</button>
-    </div>
-  </div>
-
   <script src="/assets/site.js" defer></script>
   <script src="/assets/cro.js" defer></script>
 </body>

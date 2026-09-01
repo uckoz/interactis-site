@@ -208,6 +208,9 @@
       --orange: #ff7a18;
       --orange-bright: #ff8a2b;
       --orange-glow: rgba(255, 122, 24, 0.4);
+      /* Texte a poser sur un fond orange : le blanc n'atteint que 2.61:1,
+         sous le minimum WCAG AA de 4.5:1. Ce brun tres fonce donne 7.22:1. */
+      --on-orange: #1b0f00;
       --blue: #00d4ff;
       --blue-deep: #0066ff;
       --blue-glow: rgba(0, 212, 255, 0.5);
@@ -245,7 +248,7 @@
     @media (pointer: coarse) { button, a { cursor: pointer; } }
     ul { list-style: none; }
 
-    ::selection { background: var(--orange); color: white; }
+    ::selection { background: var(--orange); color: var(--on-orange); }
 
     /* ============================================
        SÉCURITÉ CLIC - garantir que les CTAs principaux restent cliquables
@@ -275,7 +278,7 @@
       z-index: 9999;
       padding: 10px 18px;
       background: var(--orange);
-      color: #fff;
+      color: var(--on-orange);
       font-weight: 700;
       font-size: 0.875rem;
       border-radius: 6px;
@@ -356,7 +359,7 @@
     }
     .btn-primary {
       background: var(--orange);
-      color: white;
+      color: var(--on-orange);
       box-shadow: 0 0 0 0 var(--orange-glow), 0 12px 32px rgba(255, 122, 24, 0.35);
     }
     .btn-primary:hover {
@@ -1287,7 +1290,7 @@
     }
     .faq-q-icon::before { width: 12px; height: 1.5px; }
     .faq-q-icon::after { width: 1.5px; height: 12px; }
-    .faq-item.is-open .faq-q-icon { background: var(--orange); border-color: var(--orange); color: white; transform: rotate(180deg); }
+    .faq-item.is-open .faq-q-icon { background: var(--orange); border-color: var(--orange); color: var(--on-orange); transform: rotate(180deg); }
     .faq-item.is-open .faq-q-icon::after { transform: scaleY(0); }
     .faq-a {
       max-height: 0; overflow: hidden;
@@ -1507,7 +1510,7 @@
       color: var(--text);
       transition: all 0.3s var(--ease);
     }
-    .ft-socials a:hover { background: var(--orange); border-color: var(--orange); transform: translateY(-2px); }
+    .ft-socials a:hover { background: var(--orange); border-color: var(--orange); color: var(--on-orange); transform: translateY(-2px); }
     .ft-socials svg { width: 16px; height: 16px; }
     .ft-bottom {
       max-width: var(--container);
@@ -1528,7 +1531,10 @@
       position: fixed; bottom: 100px; right: 24px;
       width: 56px; height: 56px;
       background: #25d366;
-      color: white;
+      /* Glyphe sombre : le blanc sur le vert WhatsApp ne donne que 1.98:1,
+         sous le minimum de 3:1 exige pour un pictogramme porteur de sens.
+         Le cercle vert reste la, c'est lui qui rend le bouton reconnaissable. */
+      color: #052e16;
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       box-shadow: 0 12px 32px rgba(37, 211, 102, 0.4);
@@ -1552,7 +1558,7 @@
       z-index: 75;
       padding: 14px 20px;
       background: var(--orange);
-      color: white;
+      color: var(--on-orange);
       border-radius: 999px;
       font-weight: 700;
       font-size: 0.9375rem;
@@ -1682,7 +1688,7 @@
     }
     .cookie-btn-accept {
       background: var(--orange);
-      color: white;
+      color: var(--on-orange);
     }
     .cookie-btn-accept:hover { background: var(--orange-bright); }
     .cookie-btn-reject {
@@ -2409,13 +2415,13 @@
        BANDEAU INSTAGRAM - plus de vidéos
        ============================================ -->
   <section style="padding: 64px 32px;">
-    <a href="https://www.instagram.com/interactis.be/" target="_blank" rel="noopener" data-hover style="display: block; max-width: 880px; margin: 0 auto; padding: 40px 32px; border-radius: 24px; background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); text-align: center; text-decoration: none; box-shadow: 0 20px 50px rgba(204,35,102,0.35); transition: transform .25s ease;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform=''">
+    <a href="https://www.instagram.com/interactis.be/" target="_blank" rel="noopener" data-hover style="display: block; max-width: 880px; margin: 0 auto; padding: 40px 32px; border-radius: 24px; background: linear-gradient(45deg, #9a5f21 0%, #934326 25%, #8d192b 50%, #831641 75%, #780f57 100%); text-align: center; text-decoration: none; box-shadow: 0 20px 50px rgba(204,35,102,0.35); transition: transform .25s ease;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform=''">
       <span style="display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 16px; background: rgba(255,255,255,0.18); margin-bottom: 16px;">
         <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg>
       </span>
       <span style="display: block; font-family: var(--serif, 'Bricolage Grotesque', sans-serif); font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; color: #fff; margin-bottom: 10px;">Envie d'en voir plus ?</span>
       <span style="display: block; font-size: 1rem; color: rgba(255,255,255,0.92); max-width: 48ch; margin: 0 auto 22px; line-height: 1.6;">Toutes nos animations en vidéo : anniversaires, team buildings, maisons de repos... C'est sur notre Instagram que ça se passe.</span>
-      <span style="display: inline-block; padding: 14px 28px; border-radius: 999px; background: #fff; color: #cc2366; font-weight: 700; font-size: 0.9375rem;">📸 Voir nos vidéos sur Instagram →</span>
+      <span style="display: inline-block; padding: 14px 28px; border-radius: 999px; background: #fff; color: #831641; font-weight: 700; font-size: 0.9375rem;">📸 Voir nos vidéos sur Instagram →</span>
     </a>
   </section>
 
@@ -2666,15 +2672,6 @@
   <!-- ============================================
        COOKIE BANNER RGPD
        ============================================ -->
-  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Consentement cookies">
-    <h4>🍪 On respecte votre vie privée</h4>
-    <p>Nous utilisons des cookies pour analyser le trafic et améliorer votre expérience. Aucune publicité, aucun pistage tiers. <a href="/confidentialite" data-hover>En savoir plus</a></p>
-    <div class="cookie-actions">
-      <button type="button" class="cookie-btn-reject" id="cookieReject" data-hover>Refuser</button>
-      <button type="button" class="cookie-btn-accept" id="cookieAccept" data-hover>Accepter</button>
-    </div>
-  </div>
-
   <a href="https://wa.me/32488435342?text=Bonjour%20Ubeyd%2C%20je%20m%27int%C3%A9resse%20%C3%A0%20une%20animation%20InterActis%20pour%20%5Btype%20d%27%C3%A9v%C3%A9nement%5D%20le%20%5Bdate%5D%20%C3%A0%20%5Bville%5D.%20Pouvez-vous%20me%20proposer%20un%20devis%20%3F" class="wa" target="_blank" rel="noopener" aria-label="Nous contacter sur WhatsApp">
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0 0 20.464 3.488"/></svg>
   </a>
@@ -2891,40 +2888,12 @@
       burger.setAttribute('aria-label', isOpen ? 'Fermer le menu de navigation' : 'Ouvrir le menu de navigation');
     });
 
-    // ============================================
-    // COOKIE BANNER RGPD
-    // ============================================
-    (function() {
-      const banner = document.getElementById('cookieBanner');
-      const accept = document.getElementById('cookieAccept');
-      const reject = document.getElementById('cookieReject');
-      if (!banner || !accept || !reject) return;
-      const stored = localStorage.getItem('cookie-consent');
-      if (!stored) {
-        setTimeout(() => banner.classList.add('is-visible'), 1500);
-      }
-      function loadAnalytics() {
-        // Cette fonction sera appelée si l'utilisateur accepte.
-        // Décommentez les blocs Google Analytics / Microsoft Clarity dans le <head> pour les activer.
-        // Ils ne seront chargés que si l'utilisateur a donné son consentement.
-        if (typeof gtag === 'function') {
-          gtag('consent', 'update', {
-            'analytics_storage': 'granted',
-            'ad_storage': 'denied'
-          });
-        }
-      }
-      accept.addEventListener('click', () => {
-        localStorage.setItem('cookie-consent', 'accepted');
-        banner.classList.remove('is-visible');
-        loadAnalytics();
-      });
-      reject.addEventListener('click', () => {
-        localStorage.setItem('cookie-consent', 'rejected');
-        banner.classList.remove('is-visible');
-      });
-      if (stored === 'accepted') loadAnalytics();
-    })();
+    // Le bandeau cookies inline a ete retire. Il pilotait le meme
+    // #cookieBanner que assets/site.js, sous une troisieme cle de stockage
+    // ('cookie-consent'), et forcait ad_storage a 'denied' meme quand le
+    // visiteur acceptait. Le consentement est desormais gere uniquement par
+    // assets/consent.js (Google Consent Mode v2).
+
 
     // ============================================
     // EVENT TRACKING - clic sur CTAs importants

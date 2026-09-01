@@ -5,6 +5,13 @@
       --orange: #ff7a18;
       --orange-bright: #ff8a2b;
       --orange-glow: rgba(255, 122, 24, 0.4);
+      /* Couleur de texte a poser sur un fond orange.
+         Le blanc sur #ff7a18 ne donne que 2.61:1, sous le minimum WCAG AA
+         de 4.5:1 : les boutons principaux du site etaient donc peniblement
+         lisibles en plein soleil ou sur un ecran de telephone a faible
+         luminosite. Ce brun tres fonce donne 7.22:1 sur l'orange de base
+         et 8.00:1 sur l'orange survole. */
+      --on-orange: #1b0f00;
       --blue: #00d4ff;
       --blue-deep: #0066ff;
       --blue-glow: rgba(0, 212, 255, 0.5);
@@ -42,7 +49,7 @@
     @media (pointer: coarse) { button, a { cursor: pointer; } }
     ul { list-style: none; }
 
-    ::selection { background: var(--orange); color: white; }
+    ::selection { background: var(--orange); color: var(--on-orange); }
 
     /* ============================================
        SÉCURITÉ CLIC - garantir que les CTAs principaux restent cliquables
@@ -72,7 +79,7 @@
       z-index: 9999;
       padding: 10px 18px;
       background: var(--orange);
-      color: #fff;
+      color: var(--on-orange);
       font-weight: 700;
       font-size: 0.875rem;
       border-radius: 6px;
@@ -153,7 +160,7 @@
     }
     .btn-primary {
       background: var(--orange);
-      color: white;
+      color: var(--on-orange);
       box-shadow: 0 0 0 0 var(--orange-glow), 0 12px 32px rgba(255, 122, 24, 0.35);
     }
     .btn-primary:hover {
@@ -1089,7 +1096,7 @@
     }
     .faq-q-icon::before { width: 12px; height: 1.5px; }
     .faq-q-icon::after { width: 1.5px; height: 12px; }
-    .faq-item.is-open .faq-q-icon { background: var(--orange); border-color: var(--orange); color: white; transform: rotate(180deg); }
+    .faq-item.is-open .faq-q-icon { background: var(--orange); border-color: var(--orange); color: var(--on-orange); transform: rotate(180deg); }
     .faq-item.is-open .faq-q-icon::after { transform: scaleY(0); }
     .faq-a {
       max-height: 0; overflow: hidden;
@@ -1280,7 +1287,7 @@
       color: var(--text);
       transition: all 0.3s var(--ease);
     }
-    .ft-socials a:hover { background: var(--orange); border-color: var(--orange); transform: translateY(-2px); }
+    .ft-socials a:hover { background: var(--orange); border-color: var(--orange); color: var(--on-orange); transform: translateY(-2px); }
     .ft-socials svg { width: 16px; height: 16px; }
     .ft-bottom {
       max-width: var(--container);
@@ -1301,7 +1308,10 @@
       position: fixed; bottom: 100px; right: 24px;
       width: 56px; height: 56px;
       background: #25d366;
-      color: white;
+      /* Glyphe sombre : le blanc sur le vert WhatsApp ne donne que 1.98:1,
+         sous le minimum de 3:1 exige pour un pictogramme porteur de sens.
+         Le cercle vert reste la, c'est lui qui rend le bouton reconnaissable. */
+      color: #052e16;
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       box-shadow: 0 12px 32px rgba(37, 211, 102, 0.4);
@@ -1325,7 +1335,7 @@
       z-index: 75;
       padding: 14px 20px;
       background: var(--orange);
-      color: white;
+      color: var(--on-orange);
       border-radius: 999px;
       font-weight: 700;
       font-size: 0.9375rem;
@@ -1455,7 +1465,7 @@
     }
     .cookie-btn-accept {
       background: var(--orange);
-      color: white;
+      color: var(--on-orange);
     }
     .cookie-btn-accept:hover { background: var(--orange-bright); }
     .cookie-btn-reject {
@@ -1599,7 +1609,7 @@
 /* Override : les boutons gardent leur couleur de bouton, pas l'orange par défaut des liens d'article */
 .article-body a.btn,
 .article-body a.btn-primary {
-  color: white;
+  color: var(--on-orange);
   text-decoration: none;
 }
 .article-body a.btn-ghost {

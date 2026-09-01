@@ -405,11 +405,12 @@
       background: linear-gradient(135deg, var(--orange) 0%, #ff6b00 100%);
       padding: 32px;
       border-radius: 12px;
-      color: white;
+      /* Texte sombre : le blanc sur cet orange ne donne que 2.61:1 */
+      color: var(--on-orange);
     }
 
     .contact-info h3 {
-      color: white;
+      color: var(--on-orange);
       margin-bottom: 24px;
     }
 
@@ -500,7 +501,7 @@
       width: 100%;
       padding: 12px 24px;
       background: var(--orange);
-      color: white;
+      color: var(--on-orange);
       border-radius: 8px;
       font-weight: 600;
       transition: all 0.2s var(--ease);
@@ -1113,15 +1114,6 @@
   </a>
 
   <!-- Cookie banner -->
-  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Consentement cookies">
-    <h4>🍪 On respecte votre vie privée</h4>
-    <p>Nous utilisons des cookies pour analyser le trafic. <a href="/confidentialite" data-hover>En savoir plus</a></p>
-    <div class="cookie-actions">
-      <button type="button" class="cookie-btn-reject" id="cookieReject" data-hover>Refuser</button>
-      <button type="button" class="cookie-btn-accept" id="cookieAccept" data-hover>Accepter</button>
-    </div>
-  </div>
-
   <script src="/assets/site.js" defer></script>
   <script src="/assets/cro.js" defer></script>
 

@@ -62,22 +62,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // -- Cookie banner (affichage si pas encore de choix stocké) --
-  var banner = document.getElementById('cookieBanner');
-  if (banner) {
-    var stored = null;
-    try { stored = localStorage.getItem('ia-cookie-consent'); } catch (e) {}
-    if (!stored) {
-      setTimeout(function() { banner.classList.add('is-visible'); }, 800);
-    }
-    var accept = document.getElementById('cookieAccept');
-    var reject = document.getElementById('cookieReject');
-    function close(value) {
-      try { localStorage.setItem('ia-cookie-consent', value); } catch (e) {}
-      banner.classList.remove('is-visible');
-    }
-    if (accept) accept.addEventListener('click', function() { close('accepted'); });
-    if (reject) reject.addEventListener('click', function() { close('rejected'); });
-  }
+  // Le second bandeau cookies a ete retire : il s'affichait en meme temps
+  // que celui de assets/consent.js, il n'agissait sur aucun traceur (il ne
+  // faisait qu'ecrire 'ia-cookie-consent' dans localStorage) et son texte
+  // affirmait "aucune publicite, aucun pistage tiers" alors que le site
+  // charge Google Ads, PostHog et tawk.to. Le consentement reel est gere
+  // par assets/consent.js (Google Consent Mode v2).
 
 });
