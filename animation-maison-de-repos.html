@@ -641,11 +641,19 @@
       color: var(--text);
       margin-bottom: 16px;
     }
+    /* La borne haute (420 px) et le centrage sont necessaires depuis le
+       retrait du temoignage duplique. Avec l'ancienne regle
+       « minmax(300px, 1fr) », une carte seule s'etirait sur toute la largeur
+       du conteneur : 1280 px de large, et comme la video est en 9/12, 1706 px
+       de haut. Une video verticale plus haute que l'ecran, pour un temoignage
+       de dix secondes. La grille accepte toujours 1, 2 ou 3 cartes ; elles
+       gardent la meme taille et restent centrees. */
     .testimonials-grid {
       max-width: 1280px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 420px));
+      justify-content: center;
       gap: 24px;
     }
     .testimonial-card {
@@ -1223,13 +1231,23 @@
       <h2>Ils en parlent mieux que nous</h2>
       <p>Le sourire et les mots des résidents valent tous les arguments. Voici leurs retours après une animation InterActis.</p>
     </div>
+    <!-- Les deux cartes montraient le MEME temoignage. temoignage-maison-2.mp4
+         et temoignage-maison-3.mp4 sont deux encodages du meme plan : meme
+         duree exacte (10,09 s), meme definition (960x1706), et comparaison
+         image par image a 0,97 de similarite. La meme dame, filmee une fois,
+         affichee deux fois cote a cote sous deux legendes identiques
+         (« Temoignage d'une residente ») : ca se voit, et ca donne l'impression
+         qu'on gonfle le nombre de retours clients.
+         Le doublon (maison-3, le fichier le plus lourd des deux) est retire.
+         Il reste un temoignage, reel, non duplique.
+         CONTENU A FOURNIR : un deuxieme temoignage different pour remplir la
+         grille. Note : assets/temoignages/temoignage-maison-1.mp4 existe deja
+         dans le depot, n'est utilise nulle part, et montre une AUTRE residente
+         (6,4 s). Je ne l'ai pas mis a la place du doublon parce que je ne peux
+         pas verifier qu'on y entend un temoignage parle plutot qu'un simple
+         plan de jeu — legender « Temoignage d'une residente » une video ou
+         personne ne temoigne serait un faux avis. A vous de trancher. -->
     <div class="testimonials-grid">
-      <div class="testimonial-card">
-        <video controls preload="none" playsinline poster="/assets/temoignages/temoignage-maison-3-poster.jpg">
-          <source src="/assets/temoignages/temoignage-maison-3.mp4" type="video/mp4" />
-        </video>
-        <div class="testimonial-card-caption">Témoignage d'une résidente</div>
-      </div>
       <div class="testimonial-card">
         <video controls preload="none" playsinline poster="/assets/temoignages/temoignage-maison-2-poster.jpg">
           <source src="/assets/temoignages/temoignage-maison-2.mp4" type="video/mp4" />
