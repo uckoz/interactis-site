@@ -1702,6 +1702,10 @@
       text-align: center;
       transition: border-color 0.3s var(--ease), transform 0.3s var(--ease);
     }
+    /* .article-body a souligne tous les liens du corps de texte (0,1,1) et
+       l'emportait sur un simple .ig-banner : le bandeau entier arrivait
+       souligne sur les pages article. Classe doublee = 0,2,0, sans !important. */
+    .ig-banner.ig-banner { text-decoration: none; color: inherit; }
     .ig-banner:hover { border-color: var(--orange); transform: translateY(-3px); }
     .ig-banner-icon {
       display: inline-flex; align-items: center; justify-content: center;
@@ -1728,6 +1732,45 @@
       font-weight: 700; font-size: 0.9375rem;
     }
     .ig-banner:hover .ig-banner-cta { background: var(--orange-bright); }
+    /* Sous le CTA : ce qui se passe apres le clic. Un lien sortant qui ouvre
+       un nouvel onglet doit le dire, sinon le visiteur croit quitter le site. */
+    .ig-banner-note {
+      display: block; margin-top: 12px;
+      font-size: 0.8125rem; color: var(--text-faded);
+    }
+
+    /* Variante "reel" : un extrait vertical muet en boucle a gauche du texte.
+       Le bandeau simple demandait au visiteur de croire sur parole qu'il y a
+       des videos ailleurs. Ici il en voit une avant de decider de cliquer,
+       et le format vertical annonce ce qu'il va trouver sur Instagram. */
+    .ig-banner--reel {
+      max-width: 940px;
+      display: grid;
+      grid-template-columns: 210px 1fr;
+      gap: 32px;
+      align-items: center;
+      text-align: left;
+      padding: 28px;
+    }
+    .ig-reel {
+      display: block; width: 100%;
+      aspect-ratio: 540 / 826;
+      border-radius: 18px; overflow: hidden;
+      background: #000;
+      border: 1px solid var(--line-strong);
+    }
+    .ig-reel video,
+    .ig-reel img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .ig-banner--reel .ig-banner-icon { margin-bottom: 14px; }
+    .ig-banner--reel .ig-banner-text { margin-left: 0; margin-right: 0; }
+    @media (max-width: 760px) {
+      .ig-banner--reel {
+        grid-template-columns: 1fr;
+        text-align: center; gap: 22px; padding: 28px 22px;
+      }
+      .ig-banner--reel .ig-banner-text { margin-left: auto; margin-right: auto; }
+      .ig-reel { max-width: 220px; margin: 0 auto; }
+    }
 
     /* Bandeau "Nos zones" : maillage interne entre les pages villes.
        Range en bande horizontale plutot qu'en 5e colonne, pour ne pas
