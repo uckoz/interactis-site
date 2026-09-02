@@ -70,14 +70,49 @@ donc je n'en ai inventé aucun.
 
 ---
 
-## 5. Vérification périodique : le compteur d'avis Google
+## 5. Le compteur d'avis Google — vérifié, et deux avis oubliés
 
 **Où :** accueil (bandeau de preuve + `#temoignages`), bas de page.
 
-Le site affiche « 5,0 sur Google · 9 avis ». Ce chiffre vieillit tout
-seul. Je n'ai pas pu le vérifier depuis ici (Google bloque l'accès
-derrière son mur de consentement). À revérifier sur ta fiche Google, et à
-mettre à jour à chaque nouvel avis — c'est 3 endroits dans `index.html`.
+**Vérifié le 2 septembre 2026** sur ta fiche : **5,0 · 9 avis**, 627 vues.
+Le chiffre affiché sur le site est donc exact aujourd'hui. Il vieillit
+tout seul : à remettre à jour à chaque nouvel avis, c'est 3 endroits dans
+`index.html`.
+
+Sur les 9 notes, **8 sont des avis écrits** (la neuvième est une note sans
+texte). Tu m'en avais cité quatre. Il y en a deux que tu ne m'avais pas
+signalés :
+
+| Auteur | Texte | Ce que j'en fais |
+|---|---|---|
+| Esra Kuruoğlu | « Hier je suis allé à l'événement ensemble pour les personnes extraordinaires à Marcinelle. J'ai vu le concept top, 100 % inclusive » | **Pas publié.** Elle a *vu* le stand, elle n'a rien acheté. La publier comme témoignage client serait faux. |
+| Betül Şengül | « Super activité et original. Je conseille 👍 » | **Pas publié.** Aucun contexte : ni lieu, ni date, ni type d'événement. Ça ne convainc personne. |
+
+Je ne les ai pas mises en ligne, et ce n'est pas un oubli. Ton site
+affiche déjà cinq témoignages ; en ajouter deux faibles affaiblit les
+trois forts. Une page de témoignages se juge au plus mauvais, pas au
+nombre.
+
+### Trois de tes avis étaient tronqués sur le site — corrigé
+
+En relisant les textes originaux sur ta fiche, je me suis aperçu que le
+site coupait tes trois meilleurs avis, et coupait précisément les phrases
+qui vendaient. C'était le cas **avant** mon intervention. Corrigé le
+2 septembre 2026, texte exact de Google désormais :
+
+- **Pierre-Yves Maniquet** — le site affichait *« L'idée derrière
+  InterActis est absolument nouvelle et géniale. Je la recommande :
+  directions d'école, entreprises… »*. Il avait aussi écrit : *« Ubeyd a
+  animé la fête d'anniversaire de ma fille de 7 ans. C'était démentiel.
+  Même les adultes ont joué. »* C'est la phrase la plus vendeuse de toute
+  ta fiche et elle n'était nulle part.
+- **Maryline Salmon** — il manquait l'ouverture, *« Superbe expérience
+  adaptée à l'âge des enfants »*, qui répond exactement à l'inquiétude
+  d'un parent.
+- **Elo C.** — il manquait *« pour vivre un moment super entre amis »*.
+
+Les auteurs sont maintenant nommés en entier, comme sur Google : un
+prénom seul se lit comme un avis inventé.
 
 ---
 

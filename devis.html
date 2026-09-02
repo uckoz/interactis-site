@@ -452,9 +452,15 @@
       border-radius: 999px;
       margin-bottom: 10px;
     }
+    /* Etoile en caractere texte (U+2605), pas en emoji. L'emoji depend d'une
+       police emoji installee sur la machine du visiteur : sur un poste qui
+       n'en a pas, le badge affiche un carre vide juste avant "AVIS GOOGLE".
+       Le glyphe texte est rendu par n'importe quelle police, il prend la
+       couleur du badge, et il est coherent avec les ★ de l'accueil. */
     .proof-badge::before {
-      content: '⭐';
-      font-size: 0.75rem;
+      content: '\2605';
+      font-size: 0.8125rem;
+      line-height: 1;
     }
     .proof-quote::before {
       content: '"';
@@ -1063,11 +1069,11 @@
         <div class="proof-quote">
           <span class="proof-badge">Avis Google</span>
           <p class="proof-quote-text">
-            Fête d'anniversaire de notre fille de 11 ans réussie. Très sympathique et ponctuel. À recommander sans hésiter.
+            Superbe expérience adaptée à l’âge des enfants. Fête d’anniversaire de notre fille de 11 ans avec ses copains réussie. Très sympathique et ponctuel. À recommander sans hésiter.
           </p>
           <div class="proof-quote-author">
             <div>
-              <div class="proof-quote-name">Maryline</div>
+              <div class="proof-quote-name">Maryline Salmon</div>
               <div class="proof-quote-role">Anniversaire enfant</div>
             </div>
             <div class="proof-stars" aria-label="5 étoiles sur 5">
@@ -1083,7 +1089,7 @@
         <div class="proof-quote">
           <span class="proof-badge">Avis Google</span>
           <p class="proof-quote-text">
-            Super animation, animateur très sympa. Je recommande, pour un anniversaire ou comme nous, avec nos élèves.
+            Super animation, animateur très sympa. Je recommande pour vivre un moment super entre amis, pour un anniversaire ou comme nous, avec nos élèves.
           </p>
           <div class="proof-quote-author">
             <div>
@@ -1103,12 +1109,12 @@
         <div class="proof-quote">
           <span class="proof-badge">Avis Google</span>
           <p class="proof-quote-text">
-            L'idée derrière InterActis est absolument nouvelle et géniale. Je la recommande : directions d'école, entreprises…
+            L’idée derrière InterActis est absolument nouvelle et géniale. Je la recommande à toutes les personnes que je connais : directions d’école, entreprises, institutions d’hébergement de personnes en situation de handicap… et parents. Ubeyd a animé la fête d’anniversaire de ma fille de 7 ans. C’était démentiel. Même les adultes ont joué.
           </p>
           <div class="proof-quote-author">
             <div>
-              <div class="proof-quote-name">Pierre-Yves</div>
-              <div class="proof-quote-role">Recommandation</div>
+              <div class="proof-quote-name">Pierre-Yves Maniquet</div>
+              <div class="proof-quote-role">Anniversaire enfant · Mons</div>
             </div>
             <div class="proof-stars" aria-label="5 étoiles sur 5">
               <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
