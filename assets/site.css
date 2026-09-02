@@ -2580,3 +2580,24 @@ a.article-card:hover,
        sceptique reste sceptique. Le inline-block accepte le padding sans
        casser l'alignement du texte au-dessus. */
     .preuve-locale-source { padding: 12px 0; min-height: 44px; box-sizing: content-box; }
+
+    /* -- Accueil, bloc « Nous joindre » : la ligne entiere devient la cible --
+       Les trois liens Telephone / E-mail / WhatsApp mesuraient 20 px de haut.
+       Ce sont les raccourcis de conversion les plus rapides du site : ils
+       court-circuitent le formulaire pour un visiteur presse. La ligne qui
+       les contient fait deja 68 px de haut (icone 36 px + 16 px de padding
+       haut et bas) : la surface existe, elle n'etait simplement pas
+       cliquable. On l'annexe avec un ::after transparent. Rien ne bouge a
+       l'ecran, et taper sur l'icone ou sur le libelle declenche l'appel.
+       La derniere ligne (« Zone d'intervention ») contient un <p> et non un
+       <a> : elle n'est pas concernee, donc pas rendue cliquable par erreur. */
+    .contact-channel { position: relative; }
+    .contact-channel a::after { content: ""; position: absolute; inset: 0; }
+
+    /* -- Formulaire evenement : la case RGPD --
+       16x16 declares, 13x16 mesures. C'est une case obligatoire : la rater
+       bloque l'envoi du formulaire, et le message d'erreur arrive apres coup.
+       On la porte a 22 px et on rend le libelle cliquable en l'associant a
+       la case, ce qui donne une cible de la largeur du paragraphe. */
+    .form-consent input[type="checkbox"],
+    input#privacy { width: 22px; height: 22px; flex-shrink: 0; }

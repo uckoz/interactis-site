@@ -188,7 +188,10 @@
         </div>
       </div>
     </div>
-    <img src="/assets/interactis-promo.mp4" alt="Animation interactive lors d'un événement" class="article-cover" style="margin-top: 40px; display: none;">
+    <!-- Supprime : un <img src="...mp4"> masque en display:none. Un img cache
+         est quand meme telecharge par le navigateur, soit 12,7 Mo par visite
+         pour un element jamais affiche. La vraie video est plus bas, en
+         lazy-video avec poster et preload="none". -->
   </section>
 
   <!-- VIDEO PROMO -->
@@ -425,9 +428,13 @@
           </div>
 
           <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 16px;">
-            <input type="checkbox" id="privacy" name="privacy" required style="width: 16px; height: 16px; margin-top: 2px;">
+            <!-- Case portee de 16 a 22 px : elle est obligatoire, et la rater
+                 bloque l'envoi. Le lien pointait vers "/" (l'accueil) et non
+                 vers la politique de confidentialite : on ne peut pas demander
+                 d'accepter un texte qu'on ne donne pas a lire. -->
+            <input type="checkbox" id="privacy" name="privacy" required style="width: 22px; height: 22px; margin-top: 2px; flex-shrink: 0;">
             <label for="privacy" style="font-size: 0.875rem; color: rgba(245, 247, 251, 0.82);">
-              J'accepte la <a href="/" style="color: var(--orange); text-decoration: underline;">politique de confidentialité</a> et les conditions d'utilisation.
+              J'accepte la <a href="/confidentialite" style="color: var(--orange); text-decoration: underline;">politique de confidentialité</a> et les <a href="/cgv" style="color: var(--orange); text-decoration: underline;">conditions générales</a>.
             </label>
           </div>
 

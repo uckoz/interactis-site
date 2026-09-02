@@ -1311,12 +1311,19 @@
     // ============================================
     // FAQ accordion
     // ============================================
+    // Ce gestionnaire reste local. Cette page est la seule a NE PAS charger
+    // assets/site.js (elle a son propre JS inline avec Lenis et GSAP, et son
+    // propre burger : charger site.js ici brancherait un second gestionnaire
+    // sur le menu et chaque clic s'annulerait). Le meme accordeon existe
+    // desormais dans assets/site.js pour les pages qui, elles, le chargent.
+    // Toute correction faite ici doit donc etre reportee la-bas, et inversement.
     document.querySelectorAll('.faq-item').forEach(item => {
       const q = item.querySelector('.faq-q');
       q.addEventListener('click', () => {
         const wasOpen = item.classList.contains('is-open');
         document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('is-open'));
         if (!wasOpen) item.classList.add('is-open');
+        q.setAttribute('aria-expanded', wasOpen ? 'false' : 'true');
       });
     });
 

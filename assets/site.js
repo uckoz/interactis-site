@@ -70,3 +70,53 @@ document.addEventListener('DOMContentLoaded', function() {
   // par assets/consent.js (Google Consent Mode v2).
 
 });
+
+/* ============================================
+   FAQ - accordeon du composant partage (.faq de assets/site.css)
+   ============================================
+   Ce gestionnaire vivait en copie locale dans index.html uniquement. La CSS
+   du composant (.faq-item.is-open .faq-a { max-height: 400px }) est pourtant
+   chargee sur TOUTES les pages : n'importe quelle page reprenant le balisage
+   partage heritait donc du style mais pas du comportement, et sa FAQ restait
+   muette au clic. C'est ce qui est arrive a /animation-plaine-de-jeux.
+   On centralise ici, une fois, et la copie d'index.html a ete supprimee pour
+   eviter un double basculement (deux gestionnaires = clic sans effet).
+
+   Non touchees volontairement : /animation-maison-de-repos et
+   /animation-entreprise. Elles n'utilisent pas ce composant mais leur propre
+   balisage et leur propre CSS locale, avec un mecanisme different
+   (classe 'open' pour l'une, max-height en style inline pour l'autre).
+   Les brancher ici les casserait. Elles fonctionnent, on les laisse.
+   ============================================ */
+document.addEventListener('DOMContentLoaded', function() {
+  var items = document.querySelectorAll('.faq .faq-item');
+  if (!items.length) return;
+
+  items.forEach(function(item) {
+    var q = item.querySelector('.faq-q');
+    if (!q) return;
+
+    // Accessibilite : le bouton annonce l'etat du panneau qu'il commande.
+    var panel = item.querySelector('.faq-a');
+    q.setAttribute('aria-expanded', 'false');
+    if (panel) {
+      if (!panel.id) panel.id = 'faq-a-' + Math.random().toString(36).slice(2, 8);
+      q.setAttribute('aria-controls', panel.id);
+    }
+
+    q.addEventListener('click', function() {
+      var wasOpen = item.classList.contains('is-open');
+      // Accordeon : une seule reponse ouverte a la fois. Sur telephone, deux
+      // reponses ouvertes repoussent les suivantes hors de l'ecran.
+      items.forEach(function(other) {
+        other.classList.remove('is-open');
+        var ob = other.querySelector('.faq-q');
+        if (ob) ob.setAttribute('aria-expanded', 'false');
+      });
+      if (!wasOpen) {
+        item.classList.add('is-open');
+        q.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+});
