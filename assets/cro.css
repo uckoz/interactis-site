@@ -234,3 +234,22 @@ html.has-urgency-banner .devis-header { top: var(--urgency-h, 55px); }
   margin: 0;
 }
 .exit-popup-trust a { color: var(--text-dim); }
+
+/* ============================================
+   CIBLES TACTILES DU BANDEAU
+   ============================================
+   Mesure sur telephone 390 px : le lien « Demander mon devis » fait 29 px de
+   haut et la croix de fermeture 28x28. Sous 44 px, le doigt rate.
+   Le bandeau est en position fixed et sa hauteur reelle est mesuree par
+   cro.js dans --urgency-h, qui sert ensuite a decaler l'en-tete ET le
+   premier bloc de chaque page. Grandir le dessin ferait donc descendre tout
+   le contenu de toutes les pages. On etend la zone cliquable avec un ::after
+   transparent : le doigt gagne, la mise en page ne bouge pas.
+   La croix compte double : mal visee, elle declenche le clic sur le lien
+   juste a cote et envoie le visiteur sur une page qu'il ne demandait pas. */
+.urgency-banner-link, .urgency-banner-close { position: relative; }
+.urgency-banner-link::after, .urgency-banner-close::after {
+  content: ""; position: absolute;
+  top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 100%; height: 44px; min-width: 44px;
+}

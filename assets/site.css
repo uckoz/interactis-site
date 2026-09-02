@@ -2513,3 +2513,85 @@ a.article-card:hover,
     body.page-ville .related-link:hover {border-color: var(--orange); background: rgba(255, 122, 24, 0.05);}
     body.page-ville .related-link strong {display: block; color: var(--text); margin-bottom: 4px;}
     body.page-ville .related-link span {display: block; font-size: 0.875rem; color: var(--text-faded);}
+
+    /* ============================================
+       CIBLES TACTILES
+       ============================================
+       Mesure sur telephone 390 px : 17 elements cliquables par page font
+       moins de 44 px dans au moins une dimension. Le seuil de 44 px n'est
+       pas decoratif - c'est la largeur moyenne d'une pulpe de doigt. En
+       dessous, l'utilisateur vise et rate, puis recommence ; sur un site
+       dont l'objectif unique est la demande de devis, chaque ratage est une
+       occasion d'abandonner.
+       Les trois pires cas etaient le bouton burger (32x32), qui est la SEULE
+       porte d'entree vers la navigation sur telephone, les liens du menu
+       deroulant (32 px de haut) et le numero de telephone dans ce menu
+       (18 px de haut) - alors qu'appeler est la voie la plus rapide pour un
+       parent ou une direction d'ecole.
+
+       Deux techniques, selon que la taille visible peut bouger ou non :
+       - la ou l'element est contraint par la mise en page (burger et logo
+         dans un en-tete fixe dont la hauteur est reservee par du
+         padding-top calcule ailleurs), on etend la zone cliquable avec un
+         ::after transparent en position absolue. La zone grandit, le dessin
+         ne bouge pas d'un pixel, la hauteur de l'en-tete non plus.
+       - la ou il y a de l'espace mort a recuperer (menu deroulant : 32 px de
+         lien + 16 px de gouttiere), on transforme la gouttiere en surface
+         cliquable. Le rythme visuel est conserve, la cible double.
+
+       Non corrige volontairement : .skip-link (212x42). Il n'apparait qu'au
+       focus clavier et n'est jamais touche au doigt - ce n'est pas une cible
+       tactile, c'est un raccourci d'accessibilite. */
+
+    /* -- En-tete : zone cliquable etendue sans changer la hauteur -- */
+    .hd-burger, .hd-logo { position: relative; }
+    .hd-burger::after, .hd-logo::after {
+      content: ""; position: absolute;
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 100%; height: 48px; min-width: 48px;
+    }
+    /* .hd-nav a porte deja un ::after (le souligne anime au survol) : on ne
+       peut pas le reutiliser. Sur ordinateur la souris vise au pixel, et la
+       barre .hd-nav est masquee sous 900 px - il n'y a donc rien a corriger. */
+
+    /* -- Menu deroulant : la gouttiere devient cliquable -- */
+    .menu-overlay nav { gap: 4px; }
+    .menu-overlay nav a {
+      display: flex; align-items: center; justify-content: center;
+      min-height: 48px;
+      padding: 6px 12px;
+    }
+    /* Le bouton devis et le telephone gardent leur propre rythme : le bouton
+       a deja son padding, le telephone doit rester visuellement secondaire
+       tout en devenant reellement touchable. */
+    .menu-overlay nav a.menu-overlay-cta { min-height: 48px; padding: 14px 30px; }
+    .menu-overlay nav a.menu-overlay-tel { min-height: 48px; padding: 10px 16px; }
+    @media (max-height: 700px) {
+      /* Ecrans courts : on ne descend pas sous 44 px, on resserre la
+         gouttiere. L'overlay defile deja (overflow-y: auto), donc un
+         depassement est rattrapable ; une cible ratee ne l'est pas. */
+      .menu-overlay nav { gap: 2px; }
+      .menu-overlay nav a { min-height: 44px; padding: 4px 12px; }
+    }
+
+    /* -- Pied de page : les pastilles sociales passent a 44 px --
+       Ici rien ne contraint la taille, autant corriger le dessin lui-meme
+       plutot que d'ajouter une zone invisible. */
+    .ft-socials a { width: 44px; height: 44px; }
+    .ft-socials svg { width: 18px; height: 18px; }
+
+    /* -- FAQ des pages villes : la question entiere devient la cible --
+       Mesure : 26 px de haut. Une FAQ est faite pour etre depliee, c'est
+       souvent le dernier geste avant la demande de devis (« combien ca
+       coute ? »). Une cible de 26 px sur une question de 367 px de large
+       donne l'impression que rien ne repond au doigt.
+       On ajoute du padding vertical : la zone cliquable couvre toute la
+       ligne, et les questions respirent au passage. */
+    body.page-ville .faq-question { min-height: 48px; padding: 10px 0; }
+
+    /* -- Lien « Voir les avis Google » sous la preuve locale --
+       21 px de haut. C'est le seul lien de la page qui envoie vers la
+       preuve exterieure ; s'il est difficile a atteindre, le visiteur
+       sceptique reste sceptique. Le inline-block accepte le padding sans
+       casser l'alignement du texte au-dessus. */
+    .preuve-locale-source { padding: 12px 0; min-height: 44px; box-sizing: content-box; }
