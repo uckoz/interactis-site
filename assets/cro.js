@@ -98,7 +98,12 @@
     banner.setAttribute('aria-label', 'Informations pratiques');
     banner.innerHTML = ''
       + '<div class="urgency-banner-inner">'
-      +   '<span class="urgency-banner-emoji" aria-hidden="true">✅</span>'
+      // Coche en caractere texte (U+2713) et non en emoji ✅ : l'emoji est
+      // rendu en couleur fixe par la police systeme (blanc sur vert), ce qui
+      // jurait sur le bandeau orange et changeait d'aspect entre iOS, Android
+      // et Windows. Le glyphe texte prend la couleur du bandeau et reste
+      // identique partout.
+      +   '<span class="urgency-banner-emoji" aria-hidden="true">\u2713</span>'
       +   '<span class="urgency-banner-text">Devis gratuit et sans engagement · <strong>réponse sous 24 h</strong></span>'
       +   (surDevis ? '' : '<a href="/devis" class="urgency-banner-link">Demander mon devis <span aria-hidden="true">→</span></a>')
       +   '<button type="button" class="urgency-banner-close" aria-label="Fermer la bannière">×</button>'

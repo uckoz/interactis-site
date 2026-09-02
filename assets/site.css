@@ -250,26 +250,85 @@
       .hd-burger { display: flex; }
     }
 
-    /* Menu mobile overlay */
+    /* Menu mobile overlay
+       Le menu unifie porte desormais 7 destinations + un bouton devis + le
+       telephone, contre 5 liens auparavant. Deux consequences :
+       - la taille de police d'origine (32 px plancher, interligne serif)
+         faisait deborder la liste sous la ligne de flottaison d'un iPhone
+         SE ou d'un 390x844 avec la barre d'URL visible ;
+       - un conteneur centre par align-items ne peut pas etre remonte au
+         scroll : ce qui depasse en haut devient inatteignable.
+       D'ou : centrage par marge auto (qui retombe a 0 des que ca deborde,
+       donc le premier lien reste accessible) + defilement interne. */
     .menu-overlay {
       position: fixed; inset: 0;
       background: var(--bg);
       z-index: 80;
-      display: flex; align-items: center; justify-content: center;
+      display: flex; align-items: flex-start; justify-content: center;
+      overflow-y: auto;
+      overscroll-behavior: contain;
       transform: translateY(-100%);
       transition: transform 0.6s var(--ease);
     }
     .menu-overlay.is-open { transform: translateY(0); }
-    .menu-overlay nav { display: flex; flex-direction: column; gap: 24px; text-align: center; }
+    .menu-overlay nav {
+      display: flex; flex-direction: column; gap: 16px;
+      text-align: center;
+      width: 100%;
+      /* 96px en haut : le header reste fixe au-dessus de l'overlay, il faut
+         degager la place de la croix de fermeture. */
+      padding: 96px 24px 56px;
+      margin: auto;
+    }
     .menu-overlay nav a {
       font-family: var(--serif);
-      font-size: clamp(2rem, 7vw, 3.5rem);
+      font-size: clamp(1.75rem, 6vw, 2.75rem);
+      line-height: 1.15;
       font-weight: 700;
       letter-spacing: -0.03em;
       color: var(--text);
       transition: color 0.3s var(--ease);
     }
     .menu-overlay nav a:hover { color: var(--orange); }
+    /* Page courante : reperage sans couleur seule (le liseré porte aussi
+       l'information pour un daltonien). */
+    .menu-overlay nav a[aria-current="page"] { color: var(--orange); }
+
+    /* Le devis est l'objectif du site : dans le menu il ne doit pas etre un
+       lien de plus dans la liste, mais le bouton qui termine la liste. */
+    .menu-overlay nav a.menu-overlay-cta {
+      align-self: center;
+      margin-top: 12px;
+      padding: 14px 30px;
+      border-radius: 999px;
+      background: var(--orange);
+      color: var(--on-orange);
+      font-family: var(--sans);
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0;
+    }
+    .menu-overlay nav a.menu-overlay-cta:hover {
+      background: var(--orange-bright);
+      color: var(--on-orange);
+    }
+    /* Appeler reste la voie la plus rapide pour un parent ou une direction
+       d'ecole ; on la garde visible mais secondaire. */
+    .menu-overlay nav a.menu-overlay-tel {
+      margin-top: 4px;
+      font-family: var(--sans);
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--text-faded);
+    }
+    .menu-overlay nav a.menu-overlay-tel:hover { color: var(--orange); }
+    /* Ecrans courts (paysage sur telephone, petites tablettes) : on resserre
+       plutot que de laisser le menu depasser. */
+    @media (max-height: 700px) {
+      .menu-overlay nav { gap: 10px; padding: 80px 24px 40px; }
+      .menu-overlay nav a { font-size: clamp(1.375rem, 5vw, 2rem); }
+    }
 
     /* ============================================
        HERO CINÉMATIQUE
@@ -1258,13 +1317,21 @@
       background: var(--bg-soft);
       border-top: 1px solid var(--line);
     }
+    /* Le pied de page compte desormais 5 blocs sur toutes les pages :
+       marque + animations + zones + le site/legal + contact. La grille
+       etait figee a 4 colonnes : sur l'accueil, qui avait deja 5 blocs,
+       le bloc "Legal" tombait seul sur une deuxieme ligne, decale sous
+       la marque, avec un grand vide a sa droite. */
     .ft-grid {
       max-width: var(--container);
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr 1fr;
-      gap: 48px;
+      grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr;
+      gap: 40px 32px;
       margin-bottom: 56px;
+    }
+    @media (max-width: 1180px) {
+      .ft-grid { grid-template-columns: 1.4fr 1fr 1fr; }
     }
     .ft-brand h3 {
       font-family: var(--serif);
@@ -1299,6 +1366,21 @@
     }
     .ft-socials a:hover { background: var(--orange); border-color: var(--orange); color: var(--on-orange); transform: translateY(-2px); }
     .ft-socials svg { width: 16px; height: 16px; }
+
+    /* Deuxieme intertitre dans une meme colonne ("Le site" puis "Legal") :
+       il lui faut de l'air au-dessus, sinon la liste du dessus et le titre
+       du dessous se lisent comme un seul bloc. */
+    .ft-col .ft-h4-second { margin-top: 26px; }
+
+    /* Lien "Laisser un avis Google" : l'etoile etait un emoji ⭐ pose dans
+       le texte. Sur un poste sans police emoji il s'affichait en carre
+       vide. Glyphe texte U+2605, colore en orange, insere en CSS pour ne
+       pas polluer le texte du lien lu par un lecteur d'ecran. */
+    .ft-col a.ft-avis::before {
+      content: '\2605';
+      color: var(--orange);
+      margin-right: 6px;
+    }
     /* "En savoir plus" a l'interieur d'une carte. Ne PAS reutiliser
        .related-link ici : cette classe-la est une carte complete
        (padding, fond, bordure), elle dessine une boite dans la boite.

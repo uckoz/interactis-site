@@ -102,8 +102,11 @@
    b.className = 'ia-banner';
    b.setAttribute('role', 'dialog');
    b.setAttribute('aria-label', 'Bandeau de consentement aux cookies');
+   // L'emoji 🍪 en tete du bandeau a ete retire : il donnait un ton badin a
+   // un texte qui engage juridiquement, son rendu variait d'un systeme a
+   // l'autre, et il n'apportait aucune information.
    b.innerHTML =
-     '<p>🍪 <strong>Nous respectons votre vie privée.</strong> ' +
+     '<p><strong>Nous respectons votre vie privée.</strong> ' +
      'Nous utilisons des cookies pour mesurer la fréquentation et améliorer votre expérience ' +
      '(Google Ads, chat en direct). Vous pouvez accepter ou refuser. ' +
      '<a href="/confidentialite" target="_blank" rel="noopener">En savoir plus</a></p>' +
@@ -132,7 +135,7 @@
    l.id = 'ia-cookies-link';
    l.className = 'ia-cookies-link';
    l.type = 'button';
-   l.textContent = '🍪 Cookies';
+   l.textContent = 'Cookies';
    l.addEventListener('click', function () {
      l.remove();
      buildBanner();
