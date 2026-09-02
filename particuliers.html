@@ -85,30 +85,61 @@
 
   <section class="article-hero">
     <div class="article-hero-inner">
-      <p class="article-cat">Particuliers · Anniversaires & fêtes de famille</p>
+      <p class="article-cat">Particuliers &middot; Anniversaires &amp; fêtes de famille</p>
       <h1>Des fêtes où personne ne reste sur le côté</h1>
-      <p style="font-size: 1.0625rem; color: rgba(245, 247, 251, 0.82); max-width: 56ch; line-height: 1.6; margin-top: 20px;">
-        Anniversaire d'enfant ou d'adulte, fête de famille, communion : on arrive avec une seule valise, on transforme votre salon ou votre salle de fête en terrain de jeu interactif géant, et tout le monde joue : les enfants, les parents, même mamy.
+      <p class="seg-lead">
+        Anniversaire d'enfant ou d'adulte, fête de famille, communion : on arrive avec une seule valise, on transforme votre salon ou votre salle de fête en terrain de jeu interactif géant, et tout le monde joue &mdash; les enfants, les parents, les grands-parents.
       </p>
-      <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin: 28px auto 0; padding: 20px 24px; background: linear-gradient(135deg, rgba(255,122,24,0.18), rgba(0,212,255,0.10)); border: 1px solid rgba(255,122,24,0.4); border-radius: 16px; max-width: 560px;">
-        <div style="text-align: left;">
-          <div style="font-family: var(--serif); font-size: 1.875rem; font-weight: 700; color: var(--orange); line-height: 1;">À partir de 249€</div>
-          <div style="font-size: 0.875rem; color: var(--text-dim); margin-top: 6px;">pour 1h30 d'animation · TVA comprise</div>
+      <div class="seg-price">
+        <div>
+          <div class="seg-price-amount">À partir de 249&nbsp;€</div>
+          <div class="seg-price-detail">pour 1h30 d'animation &middot; TVA comprise</div>
         </div>
-        <div style="display: flex; align-items: center; gap: 10px; padding-left: 20px; border-left: 1px solid rgba(245,247,251,0.18);">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>
-          <span style="font-size: 0.9375rem; font-weight: 700; color: var(--text); line-height: 1.3; text-align: left;">Satisfait<br/>ou remboursé</span>
+        <!-- L'ancien badge disait "Satisfait ou rembourse", ce qui promet un
+             remboursement sur simple insatisfaction. L'article 5.4 des CGV
+             engage autre chose : un remboursement si l'animation ne se
+             deroule pas comme convenu dans le devis. Un badge plus large que
+             le contrat se retourne contre nous au premier litige. -->
+        <div class="seg-price-badge">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Remboursé si<br/>non conforme au devis</span>
         </div>
       </div>
-      <!-- "Sans discussion" ne correspondait pas a l'article 5.4 des CGV, qui
-           demande un e-mail dans les 48 h decrivant le manquement, avec
-           remboursement sous 14 jours. Une garantie annoncee plus large que
-           le contrat se retourne contre nous au premier litige. Le texte dit
-           maintenant exactement ce que les CGV engagent, et y renvoie. -->
-      <p style="font-size: 0.8125rem; color: var(--text-dim); margin: 10px auto 0; max-width: 560px;">Notre garantie : si l'animation ne se déroule pas comme convenu dans le devis, vous nous écrivez dans les 48 h et nous vous remboursons intégralement sous 14 jours. <a href="/cgv" style="color: var(--text-dim); text-decoration: underline;">Article 5.4 de nos CGV</a>.</p>
-      <div class="hero-ctas" style="justify-content: center; margin-top: 28px;">
-        <a href="/devis" class="btn btn-primary" data-hover>Recevoir mon devis sous 24h <span class="arrow">→</span></a>
-        <a href="tel:+32488435342" class="btn btn-ghost" data-hover>+32 488 43 53 42</a>
+      <p class="seg-guarantee-note">Si l'animation ne se déroule pas comme convenu dans le devis, vous nous écrivez dans les 48&nbsp;h et nous vous remboursons intégralement sous 14 jours. <a href="/cgv">Article 5.4 de nos CGV</a>.</p>
+      <div class="hero-ctas seg-ctas">
+        <a href="/devis" class="btn btn-primary" data-hover data-track="part-hero-devis">Recevoir mon devis sous 24h <span class="arrow">→</span></a>
+        <a href="tel:+32488435342" class="btn btn-ghost" data-hover data-track="part-hero-tel">+32 488 43 53 42</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Preuve avant argumentaire. Le visiteur qui arrive ici se demande
+       d'abord si ca marche vraiment. On lui montre deux avis Google reels,
+       cites mot pour mot, tous deux sur des anniversaires d'enfants :
+       c'est exactement ce qu'il vient chercher. -->
+  <section class="testi" aria-labelledby="partTestiTitle">
+    <div class="testi-inner">
+      <div class="testi-head">
+        <h2 id="partTestiTitle">Ce qu'en disent les familles</h2>
+        <p class="testi-note">
+          <span class="s" aria-hidden="true">★★★★★</span>
+          <span>5,0 sur Google &middot;</span>
+          <a href="https://www.google.com/maps/place/Interactis/@50.1808902,4.7495962,15z/data=!4m8!3m7!1s0x2c8fa2281670f927:0x739eb3a558748ba1!8m2!3d50.1808902!4d4.7495962!9m1!1b1!16s%2Fg%2F11z4276h7_" target="_blank" rel="noopener" data-hover>lire les 9 avis</a>
+        </p>
+      </div>
+      <div class="testi-grid">
+        <blockquote class="testi-card">
+          <p>&laquo;&nbsp;Superbe expérience adaptée à l'âge des enfants. Fête d'anniversaire de notre fille de 11 ans avec ses copains réussie. Très sympathique et ponctuel. À recommander sans hésiter.&nbsp;&raquo;</p>
+          <footer><strong>Maryline Salmon</strong> &mdash; anniversaire enfant, 11 ans</footer>
+        </blockquote>
+        <blockquote class="testi-card">
+          <p>&laquo;&nbsp;L'idée derrière InterActis est absolument nouvelle et géniale. […] Ubeyd a animé la fête d'anniversaire de ma fille de 7 ans. C'était démentiel. Même les adultes ont joué.&nbsp;&raquo;</p>
+          <footer><strong>Pierre-Yves Maniquet</strong> &mdash; anniversaire enfant, 7 ans</footer>
+        </blockquote>
+        <blockquote class="testi-card">
+          <p>&laquo;&nbsp;Envie de vivre un moment drôle, ludique et convivial en famille ou entre amis ? Petits et grands y trouveront leur bonheur. N'hésitez plus !&nbsp;&raquo;</p>
+          <footer><strong>Romina Loria</strong> &mdash; Cabinet Lavaux, Province de Hainaut</footer>
+        </blockquote>
       </div>
     </div>
   </section>
@@ -116,31 +147,35 @@
   <article class="article-body">
 
     <h2>Pour quelle occasion ?</h2>
-    <div class="article-cards" style="margin: 40px 0 56px;">
-      <a href="/animation-anniversaire" class="article-card" style="display: block; text-decoration: none;" data-hover>
-        <h4>🎂 Anniversaire d'enfant</h4>
-        <p>Notre offre phare : 1h30 d'animation pour 10 à 15 enfants, chez vous ou en salle. Aucun enfant de côté, même les timides. <strong style="color: var(--orange);">Voir l'offre →</strong></p>
+    <!-- Les cinq cartes decrivaient cinq occasions mais une seule etait
+         cliquable : les quatre autres etaient des culs-de-sac. Chacune mene
+         desormais quelque part, et le devis est prerempli par le contexte
+         quand aucune page dediee n'existe. -->
+    <div class="article-cards seg-cards">
+      <a href="/animation-anniversaire" class="article-card" data-hover>
+        <h4>Anniversaire d'enfant</h4>
+        <p>Notre offre phare : 1h30 d'animation pour 10 à 15 enfants, chez vous ou en salle. Aucun enfant de côté, même les timides. <strong>Voir l'offre →</strong></p>
       </a>
-      <div class="article-card">
-        <h4>🥳 Anniversaire adulte</h4>
-        <p>30, 40, 50 ans ou plus : surprenez vos invités avec une animation que personne n'attend, et que tout le monde adopte en deux minutes, l'apéro à la main.</p>
-      </div>
-      <div class="article-card">
-        <h4>👨‍👩‍👧‍👦 Fête de famille</h4>
-        <p>Cousins, parents, grands-parents : enfin une activité que trois générations partagent vraiment. Jouable debout, assis ou en fauteuil.</p>
-      </div>
-      <div class="article-card">
-        <h4>✨ Communion, baptême, fête laïque</h4>
-        <p>Pendant que les adultes discutent, les enfants vivent leur plus belle fête, encadrés par notre animateur du début à la fin.</p>
-      </div>
-      <div class="article-card">
-        <h4>🏡 Fête de quartier ou entre voisins</h4>
-        <p>Un mur, une prise, et toute la rue qui joue. Formats plus longs possibles, demandez un devis sur mesure.</p>
-      </div>
+      <a href="/animation-evenement" class="article-card" data-hover>
+        <h4>Anniversaire adulte</h4>
+        <p>30, 40, 50 ans ou plus : une animation que personne n'attend, et que tout le monde adopte en deux minutes, l'apéro à la main. <strong>Voir les formats →</strong></p>
+      </a>
+      <a href="/devis" class="article-card" data-hover>
+        <h4>Fête de famille</h4>
+        <p>Cousins, parents, grands-parents : une activité que trois générations partagent vraiment. Jouable debout, assis ou en fauteuil. <strong>Demander un devis →</strong></p>
+      </a>
+      <a href="/devis" class="article-card" data-hover>
+        <h4>Communion, baptême, fête laïque</h4>
+        <p>Pendant que les adultes discutent, les enfants vivent leur fête, encadrés par notre animateur du début à la fin. <strong>Demander un devis →</strong></p>
+      </a>
+      <a href="/animation-evenement" class="article-card" data-hover>
+        <h4>Fête de quartier ou entre voisins</h4>
+        <p>Un mur, une prise, et toute la rue qui joue. Formats plus longs possibles. <strong>Voir les grands formats →</strong></p>
+      </a>
     </div>
 
     <h2>Comment ça marche ?</h2>
-    <div class="article-cards" style="margin: 40px 0 56px;">
+    <div class="article-cards seg-cards">
       <div class="article-card">
         <h4>1. On en parle</h4>
         <p>Un appel de 5 minutes : la date, le lieu, l'âge des enfants, l'ambiance recherchée. Vous recevez votre devis sous 24h.</p>
@@ -151,66 +186,69 @@
       </div>
       <div class="article-card">
         <h4>3. Tout le monde joue</h4>
-        <p>Notre animateur pilote les jeux et l'énergie du groupe. Vous, vous profitez de la fête et des fous rires.</p>
+        <p>Notre animateur pilote les jeux et l'énergie du groupe. Vous, vous profitez de la fête.</p>
       </div>
     </div>
 
     <h2>Pourquoi les familles nous choisissent</h2>
-    <ul style="margin: 24px 0 32px;">
+    <ul class="seg-list">
       <li><strong>Aucun enfant de côté.</strong> Plus de 35 jeux sans manette : tout le monde participe, même les plus timides et les enfants en situation de handicap.</li>
       <li><strong>Zéro logistique pour vous.</strong> On apporte tout, on installe en 15 minutes, on range. Vous n'avez qu'à prévoir le gâteau.</li>
       <li><strong>Un vrai animateur.</strong> Pas une borne en libre-service : un professionnel qui anime, adapte les jeux et gère le groupe.</li>
-      <li><strong>Prix clair et garanti.</strong> À partir de 249€ TVA comprise pour 1h30, devis gratuit, satisfait ou remboursé.</li>
+      <li><strong>Prix clair.</strong> À partir de 249&nbsp;€ TVA comprise pour 1h30, devis gratuit, remboursé si l'animation ne se déroule pas comme convenu.</li>
     </ul>
 
-    
-  <!-- ============================================
-       BANDEAU INSTAGRAM - plus de vidéos
-       ============================================ -->
-  <section style="padding: 64px 32px;">
-    <a href="https://www.instagram.com/interactis.be/" target="_blank" rel="noopener" data-hover style="display: block; max-width: 880px; margin: 0 auto; padding: 40px 32px; border-radius: 24px; background: linear-gradient(45deg, #9a5f21 0%, #934326 25%, #8d192b 50%, #831641 75%, #780f57 100%); text-align: center; text-decoration: none; box-shadow: 0 20px 50px rgba(204,35,102,0.35); transition: transform .25s ease;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform=''">
-      <span style="display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 16px; background: rgba(255,255,255,0.18); margin-bottom: 16px;">
-        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg>
-      </span>
-      <span style="display: block; font-family: var(--serif, 'Bricolage Grotesque', sans-serif); font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; color: #fff; margin-bottom: 10px;">Envie d'en voir plus ?</span>
-      <span style="display: block; font-size: 1rem; color: rgba(255,255,255,0.92); max-width: 48ch; margin: 0 auto 22px; line-height: 1.6;">Toutes nos animations en vidéo : anniversaires, team buildings, maisons de repos... C'est sur notre Instagram que ça se passe.</span>
-      <span style="display: inline-block; padding: 14px 28px; border-radius: 999px; background: #fff; color: #831641; font-weight: 700; font-size: 0.9375rem;">📸 Voir nos vidéos sur Instagram →</span>
-    </a>
-  </section>
+    <!-- Bandeau Instagram : c'est le seul endroit du site ou l'on peut
+         montrer des animations reelles en video, faute de photos libres de
+         droits de nos propres seances. -->
+    <section style="padding: 64px 0;">
+      <a href="https://www.instagram.com/interactis.be/" target="_blank" rel="noopener" data-hover class="ig-banner" data-track="part-instagram">
+        <span class="ig-banner-icon">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg>
+        </span>
+        <span class="ig-banner-title">Envie d'en voir plus ?</span>
+        <span class="ig-banner-text">Toutes nos animations en vidéo : anniversaires, team buildings, maisons de repos. C'est sur notre Instagram que ça se passe.</span>
+        <span class="ig-banner-cta">Voir nos vidéos sur Instagram →</span>
+      </a>
+    </section>
 
-    <section style="text-align: center; margin: 64px 0;">
-      <h2 style="margin-bottom: 16px;">Prêt à offrir une fête inoubliable ?</h2>
-      <p style="color: rgba(245, 247, 251, 0.82); margin-bottom: 28px;">Devis gratuit, réponse sous 24h ouvrables, sans engagement.</p>
-      <div class="hero-ctas" style="justify-content: center;">
-        <a href="/devis" class="btn btn-primary" data-hover>Demander mon devis <span class="arrow">→</span></a>
-        <a href="https://wa.me/32488435342" target="_blank" rel="noopener" class="btn btn-ghost" data-hover>WhatsApp</a>
+    <section class="seg-final">
+      <h2>Prêt à offrir une fête inoubliable ?</h2>
+      <p>Devis gratuit, réponse sous 24h ouvrables, sans engagement. Vous recevez un prix ferme, pas une fourchette.</p>
+      <div class="hero-ctas seg-ctas">
+        <a href="/devis" class="btn btn-primary" data-hover data-track="part-final-devis">Demander mon devis <span class="arrow">→</span></a>
+        <a href="https://wa.me/32488435342" target="_blank" rel="noopener" class="btn btn-ghost" data-hover data-track="part-final-wa">WhatsApp</a>
       </div>
     </section>
 
   </article>
 
   <!-- MAILLAGE INTERNE -->
-  <section style="padding: 40px 32px; background: var(--bg-soft); border-top: 1px solid var(--line);">
-    <div style="max-width: 1280px; margin: 0 auto;">
-      <h2 style="text-align: center; margin-bottom: 40px; font-family: var(--serif); font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 700;">Aller plus loin</h2>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
-        <a href="/animation-anniversaire" style="display: block; padding: 20px; border: 1px solid var(--line); border-radius: 12px; transition: all 0.3s ease; text-decoration: none;" data-hover>
-          <span style="display: block; font-weight: 700; color: var(--text);">Animation anniversaire</span>
-          <span style="display: block; font-size: 0.875rem; color: rgba(245, 247, 251, 0.72); margin-top: 8px;">L'offre détaillée, prix et FAQ</span>
+  <section class="seg-liens">
+    <div class="seg-liens-inner">
+      <h2>Aller plus loin</h2>
+      <div class="seg-liens-grid">
+        <a href="/animation-anniversaire" class="seg-lien" data-hover>
+          <b>Animation anniversaire</b>
+          <span>L'offre détaillée, prix et FAQ</span>
         </a>
-        <a href="/animation-evenement" style="display: block; padding: 20px; border: 1px solid var(--line); border-radius: 12px; transition: all 0.3s ease; text-decoration: none;" data-hover>
-          <span style="display: block; font-weight: 700; color: var(--text);">Animation événement</span>
-          <span style="display: block; font-size: 0.875rem; color: rgba(245, 247, 251, 0.72); margin-top: 8px;">Fêtes de quartier & grands formats</span>
+        <a href="/animation-evenement" class="seg-lien" data-hover>
+          <b>Animation événement</b>
+          <span>Fêtes de quartier &amp; grands formats</span>
         </a>
-        <a href="/professionnels" style="display: block; padding: 20px; border: 1px solid var(--line); border-radius: 12px; transition: all 0.3s ease; text-decoration: none;" data-hover>
-          <span style="display: block; font-weight: 700; color: var(--text);">Vous êtes un professionnel ?</span>
-          <span style="display: block; font-size: 0.875rem; color: rgba(245, 247, 251, 0.72); margin-top: 8px;">Entreprises, écoles, maisons de repos</span>
+        <a href="/blog-organiser-anniversaire-enfant" class="seg-lien" data-hover>
+          <b>Organiser un anniversaire</b>
+          <span>Notre guide pratique, étape par étape</span>
+        </a>
+        <a href="/professionnels" class="seg-lien" data-hover>
+          <b>Vous êtes un professionnel ?</b>
+          <span>Entreprises, écoles, maisons de repos</span>
         </a>
       </div>
     </div>
   </section>
 
-  </main>
+    </main>
 
   <footer class="ft">
     <div class="ft-grid">

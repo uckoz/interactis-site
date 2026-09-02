@@ -174,24 +174,12 @@
     .promo-hint { font-size: 0.8125rem; color: var(--text-faded); margin-top: 18px; }
 
     /* ===== Temoignages =====
-       Ce sont les avis Google reels, deja presents en bas de page a cote
-       du formulaire. Ils y etaient invisibles : la page fait plus de
-       16 000 px de haut. On les remonte apres les cartes d'univers,
-       au moment ou le visiteur se demande « est-ce que ca marche
-       vraiment ». Le bloc du bas ne garde que la note et le lien. */
-    .testi{padding:76px 32px;background:var(--bg,#05070d)}
-    .testi-inner{max-width:1280px;margin:0 auto}
-    .testi-head{text-align:center;margin-bottom:40px}
-    .testi-head h2{font-family:var(--serif,'Bricolage Grotesque',sans-serif);font-size:clamp(1.6rem,3vw,2.25rem);font-weight:700;letter-spacing:-.02em;margin-bottom:12px}
-    .testi-note{display:inline-flex;align-items:center;gap:8px;font-size:.9375rem;color:rgba(245,247,251,.72)}
-    .testi-note .s{color:#fbbc04;letter-spacing:1px}
-    .testi-note a{color:var(--orange,#ff7a18)}
-    .testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-    .testi-card{padding:26px 24px;border:1px solid var(--line,rgba(245,247,251,.12));border-radius:16px;background:rgba(245,247,251,.02);margin:0}
-    .testi-card p{font-size:.9375rem;line-height:1.65;color:rgba(245,247,251,.86);margin:0 0 14px}
-    .testi-card footer{font-size:.8125rem;color:rgba(245,247,251,.6)}
-    .testi-card footer strong{color:var(--text,#f5f7fb);font-weight:600}
-    @media(max-width:900px){.testi{padding:56px 20px}.testi-head{margin-bottom:28px}}
+       Le bloc .testi a ete deplace dans site.css : il ne servait qu'a
+       l'accueil, or les pages Particuliers et Professionnels ont le meme
+       besoin (montrer de vrais avis au moment ou le visiteur se demande
+       « est-ce que ca marche vraiment »). Le dupliquer aurait cree une
+       troisieme copie a maintenir. home.css ne charge que sur l'accueil,
+       site.css sur les 29 pages. */
 
     /* ===== Bandeau de preuve, juste sous le hero =====
        Objectif : donner au visiteur, avant qu'il ne scrolle, les trois
