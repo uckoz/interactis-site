@@ -59,9 +59,9 @@ et facile. Mais il faut le vrai chiffre. Compte tes factures.
 | Segment | Prix affiché | Base |
 |---|---|---|
 | Anniversaire, fête de famille | à partir de 249 € | TVA comprise |
-| École, maison de repos, plaine de jeux | à partir de 300 € pour 1h30 | TVA comprise |
-| École, plaine de jeux : journée complète | à partir de 1 049 € | TVA comprise |
-| Entreprise, team building, événement | à partir de 349 € pour 1h30 | Hors TVA |
+| École, maison de repos, plaine de jeux, commune, ASBL | à partir de 300 € pour 1h30 | TVA comprise |
+| École, plaine de jeux, commune : journée complète | à partir de 1 049 € | TVA comprise |
+| Entreprise, team building, événement d'entreprise | à partir de 349 € pour 1h30 | Hors TVA |
 
 **Une seule unité de durée : 1h30.** C'est ce qui transforme une liste de
 prix en grille tarifaire. Avant, le site comparait 1h30 d'anniversaire à
@@ -104,14 +104,25 @@ tarif kilométrique écrit dans des CGV est opposable : mieux vaut ne rien
 officiel, donne-le-moi et je le remets proprement.
 
 **Plus aucune page sans tarif.** `/animation-evenement` et
-`/animation-plaine-de-jeux` affichaient « sur devis » : c'est réglé,
-elles sont respectivement à 349 € HTVA et 300 € TVA comprise.
+`/animation-plaine-de-jeux` affichaient « sur devis » : c'est réglé.
+La plaine de jeux suit intégralement la grille école, journée complète
+comprise. La page événement affiche les deux tarifs côte à côte, parce
+qu'elle s'adresse à deux acheteurs différents.
 
-**Un point à surveiller.** Les événements publics sont souvent commandés
-par des communes ou des ASBL, qui ne récupèrent pas la TVA non plus. Ils
-sont pourtant affichés en HTVA, avec les entreprises. Si tu vends
-beaucoup d'événements à des communes, dis-le-moi : il vaudra mieux les
-basculer côté TVA comprise, avec l'école et la maison de repos.
+**Communes et ASBL : alignées sur l'école (décision du 02/09/2026).**
+Le point de vigilance soulevé plus haut est tranché. Une commune, une
+ASBL ou un comité de quartier paie désormais 300 € TVA comprise pour
+1h30, ou 1 049 € TVA comprise la journée, comme une école. Deux raisons :
+elles ne récupèrent pas la TVA, et une kermesse communale ne se paie pas
+avec le budget d'un team building. Seules les entreprises assujetties
+restent à 349 € HTVA.
+
+**Le nouveau point à surveiller, à l'inverse.** Une grande commune qui
+commande l'animation phare de sa fête annuelle a souvent un budget
+événementiel, pas un budget scolaire. En l'alignant sur l'école, on lui
+propose peut-être moins qu'elle n'était prête à payer. À vérifier sur
+les prochains devis communaux : si aucun ne fait tiquer sur le prix,
+c'est le signe que le plancher est trop bas pour ce public.
 
 ---
 
