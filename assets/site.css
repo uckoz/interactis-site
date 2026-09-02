@@ -209,6 +209,43 @@
       display: flex; align-items: center; justify-content: space-between;
       mix-blend-mode: difference;
       color: white;
+      transition: background .25s var(--ease), backdrop-filter .25s var(--ease);
+    }
+
+    /* --- Fond de l'en-tete au defilement -----------------------------------
+       L'en-tete est en position: fixed, sans aucun fond, et en
+       mix-blend-mode: difference. Sur le hero c'est un beau parti pris : le
+       logo s'inverse sur l'image et rien ne vient couper la photo.
+       Des que la page defile, ca ne tient plus. Mesure sur
+       animation-ecole.html a 1440 px : elementFromPoint confirme que
+       l'en-tete est bien au-dessus (z-index 90), mais son fond calcule vaut
+       rgba(0,0,0,0) - le contenu reste donc entierement visible dessous. La
+       ligne « ILS NOUS ONT DEJA FAIT VENIR », en orange, se melangeait au mot
+       « Ecoles » du menu : les deux textes devenaient illisibles.
+       Le defaut n'est pas propre a cette page. Il se produit sur les 29 pages,
+       a chaque fois qu'un element clair passe sous la barre - un titre, un
+       chiffre, un badge orange.
+
+       Correction : on garde le fondu-difference en haut de page, la ou il
+       fait son effet, et on bascule sur un fond opaque des que le visiteur a
+       defile de 40 px. mix-blend-mode doit repasser a normal, sinon le fond
+       lui-meme serait invertI par le melange et donnerait un gris sale.
+       La classe est posee par cro.js, qui est charge sur toutes les pages.
+       Sans JS, l'en-tete reste dans son etat d'origine : degrade, jamais
+       casse. */
+    .hd.is-scrolled {
+      mix-blend-mode: normal;
+      background: rgba(5, 7, 13, 0.86);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line, rgba(245,247,251,0.12));
+    }
+    /* En blend-mode normal, le logo reprend sa vraie couleur : il faut la
+       redonner explicitement, sinon il herite du blanc pose plus haut pour
+       les besoins du melange. */
+    .hd.is-scrolled { color: var(--text, #f5f7fb); }
+    @media (prefers-reduced-motion: reduce) {
+      .hd { transition: none; }
     }
     .hd-logo {
       font-family: var(--serif);
@@ -1600,9 +1637,21 @@
     }
     .testi-card footer { font-size: 0.8125rem; color: rgba(245,247,251,0.6); }
     .testi-card footer strong { color: var(--text, #f5f7fb); font-weight: 600; }
+    /* Ligne de references sous les citations. Une citation prouve la qualite,
+       un nom d'etablissement prouve l'existence : une direction d'ecole veut
+       les deux, et c'est le nom qu'elle retient. Centre et limite en largeur
+       pour rester lisible - une ligne de texte qui court sur 1280 px se lit
+       mal, l'oeil perd le debut de la ligne suivante. */
+    .testi-refs {
+      max-width: 760px; margin: 28px auto 0; text-align: center;
+      font-size: 0.875rem; line-height: 1.7;
+      color: rgba(245,247,251,0.62);
+    }
+    .testi-refs strong { color: rgba(245,247,251,0.86); font-weight: 600; }
     @media (max-width: 900px) {
       .testi { padding: 56px 20px; }
       .testi-head { margin-bottom: 28px; }
+      .testi-refs { margin-top: 22px; font-size: 0.8125rem; text-align: left; }
     }
 
     /* --- Pages de segment (Particuliers / Professionnels) -------------

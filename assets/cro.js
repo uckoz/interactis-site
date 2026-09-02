@@ -455,3 +455,47 @@
       }
    }, true);
 })();
+
+
+/* ---- Fond de l'en-tete au defilement ----
+   L'en-tete est fixed, sans fond, en mix-blend-mode: difference. Superbe sur
+   le hero, illisible des que la page defile : tout element clair qui passe
+   dessous se melange au menu. Voir le commentaire detaille dans site.css,
+   regle .hd.is-scrolled.
+   Ce script se contente de poser la classe. Toute l'apparence est en CSS,
+   pour que la page reste correcte si ce fichier ne se charge pas. */
+(function () {
+   // Deux selecteurs : devis.html n'utilise pas .hd mais .devis-header, avec
+   // exactement les memes proprietes (fixed, sans fond, difference). Ne viser
+   // que .hd revenait a laisser le defaut sur la page qui porte l'objectif de
+   // conversion du site.
+   var barres = document.querySelectorAll('.hd, .devis-header');
+   if (!barres.length) return;
+
+   // 40 px : assez pour que le parti pris du hero reste visible a l'arrivee,
+   // assez peu pour que le fond soit deja la quand le premier titre atteint
+   // la barre.
+   var SEUIL = 40;
+   var enAttente = false;
+
+   function appliquer() {
+      enAttente = false;
+      var actif = window.scrollY > SEUIL;
+      for (var i = 0; i < barres.length; i++) {
+         barres[i].classList.toggle('is-scrolled', actif);
+      }
+   }
+
+   // requestAnimationFrame plutot qu'un appel direct : l'evenement scroll part
+   // des dizaines de fois par seconde, et toucher classList a chaque fois
+   // force autant de recalculs de style pendant le defilement.
+   window.addEventListener('scroll', function () {
+      if (enAttente) return;
+      enAttente = true;
+      window.requestAnimationFrame(appliquer);
+   }, { passive: true });
+
+   // Etat initial : le navigateur restaure parfois la position de defilement
+   // au rechargement, la page ne demarre donc pas forcement a 0.
+   appliquer();
+})();

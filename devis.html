@@ -567,6 +567,25 @@
       display: flex; align-items: center; justify-content: space-between;
       mix-blend-mode: difference;
       color: white;
+      transition: background .25s var(--ease), backdrop-filter .25s var(--ease);
+    }
+    /* Meme correction que .hd.is-scrolled dans site.css, redeclaree ici parce
+       que ce bloc <style> passe apres site.css et que la barre de cette page
+       porte un nom de classe different.
+       Sans fond, le logo et le bouton « Demander mon devis » se melangeaient
+       aux etapes du formulaire qui defilaient dessous - sur la page dont
+       depend l'unique objectif de conversion du site. La classe est posee par
+       cro.js, qui vise .hd et .devis-header. */
+    .devis-header.is-scrolled {
+      mix-blend-mode: normal;
+      color: var(--text, #f5f7fb);
+      background: rgba(5, 7, 13, 0.86);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line, rgba(245,247,251,0.12));
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .devis-header { transition: none; }
     }
     .devis-header .hd-logo {
       font-family: var(--serif);
