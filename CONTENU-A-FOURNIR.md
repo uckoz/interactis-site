@@ -125,3 +125,77 @@ Et dans le bloc « Notre engagement », la phrase « Vous ne payez rien tant
 que vous n'avez pas signé un bon de commande » suppose que tu envoies
 réellement un bon de commande à signer. Si ton process est plus informel
 (un accord par mail), reformule.
+
+### Et surtout : le site se contredit sur deux de ces chiffres
+
+Ce n'est pas une nuance, c'est visible par n'importe quel visiteur qui
+ouvre deux pages :
+
+| Chiffre | Version A | Version B |
+|---|---|---|
+| Nombre de jeux | **35+** — accueil, `/particuliers`, `/professionnels`, `/devis`, les 9 pages villes… soit 14 pages | **36** — `/animation-ecole` et `/animation-maison-de-repos`, soit 2 pages |
+| Installation | **15 min** — mêmes 14 pages | **&lt; 3 min** — mêmes 2 pages |
+
+J'ai laissé partout la version A, qui est la version majoritaire et celle
+qu'emploient les textes rédigés. **Je n'ai pas tranché** : je ne sais pas
+laquelle est vraie, et c'est à toi de le dire.
+
+Attention au sens de l'erreur. Si l'installation prend réellement 15
+minutes et que le site promet moins de 3 minutes, la promesse casse le jour
+de l'animation, devant le client. Si c'est l'inverse, tu te sous-vends —
+c'est regrettable mais sans dégât. En cas de doute, garde 15 min.
+
+Dis-moi la bonne valeur pour chacun des deux et je la propage sur les 16
+pages en une passe.
+
+---
+
+## 8. Deux textes d'avis Google que je n'ai pas pu lire
+
+**Où :** bloc « Déjà venus… » de `/animation-charleroi` et `/animation-lille`.
+
+Tu m'as dit qu'Élodie Orsini (organisatrice d'« Ensemble avec les personnes
+extraordinaires ») et Angèle Demey (Herzeele) ont laissé un avis. Je te
+crois, mais je n'ai pas lu ces deux textes : Google bloque l'accès à la
+fiche derrière son mur de consentement.
+
+**Ce que j'ai fait :** j'ai nommé les deux lieux, qui sont des faits que tu
+m'as confirmés. Je n'ai cité personne. Une citation reconstituée de mémoire
+reste une citation inventée.
+
+**Ce qu'il faut :** copier-coller les deux textes depuis ta fiche Google et
+me les envoyer. Je les branche à l'endroit prévu, qui existe déjà dans le
+code (`.preuve-locale-avis`).
+
+---
+
+## 9. La mosquée — la référence que tu ne m'as toujours pas décrite
+
+**Où :** nulle part encore. Rien n'a été écrit à ce sujet.
+
+Tu m'as dit « je suis également allé dans une mosquée » et on n'a jamais
+repris ce fil. Il me faut : le nom, la commune, le type d'événement, et
+si c'était payé ou une démo.
+
+**Pourquoi j'insiste :** les lieux de culte, maisons de quartier et ASBL
+qui organisent des activités enfants se recommandent entre eux beaucoup
+plus vite qu'une école ne recommande une autre école. Une école change
+d'avis en conseil de direction, une fois par trimestre. Un réseau
+associatif se passe un numéro de téléphone le soir même. À mon avis c'est
+ton meilleur canal et c'est celui dont tu m'as le moins parlé.
+
+---
+
+## 10. Deux villes sans aucune preuve locale : Liège et Luxembourg
+
+**Où :** `/animation-liege` et `/animation-luxembourg`.
+
+Les sept autres pages villes affichent un bloc « Déjà venus… » qui nomme un
+lieu réel. Ces deux-là n'en ont pas, parce que tu n'y es jamais allé. Je
+n'ai rien inventé pour combler le trou.
+
+**Ce qu'il faut :** soit une première intervention là-bas, même une démo
+gratuite, et le bloc se remplit tout seul ; soit assumer que ces deux pages
+resteront plus faibles que les autres. Ne me demande pas d'y écrire une
+phrase vague du genre « nous intervenons dans toute la région liégeoise » :
+ça ne convainc personne et ça ne se vérifie pas.

@@ -1299,6 +1299,66 @@
     }
     .ft-socials a:hover { background: var(--orange); border-color: var(--orange); color: var(--on-orange); transform: translateY(-2px); }
     .ft-socials svg { width: 16px; height: 16px; }
+    /* "En savoir plus" a l'interieur d'une carte. Ne PAS reutiliser
+       .related-link ici : cette classe-la est une carte complete
+       (padding, fond, bordure), elle dessine une boite dans la boite.
+       On reproduit le rendu Tailwind d'origine : lien orange, petit,
+       en gras, decolle du paragraphe. */
+    .card-more {
+      display: inline-block; margin-top: 12px;
+      font-size: 0.875rem; font-weight: 600; color: var(--orange);
+    }
+    .card:hover .card-more { text-decoration: underline; text-underline-offset: 3px; }
+
+    /* --- Preuve locale (pages villes) --------------------------------
+       Bloc qui nomme un lieu reel ou InterActis est deja intervenu, au
+       plus pres de la ville de la page. Nom de classe neuf : aucune
+       collision possible avec l'existant, donc pas de prefixe necessaire.
+       Regle de contenu : ce bloc n'existe que si le lieu existe. Les
+       pages sans reference reelle (Liege, Luxembourg) n'en ont pas.
+       -------------------------------------------------------------- */
+    .preuve-locale {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 28px 32px;
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--orange);
+      border-radius: 14px;
+      background: var(--bg-card);
+    }
+    .preuve-locale-label {
+      font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.08em; color: var(--orange); margin: 0 0 10px;
+    }
+    .preuve-locale-lieux { list-style: none; margin: 0; padding: 0; }
+    .preuve-locale-lieux li {
+      padding: 10px 0; border-top: 1px solid var(--line);
+      font-size: 0.95rem; line-height: 1.6; color: var(--text-dim);
+    }
+    .preuve-locale-lieux li:first-child { border-top: 0; padding-top: 0; }
+    .preuve-locale-lieux strong { color: var(--text); font-weight: 600; }
+    /* Le temoignage n'apparait que la ou le texte de l'avis existe
+       reellement. Pas de citation reconstituee de memoire. */
+    .preuve-locale-avis {
+      margin: 18px 0 0; padding: 16px 18px;
+      border-radius: 10px; background: rgba(255,255,255,0.03);
+    }
+    .preuve-locale-avis blockquote {
+      margin: 0; font-style: italic; color: var(--text);
+      font-size: 0.95rem; line-height: 1.65;
+    }
+    .preuve-locale-avis figcaption {
+      margin-top: 10px; font-size: 0.8125rem; color: var(--text-faded);
+    }
+    .preuve-locale-avis figcaption b { color: var(--text-dim); font-weight: 600; }
+    .preuve-locale-source {
+      display: inline-block; margin-top: 14px;
+      font-size: 0.8125rem; color: var(--text-faded);
+      text-decoration: underline; text-underline-offset: 3px;
+    }
+    .preuve-locale-source:hover { color: var(--orange); }
+    @media (max-width: 600px) { .preuve-locale { padding: 22px 20px; } }
+
     /* Bandeau "Nos zones" : maillage interne entre les pages villes.
        Range en bande horizontale plutot qu'en 5e colonne, pour ne pas
        casser la grille du pied de page sur les autres pages du site. */
