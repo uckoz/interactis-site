@@ -728,6 +728,15 @@
                    Le chiffre est le tarif reel communique par Ubeyd. -->
               <div style="font-family: var(--serif); font-size: 1.5rem; font-weight: 700; color: var(--orange); line-height: 1.2;">À partir de 1&nbsp;049&nbsp;€ TVA comprise</div>
               <div style="font-size: 0.9375rem; color: var(--text); margin-top: 4px; font-weight: 600;">La journée complète, classe après classe</div>
+              <!-- Le cout par eleve est l'argument qui fait tomber l'objection
+                   budgetaire : une direction ne compare pas 1 049 EUR a 300 EUR,
+                   elle compare 1 049 EUR a ce qu'elle depense par enfant pour une
+                   sortie. Chiffre confirme par Ubeyd le 02/09/2026 : 4 a 5 classes
+                   par journee, 110 a 130 eleves en rotation, "et meme plus".
+                   J'affiche volontairement le plancher (une centaine d'eleves,
+                   soit 10,49 EUR par enfant) et non son maximum : une promesse
+                   tenue en dessous vaut mieux qu'une promesse ratee au-dessus. -->
+              <div style="font-size: 0.875rem; color: var(--text); margin-top: 6px; font-weight: 600;">4 à 5 classes en rotation, une centaine d’élèves : environ 10&nbsp;€ par enfant</div>
               <div style="font-size: 0.875rem; color: var(--text-dim); margin-top: 8px;">Ou à partir de 300&nbsp;€ TVA comprise pour 1h30, si vous voulez commencer par une seule classe &middot; Frais de déplacement chiffrés dans le devis &middot; Devis gratuit sous 24&nbsp;h</div>
             </div>
             <div style="display: flex; align-items: center; gap: 10px; padding-left: 20px; border-left: 1px solid rgba(245,247,251,0.18);">
@@ -1003,7 +1012,22 @@
             <svg class="faq-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </button>
           <div class="faq-answer">
-            Avec une animation de 1h, nous gérons les rotations pour que chacun joue. Avec une demi-journée ou une journée complète, il y a du temps pour que tout le monde joue. Les élèves non-joueurs regardent et supportent leurs camarades. L'ambiance est excellente même pour les spectateurs !
+            Avec une animation d’1h30, nous gérons les rotations pour que chacun joue. Avec une demi-journée ou une journée complète, il y a du temps pour que tout le monde joue. Les élèves non-joueurs regardent et supportent leurs camarades. L'ambiance est excellente même pour les spectateurs !
+          </div>
+        </div>
+        <!-- Question de budget posee frontalement : c'est le dernier frein
+             avant la demande de devis, et une direction qui doit passer par
+             son pouvoir organisateur a besoin d'un cout par eleve, pas d'un
+             montant global. Arithmetique verifiable : 1 049 / 100 = 10,49 EUR.
+             Les frais de deplacement sont cites pour que le chiffre reste
+             honnete. -->
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)" data-hover>
+            <span>Combien cela coûte-t-il par élève&nbsp;?</span>
+            <svg class="faq-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer">
+            La journée complète est à partir de 1&nbsp;049&nbsp;€ TVA comprise, frais de déplacement en plus, chiffrés dans le devis. Sur une journée, nous faisons passer 4 à 5 classes en rotation, soit une centaine d’élèves : cela met l’animation à environ 10&nbsp;€ par enfant, et le montant par élève baisse à chaque groupe supplémentaire. Comme nous venons dans votre école, il n’y a ni car à réserver, ni trajet à encadrer.
           </div>
         </div>
         <div class="faq-item">

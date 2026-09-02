@@ -126,11 +126,35 @@ mettait en avant le plus mauvais produit. C'est inversé. La journée est
 le montant principal, la 1h30 devient la rampe d'accès (« ou à partir de
 300 €, si vous voulez commencer par une seule classe »).
 
-**À ajouter dès qu'il connaît les chiffres : le coût par enfant.**
-1 049 € pour 6 classes de 22 élèves, c'est 7,95 € par enfant. Pour 8
-classes, 5,96 €. C'est l'argument le plus fort face à une direction, et
-il n'est nulle part sur le site. Il faut qu'Ubeyd confirme combien de
-classes il fait passer sur une journée type avant qu'on l'affiche.
+**Le coût par enfant — chiffré et publié le 02/09/2026.** Ubeyd a
+confirmé sa capacité réelle : 4 à 5 classes par journée, 110 à 130
+élèves en rotation, « et même plus ». J'affiche volontairement le
+plancher, une centaine d'élèves, soit 10,49 € par enfant, et non son
+maximum : une direction qui compte 130 têtes et n'en fait passer que
+100 se sent flouée, l'inverse jamais. La formule publiée est donc
+« 4 à 5 classes en rotation, une centaine d'élèves : environ 10 € par
+enfant », dans le bloc prix du hero et dans une question de FAQ dédiée
+sur /animation-ecole, plus le bloc prix de /animation-plaine-de-jeux.
+
+Pour mémoire, la courbe complète : 100 élèves → 10,49 € ; 110 → 9,54 € ;
+130 → 8,07 € ; 150 → 6,99 €. D'où la phrase « le montant par élève
+baisse à chaque groupe supplémentaire », qui est vraie par construction
+et n'engage aucun chiffre non tenu.
+
+**Ce que je n'ai pas écrit, et pourquoi.** J'avais prévu de comparer à
+une entrée de musée ou à un spectacle scolaire. Abandonné : en Belgique
+ces postes tournent entre 3 et 10 € par élève, donc la comparaison ne
+tourne pas systématiquement à notre avantage et une direction qui
+connaît ses propres tarifs verrait l'approximation. Remplacé par un
+argument factuel et invérifiable par le prix seul : « comme nous venons
+dans votre école, il n'y a ni car à réserver, ni trajet à encadrer. »
+
+**Report de la même capacité sur la plaine de jeux — à confirmer.** La
+rotation de 4 à 5 groupes est une propriété de l'installation, pas de
+l'école : elle devrait valoir à l'identique pour une plaine. Le chiffre
+y est donc affiché aussi. Si l'expérience terrain montre que les
+groupes de plaine sont plus petits ou tournent moins vite, corriger
+cette page en premier.
 
 **Le nouveau point à surveiller, à l'inverse.** Une grande commune qui
 commande l'animation phare de sa fête annuelle a souvent un budget
