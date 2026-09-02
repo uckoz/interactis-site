@@ -102,6 +102,143 @@
     }
   }
   </script>
+
+  <!-- ============================================================
+       BANDEAU VIDEO (specifique a cette page, donc en <style> local
+       plutot que dans site.css : les 29 autres pages n'ont pas a
+       telecharger ces regles).
+
+       La video est anniversaire-double.mp4 : un plan vertical 9/16 qui
+       contient DEUX animations differentes, empilees l'une au-dessus de
+       l'autre.
+
+       Premiere tentative, abandonnee : la video en « object-fit: cover »
+       sur toute la largeur du bandeau. Mesure au navigateur en 1440x520 :
+       la video montait a 2560 px de haut, on n'en voyait que 520, soit
+       20 % de l'image, et le tout agrandi 2,4 fois donc flou. Les deux
+       plans du montage n'etaient jamais visibles.
+
+       Solution retenue : la video reste ENTIERE et nette (hauteur du
+       bandeau, largeur libre), et c'est son poster, floute et assombri,
+       qui remplit le reste de la largeur. Un seul telechargement video,
+       les deux plans visibles en permanence, aucun upscale.
+       ============================================================ -->
+  <style>
+    .anniv-band {
+      position: relative;
+      width: 100vw;
+      margin-left: calc(50% - 50vw);
+      overflow: hidden;
+      isolation: isolate;
+      display: grid;
+      grid-template-columns: auto minmax(0, 460px);
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      padding: 56px 32px;
+    }
+    /* Remplissage flou : c'est le POSTER (57 Ko) et pas une seconde
+       balise video, pour ne pas payer un deuxieme telechargement ni un
+       deuxieme decodage video juste pour une texture floue.
+       Le sur-cadrage (inset: -8%) evite les bords transparents que le
+       flou ferait apparaitre sur le pourtour. */
+    .anniv-band__bg {
+      position: absolute;
+      inset: -8%;
+      z-index: -2;
+      background: url("/assets/anniversaire-double-poster.jpg") center / cover no-repeat;
+      filter: blur(34px) brightness(0.58) saturate(1.2);
+      will-change: transform;
+    }
+    .anniv-band::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(90deg, rgba(8,8,12,0.50) 0%, rgba(8,8,12,0.20) 40%, rgba(8,8,12,0.62) 100%);
+    }
+    .anniv-band__reel {
+      height: 560px;
+      width: auto;
+      max-width: 100%;
+      display: block;
+      border-radius: 18px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.55);
+      background: #000;
+    }
+    .anniv-band__inner { color: #fff; }
+    .anniv-band__inner .eyebrow {
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--orange, #ff7a00);
+      margin: 0 0 14px;
+      font-weight: 700;
+    }
+    .anniv-band__inner h2 {
+      font-size: clamp(1.5rem, 3.2vw, 2.2rem);
+      line-height: 1.15;
+      margin: 0 0 16px;
+      color: #fff;
+      text-shadow: 0 2px 24px rgba(0,0,0,0.6);
+    }
+    .anniv-band__inner p {
+      margin: 0;
+      color: rgba(255,255,255,0.92);
+      text-shadow: 0 1px 16px rgba(0,0,0,0.6);
+    }
+    /* Sous 900 px la mise en deux colonnes ecrase la video a une
+       largeur inutilisable : on repasse en pile, video puis texte. */
+    @media (max-width: 900px) {
+      .anniv-band {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 28px;
+        padding: 48px 20px;
+        text-align: center;
+      }
+      /* max-height en vh : sans elle, une video 9/16 large de 320 px fait
+         569 px de haut, et le bandeau depassait la hauteur d'un iPhone 14
+         (865 px mesures pour 844 de viewport) : le titre tombait sous la
+         ligne de flottaison. La borne en 54vh garde la video et le titre
+         visibles ensemble. */
+      .anniv-band__reel {
+        height: min(58vh, 480px);
+        width: auto;
+        max-width: 100%;
+        margin: 0 auto;
+      }
+      .anniv-band::after {
+        background: linear-gradient(180deg, rgba(8,8,12,0.45) 0%, rgba(8,8,12,0.35) 50%, rgba(8,8,12,0.7) 100%);
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .anniv-band__bg { transform: none !important; }
+    }
+
+    /* Video verticale isolee : bornee a 380 px et centree. Sans borne
+       haute elle s'etirerait sur les 780 px de la colonne de texte et
+       depasserait la hauteur d'ecran (9/16 sur 780 px = 1387 px). */
+    .anniv-videos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 380px));
+      justify-content: center;
+      gap: 20px;
+      margin: 32px 0 12px;
+    }
+    .anniv-videos figure { margin: 0; }
+    .anniv-videos video {
+      width: 100%;
+      display: block;
+      border-radius: 16px;
+      background: #000;
+    }
+    .anniv-videos figcaption {
+      font-size: 0.9rem;
+      color: var(--text-faded);
+      margin-top: 10px;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
   <a href="#main" class="skip-link">Aller au contenu principal</a>
@@ -261,17 +398,55 @@
          video-anniversaire-action.mp4 juste en dessous, et
          reel-anniversaire.mp4 en fin de page. -->
 
+    <!-- Bandeau video de fond. La video est DECORATIVE : muette, en boucle,
+         sans controles, donc aria-hidden et hors du parcours clavier. Le
+         message reste lisible sans elle (le texte est du vrai HTML par
+         dessus, pas une image), et le poster s'affiche si l'autoplay est
+         refuse par le navigateur ou si l'utilisateur est en data-saver. -->
+    <section class="anniv-band" data-anniv-band>
+      <div class="anniv-band__bg" data-anniv-bg aria-hidden="true"></div>
+      <video class="anniv-band__reel lazy-video" autoplay muted loop playsinline preload="none"
+             poster="/assets/anniversaire-double-poster.jpg"
+             data-src="/assets/anniversaire-double.mp4"
+             aria-hidden="true" tabindex="-1"></video>
+      <div class="anniv-band__inner">
+        <p class="eyebrow">Deux fêtes, deux ambiances</p>
+        <h2>Le mur devient le terrain de jeu</h2>
+        <p>Aucun enfant sur le côté, aucune manette à se partager. On projette, on explique la règle, et le groupe joue ensemble jusqu'à la fin.</p>
+      </div>
+    </section>
+
     <h2>Une fête d'anniversaire en action</h2>
     <p>Voici un aperçu réel d'une fête animée avec InterActis. Les enfants jouent, rient, et participent tous ensemble, sans manette ni écran individuel.</p>
     <figure style="margin: 32px 0;">
       <img src="/images/photo-anniversaire-calcul.webp" alt="Enfants visant les bonnes réponses d'un jeu de calcul mental projeté sur le mur du salon, pendant un anniversaire à domicile" loading="lazy" width="1200" height="800" style="width: 100%; display: block; border-radius: 16px;" />
       <figcaption style="font-size: 0.9rem; color: var(--text-faded); margin-top: 12px;">Anniversaire à domicile : ici les enfants jouent au calcul mental. Le jeu se règle selon l'âge du groupe, du plus simple au plus rapide.</figcaption>
     </figure>
+    <!-- anniversaire-maison.mp4 est nouveau : c'est la sequence filmee de la
+         fete a domicile montree sur la photo juste au-dessus (meme salon,
+         meme jeu de calcul mental). Elle est PORTRAIT (720x1280) alors que
+         video-anniversaire-action.mp4 juste en dessous est PAYSAGE (960x540) :
+         les mettre cote a cote dans une grille donnait 676 px de haut contre
+         214 px, mesure au navigateur. Elles restent donc l'une sous l'autre,
+         la verticale bornee a 380 px de large et centree.
+         En lazy-video-userplay : la source n'est telechargee qu'a l'approche
+         du viewport, et rien ne demarre tout seul, pour que le clic sur
+         « play » compte comme un geste utilisateur et que le son marche du
+         premier coup. -->
+    <div class="anniv-videos">
+      <figure>
+        <video class="lazy-video lazy-video-userplay" controls preload="none" playsinline
+               poster="/assets/anniversaire-maison-poster.jpg"
+               data-src="/assets/anniversaire-maison.mp4"></video>
+        <figcaption>La même fête, en mouvement : chacun cherche la bonne réponse et tire à la balle.</figcaption>
+      </figure>
+    </div>
+
     <div style="margin: 32px 0; border-radius: 16px; overflow: hidden;">
-      <video controls preload="none" playsinline poster="/assets/video-anniversaire-action-poster.webp" style="width: 100%; display: block;">
-        <source src="/assets/video-anniversaire-action.mp4" type="video/mp4" />
-        Votre navigateur ne supporte pas la lecture vidéo.
-      </video>
+      <video class="lazy-video lazy-video-userplay" controls preload="none" playsinline
+             poster="/assets/video-anniversaire-action-poster.webp"
+             data-src="/assets/video-anniversaire-action.mp4"
+             style="width: 100%; display: block;"></video>
     </div>
     <p style="text-align: center; font-size: 0.9rem; color: var(--text-faded);">Cliquez pour démarrer · Activez le son pour l'ambiance complète</p>
 
@@ -456,5 +631,57 @@
 
   <script src="/assets/site.js" defer></script>
   <script src="/assets/cro.js" defer></script>
+
+  <!-- Defilement du bandeau : c'est le FOND FLOU qui se deplace, pas la
+       video. Deplacer la video la recadrerait et cacherait un de ses deux
+       plans, ce qu'on cherche justement a eviter. Le fond glisse de -6 %
+       a +6 % pendant que la bande traverse l'ecran : le mouvement se voit,
+       la video reste entiere et nette.
+       Calcul en rAF pour ne pas declencher un reflow a chaque evenement de
+       scroll, et desactive si l'utilisateur a demande moins d'animations. -->
+  <script>
+  (function () {
+    'use strict';
+    var band = document.querySelector('[data-anniv-band]');
+    if (!band) return;
+    var bg = band.querySelector('[data-anniv-bg]');
+    var vid = band.querySelector('.anniv-band__reel');
+
+    // Certains navigateurs mobiles refusent l'autoplay tant que la video
+    // n'est pas reellement dans l'ecran. On relance une fois, sans bruit :
+    // si ca echoue, le poster reste affiche et la page fonctionne pareil.
+    if (vid) {
+      vid.addEventListener('loadeddata', function () {
+        var pr = vid.play();
+        if (pr && pr.catch) pr.catch(function () {});
+      });
+    }
+
+    if (!bg) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var ticking = false;
+    function update() {
+      ticking = false;
+      var r = band.getBoundingClientRect();
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      // 0 quand le haut de la bande arrive par le bas de l'ecran,
+      // 1 quand le bas de la bande sort par le haut.
+      var travel = r.height + vh;
+      if (travel <= 0) return;
+      var p = (vh - r.top) / travel;
+      if (p < 0) p = 0; else if (p > 1) p = 1;
+      bg.style.transform = 'translate3d(0,' + ((p - 0.5) * 12).toFixed(2) + '%,0)';
+    }
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(update);
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    update();
+  })();
+  </script>
 </body>
 </html>
