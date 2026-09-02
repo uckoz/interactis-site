@@ -234,8 +234,12 @@
 
     <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin: 28px 0 8px; padding: 20px 24px; background: linear-gradient(135deg, rgba(255,122,24,0.18), rgba(0,212,255,0.10)); border: 1px solid rgba(255,122,24,0.4); border-radius: 16px; max-width: 620px;">
       <div>
-        <div style="font-family: var(--serif); font-size: 1.5rem; font-weight: 700; color: var(--orange); line-height: 1.2;">Formule sur mesure</div>
-        <div style="font-size: 0.875rem; color: var(--text-dim); margin-top: 6px;">Le prix dépend de la durée, du nombre de participants et de la distance · Devis gratuit sous 24&nbsp;h</div>
+        <!-- "Formule sur mesure" sans aucun montant : un responsable RH ne
+             sait pas s'il doit prevoir 300 EUR ou 3 000 EUR, donc il repousse.
+             Le plancher reel est annonce, avec "a partir de" puisque Ubeyd
+             ajuste ensuite selon la duree et l'effectif. -->
+        <div style="font-family: var(--serif); font-size: 1.5rem; font-weight: 700; color: var(--orange); line-height: 1.2;">À partir de 300&nbsp;€ HTVA</div>
+        <div style="font-size: 0.875rem; color: var(--text-dim); margin-top: 6px;">Pour 1h30, animateur inclus, soit 363&nbsp;€ TVAC. Frais de déplacement chiffrés dans le devis · Devis gratuit sous 24&nbsp;h</div>
       </div>
       <div style="display: flex; align-items: center; gap: 10px; padding-left: 20px; border-left: 1px solid rgba(245,247,251,0.18);">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>
@@ -280,8 +284,16 @@
         <p>Installation en 15 minutes chrono. Nous nous adaptons à vos locaux et configuration.</p>
       </div>
       <div class="article-card">
-        <h4>4. Déplacement inclus</h4>
-        <p>Nous nous déplaçons dans vos locaux en Belgique, Luxembourg et France.</p>
+        <!-- Cette carte a d'abord dit "Deplacement inclus" (faux : ce n'est
+             pas inclus partout), puis "offert a 40 km" (retire le 02/09/2026
+             a la demande d'Ubeyd, qui decide au cas par cas). L'argument
+             conserve est celui qui est vrai dans tous les cas et qui vend
+             quand meme : le materiel tient dans une valise, donc il va
+             partout, et le cout de la route est connu du client avant qu'il
+             signe. Un responsable RH ne demande pas la gratuite, il demande
+             de ne pas avoir de ligne surprise sur la facture. -->
+        <h4>4. Nous venons jusqu'à vous</h4>
+        <p>Tout le matériel tient dans une valise&nbsp;: Belgique, Luxembourg et Nord de la France. Les frais de déplacement sont calculés selon le lieu et chiffrés dans le devis&nbsp;; rien ne s'ajoute ensuite.</p>
       </div>
     </div>
 
@@ -300,7 +312,7 @@
     <h2>Les points forts de notre solution</h2>
     <ul style="margin: 24px 0 32px;">
       <li><strong>Personne ne reste sur le banc.</strong> Les jeux se pilotent au geste, sans manette : ils se jouent debout, assis ou en fauteuil roulant.</li>
-      <li><strong>Plus de 35 jeux interactifs.</strong> Toute une palette d'activités pour tous les publics et contextes.</li>
+      <li><strong>41 jeux interactifs.</strong> Toute une palette d'activités pour tous les publics et contextes.</li>
       <li><strong>Flexible & Évolutif.</strong> Adaptation à votre budget, votre durée et vos besoins spécifiques.</li>
       <li><strong>Moment fédérateur.</strong> Crée des souvenirs partagés que vos collaborateurs évoqueront à la machine à café.</li>
     </ul>
@@ -474,7 +486,7 @@
         </button>
         <div style="max-height: 0; overflow: hidden; transition: max-height 0.4s ease;">
           <p style="padding-bottom: 20px; color: rgba(245, 247, 251, 0.82);">
-            Nos tarifs dépendent de la durée, du nombre de participants et de votre localisation. Demandez un devis gratuit sans engagement : nous l'établissons sous 24 heures et adaptons nos formules à votre budget.
+            Comptez à partir de 300&nbsp;€ HTVA (363&nbsp;€ TVAC) pour une animation de 1h30, animateur compris. Au-delà de cette formule, le tarif dépend de la durée, du nombre de participants et du lieu. Les frais de déplacement sont chiffrés dans le devis, que vous recevez gratuitement et sans engagement sous 24&nbsp;heures.
           </p>
         </div>
       </div>

@@ -60,7 +60,7 @@
       {"@type": "Country", "name": "Luxembourg"},
       {"@type": "Country", "name": "France"}
     ],
-    "priceRange": "150-800",
+    "priceRange": "€€",
     "image": "https://www.interactis.be/images/hero.jpg",
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
@@ -68,27 +68,13 @@
       "itemListElement": [
         {
           "@type": "Offer",
-          "name": "Animation 1h",
-          "price": "150",
-          "priceCurrency": "EUR"
-        },
-        {
-          "@type": "Offer",
-          "name": "Animation 2h",
-          "price": "250",
-          "priceCurrency": "EUR"
-        },
-        {
-          "@type": "Offer",
-          "name": "Demi-journée",
-          "price": "450",
-          "priceCurrency": "EUR"
-        },
-        {
-          "@type": "Offer",
           "name": "Journée complète",
-          "price": "800",
-          "priceCurrency": "EUR"
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "price": "1000",
+            "priceCurrency": "EUR",
+            "valueAddedTaxIncluded": false
+          }
         }
       ]
     }
@@ -726,8 +712,12 @@
           <p>Des jeux éducatifs et ludiques projetés sur un mur où les élèves interagissent avec leurs mains et des ballons. Idéal pour journées spéciales, fêtes d'école et temps de midi.</p>
           <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin: 28px 0; padding: 20px 24px; background: linear-gradient(135deg, rgba(255,122,24,0.18), rgba(0,212,255,0.10)); border: 1px solid rgba(255,122,24,0.4); border-radius: 16px; max-width: 620px;">
             <div>
-              <div style="font-family: var(--serif); font-size: 1.5rem; font-weight: 700; color: var(--orange); line-height: 1.2;">Formule adaptée à votre école</div>
-              <div style="font-size: 0.875rem; color: var(--text-dim); margin-top: 6px;">Le prix dépend de la durée, du nombre de classes et de la distance · Devis gratuit sous 24&nbsp;h</div>
+              <!-- "Formule adaptee a votre ecole" ne disait rien : une
+                   direction qui doit passer par le pouvoir organisateur a
+                   besoin d'un montant a inscrire dans une demande de budget.
+                   Le chiffre est le tarif reel communique par Ubeyd. -->
+              <div style="font-family: var(--serif); font-size: 1.5rem; font-weight: 700; color: var(--orange); line-height: 1.2;">À partir de 1&nbsp;000&nbsp;€ HTVA</div>
+              <div style="font-size: 0.875rem; color: var(--text-dim); margin-top: 6px;">Pour une journée complète, classe après classe, soit 1&nbsp;210&nbsp;€ TVAC. Frais de déplacement chiffrés dans le devis · Devis gratuit sous 24&nbsp;h</div>
             </div>
             <div style="display: flex; align-items: center; gap: 10px; padding-left: 20px; border-left: 1px solid rgba(245,247,251,0.18);">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>
@@ -748,7 +738,7 @@
               <div class="stat-label">Installation</div>
             </div>
             <div class="stat-card">
-              <div class="stat-value">35+</div>
+              <div class="stat-value">41</div>
               <div class="stat-label">Jeux éducatifs</div>
             </div>
           </div>
@@ -809,7 +799,7 @@
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
           </div>
           <h3>Apprentissage ludique</h3>
-          <p>Nos 35 jeux et plus intègrent des notions pédagogiques : mathématiques, logique, mémoire... L'apprentissage devient amusant et naturel.</p>
+          <p>Nos 41 jeux intègrent des notions pédagogiques : mathématiques, logique, mémoire... L'apprentissage devient amusant et naturel.</p>
         </div>
         <div class="card">
           <div class="icon">
@@ -1038,7 +1028,27 @@
             <svg class="faq-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </button>
           <div class="faq-answer">
-            Nos jeux (plus de 35) couvrent différents domaines : mathématiques, mémorisation, réflexion, coordination, coopération. Lors du premier appel, dites-nous vos objectifs et nous sélectionnons les jeux qui correspondent.
+            Nos 41 jeux couvrent différents domaines : mathématiques, mémorisation, réflexion, coordination, coopération. Lors du premier appel, dites-nous vos objectifs et nous sélectionnons les jeux qui correspondent.
+          </div>
+        </div>
+        <!-- L'assurance RC professionnelle etait affirmee sur /professionnels,
+             dans les CGV et sur la page plaine de jeux, mais nulle part ici.
+             C'est pourtant la page ou la question se pose le plus fort : une
+             direction d'ecole ne fait pas entrer un prestataire externe devant
+             ses eleves sans savoir qui couvre en cas d'incident. Poser la
+             question a sa place, et y repondre avant qu'elle soit posee, evite
+             un aller-retour de mails et retire le dernier frein avant le devis.
+             A COMPLETER : le nom de l'assureur et le numero de police. Ubeyd a
+             confirme le 02/09/2026 detenir cette couverture mais n'a pas donne
+             ces references. Une compagnie nommee vaut dix fois une assurance
+             anonyme aux yeux d'un pouvoir organisateur. -->
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)" data-hover>
+            <span>Êtes-vous assuré pour intervenir dans notre école ?</span>
+            <svg class="faq-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer">
+            Oui. InterActis est couvert par une assurance responsabilité civile professionnelle, qui couvre les dommages corporels et matériels causés pendant la prestation (<a href="/cgv">article 7 de nos CGV</a>). Nous facturons avec numéro de TVA (BE&nbsp;1032.813.042) et vous recevez un devis écrit avant l'animation, puis une facture après : ce sont les pièces que votre pouvoir organisateur doit pouvoir justifier.
           </div>
         </div>
         <div class="faq-item">

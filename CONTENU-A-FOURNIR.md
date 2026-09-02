@@ -54,19 +54,41 @@ et facile. Mais il faut le vrai chiffre. Compte tes factures.
 
 ---
 
-## 4. Le tarif professionnel — bloquant pour la page /professionnels
+## 4. Le tarif professionnel — réglé le 2 septembre 2026, une réserve
 
-**Où :** cartes « univers » pro de l'accueil, `/animation-ecole`,
-`/animation-entreprise`, `/animation-evenement`, `/devis`.
+Tarifs communiqués : **à partir de 300 € HTVA pour 1h30 en entreprise**,
+**à partir de 1 000 € pour une journée complète en école**. Ils sont en
+ligne sur l'accueil (bandeau de preuve + cartes univers),
+`/professionnels`, `/animation-entreprise`, `/animation-ecole`,
+`/animation-bruxelles` et `/devis`.
 
-**Pourquoi :** aujourd'hui tout le côté pro affiche « sur devis ». Le
-particulier voit 249 € et sait s'il est dans son budget ; l'école, elle,
-ne sait pas si c'est 300 € ou 3 000 €, donc elle ne demande pas. Tu m'as
-dit vouloir deux tarifs différents mais tu ne m'as donné aucun chiffre,
-donc je n'en ai inventé aucun.
+**Tous les montants du site sont formulés « à partir de »**, à ta demande :
+aucun prix ferme n'est annoncé nulle part, tu gardes la main sur
+l'ajustement selon la durée, l'effectif et le lieu.
 
-**Ce qu'il faut :** au minimum un prix plancher honnête, formulé
-« à partir de X € HTVA », pour l'école et pour l'entreprise.
+**Aucun kilométrage gratuit n'est annoncé**, à ta demande également. Ni sur
+les pages de vente, ni dans les CGV. Le site dit partout la même chose :
+les frais de déplacement sont chiffrés dans le devis et rien ne s'ajoute
+après acceptation. C'est ce qui rassure un client — il veut l'absence de
+surprise, pas la gratuité — et ça te laisse décider au cas par cas.
+
+**Réserve — la base de calcul des 1 000 €.** Tu as écrit « HTVA » pour le
+team building mais pas pour la journée école. J'ai écrit **1 000 € HTVA**
+(1 210 € TVAC) parce que tout ton côté pro est en HTVA et que c'est la
+lecture cohérente de ta phrase. Si en réalité tu annonces 1 000 € TVA
+comprise au téléphone, dis-le : le site te fait alors facturer 21 % de
+plus que ce que tu promets, et ça se règle en une minute.
+
+**Ce que j'ai retiré des CGV.** L'article 4.2 engageait **0,70 €/km au-delà
+du rayon**. Ce chiffre était là avant moi, personne ne l'a jamais
+confirmé, et il contredisait le principe du devis au cas par cas. Un
+tarif kilométrique écrit dans des CGV est opposable : mieux vaut ne rien
+écrire qu'écrire un chiffre qu'on n'applique pas. Si tu veux un barème
+kilométrique officiel, donne-le-moi et je le remets proprement.
+
+**Reste sans tarif :** `/animation-evenement` et `/animation-plaine-de-jeux`
+affichent toujours « sur devis ». Donne-moi un plancher journée ou
+demi-journée pour ces deux-là et je les complète.
 
 ---
 
@@ -151,7 +173,7 @@ une pratique commerciale trompeuse (Livre VI du Code de droit
 Ces chiffres étaient déjà sur ton site et je ne les ai pas touchés, mais
 je ne peux pas les confirmer depuis ici. Confirme-les ou corrige-les :
 
-- « 35+ jeux interactifs » — le catalogue en compte-t-il vraiment 35 ?
+- ~~« 35+ jeux interactifs »~~ — **réglé** : 41 jeux, propagé sur 21 pages.
 - « 100 % inclusif PMR » — vrai pour *tous* les jeux, ou seulement une partie ?
 - « 15 min d'installation » — chronométré, ou estimé ?
 - « 5-95 ans » — formule marketing, celle-là passe.
@@ -169,16 +191,18 @@ l'installation prend **15 minutes**. Les deux pages qui annonçaient
 ont été corrigées, aux quatre endroits concernés. Le site annonce
 maintenant 15 minutes partout, sans exception.
 
-**Nombre de jeux : toujours ouvert.** Le site dit encore deux choses :
+**Nombre de jeux : réglé le 2 septembre 2026.** Tu as compté : **41 jeux**.
+Les 23 mentions de « plus de 35 jeux » / « 35+ » réparties sur 21 fichiers
+ont été remplacées par « 41 jeux », y compris les compteurs animés de
+l'accueil et les cartes statistiques des 9 pages villes.
 
-| Version | Où |
-|---|---|
-| **35+ jeux** | accueil, `/particuliers`, `/professionnels`, `/devis`, les 9 pages villes — 14 pages |
-| **36 jeux** | `/animation-ecole` et `/animation-maison-de-repos` — 2 pages |
+J'ai supprimé le « + » et le « plus de » exprès. Un chiffre rond suivi d'un
+plus se lit comme une estimation marketing ; un nombre exact et impair se
+lit comme un fait vérifié. « 41 jeux » est à la fois plus crédible et plus
+élevé que « plus de 35 » — tu te sous-vendais.
 
-Ce n'est pas grave, mais ça se voit. Compte le catalogue et donne-moi le
-chiffre : je le propage sur les 16 pages en une passe. Si c'est bien 36,
-autant l'écrire — un chiffre exact est plus crédible qu'un « 35+ ».
+À refaire le jour où le catalogue bouge : une seule passe, le chiffre est
+au même format partout.
 
 ---
 
@@ -244,7 +268,27 @@ faudra la faire figurer.
 
 ---
 
-## 10. Deux villes sans aucune preuve locale : Liège et Luxembourg
+## 10. L'assurance RC professionnelle — nom de l'assureur manquant
+
+**Où :** `/cgv` (article 7), `/professionnels`, `/animation-plaine-de-jeux`
+(3 endroits), `/animation-ecole` (FAQ, ajoutée le 2 septembre 2026).
+
+Tu as confirmé le 2 septembre 2026 détenir une responsabilité civile
+professionnelle. Les mentions restent donc en ligne, et j'en ai ajouté une
+sur la page école : c'est la page où la question se pose le plus fort et
+elle était la seule à ne pas y répondre.
+
+**Ce qui manque :** le nom de la compagnie et le numéro de police. Une
+assurance anonyme se lit comme une formule ; « couvert par [compagnie],
+police n° X » se vérifie. Pour un pouvoir organisateur ou un service
+communal, c'est la différence entre une case à cocher et un doute.
+
+Garde aussi une attestation PDF sous la main : une direction d'école sur
+deux la demandera avant de signer.
+
+---
+
+## 11. Deux villes sans aucune preuve locale : Liège et Luxembourg
 
 **Où :** `/animation-liege` et `/animation-luxembourg`.
 

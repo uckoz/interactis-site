@@ -118,7 +118,11 @@
             <li>La durée du service</li>
             <li>Le type et nombre d'animations</li>
             <li>Le nombre de participants estimés</li>
-            <li>Le prix total TTC</li>
+            <!-- Le devis doit porter les deux montants : le client professionnel
+                 raisonne en HTVA (il recupere la TVA), le particulier ne
+                 raisonne qu'en TVAC. Un devis qui n'affiche qu'une seule des
+                 deux bases oblige l'un des deux a faire le calcul lui-meme. -->
+            <li>Le prix total, exprimé hors TVA et TVA comprise</li>
             <li>Les conditions de paiement</li>
             <li>Les conditions d'annulation</li>
           </ul>
@@ -141,10 +145,32 @@
         <section>
           <h2>Article 4 - Tarification et modalités de paiement</h2>
           <p><strong>4.1 - Prix :</strong></p>
-          <p>Les prix sont exprimés en euros TTC (TVA 21% en Belgique). Les prix incluent le transport du matériel jusqu'au lieu de l'événement (dans un rayon de 50 km autour de Mons). Au-delà de ce rayon, des frais de déplacement supplémentaires s'appliquent.</p>
+          <!-- Cet article disait "prix exprimes en euros TTC" alors que toutes
+               les pages professionnelles du site affichent du HTVA. Une CGV qui
+               contredit la page de vente, c'est le litige assure : le client pro
+               peut soutenir que le prix contractuel etait le TTC. On aligne donc
+               le contrat sur la pratique reelle, en distinguant les deux publics.
+               Le HTVA pour les pros n'est pas un choix esthetique : ils
+               recuperent la TVA, un prix TTC les fait fuir a tort. Le TVAC pour
+               les particuliers est une obligation legale (Code de droit
+               economique, livre VI : le consommateur doit voir le prix a payer). -->
+          <p>Les prix des prestations destinées aux clients professionnels (écoles, entreprises, maisons de repos, communes, associations) sont exprimés hors TVA (HTVA). Les prix des prestations destinées aux particuliers sont exprimés toutes taxes comprises (TVAC). Le taux de TVA applicable est de 21 % en Belgique. Chaque devis reprend les deux montants.</p>
+          <!-- Ces CGV annoncaient un rayon de transport offert (50 km a
+               l'origine). Ubeyd a demande le 02/09/2026 de ne plus annoncer
+               aucun kilometrage gratuit : il decide au cas par cas selon le
+               client et la demande. Un rayon ecrit dans des CGV est un
+               engagement opposable ; le retirer lui rend sa liberte de
+               negociation. Ce qui protege le client reste ecrit : le montant
+               du deplacement figure au devis, donc il le connait avant de
+               signer et rien ne peut s'ajouter apres. -->
+          <p>Les frais de déplacement sont calculés en fonction du lieu de l'événement et figurent dans le devis. Aucun frais de déplacement ne peut être ajouté après acceptation du devis.</p>
           <p><strong>4.2 - Frais supplémentaires :</strong></p>
           <ul>
-            <li>Transport hors rayon standard : 0,70€ par km au-delà des 50 km</li>
+            <!-- Le tarif de 0,70 EUR/km figurait dans ces CGV avant la refonte.
+                 Personne n'a pu le confirmer, et il contredit desormais le
+                 principe du devis au cas par cas. Un tarif kilometrique ecrit
+                 dans des CGV est opposable : mieux vaut ne rien ecrire que
+                 d'ecrire un chiffre qu'on n'applique pas. -->
             <li>Frais de déplacement pour Samedi/Dimanche/Jours fériés : +15% du montant total</li>
             <li>Installation spéciale ou demandes particulières : devis supplémentaire</li>
           </ul>
