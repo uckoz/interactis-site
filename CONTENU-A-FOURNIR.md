@@ -164,41 +164,48 @@ sans avoir besoin de te faire confiance au préalable. Tes trois autres avis
 sont bons mais viennent de particuliers : ils ne pèsent pas dans le même
 sens. Romina Loria reste affichée, en témoignage standard.
 
-**Angèle Demey : toujours manquant.** Copie-colle son texte depuis ta fiche
-Google et je le branche sur `/animation-lille` ; l'emplacement existe déjà
-dans le code (`.preuve-locale-avis`).
+**Angèle Demey : réglé.** Texte reçu le 2 septembre 2026, publié sur
+`/animation-lille`. Avis d'août 2026, 5 étoiles.
+
+**Mais il y a mieux dans cet avis que le texte : la photo.** Angèle a joint
+une photo prise sur place, à Herzeele — une vingtaine d'enfants debout face
+au jeu projeté, ballons à la main, des adultes au fond. C'est exactement
+l'image que ton site n'a pas.
+
+Rappel de ce que le site montre aujourd'hui : `images/hero.jpg`, une valise
+de transport en plastique bleu, utilisée 51 fois dans le code, dont
+l'`og:image` d'environ 25 pages. C'est ce visuel qui s'affiche quand
+quelqu'un partage ton site sur WhatsApp, Facebook ou LinkedIn.
+
+**Ce qu'il faut :** tes propres photos des animations, en plein cadre,
+prises pendant que ça joue. Tu étais présent à chacune de ces animations,
+tu en as forcément. Il en faut trois ou quatre : une école, un
+anniversaire, un événement. Accord écrit des parents pour tout enfant
+identifiable — sans ça, on floute ou on cadre de dos.
+
+Ne reprends pas la photo d'Angèle : elle est à elle, pas à toi.
 
 ---
 
-## 9. La mosquée de Cuesmes
+## 9. La mosquée de Cuesmes — écartée, à la demande du client
 
-**Où :** nulle part encore. Rien n'a été écrit à ce sujet sur le site.
+**Statut : classé.** Rien n'a été écrit à ce sujet sur le site et rien ne
+le sera sans nouvelle instruction.
 
-Tu m'as dit le 2 septembre qu'il s'agit d'une **mosquée turque à Cuesmes**.
-Cuesmes fait partie de Mons — c'est donc une référence directement
-exploitable sur `/animation-mons`, où Cuesmes est déjà cité nommément dans
-le texte.
+Le client a précisé le 2 septembre 2026 : il est lui-même d'origine turque,
+on lui a demandé de venir, il y est allé. C'est un service rendu dans son
+réseau personnel, pas une prestation commerciale. Il a demandé de laisser
+tomber pour l'instant.
 
-**Il me manque encore deux choses :** le type d'événement (fête pour les
-enfants ? journée portes ouvertes ? ramadan, aïd ?) et si c'était payé ou
-une démo.
+C'est cohérent : une référence qui n'a pas été vendue ne prouve pas qu'on
+sait vendre. Elle prouve seulement qu'on connaît quelqu'un.
 
-**Et une question que je ne veux pas trancher à ta place :** est-ce que tu
-veux que la référence soit nommée publiquement sur le site ? Ce n'est pas
-la même décision que pour une école. Certains visiteurs y verront une
-preuve que tu travailles avec tous les publics, ce qui est un vrai
-argument, surtout pour les écoles et les communes. D'autres réagiront
-autrement. C'est ton commerce et ton quartier, tu es mieux placé que moi
-pour juger. Trois options possibles : la nommer, l'écrire sans la nommer
-(« un centre communautaire à Cuesmes »), ou ne pas la mettre sur le site
-et l'utiliser uniquement en démarchage. Dis-moi laquelle et je l'applique.
-
-**Pourquoi j'insiste :** les lieux de culte, maisons de quartier et ASBL
-qui organisent des activités enfants se recommandent entre eux beaucoup
-plus vite qu'une école ne recommande une autre école. Une école change
-d'avis en conseil de direction, une fois par trimestre. Un réseau
-associatif se passe un numéro de téléphone le soir même. À mon avis c'est
-ton meilleur canal et c'est celui dont tu m'as le moins parlé.
+**Ce qui reste vrai malgré tout**, et qui n'a rien à voir avec cette
+mosquée-là : le réseau associatif — maisons de quartier, ASBL, lieux de
+culte, centres culturels — se passe un numéro de téléphone en une soirée,
+là où une école attend un conseil de direction. Si un jour une de ces
+structures paie une animation, ce sera une référence à part entière et il
+faudra la faire figurer.
 
 ---
 
