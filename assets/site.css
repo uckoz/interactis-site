@@ -193,14 +193,13 @@
       line-height: 0.95;
     }
 
-    /* Split text - chaque mot dans un span pour animation */
-    .split-line { display: block; overflow: hidden; }
-    .split-word {
-      display: inline-block;
-      transform: translateY(110%);
-      will-change: transform;
-    }
-    .split-word.in { transform: translateY(0); transition: transform 1s var(--ease); }
+    /* Split text - chaque mot dans un span pour animation.
+       Retire : .split-word poussait le mot 110% vers le bas en attendant
+       une classe .in posee par JS. Aucun element du site n'utilise ces
+       classes et aucun script ne pose la classe .in : le texte serait
+       reste invisible. Si on refait un jour cette animation, l'etat
+       initial doit venir de JS (gsap.set) et jamais du CSS, pour que le
+       texte reste lisible si le script ne se charge pas. */
 
     /* Header / Nav */
     .hd {
@@ -351,6 +350,11 @@
       -webkit-background-clip: text;
       background-clip: text;
       filter: drop-shadow(0 0 30px rgba(0,212,255,0.35));
+      animation: glowShift 6s ease-in-out infinite alternate;
+    }
+    @keyframes glowShift {
+      0%   { filter: drop-shadow(0 0 24px rgba(0,212,255,0.30)); }
+      100% { filter: drop-shadow(0 0 40px rgba(255,122,24,0.40)); }
     }
 
     .hero-sub {
@@ -1496,11 +1500,13 @@
         scroll-behavior: auto !important;
       }
       [data-reveal] { opacity: 1 !important; transform: none !important; }
-      .split-word { transform: none !important; }
       .hero-bg video, .manifeste-bg video { display: none; }
       .hero-bg::after, .manifeste-bg::after { background: var(--bg) !important; }
       .cursor, .cursor-ring { display: none !important; }
       body { cursor: auto !important; }
+      .hero-canvas { display: none !important; }
+      .orb { display: none !important; }
+      .marquee-track { animation: none !important; }
     }
 
 
