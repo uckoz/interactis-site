@@ -126,56 +126,72 @@ que vous n'avez pas signé un bon de commande » suppose que tu envoies
 réellement un bon de commande à signer. Si ton process est plus informel
 (un accord par mail), reformule.
 
-### Et surtout : le site se contredit sur deux de ces chiffres
+### Deux chiffres sur lesquels le site se contredisait
 
-Ce n'est pas une nuance, c'est visible par n'importe quel visiteur qui
-ouvre deux pages :
+**Installation : réglé.** Tu m'as confirmé le 2 septembre 2026 que
+l'installation prend **15 minutes**. Les deux pages qui annonçaient
+« moins de 3 minutes » (`/animation-ecole` et `/animation-maison-de-repos`)
+ont été corrigées, aux quatre endroits concernés. Le site annonce
+maintenant 15 minutes partout, sans exception.
 
-| Chiffre | Version A | Version B |
-|---|---|---|
-| Nombre de jeux | **35+** — accueil, `/particuliers`, `/professionnels`, `/devis`, les 9 pages villes… soit 14 pages | **36** — `/animation-ecole` et `/animation-maison-de-repos`, soit 2 pages |
-| Installation | **15 min** — mêmes 14 pages | **&lt; 3 min** — mêmes 2 pages |
+**Nombre de jeux : toujours ouvert.** Le site dit encore deux choses :
 
-J'ai laissé partout la version A, qui est la version majoritaire et celle
-qu'emploient les textes rédigés. **Je n'ai pas tranché** : je ne sais pas
-laquelle est vraie, et c'est à toi de le dire.
+| Version | Où |
+|---|---|
+| **35+ jeux** | accueil, `/particuliers`, `/professionnels`, `/devis`, les 9 pages villes — 14 pages |
+| **36 jeux** | `/animation-ecole` et `/animation-maison-de-repos` — 2 pages |
 
-Attention au sens de l'erreur. Si l'installation prend réellement 15
-minutes et que le site promet moins de 3 minutes, la promesse casse le jour
-de l'animation, devant le client. Si c'est l'inverse, tu te sous-vends —
-c'est regrettable mais sans dégât. En cas de doute, garde 15 min.
-
-Dis-moi la bonne valeur pour chacun des deux et je la propage sur les 16
-pages en une passe.
+Ce n'est pas grave, mais ça se voit. Compte le catalogue et donne-moi le
+chiffre : je le propage sur les 16 pages en une passe. Si c'est bien 36,
+autant l'écrire — un chiffre exact est plus crédible qu'un « 35+ ».
 
 ---
 
-## 8. Deux textes d'avis Google que je n'ai pas pu lire
+## 8. Les textes des avis Google d'Élodie Orsini et d'Angèle Demey
 
 **Où :** bloc « Déjà venus… » de `/animation-charleroi` et `/animation-lille`.
 
-Tu m'as dit qu'Élodie Orsini (organisatrice d'« Ensemble avec les personnes
-extraordinaires ») et Angèle Demey (Herzeele) ont laissé un avis. Je te
-crois, mais je n'ai pas lu ces deux textes : Google bloque l'accès à la
-fiche derrière son mur de consentement.
+**Élodie Orsini : réglé.** Tu m'as transmis le texte le 2 septembre 2026.
+Il est en ligne à trois endroits : `/animation-charleroi`,
+`/animation-belgique`, et en tête de la colonne de preuve de `/devis`, où
+il remplace Romina Loria comme témoignage mis en avant.
 
-**Ce que j'ai fait :** j'ai nommé les deux lieux, qui sont des faits que tu
-m'as confirmés. Je n'ai cité personne. Une citation reconstituée de mémoire
-reste une citation inventée.
+Ce choix n'est pas esthétique. C'est le seul avis de ton site qui soit à la
+fois daté, signé d'un rôle vérifiable (coordinatrice d'un événement
+provincial), descriptif de ce qui a réellement eu lieu, et terminé par une
+réinvitation pour 2027. Une direction d'école ou un service RH peut le lire
+sans avoir besoin de te faire confiance au préalable. Tes trois autres avis
+sont bons mais viennent de particuliers : ils ne pèsent pas dans le même
+sens. Romina Loria reste affichée, en témoignage standard.
 
-**Ce qu'il faut :** copier-coller les deux textes depuis ta fiche Google et
-me les envoyer. Je les branche à l'endroit prévu, qui existe déjà dans le
-code (`.preuve-locale-avis`).
+**Angèle Demey : toujours manquant.** Copie-colle son texte depuis ta fiche
+Google et je le branche sur `/animation-lille` ; l'emplacement existe déjà
+dans le code (`.preuve-locale-avis`).
 
 ---
 
-## 9. La mosquée — la référence que tu ne m'as toujours pas décrite
+## 9. La mosquée de Cuesmes
 
-**Où :** nulle part encore. Rien n'a été écrit à ce sujet.
+**Où :** nulle part encore. Rien n'a été écrit à ce sujet sur le site.
 
-Tu m'as dit « je suis également allé dans une mosquée » et on n'a jamais
-repris ce fil. Il me faut : le nom, la commune, le type d'événement, et
-si c'était payé ou une démo.
+Tu m'as dit le 2 septembre qu'il s'agit d'une **mosquée turque à Cuesmes**.
+Cuesmes fait partie de Mons — c'est donc une référence directement
+exploitable sur `/animation-mons`, où Cuesmes est déjà cité nommément dans
+le texte.
+
+**Il me manque encore deux choses :** le type d'événement (fête pour les
+enfants ? journée portes ouvertes ? ramadan, aïd ?) et si c'était payé ou
+une démo.
+
+**Et une question que je ne veux pas trancher à ta place :** est-ce que tu
+veux que la référence soit nommée publiquement sur le site ? Ce n'est pas
+la même décision que pour une école. Certains visiteurs y verront une
+preuve que tu travailles avec tous les publics, ce qui est un vrai
+argument, surtout pour les écoles et les communes. D'autres réagiront
+autrement. C'est ton commerce et ton quartier, tu es mieux placé que moi
+pour juger. Trois options possibles : la nommer, l'écrire sans la nommer
+(« un centre communautaire à Cuesmes »), ou ne pas la mettre sur le site
+et l'utiliser uniquement en démarchage. Dis-moi laquelle et je l'applique.
 
 **Pourquoi j'insiste :** les lieux de culte, maisons de quartier et ASBL
 qui organisent des activités enfants se recommandent entre eux beaucoup
