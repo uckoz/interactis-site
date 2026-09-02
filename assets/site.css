@@ -384,10 +384,13 @@
       max-width: var(--container);
       margin: 0 auto;
       width: 100%;
-      padding-top: 80px;
+      /* Le padding-top de 80px qui se trouvait ici faisait double emploi :
+         .hero reserve deja calc(--urgency-h + 96px) pour le bandeau et le
+         header fixes. Ces 80px supplementaires poussaient le bouton principal
+         a 832px du haut sur un ecran de 900, et hors champ sur telephone. */
     }
     .hero-eyebrow {
-      margin-bottom: 32px;
+      margin-bottom: 24px;
       opacity: 0;
       transform: translateY(20px);
       animation: fadeUp 1s var(--ease) 0.3s forwards;
@@ -430,6 +433,78 @@
       display: flex; flex-wrap: wrap; gap: 14px;
       opacity: 0;
       animation: fadeUp 1s var(--ease) 1.2s forwards;
+    }
+
+    /* Raccourcis par public, sous les boutons du hero.
+       Ils remplacent les deux gros boutons "Je suis un particulier / un
+       professionnel" : le visiteur qui sait deja ce qu'il cherche va
+       directement a sa page, celui qui ne sait pas continue a lire sans
+       avoir eu a repondre a une question sur lui-meme. */
+    .hero-segments {
+      display: flex; flex-wrap: wrap; gap: 8px 10px;
+      align-items: center;
+      margin-top: 18px;
+      opacity: 0;
+      animation: fadeUp 1s var(--ease) 1.35s forwards;
+    }
+    .hero-segments a {
+      padding: 7px 14px;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      font-size: 0.875rem;
+      color: var(--text-dim);
+      transition: border-color 0.3s var(--ease), color 0.3s var(--ease);
+    }
+    .hero-segments a:hover {
+      border-color: var(--orange);
+      color: var(--text);
+    }
+
+    /* Ligne de contact direct. Le devis etait propose deux fois dans le meme
+       ecran, dont une en bouton gris : deux fois la meme action, dont une
+       qui a l'air secondaire. Ne restent ici que l'appel et le telephone. */
+    .hero-alt {
+      margin-top: 22px;
+      font-size: 0.9375rem;
+      color: var(--text-faded);
+      opacity: 0;
+      animation: fadeUp 1s var(--ease) 1.5s forwards;
+    }
+    .hero-alt a,
+    .hero-alt .hero-alt-link {
+      color: var(--text);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-size: inherit;
+      padding: 0;
+      transition: color 0.3s var(--ease);
+    }
+    .hero-alt a:hover,
+    .hero-alt .hero-alt-link:hover { color: var(--orange); }
+
+    /* Hero sur telephone : les marges verticales dessinees pour un ecran de
+       900 px de haut ne tiennent pas sur 844 (iPhone 12-15) ni sur 667
+       (iPhone SE). Mesure avant correction sur 390x844 : le bouton "Demander
+       mon devis" finissait a 797 px et la rangee de raccourcis a 900 px,
+       donc sous la ligne de flottaison. Comme le devis est l'objectif du
+       site, il doit etre visible sans defiler. On resserre les marges plutot
+       que de reduire les corps de texte, qui restent lisibles. */
+    @media (max-width: 720px) {
+      .hero-eyebrow { margin-bottom: 14px; }
+      .hero h1.display { margin-bottom: 20px; }
+      .hero-sub { margin-bottom: 24px; }
+      .hero-ctas { gap: 10px; }
+      .hero-segments { margin-top: 12px; }
+      .hero-alt { margin-top: 16px; }
+    }
+    /* Ecrans courts (Android 640, iPhone SE en 667, paysage) : on rogne
+       encore, y compris le padding haut du hero, sinon le bouton principal
+       reste hors champ. */
+    @media (max-height: 700px) and (max-width: 720px) {
+      .hero { padding: calc(var(--urgency-h, 0px) + 76px) 32px 180px; }
+      .hero-eyebrow { margin-bottom: 10px; }
+      .hero h1.display { font-size: clamp(2.25rem, 8vw, 3rem); margin-bottom: 16px; }
+      .hero-sub { margin-bottom: 18px; }
     }
 
     /* Indicateur scroll */

@@ -268,32 +268,46 @@
         <span class="glow">personne ne reste</span><br/>
         <span class="accent">sur le côté.</span>
       </h1>
+      <!-- Phrase raccourcie d'une ligne : sur telephone elle en occupait cinq
+           et repoussait le bouton de devis sous la ligne de flottaison.
+           Meme information, une ligne de moins. -->
       <p class="hero-sub">
-        Plus de 35 jeux projetés sur n'importe quel mur, sans manette ni écran. InterActis débarque avec une seule valise, installe en 15 minutes, et tout le monde joue. De 5 à 95 ans, debout ou en fauteuil.
+        Plus de 35 jeux projetés sur n'importe quel mur, sans manette ni écran. Une valise, 15 minutes d'installation, et tout le monde joue — de 5 à 95 ans, debout ou en fauteuil.
       </p>
+      <!-- Les deux boutons principaux demandaient au visiteur de se declarer
+           "particulier" ou "professionnel" avant de pouvoir agir. Ils ne
+           menaient nulle part : iaHeroChoice() annulait la navigation, posait
+           un filtre et faisait defiler la page. Quelqu'un qui arrive d'une
+           recherche "animation anniversaire enfant Mons" sait deja ce qu'il
+           veut ; on lui demandait de repondre a une question d'identite.
+           L'action principale est desormais celle que le site cherche a
+           obtenir : la demande de devis. Le filtre par public existe toujours,
+           plus bas, dans la section "choix" ou il ne coute rien. -->
       <div class="hero-ctas" style="margin-bottom: 14px;">
-        <a href="/particuliers" class="btn btn-primary" data-hover onclick="return iaHeroChoice(event,'part');">
-          🎉 Je suis un particulier
+        <a href="/devis" class="btn btn-primary" data-hover data-track="hero-devis">
+          Demander mon devis
           <span class="arrow">→</span>
         </a>
-        <a href="/professionnels" class="btn btn-primary" data-hover onclick="return iaHeroChoice(event,'pro');">
-          🏢 Je suis un professionnel
-          <span class="arrow">→</span>
+        <a href="#animations" class="btn btn-ghost" data-hover data-track="hero-video">
+          Voir une animation en vidéo
         </a>
       </div>
+      <p class="hero-segments">
+        <a href="/animation-anniversaire" data-hover>Anniversaire d'enfant</a>
+        <a href="/animation-ecole" data-hover>École</a>
+        <a href="/animation-entreprise" data-hover>Entreprise</a>
+        <a href="/animation-maison-de-repos" data-hover>Maison de repos</a>
+      </p>
       <button type="button" class="mode-pill-mobile" id="modePillMobile" onclick="iaToggleMode()" aria-label="Changer de profil"></button>
-      <div class="hero-ctas">
-        <a href="/devis" class="btn btn-ghost" data-hover>
-          Recevoir mon devis sous 24h
-          <span class="arrow">→</span>
-        </a>
-        <button type="button" class="btn btn-ghost" data-hover onclick="return openCalendly();" aria-label="Réserver un appel découverte de 15 minutes">
-          📞 Appel 15 min
-        </button>
-        <a href="tel:+32488435342" class="btn btn-ghost" data-hover aria-label="Appeler InterActis au +32 488 43 53 42">
-          +32 488 43 53 42
-        </a>
-      </div>
+      <!-- Le bouton devis figurait ici aussi : deux fois la meme action dans
+           le meme ecran, l'une des deux en gris. Il ne reste que les deux
+           voies de contact direct, pour qui prefere parler avant d'ecrire. -->
+      <p class="hero-alt">
+        Vous préférez en parler ?
+        <button type="button" class="hero-alt-link" data-hover onclick="return openCalendly();">Réserver un appel de 15 min</button>
+        <span aria-hidden="true">·</span>
+        <a href="tel:+32488435342" data-hover>+32 488 43 53 42</a>
+      </p>
     </div>
 
     <div class="hero-scroll">
@@ -441,7 +455,10 @@
           <span class="uc-emoji">🏥</span>
           <span class="uc-title">Maison de repos</span>
           <span class="uc-desc">Mobilité, mémoire, lien social : vos résidents jouent et rient, même à 92 ans, même en fauteuil.</span>
-          <span class="uc-price">À partir de 249€ HTVA</span>
+          <!-- Le meme nombre "249" apparait plus haut en TVAC pour les
+               anniversaires et ici en HTVA : ce sont deux tarifs differents
+               qui se lisent comme un seul. On donne les deux bases. -->
+          <span class="uc-price">À partir de 249&nbsp;€ HTVA (301&nbsp;€ TVAC)</span>
           <span class="uc-go">Voir l'offre →</span>
         </a>
         <a href="/animation-ecole" class="uni-card" data-hover>
@@ -1510,11 +1527,10 @@
       if(c){ c.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
     }
 
-    function iaHeroChoice(ev, m){
-      ev.preventDefault();
-      iaSetMode(m);
-      return false;
-    }
+    /* iaHeroChoice() est supprimee : ses deux seuls appelants etaient les
+       boutons "Je suis un particulier / un professionnel" du hero, remplaces
+       par un appel a l'action unique vers le devis. Le filtre par public
+       reste disponible dans la section #choix via iaSetMode(). */
 
     /* Au chargement : réappliquer le choix mémorisé, s'il existe. */
     (function(){

@@ -93,7 +93,11 @@
       <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin: 28px auto 0; padding: 20px 24px; background: linear-gradient(135deg, rgba(255,122,24,0.18), rgba(0,212,255,0.10)); border: 1px solid rgba(255,122,24,0.4); border-radius: 16px; max-width: 620px;">
         <div style="text-align: left;">
           <div style="font-family: var(--serif); font-size: 1.5rem; font-weight: 700; color: var(--orange); line-height: 1.2;">Devis personnalisé sous 24h</div>
-          <div style="font-size: 0.875rem; color: var(--text-dim); margin-top: 6px;">Maison de repos : à partir de 249€ HTVA / 1h30 · Autres formules sur mesure selon durée, participants et distance</div>
+          <!-- Le tarif professionnel etait annonce "249€ HTVA" alors que le
+               tarif particulier est "249€ TVAC" : memes chiffres, deux bases
+               de calcul. Une direction qui lit 249 budgete 249 et recoit un
+               devis a 301. Les deux montants sont donc affiches. -->
+          <div style="font-size: 0.875rem; color: var(--text-dim); margin-top: 6px;">Maison de repos : à partir de 249&nbsp;€ HTVA / 1h30, soit 301&nbsp;€ TVAC · Autres formules sur mesure selon durée, participants et distance</div>
         </div>
         <div style="display: flex; align-items: center; gap: 10px; padding-left: 20px; border-left: 1px solid rgba(245,247,251,0.18);">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>
@@ -154,7 +158,13 @@
       </div>
       <div class="article-card">
         <h4>3. Suivi</h4>
-        <p>Facture, photos si souhaité, et debriefing. Beaucoup de nos clients institutionnels reprogramment une session dans l'année.</p>
+        <!-- La phrase precedente affirmait que "beaucoup de nos clients
+             institutionnels reprogramment une session dans l'annee".
+             InterActis a six mois d'activite : quelques ecoles, un team
+             building, des demonstrations en maison de repos. Il n'existe pas
+             de base de clients institutionnels qui reprogramment. Remplacee
+             par ce qui est reellement propose. -->
+        <p>Facture en bonne et due forme, photos de la séance si vous le souhaitez, et un débriefing pour ajuster la sélection de jeux si vous nous rappelez.</p>
       </div>
     </div>
 

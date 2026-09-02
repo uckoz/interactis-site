@@ -90,7 +90,14 @@
     // Sur /devis le texte de reassurance reste utile juste au-dessus du
     // formulaire, mais le bouton pointerait vers la page en cours : on le
     // retire pour ne pas proposer un lien mort.
-    var surDevis = (chemin === '/devis' || chemin === '/devis.html');
+    // Sur l'accueil, meme raisonnement pour une autre raison : le hero porte
+    // desormais un bouton "Demander mon devis" a 300 px en dessous, avec
+    // exactement le meme libelle. Deux fois la meme proposition dans un seul
+    // ecran ne double pas les chances de clic, elle brouille la hierarchie.
+    // En prime, sans son bouton la banniere retombe de 94 a 44 px sur un
+    // telephone de 390 px : 50 px rendus au hero, la ou ils comptent.
+    var sansBouton = (chemin === '/devis' || chemin === '/devis.html'
+                      || chemin === '/' || chemin === '/index.html');
 
     var banner = document.createElement('div');
     banner.className = 'urgency-banner';
@@ -105,7 +112,7 @@
       // identique partout.
       +   '<span class="urgency-banner-emoji" aria-hidden="true">\u2713</span>'
       +   '<span class="urgency-banner-text">Devis gratuit et sans engagement · <strong>réponse sous 24 h</strong></span>'
-      +   (surDevis ? '' : '<a href="/devis" class="urgency-banner-link">Demander mon devis <span aria-hidden="true">→</span></a>')
+      +   (sansBouton ? '' : '<a href="/devis" class="urgency-banner-link">Demander mon devis <span aria-hidden="true">→</span></a>')
       +   '<button type="button" class="urgency-banner-close" aria-label="Fermer la bannière">×</button>'
       + '</div>';
 
