@@ -84,6 +84,77 @@
 
   <style>
     html { scroll-behavior: smooth; }
+
+    /* ---------------------------------------------------------------
+       Medias entreprise (photos + videos tournees en entreprise).
+       Styles volontairement locaux a cette page : les 29 autres pages
+       n'ont aucune raison de transporter ces regles dans site.css.
+       --------------------------------------------------------------- */
+
+    /* Bandeau photo pleine largeur place juste sous le hero.
+       body { overflow-x: hidden } dans site.css rend la technique
+       100vw + margin-left: calc(50% - 50vw) sans danger. */
+    .ent-band {
+      width: 100vw;
+      margin-left: calc(50% - 50vw);
+      background: var(--bg-soft);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    /* La photo est en 4/3 et les personnes occupent la bande centrale :
+       plafond en haut, sol vide en bas. On recadre donc en 21/9 avec un
+       point d'ancrage a 56 % de la hauteur pour rester sur les visages,
+       sans jamais deformer l'image. */
+    .ent-band__img {
+      width: 100%;
+      aspect-ratio: 21 / 9;
+      object-fit: cover;
+      object-position: 50% 56%;
+      display: block;
+    }
+    .ent-band__caption {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 18px 32px 24px;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--text-dim);
+      text-align: center;
+    }
+    @media (max-width: 768px) {
+      /* Sur mobile un 21/9 reduirait le groupe a une frise de 180 px de
+         haut ou l'on ne distinguerait plus personne. On revient au 4/3
+         d'origine : l'image entiere, aucun recadrage. */
+      .ent-band__img { aspect-ratio: 4 / 3; object-position: 50% 50%; }
+      .ent-band__caption { padding: 16px 20px 22px; font-size: 0.9rem; }
+    }
+
+    /* Bloc video "en conditions reelles".
+       Les deux clips n'ont PAS le meme format (l'un 9/16, l'autre 16/9).
+       Les poser cote a cote dans une grille donnerait deux boites de
+       hauteurs tres differentes : ils sont donc empiles, chacun avec sa
+       propre largeur maximale. */
+    .ent-media { margin: 40px 0 56px; }
+    .ent-media figure { margin: 0 0 40px; }
+    .ent-media figure:last-child { margin-bottom: 0; }
+    .ent-media video {
+      width: 100%;
+      display: block;
+      border-radius: 16px;
+      background: #000;
+    }
+    .ent-media__portrait {
+      max-width: 380px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .ent-media figcaption {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--text-faded);
+      margin-top: 12px;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -138,6 +209,18 @@
         Votre navigateur ne supporte pas la lecture vidéo.
       </video>
     </div>
+  </section>
+
+  <!-- Photo de groupe prise en fin d'animation dans une salle de reunion.
+       Placee juste sous le hero : c'est la premiere preuve que la page
+       donne au visiteur, avant meme le premier argument. Visages visibles
+       et de face, conformement a la consigne d'Ubeyd. -->
+  <section class="ent-band">
+    <img src="/images/photo-entreprise-equipe.webp"
+         alt="Une équipe d'une dizaine de collaborateurs debout dans leur salle de réunion, balles en main, à la fin d'une animation InterActis"
+         width="1600" height="1200" loading="lazy" decoding="async"
+         class="ent-band__img" />
+    <p class="ent-band__caption">Onze collaborateurs, une salle de réunion ordinaire, aucune manette. Le matériel tient dans une valise et repart le soir même.</p>
   </section>
 
   <article class="article-body">
@@ -202,6 +285,18 @@
       </div>
     </div>
 
+    <!-- Cette photo est placee ici et pas ailleurs parce qu'elle montre
+         exactement ce que les quatre cartes viennent de decrire : le
+         boitier pose au sol, le faisceau, le mur nu qui devient l'ecran.
+         C'est la reponse visuelle a « il me faut quoi, chez moi ? ». -->
+    <figure style="margin: 32px 0 56px;">
+      <img src="/images/photo-entreprise-salle-reunion.webp"
+           alt="Un jeu de calcul projeté sur le mur blanc d'une salle de réunion, le boîtier posé au sol, quatre collaborateurs debout face à la projection"
+           width="1400" height="1050" loading="lazy" decoding="async"
+           style="width: 100%; display: block; border-radius: 16px;" />
+      <figcaption style="font-size: 0.9rem; color: var(--text-faded); margin-top: 12px;">Un mur clair, une prise, et la salle de réunion devient l'écran. Le boîtier posé au sol, c'est tout le matériel visible.</figcaption>
+    </figure>
+
     <h2>Les points forts de notre solution</h2>
     <ul style="margin: 24px 0 32px;">
       <li><strong>Personne ne reste sur le banc.</strong> Les jeux se pilotent au geste, sans manette : ils se jouent debout, assis ou en fauteuil roulant.</li>
@@ -209,6 +304,47 @@
       <li><strong>Flexible & Évolutif.</strong> Adaptation à votre budget, votre durée et vos besoins spécifiques.</li>
       <li><strong>Moment fédérateur.</strong> Crée des souvenirs partagés que vos collaborateurs évoqueront à la machine à café.</li>
     </ul>
+
+    <!-- Deux sequences filmees pendant de vraies animations en entreprise.
+         Les deux sont en lazy-video-userplay : cro.js leur donne leur
+         source quand elles approchent de l'ecran mais ne lance PAS la
+         lecture. C'est le clic du visiteur sur les controles natifs qui
+         demarre la video, donc le navigateur autorise le son des la
+         premiere lecture. La page a deja une video en autoplay dans le
+         hero : en ajouter deux autres qui se lancent seules donnerait
+         trois videos concurrentes et une page bruyante. -->
+    <h2>L'animation en conditions réelles</h2>
+    <p>Deux séquences filmées pendant des animations, sans mise en scène ni figurants.</p>
+
+    <div class="ent-media">
+      <figure class="ent-media__portrait">
+        <video class="lazy-video lazy-video-userplay" controls preload="none" playsinline
+               width="720" height="1280"
+               poster="/assets/entreprise-equipe-jeu-poster.webp"
+               data-src="/assets/entreprise-equipe-jeu.mp4"></video>
+        <figcaption>Des adultes en tenue de bureau qui lancent des balles sur un mur : c'est exactement l'effet recherché. Personne ne reste assis, personne n'a besoin d'être sportif.</figcaption>
+      </figure>
+
+      <figure>
+        <video class="lazy-video lazy-video-userplay" controls preload="none" playsinline
+               width="960" height="540"
+               poster="/assets/entreprise-groupe-action-poster.webp"
+               data-src="/assets/entreprise-groupe-action.mp4"></video>
+        <figcaption>Quatorze secondes au cœur d'une partie : tout le groupe joue en même temps, les balles partent de partout. Cliquez pour démarrer, activez le son pour l'ambiance.</figcaption>
+      </figure>
+    </div>
+
+    <!-- EN RESERVE, compresses et deja dans le depot, volontairement PAS
+         affiches ici :
+         - /assets/entreprise-salle-sport.mp4 (+ poster .webp) : deux
+           personnes seules dans un grand hall sportif. Techniquement bon
+           (ca prouve que le systeme tient dans un tres grand volume) mais
+           on n'y voit pas d'equipe, et une page qui vend du team building
+           ne peut pas montrer une salle vide.
+         - /images/photo-demo-adultes-mur.webp : la salle a mur olive
+           ressemble a une salle communale, pas a une entreprise. Elle
+           serait bien meilleure sur une page ecole ou collectivite.
+         Pour en afficher un, copier le bloc <figure> ci-dessus. -->
 
     <h2>Des activités pour chaque occasion</h2>
     <p>Notre animation s'adapte à votre contexte spécifique.</p>
