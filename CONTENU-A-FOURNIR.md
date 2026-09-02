@@ -54,13 +54,19 @@ et facile. Mais il faut le vrai chiffre. Compte tes factures.
 
 ---
 
-## 4. Le tarif professionnel — réglé le 2 septembre 2026, une réserve
+## 4. Le tarif professionnel — réglé le 2 septembre 2026
 
 Tarifs communiqués : **à partir de 300 € HTVA pour 1h30 en entreprise**,
-**à partir de 1 000 € pour une journée complète en école**. Ils sont en
-ligne sur l'accueil (bandeau de preuve + cartes univers),
-`/professionnels`, `/animation-entreprise`, `/animation-ecole`,
-`/animation-bruxelles` et `/devis`.
+**à partir de 850 € HTVA pour une journée complète en école**
+(1 028,50 € TVAC). Ils sont en ligne sur l'accueil (bandeau de preuve +
+cartes univers), `/professionnels`, `/animation-entreprise`,
+`/animation-ecole`, `/animation-bruxelles` et `/devis`.
+
+Le tarif école est passé de 1 000 à 850 € HTVA le 2 septembre, sur ta
+décision. Le prix figure aussi dans les données structurées de
+`/animation-ecole` : les deux ont été changés ensemble, sinon Google
+pouvait afficher 1 000 € dans ses résultats pour une page qui en
+annonce 850.
 
 **Tous les montants du site sont formulés « à partir de »**, à ta demande :
 aucun prix ferme n'est annoncé nulle part, tu gardes la main sur
@@ -71,13 +77,6 @@ les pages de vente, ni dans les CGV. Le site dit partout la même chose :
 les frais de déplacement sont chiffrés dans le devis et rien ne s'ajoute
 après acceptation. C'est ce qui rassure un client — il veut l'absence de
 surprise, pas la gratuité — et ça te laisse décider au cas par cas.
-
-**Réserve — la base de calcul des 1 000 €.** Tu as écrit « HTVA » pour le
-team building mais pas pour la journée école. J'ai écrit **1 000 € HTVA**
-(1 210 € TVAC) parce que tout ton côté pro est en HTVA et que c'est la
-lecture cohérente de ta phrase. Si en réalité tu annonces 1 000 € TVA
-comprise au téléphone, dis-le : le site te fait alors facturer 21 % de
-plus que ce que tu promets, et ça se règle en une minute.
 
 **Ce que j'ai retiré des CGV.** L'article 4.2 engageait **0,70 €/km au-delà
 du rayon**. Ce chiffre était là avant moi, personne ne l'a jamais
