@@ -1047,69 +1047,11 @@
       .process-steps { grid-template-columns: 1fr; }
     }
 
-    /* Vidéo montage en preuve */
-    .process-proof {
-      max-width: var(--container);
-      margin: 0 auto;
-      background: var(--bg-card);
-      border-radius: 32px;
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      border: 1px solid var(--line);
-      position: relative;
-    }
-    .process-proof::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--orange), transparent);
-    }
-    .process-proof-text {
-      padding: 56px 48px;
-      display: flex; flex-direction: column; justify-content: center;
-    }
-    .process-proof-text h3 {
-      font-family: var(--serif);
-      font-size: clamp(1.75rem, 3vw, 2.5rem);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      line-height: 1.1;
-      margin: 16px 0 16px;
-    }
-    .process-proof-text p {
-      color: var(--text-dim);
-      font-size: 1rem;
-      line-height: 1.6;
-      margin-bottom: 24px;
-    }
-    .process-proof-meta {
-      display: flex; gap: 12px; flex-wrap: wrap;
-    }
-    .process-proof-meta span {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 6px 12px;
-      background: rgba(255,122,24,0.1);
-      border: 1px solid rgba(255,122,24,0.25);
-      border-radius: 999px;
-      font-size: 0.75rem; font-weight: 600;
-      color: var(--orange);
-    }
-    .process-proof-video {
-      background: #000;
-      position: relative;
-      min-height: 380px;
-    }
-    .process-proof-video video {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      position: absolute; inset: 0;
-    }
-    @media (max-width: 900px) {
-      .process-proof { grid-template-columns: 1fr; }
-      .process-proof-text { padding: 36px 28px; }
-      .process-proof-video { min-height: 240px; aspect-ratio: 16/9; }
-    }
+    /* L'ancien bloc .process-proof (video d'installation dans un cadre large)
+       a ete remplace sur l'accueil par la section .instal, epinglee, dont le
+       CSS vit dans home.css. Ses 65 lignes de styles sont supprimees ici :
+       aucune page ne portait plus ces classes, et site.css est charge par les
+       29 pages du site. */
 
     /* ============================================
        GALERIE PARALLAX - jeux en mosaïque

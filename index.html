@@ -736,22 +736,85 @@
       </div>
     </div>
 
-    <div class="process-proof" data-reveal>
-      <div class="process-proof-text">
-        <div class="eyebrow">Vu de l'intérieur</div>
-        <h3>15 minutes chrono.<br/>Aucune préparation.</h3>
-        <p>Pas de promesses en l'air. Voici exactement à quoi ressemble notre installation. Une valise, un mur. Aucun matériel à préparer de votre côté.</p>
-        <div class="process-proof-meta">
-          <span>⏱ 15 min chrono</span>
-          <span>📦 Une seule valise</span>
-          <span>🔌 Une prise suffit</span>
+    <!-- ============================================
+         INSTALLATION - sequence epinglee
+         ============================================
+         Remplace l'ancien bloc .process-proof, qui posait une video verticale
+         dans un cadre large : les deux tiers de l'image etaient rognes, on ne
+         voyait ni la valise au sol ni le haut du mur - c'est-a-dire ni le
+         debut ni la fin de la demonstration. Il restait un sol vide et un
+         personnage minuscule.
+         Ici la video garde son format 9:16 et reste epinglee pendant que les
+         trois etapes defilent a cote. Sur ordinateur, sa lecture est pilotee
+         par le defilement : la valise apparait sur l'etape 1, le mur s'allume
+         sur l'etape 3. Le format vertical devient un atout au lieu d'une
+         contrainte.
+         Le contenu est verifiable : tout ce qui est affirme ici se voit dans
+         les 15 secondes de la video. ============================================ -->
+    <section class="instal" id="installation" aria-labelledby="instalTitle">
+      <div class="instal-inner">
+
+        <div class="instal-media-col">
+          <figure class="instal-media">
+            <!-- preload="none" et pas de data-src resolu au chargement : la
+                 video n'est demandee qu'a l'approche de la section (voir
+                 cro.js). L'accueil reste a 0,63 Mo a l'ouverture. -->
+            <video class="instal-video" muted playsinline loop preload="none"
+                   width="640" height="1138"
+                   poster="assets/installation-valise-poster.webp"
+                   data-src="assets/installation-valise.mp4"></video>
+            <!-- Sur telephone la video ne se telecharge que si on appuie.
+                 Le bouton est masque sur ordinateur, ou la lecture est
+                 pilotee par le defilement. -->
+            <button class="instal-play" type="button">
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+                <path d="M8 5v14l11-7z" fill="currentColor"/>
+              </svg>
+              <span>Voir l'installation (15 s)</span>
+            </button>
+            <figcaption class="instal-legende">Installation réelle, filmée sans coupe.</figcaption>
+          </figure>
         </div>
+
+        <div class="instal-steps">
+          <div class="instal-head">
+            <p class="eyebrow">Vu de l'intérieur</p>
+            <h2 id="instalTitle">15 minutes chrono.<br/>Aucune préparation.</h2>
+            <p class="instal-lede">Pas de promesses en l'air : voici l'installation complète, du début à la fin.</p>
+          </div>
+
+          <ol class="instal-list">
+            <li class="instal-step" data-instal-t="0.02">
+              <span class="instal-num">01</span>
+              <h3>La valise arrive</h3>
+              <p>Une seule valise à roulettes. C'est tout ce qui entre dans votre salle.</p>
+            </li>
+            <li class="instal-step" data-instal-t="0.42">
+              <span class="instal-num">02</span>
+              <h3>On pose, on branche</h3>
+              <p>Le boîtier se pose au sol, face au mur. Une prise de courant suffit. Rien à fixer, rien à percer, aucun écran à installer.</p>
+            </li>
+            <li class="instal-step" data-instal-t="0.92">
+              <span class="instal-num">03</span>
+              <h3>Le mur devient un terrain de jeu</h3>
+              <p>Le premier jeu tourne et demande combien vous êtes. Vous n'avez rien eu à préparer.</p>
+            </li>
+          </ol>
+
+          <div class="instal-meta">
+            <span>15 min chrono</span>
+            <span>Une seule valise</span>
+            <span>Une prise suffit</span>
+          </div>
+
+          <a href="/devis" class="btn btn-primary instal-cta" data-cta="installation">
+            Demander mon devis
+            <span class="instal-cta-note">Réponse sous 24 h, sans engagement</span>
+          </a>
+        </div>
+
       </div>
-      <div class="process-proof-video">
-        <video class="lazy-video" autoplay muted loop playsinline preload="none" poster="assets/video-installation-poster.jpg" data-src="assets/video-installation.mp4">
-        </video>
-      </div>
-    </div>
+    </section>
   </section>
 
   <!-- ============================================

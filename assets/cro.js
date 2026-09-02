@@ -499,3 +499,156 @@
    // au rechargement, la page ne demarre donc pas forcement a 0.
    appliquer();
 })();
+
+// ============================================
+// SECTION INSTALLATION - lecture pilotee par le defilement
+// ============================================
+// Deux comportements, un seul balisage :
+//
+//   Ordinateur, pointeur fin, mouvement non reduit
+//     La video est epinglee et sa position de lecture suit le defilement.
+//     Elle n'est jamais « jouee » : on ecrit currentTime. Le visiteur avance
+//     dans l'installation au rythme ou il lit, et peut revenir en arriere.
+//     C'est ce qui justifie la section : une boucle qui tourne toute seule
+//     dans un coin ne se regarde pas, elle se subit.
+//
+//   Telephone, ou mouvement reduit
+//     Rien ne se telecharge. L'affiche reste, avec un bouton. Les 1,7 Mo ne
+//     partent que si quelqu'un appuie. Imposer une video en 4G a un visiteur
+//     qui fait defiler, c'est depenser son forfait pour lui.
+//
+// Le fichier fait 1,7 Mo et porte une image-cle toutes les 0,4 s (38 en
+// tout) : sans elles, chaque deplacement du curseur ferait reculer le
+// decodeur jusqu'a l'image-cle precedente et l'image sauterait.
+// ============================================
+(function () {
+   'use strict';
+
+   var section = document.querySelector('.instal');
+   if (!section) return;                       // present sur l'accueil seulement
+
+   var video  = section.querySelector('.instal-video');
+   var media  = section.querySelector('.instal-media');
+   var liste  = section.querySelector('.instal-list');
+   var etapes = section.querySelectorAll('.instal-step');
+   var bouton = section.querySelector('.instal-play');
+   if (!video || !liste) return;
+
+   var srcVideo = video.getAttribute('data-src');
+
+   function charger() {
+      if (!srcVideo || video.src) return false;
+      video.src = srcVideo;
+      video.load();
+      return true;
+   }
+
+   // ---- Cas 2 : telephone ou mouvement reduit -> lecture a la demande ----
+   var tactile = window.matchMedia('(pointer: coarse)').matches;
+   var mouvementReduit = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+   if (bouton) {
+      bouton.addEventListener('click', function () {
+         charger();
+         video.setAttribute('controls', '');    // pour pouvoir l'arreter
+         if (media) media.classList.add('is-playing');
+         video.play().catch(function () {
+            // Lecture refusee (economie de donnees, onglet en fond) : on
+            // laisse les controles natifs, le visiteur reste maitre.
+         });
+      });
+   }
+
+   if (tactile || mouvementReduit) return;      // pas de pilotage au defilement
+
+   // ---- Cas 1 : pilotage par le defilement ----
+   // La source n'est demandee qu'a l'approche de la section : l'accueil
+   // s'ouvre toujours a 0,63 Mo, la video ne pese que sur ceux qui
+   // descendent jusqu'ici.
+   var armee = false;
+   function armer() {
+      if (armee) return;
+      armee = true;
+      charger();
+      liste.classList.add('is-live');           // active la mise en retrait
+      window.addEventListener('scroll', demander, { passive: true });
+      window.addEventListener('resize', demander);
+      demander();
+   }
+
+   if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entrees) {
+         if (!entrees[0].isIntersecting) return;
+         io.disconnect();
+         armer();
+      }, { rootMargin: '600px 0px' });
+      io.observe(section);
+   } else {
+      armer();
+   }
+
+   var enAttente = false;
+   var cible = 0;                                // position visee, en fraction
+   var actuelle = 0;                             // position appliquee
+   var etapeActive = -1;
+
+   function progression() {
+      var r = liste.getBoundingClientRect();
+      var vh = window.innerHeight || 800;
+      // p = 0 quand le haut de la liste atteint les trois quarts de l'ecran,
+      // p = 1 quand son bas repasse au tiers. Entre les deux, la video se
+      // deroule. Les bornes sont choisies pour que la premiere image soit
+      // deja la quand on commence a lire, et la derniere encore visible
+      // quand on finit.
+      var debut = vh * 0.70;
+      var fin   = vh * 0.35 - r.height;
+      if (debut === fin) return 0;
+      var p = (debut - r.top) / (debut - fin);
+      return p < 0 ? 0 : (p > 1 ? 1 : p);
+   }
+
+   function demander() {
+      cible = progression();
+      if (enAttente) return;
+      enAttente = true;
+      window.requestAnimationFrame(appliquer);
+   }
+
+   function appliquer() {
+      enAttente = false;
+
+      // Lissage : le defilement arrive par a-coups (molette, trackpad). Sans
+      // ce filtre, l'image saute d'un quart de seconde a chaque cran. On
+      // rattrape 18 % de l'ecart par image, ce qui donne un mouvement continu
+      // sans retard perceptible.
+      actuelle += (cible - actuelle) * 0.18;
+      if (Math.abs(cible - actuelle) < 0.0015) actuelle = cible;
+
+      var d = video.duration;
+      if (d && isFinite(d) && video.readyState >= 1) {
+         var t = actuelle * d;
+         // Ne pas reecrire currentTime pour un ecart invisible : chaque
+         // ecriture declenche une recherche dans le flux.
+         if (Math.abs(video.currentTime - t) > 0.02) {
+            if (video.fastSeek) { try { video.fastSeek(t); } catch (e) { video.currentTime = t; } }
+            else video.currentTime = t;
+         }
+      }
+
+      // Etape en cours : le seuil de chaque etape est porte par son attribut
+      // data-instal-t, qui est aussi le moment de la video ou elle se voit.
+      var i, n = -1;
+      for (i = 0; i < etapes.length; i++) {
+         if (cible >= parseFloat(etapes[i].getAttribute('data-instal-t') || '0')) n = i;
+      }
+      if (n !== etapeActive) {
+         for (i = 0; i < etapes.length; i++) etapes[i].classList.toggle('is-active', i === n);
+         etapeActive = n;
+      }
+
+      if (actuelle !== cible) window.requestAnimationFrame(appliquer);
+   }
+
+   // Le navigateur restaure parfois la position de defilement au rechargement.
+   video.addEventListener('loadedmetadata', demander);
+})();
