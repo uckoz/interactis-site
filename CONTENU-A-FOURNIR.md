@@ -54,40 +54,64 @@ et facile. Mais il faut le vrai chiffre. Compte tes factures.
 
 ---
 
-## 4. Le tarif professionnel — réglé le 2 septembre 2026
+## 4. La grille tarifaire — arrêtée le 2 septembre 2026
 
-Tarifs communiqués : **à partir de 300 € HTVA pour 1h30 en entreprise**,
-**à partir de 850 € HTVA pour une journée complète en école**
-(1 028,50 € TVAC). Ils sont en ligne sur l'accueil (bandeau de preuve +
-cartes univers), `/professionnels`, `/animation-entreprise`,
-`/animation-ecole`, `/animation-bruxelles` et `/devis`.
+| Segment | Prix affiché | Base |
+|---|---|---|
+| Anniversaire, fête de famille | à partir de 249 € | TVA comprise |
+| École, maison de repos, plaine de jeux | à partir de 300 € pour 1h30 | TVA comprise |
+| École, journée complète | à partir de 1 049 € | TVA comprise |
+| Entreprise, team building, événement | à partir de 349 € pour 1h30 | Hors TVA |
 
-Le tarif école est passé de 1 000 à 850 € HTVA le 2 septembre, sur ta
-décision. Le prix figure aussi dans les données structurées de
-`/animation-ecole` : les deux ont été changés ensemble, sinon Google
-pouvait afficher 1 000 € dans ses résultats pour une page qui en
-annonce 850.
+**Une seule unité de durée : 1h30.** C'est ce qui transforme une liste de
+prix en grille tarifaire. Avant, le site comparait 1h30 d'anniversaire à
+une journée d'école : illisible. Maintenant l'échelle se lit d'un coup
+d'œil — le privé au plus bas, le non-marchand au milieu, le corporate
+au-dessus. Ça se défend en une phrase au téléphone.
 
-**Tous les montants du site sont formulés « à partir de »**, à ta demande :
-aucun prix ferme n'est annoncé nulle part, tu gardes la main sur
-l'ajustement selon la durée, l'effectif et le lieu.
+**Tout est en « à partir de »**, journée scolaire comprise. Aucun prix
+ferme nulle part, tu ajustes selon la durée, l'effectif et le lieu.
 
-**Aucun kilométrage gratuit n'est annoncé**, à ta demande également. Ni sur
-les pages de vente, ni dans les CGV. Le site dit partout la même chose :
-les frais de déplacement sont chiffrés dans le devis et rien ne s'ajoute
+**Tout est TVA comprise, sauf l'entreprise.** C'est toi qui as eu raison
+sur ce point et moi qui m'étais trompé : je t'avais donné la règle
+« HTVA pour les pros, ils récupèrent la TVA ». C'est vrai d'une
+entreprise, c'est faux de tes deux meilleurs segments. En Belgique
+l'enseignement et les maisons de repos sont exonérés de TVA (article 44
+du Code TVA) : ils ne la récupèrent pas. Leur afficher du HTVA revenait à
+leur montrer un prix qu'ils ne paieraient jamais, et à leur faire une
+mauvaise surprise de 21 % sur le devis. Seule l'entreprise assujettie
+garde le HTVA, sans conversion TVAC affichée, pour rester comparable aux
+devis de tes concurrents.
+
+**Le doublon 249 est supprimé.** L'ancienne grille affichait 249 € TVAC
+pour un anniversaire et 249 € HTVA pour une maison de repos : le même
+nombre pour deux totaux différents. C'était le seul endroit du site où un
+lecteur attentif pouvait croire à une erreur. La maison de repos est
+passée à 300 € TVA comprise. Plus aucun montant n'apparaît deux fois avec
+deux bases.
+
+**Aucun kilométrage gratuit n'est annoncé**, à ta demande. Ni sur les
+pages de vente, ni dans les CGV. Le site dit partout la même chose : les
+frais de déplacement sont chiffrés dans le devis et rien ne s'ajoute
 après acceptation. C'est ce qui rassure un client — il veut l'absence de
 surprise, pas la gratuité — et ça te laisse décider au cas par cas.
 
-**Ce que j'ai retiré des CGV.** L'article 4.2 engageait **0,70 €/km au-delà
-du rayon**. Ce chiffre était là avant moi, personne ne l'a jamais
+**Ce que j'ai retiré des CGV.** L'article 4.2 engageait **0,70 €/km
+au-delà du rayon**. Ce chiffre était là avant moi, personne ne l'a jamais
 confirmé, et il contredisait le principe du devis au cas par cas. Un
 tarif kilométrique écrit dans des CGV est opposable : mieux vaut ne rien
 écrire qu'écrire un chiffre qu'on n'applique pas. Si tu veux un barème
-kilométrique officiel, donne-le-moi et je le remets proprement.
+officiel, donne-le-moi et je le remets proprement.
 
-**Reste sans tarif :** `/animation-evenement` et `/animation-plaine-de-jeux`
-affichent toujours « sur devis ». Donne-moi un plancher journée ou
-demi-journée pour ces deux-là et je les complète.
+**Plus aucune page sans tarif.** `/animation-evenement` et
+`/animation-plaine-de-jeux` affichaient « sur devis » : c'est réglé,
+elles sont respectivement à 349 € HTVA et 300 € TVA comprise.
+
+**Un point à surveiller.** Les événements publics sont souvent commandés
+par des communes ou des ASBL, qui ne récupèrent pas la TVA non plus. Ils
+sont pourtant affichés en HTVA, avec les entreprises. Si tu vends
+beaucoup d'événements à des communes, dis-le-moi : il vaudra mieux les
+basculer côté TVA comprise, avec l'école et la maison de repos.
 
 ---
 

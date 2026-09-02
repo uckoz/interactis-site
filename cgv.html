@@ -118,10 +118,9 @@
             <li>La durée du service</li>
             <li>Le type et nombre d'animations</li>
             <li>Le nombre de participants estimés</li>
-            <!-- Le devis doit porter les deux montants : le client professionnel
-                 raisonne en HTVA (il recupere la TVA), le particulier ne
-                 raisonne qu'en TVAC. Un devis qui n'affiche qu'une seule des
-                 deux bases oblige l'un des deux a faire le calcul lui-meme. -->
+            <!-- Le devis porte les deux montants meme si le site n'en affiche
+                 qu'un : c'est le document contractuel, il doit permettre au
+                 client de verifier le calcul sans le refaire lui-meme. -->
             <li>Le prix total, exprimé hors TVA et TVA comprise</li>
             <li>Les conditions de paiement</li>
             <li>Les conditions d'annulation</li>
@@ -145,16 +144,22 @@
         <section>
           <h2>Article 4 - Tarification et modalités de paiement</h2>
           <p><strong>4.1 - Prix :</strong></p>
-          <!-- Cet article disait "prix exprimes en euros TTC" alors que toutes
-               les pages professionnelles du site affichent du HTVA. Une CGV qui
-               contredit la page de vente, c'est le litige assure : le client pro
-               peut soutenir que le prix contractuel etait le TTC. On aligne donc
-               le contrat sur la pratique reelle, en distinguant les deux publics.
-               Le HTVA pour les pros n'est pas un choix esthetique : ils
-               recuperent la TVA, un prix TTC les fait fuir a tort. Le TVAC pour
-               les particuliers est une obligation legale (Code de droit
-               economique, livre VI : le consommateur doit voir le prix a payer). -->
-          <p>Les prix des prestations destinées aux clients professionnels (écoles, entreprises, maisons de repos, communes, associations) sont exprimés hors TVA (HTVA). Les prix des prestations destinées aux particuliers sont exprimés toutes taxes comprises (TVAC). Le taux de TVA applicable est de 21 % en Belgique. Chaque devis reprend les deux montants.</p>
+          <!-- Troisieme version de cet article, et la premiere qui colle a la
+               fois au site et au droit belge.
+               v0 : "prix exprimes en euros TTC" alors que les pages pro
+                    affichaient du HTVA — contradiction exploitable en litige.
+               v1 : "HTVA pour les pros, TVAC pour les particuliers" — regle
+                    que j'avais posee trop vite. Elle est fausse : en Belgique
+                    l'enseignement et les maisons de repos sont exoneres de TVA
+                    (art. 44 CTVA) et ne la recuperent donc pas. Leur annoncer
+                    du HTVA revient a leur promettre un prix qu'ils ne paieront
+                    jamais.
+               v2 : TVA comprise par defaut, hors TVA pour le seul client qui
+                    la recupere. C'est ce que le site affiche desormais, donc
+                    le contrat et la vitrine disent enfin la meme chose.
+               Le TVAC pour le consommateur reste par ailleurs une obligation
+               legale (Code de droit economique, livre VI). -->
+          <p>Les prix sont exprimés toutes taxes comprises (TVAC), au taux de TVA belge de 21 %. Font exception les prestations destinées aux entreprises assujetties à la TVA, notamment les team buildings et les événements d'entreprise, dont les prix sont exprimés hors TVA (HTVA) : ces clients récupèrent la TVA et raisonnent sur cette base. Chaque devis mentionne explicitement la base retenue ainsi que le montant total à payer.</p>
           <!-- Ces CGV annoncaient un rayon de transport offert (50 km a
                l'origine). Ubeyd a demande le 02/09/2026 de ne plus annoncer
                aucun kilometrage gratuit : il decide au cas par cas selon le
