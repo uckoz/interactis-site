@@ -60,7 +60,7 @@ et facile. Mais il faut le vrai chiffre. Compte tes factures.
 |---|---|---|
 | Anniversaire, fête de famille | à partir de 249 € | TVA comprise |
 | École, maison de repos, plaine de jeux | à partir de 300 € pour 1h30 | TVA comprise |
-| École, journée complète | à partir de 1 049 € | TVA comprise |
+| École, plaine de jeux : journée complète | à partir de 1 049 € | TVA comprise |
 | Entreprise, team building, événement | à partir de 349 € pour 1h30 | Hors TVA |
 
 **Une seule unité de durée : 1h30.** C'est ce qui transforme une liste de
