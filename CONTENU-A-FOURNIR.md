@@ -78,3 +78,50 @@ Le site affiche « 5,0 sur Google · 9 avis ». Ce chiffre vieillit tout
 seul. Je n'ai pas pu le vérifier depuis ici (Google bloque l'accès
 derrière son mur de consentement). À revérifier sur ta fiche Google, et à
 mettre à jour à chaque nouvel avis — c'est 3 endroits dans `index.html`.
+
+---
+
+## 6. Trois témoignages que j'ai retirés de /devis — à confirmer
+
+**Où :** `devis.html`, colonne de droite `.devis-proof`.
+
+La page affichait quatre témoignages. Un seul était nommé et attribué
+à Google (Romina Loria). Les trois autres étaient anonymes et ne
+correspondent à aucun de tes avis Google :
+
+| Attribution affichée | Texte | Problème |
+|---|---|---|
+| Directrice d'EHPAD · Maison de repos · Hainaut | « Les résidents en ont parlé pendant des jours… On reprend pour le mois prochain. » | Tu m'as dit n'avoir **aucune maison de repos payante**, uniquement des démos. Le texte affirme une reconduction. |
+| Sophie L. · Anniversaire enfant · Mons | — | Aucun avis Google à ce nom. Source inconnue. |
+| RH PME · Team building · Bruxelles | — | Aucun avis Google. Tu as fait **un** team building. |
+
+**Ce que j'ai fait :** je les ai remplacés par tes trois vrais avis
+Google (Maryline, Elo, Pierre-Yves), chacun avec un badge « Avis
+Google ». La page compte toujours quatre témoignages, tous vérifiables.
+
+**Ce qu'il faut me dire :** si ces trois témoignages venaient de retours
+réels reçus par mail ou SMS, on peut les remettre — mais il faut alors
+l'accord écrit de la personne et une attribution honnête. S'ils ont été
+inventés pour remplir la page, il faut aussi vérifier qu'ils n'existent
+nulle part ailleurs sur le site. En Belgique, un faux avis client est
+une pratique commerciale trompeuse (Livre VI du Code de droit
+économique) : le risque n'est pas seulement moral.
+
+---
+
+## 7. Quatre chiffres produits que je n'ai pas pu vérifier
+
+**Où :** `devis.html`, bloc `.proof-stats`.
+
+Ces chiffres étaient déjà sur ton site et je ne les ai pas touchés, mais
+je ne peux pas les confirmer depuis ici. Confirme-les ou corrige-les :
+
+- « 35+ jeux interactifs » — le catalogue en compte-t-il vraiment 35 ?
+- « 100 % inclusif PMR » — vrai pour *tous* les jeux, ou seulement une partie ?
+- « 15 min d'installation » — chronométré, ou estimé ?
+- « 5-95 ans » — formule marketing, celle-là passe.
+
+Et dans le bloc « Notre engagement », la phrase « Vous ne payez rien tant
+que vous n'avez pas signé un bon de commande » suppose que tu envoies
+réellement un bon de commande à signer. Si ton process est plus informel
+(un accord par mail), reformule.

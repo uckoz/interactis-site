@@ -579,6 +579,32 @@
        ============================================ */
 
     /* Barre de progression */
+    /* Libelle « facultatif » : doit se lire comme une permission, pas
+       comme une note de bas de page. */
+    .label-optional { font-weight: 400; color: var(--text-faded); font-size: 0.8125rem; }
+
+    /* Repere de prix juste au-dessus du formulaire. Le visiteur qui arrive
+       ici depuis une pub veut savoir dans quel ordre de grandeur il est
+       avant de donner son email. Les deux chiffres affiches sont ceux
+       deja publies ailleurs sur le site, aucun n'est invente. */
+    .price-anchor {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 18px 0 4px;
+    }
+    .price-anchor-item {
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: rgba(245, 247, 251, 0.02);
+    }
+    .price-anchor-k { display: block; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-faded); margin-bottom: 6px; }
+    .price-anchor-v { display: block; font-family: var(--serif); font-size: 1.375rem; font-weight: 700; color: var(--orange); line-height: 1.1; }
+    .price-anchor-n { display: block; font-size: 0.8125rem; color: var(--text-dim); margin-top: 5px; line-height: 1.45; }
+    .price-anchor-note { margin: 10px 0 0; font-size: 0.8125rem; color: var(--text-dim); line-height: 1.5; }
+    @media (max-width: 560px) { .price-anchor { grid-template-columns: 1fr; } }
+
     .form-progress {
       position: relative;
       margin-bottom: 8px;
@@ -747,7 +773,7 @@
       <div class="trust-badges">
         <a href="https://g.page/r/CaGLdFils55zEBM/review" target="_blank" rel="noopener" class="trust-badge trust-badge-rating" aria-label="Voir les avis Google InterActis">
           <span class="trust-badge-stars" aria-hidden="true">⭐⭐⭐⭐⭐</span>
-          <strong>5,0/5</strong> · 8 avis Google
+          <strong>5,0/5</strong> · 9 avis Google
         </a>
         <span class="trust-badge">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
@@ -800,10 +826,37 @@
 
         <!-- Bandeau de disponibilites : honnete, sans faux compte a rebours.
              Indique a l'utilisateur que les dates de juin/juillet partent vite. -->
+        <!-- Remplace un bandeau qui annoncait « il reste quelques creneaux »
+             pour « septembre et octobre » : rarete invendable car invérifiable,
+             et mois codes en dur donc faux deux mois plus tard. On garde une
+             information vraie et utile a la place. -->
         <div class="availability-note" role="note">
           <span class="availability-note-icon" aria-hidden="true">📅</span>
-          <span>Calendrier <strong>septembre et octobre</strong> qui se remplit : il reste quelques créneaux. Demandez votre devis maintenant pour bloquer votre date.</span>
+          <span>Pas encore de date fixée&nbsp;? <strong>Demandez quand même.</strong> Le devis est valable pour la date que vous choisirez ensuite.</span>
         </div>
+
+        <!-- ===== Repere de prix =====
+             A FOURNIR : le tarif plancher professionnel (ecole / entreprise).
+             Ubeyd a demande deux tarifs distincts mais n'a communique aucun
+             chiffre pour le pro, donc rien n'est invente ici : la case
+             affiche honnetement « sur devis ». Voir CONTENU-A-FOURNIR.md.
+
+             A FOURNIR aussi : une garantie ecrite (annulation, report,
+             « si ca ne demarre pas vous ne payez rien »). L'emplacement
+             naturel est .price-anchor-note ci-dessous. -->
+        <div class="price-anchor">
+          <div class="price-anchor-item">
+            <span class="price-anchor-k">Anniversaire enfant</span>
+            <span class="price-anchor-v">249 € TVAC</span>
+            <span class="price-anchor-n">1h30 d'animation, 10 à 15 enfants.</span>
+          </div>
+          <div class="price-anchor-item">
+            <span class="price-anchor-k">École, entreprise, événement</span>
+            <span class="price-anchor-v">Sur devis</span>
+            <span class="price-anchor-n">Le prix dépend de la durée, du nombre de groupes et du lieu.</span>
+          </div>
+        </div>
+        <p class="price-anchor-note">Le devis est gratuit et sans engagement : demander un prix ne vous engage à rien.</p>
 
         <h2>Décrivez votre <span class="accent">projet.</span></h2>
         <p class="form-intro">Plus vous donnez de détails, plus notre proposition sera précise dès le premier échange.</p>
@@ -881,8 +934,11 @@
             <p class="form-step-intro">Parlez-nous de votre événement. Plus c'est précis, mieux on adapte.</p>
 
             <div class="form-field">
-              <label for="date">Date souhaitée *</label>
-              <input id="date" type="text" name="date" required placeholder="ex. samedi 14 septembre, ou « entre mi-septembre et mi-octobre »" />
+              <!-- Date volontairement facultative : beaucoup de demandeurs
+                   (ecoles surtout) veulent connaitre le prix avant d'arbitrer
+                   une date. La rendre obligatoire les renvoyait sans devis. -->
+              <label for="date">Date souhaitée <span class="label-optional">— facultatif</span></label>
+              <input id="date" type="text" name="date" placeholder="ex. samedi 14 septembre, « entre mi-septembre et mi-octobre », ou « pas encore décidé »" />
             </div>
 
             <div class="form-row">
@@ -981,13 +1037,14 @@
         </div>
 
         <div class="proof-quote">
+          <span class="proof-badge">Avis Google</span>
           <p class="proof-quote-text">
-            Les résidents en ont parlé pendant des jours. Même ceux qui restent habituellement en retrait ont participé. On reprend pour le mois prochain.
+            Fête d'anniversaire de notre fille de 11 ans réussie. Très sympathique et ponctuel. À recommander sans hésiter.
           </p>
           <div class="proof-quote-author">
             <div>
-              <div class="proof-quote-name">Directrice d'EHPAD</div>
-              <div class="proof-quote-role">Maison de repos · Hainaut</div>
+              <div class="proof-quote-name">Maryline</div>
+              <div class="proof-quote-role">Anniversaire enfant</div>
             </div>
             <div class="proof-stars" aria-label="5 étoiles sur 5">
               <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
@@ -1000,13 +1057,14 @@
         </div>
 
         <div class="proof-quote">
+          <span class="proof-badge">Avis Google</span>
           <p class="proof-quote-text">
-            Pour l'anniversaire de ma fille (8 ans), c'était parfait. Aucun écran, juste les enfants qui couraient devant le mur. Tous les parents nous ont demandé le contact.
+            Super animation, animateur très sympa. Je recommande, pour un anniversaire ou comme nous, avec nos élèves.
           </p>
           <div class="proof-quote-author">
             <div>
-              <div class="proof-quote-name">Sophie L.</div>
-              <div class="proof-quote-role">Anniversaire enfant · Mons</div>
+              <div class="proof-quote-name">Elo</div>
+              <div class="proof-quote-role">Sortie scolaire</div>
             </div>
             <div class="proof-stars" aria-label="5 étoiles sur 5">
               <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
@@ -1019,13 +1077,14 @@
         </div>
 
         <div class="proof-quote">
+          <span class="proof-badge">Avis Google</span>
           <p class="proof-quote-text">
-            Format idéal pour notre team building. Les équipes se sont mélangées naturellement, ça a débloqué des conversations entre services qui ne se parlaient jamais.
+            L'idée derrière InterActis est absolument nouvelle et géniale. Je la recommande : directions d'école, entreprises…
           </p>
           <div class="proof-quote-author">
             <div>
-              <div class="proof-quote-name">RH PME</div>
-              <div class="proof-quote-role">Team building · Bruxelles</div>
+              <div class="proof-quote-name">Pierre-Yves</div>
+              <div class="proof-quote-role">Recommandation</div>
             </div>
             <div class="proof-stars" aria-label="5 étoiles sur 5">
               <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
