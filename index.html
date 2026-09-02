@@ -1876,6 +1876,46 @@
   <!-- ===== Aiguillage Particulier / Professionnel : mode mémorisé appliqué avant le paint (zéro flash) ===== -->
   <script>(function(){try{var m=localStorage.getItem('ia-mode');if(m==='part'||m==='pro'){document.documentElement.setAttribute('data-mode',m);}}catch(e){}})();</script>
   <style>
+    /* ===== Temoignages =====
+       Ce sont les avis Google reels, deja presents en bas de page a cote
+       du formulaire. Ils y etaient invisibles : la page fait plus de
+       16 000 px de haut. On les remonte apres les cartes d'univers,
+       au moment ou le visiteur se demande « est-ce que ca marche
+       vraiment ». Le bloc du bas ne garde que la note et le lien. */
+    .testi{padding:76px 32px;background:var(--bg,#05070d)}
+    .testi-inner{max-width:1280px;margin:0 auto}
+    .testi-head{text-align:center;margin-bottom:40px}
+    .testi-head h2{font-family:var(--serif,'Bricolage Grotesque',sans-serif);font-size:clamp(1.6rem,3vw,2.25rem);font-weight:700;letter-spacing:-.02em;margin-bottom:12px}
+    .testi-note{display:inline-flex;align-items:center;gap:8px;font-size:.9375rem;color:rgba(245,247,251,.72)}
+    .testi-note .s{color:#fbbc04;letter-spacing:1px}
+    .testi-note a{color:var(--orange,#ff7a18)}
+    .testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+    .testi-card{padding:26px 24px;border:1px solid var(--line,rgba(245,247,251,.12));border-radius:16px;background:rgba(245,247,251,.02);margin:0}
+    .testi-card p{font-size:.9375rem;line-height:1.65;color:rgba(245,247,251,.86);margin:0 0 14px}
+    .testi-card footer{font-size:.8125rem;color:rgba(245,247,251,.6)}
+    .testi-card footer strong{color:var(--text,#f5f7fb);font-weight:600}
+    @media(max-width:900px){.testi{padding:56px 20px}.testi-head{margin-bottom:28px}}
+
+    /* ===== Bandeau de preuve, juste sous le hero =====
+       Objectif : donner au visiteur, avant qu'il ne scrolle, les trois
+       informations qu'il cherche pour decider — est-ce que d'autres ont
+       aime, combien ca coute, et quand j'ai une reponse. Tous les
+       elements affiches ici sont deja publies ailleurs sur le site :
+       rien n'est invente. */
+    .proof{padding:26px 32px 0;background:var(--bg-soft,#0a0e1a)}
+    .proof-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .proof-item{display:flex;align-items:flex-start;gap:12px;padding:18px 20px;border:1px solid var(--line,rgba(245,247,251,.12));border-radius:14px;background:rgba(245,247,251,.02)}
+    .proof-item svg{flex:0 0 auto;margin-top:2px;color:var(--orange,#ff7a18)}
+    .proof-k{display:block;font-weight:700;font-size:.9375rem;color:var(--text,#f5f7fb);margin-bottom:3px;line-height:1.3}
+    .proof-v{display:block;font-size:.8125rem;color:rgba(245,247,251,.68);line-height:1.5}
+    .proof-v a{color:var(--orange,#ff7a18)}
+    .proof-stars{color:#fbbc04;letter-spacing:1px}
+    @media(max-width:900px){
+      .proof-inner{grid-template-columns:1fr;gap:10px}
+      .proof{padding:22px 20px 0}
+      .proof-item{padding:14px 16px}
+    }
+
     /* ===== Sélecteur de profil (non bloquant) =====
        Remplace l'ancien écran d'accueil plein écran qui masquait tout le
        site tant que le visiteur n'avait pas cliqué. Le contenu est
@@ -2039,6 +2079,47 @@
   </section>
 
   <!-- ============================================
+       BANDEAU DE PREUVE
+       Les 3 informations que le visiteur cherche avant de scroller.
+       Chaque chiffre affiche ici est deja publie ailleurs sur le site.
+
+       A FOURNIR (emplacements prets, volontairement vides tant que
+       l'information reelle n'existe pas — on n'affiche pas de promesse
+       qu'on ne peut pas tenir) :
+         - une garantie ecrite (ex. « si l'animation ne demarre pas,
+           vous ne payez rien ») : a valider par Ubeyd avant publication
+         - un temoignage video client : aucun tourne a ce jour
+         - le nombre d'animations realisees : a compter, puis afficher
+       Le compteur d'avis Google ci-dessous (9) doit etre reverifie
+       periodiquement sur la fiche Google, il vieillit tout seul.
+       ============================================ -->
+  <section class="proof" aria-label="Ce que disent nos clients et ce que ça coûte">
+    <div class="proof-inner">
+      <div class="proof-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <span>
+          <span class="proof-k"><span class="proof-stars" aria-hidden="true">★★★★★</span> 5,0 sur Google</span>
+          <span class="proof-v"><a href="https://g.page/r/CaGLdFils55zEBM/review" target="_blank" rel="noopener">Lire les 9 avis</a> — anniversaires, écoles, événements.</span>
+        </span>
+      </div>
+      <div class="proof-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        <span>
+          <span class="proof-k">Anniversaire enfant : 249 € TVAC</span>
+          <span class="proof-v">1h30 d'animation, 10 à 15 enfants, TVA comprise. Écoles et entreprises : sur devis.</span>
+        </span>
+      </div>
+      <div class="proof-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span>
+          <span class="proof-k">Devis gratuit sous 24 h</span>
+          <span class="proof-v">Sans engagement, et sans avoir à fixer de date pour demander.</span>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
        SÉLECTEUR DE PROFIL - filtre, ne bloque rien
        ============================================ -->
   <section class="chooser" id="choix" aria-labelledby="choixLabel">
@@ -2146,6 +2227,38 @@
           <span class="uc-desc">IME, CPAS, centres de jour, foyers : une animation pensée pour que chacun participe à son rythme.</span>
           <span class="uc-go">Demander un devis →</span>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       TÉMOIGNAGES - avis Google reels et verifiables.
+       Source : fiche Google InterActis, lien ci-dessous. Ne pas
+       modifier le texte des citations : ce sont des avis clients.
+       ============================================ -->
+  <section class="testi" id="temoignages" aria-labelledby="testiTitle">
+    <div class="testi-inner">
+      <div class="testi-head">
+        <h2 id="testiTitle">Ce qu'en disent ceux qui l'ont fait</h2>
+        <p class="testi-note">
+          <span class="s" aria-hidden="true">★★★★★</span>
+          <span>5,0 sur Google ·</span>
+          <a href="https://g.page/r/CaGLdFils55zEBM/review" target="_blank" rel="noopener" data-hover>lire les 9 avis</a>
+        </p>
+      </div>
+      <div class="testi-grid">
+        <blockquote class="testi-card">
+          <p>« Fête d'anniversaire de notre fille de 11 ans réussie. Très sympathique et ponctuel. À recommander sans hésiter. »</p>
+          <footer><strong>Maryline</strong> — anniversaire enfant</footer>
+        </blockquote>
+        <blockquote class="testi-card">
+          <p>« Super animation, animateur très sympa. Je recommande, pour un anniversaire ou comme nous, avec nos élèves. »</p>
+          <footer><strong>Elo</strong> — sortie scolaire</footer>
+        </blockquote>
+        <blockquote class="testi-card">
+          <p>« L'idée derrière InterActis est absolument nouvelle et géniale. Je la recommande : directions d'école, entreprises… »</p>
+          <footer><strong>Pierre-Yves</strong></footer>
+        </blockquote>
       </div>
     </div>
   </section>
@@ -2512,6 +2625,9 @@
           <div><small>Zone d'intervention</small><p>Belgique · Luxembourg · Nord France</p></div>
         </div>
 
+        <!-- Les 3 citations sont desormais affichees plus haut, dans
+             #temoignages. On ne garde ici que la note et le lien : le
+             meme avis repete deux fois sur une page perd sa force. -->
         <div class="greviews" aria-label="Avis Google InterActis">
           <div class="greviews-head">
             <span class="greviews-stars" aria-hidden="true">★★★★★</span>
@@ -2519,17 +2635,10 @@
             <a href="https://g.page/r/CaGLdFils55zEBM/review" target="_blank" rel="noopener" data-hover>9 avis</a>
           </div>
           <blockquote>
-            « Fête d’anniversaire de notre fille de 11 ans réussie. Très sympathique et ponctuel. À recommander sans hésiter. »
+            « Fête d'anniversaire de notre fille de 11 ans réussie. Très sympathique et ponctuel. À recommander sans hésiter. »
             <footer>— Maryline, anniversaire enfant</footer>
           </blockquote>
-          <blockquote>
-            « Super animation, animateur très sympa. Je recommande, pour un anniversaire ou comme nous, avec nos élèves. »
-            <footer>— Elo, sortie scolaire</footer>
-          </blockquote>
-          <blockquote>
-            « L’idée derrière InterActis est absolument nouvelle et géniale. Je la recommande : directions d’école, entreprises… »
-            <footer>— Pierre-Yves</footer>
-          </blockquote>
+          <p style="margin:12px 0 0;font-size:0.8125rem;"><a href="#temoignages" style="color:var(--orange);">Voir les autres témoignages ↑</a></p>
         </div>
       </div>
 
