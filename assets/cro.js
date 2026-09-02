@@ -55,15 +55,15 @@
 
   // ============================================
   // 0) CHARGE LE CSS CRO (banner + popup styles)
-  // Injecte dynamiquement /assets/cro.css pour que toutes les pages
+  // Injecte dynamiquement /assets/cro.css?v=20260902 pour que toutes les pages
   // qui chargent cro.js aient automatiquement les styles, sans avoir
   // a modifier chaque HTML.
   // ============================================
   (function loadCss() {
-    if (document.querySelector('link[href="/assets/cro.css"]')) return;
+    if (document.querySelector('link[href="/assets/cro.css?v=20260902"]')) return;
     var link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = '/assets/cro.css';
+    link.href = '/assets/cro.css?v=20260902';
     document.head.appendChild(link);
   })();
 
