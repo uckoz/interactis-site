@@ -329,7 +329,7 @@
       display: flex; flex-direction: column;
     }
     .devis-form-card .form-row {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;
     }
     @media (max-width: 540px) {
       .devis-form-card .form-row { grid-template-columns: 1fr; }
@@ -393,7 +393,7 @@
     .devis-proof h3 .accent { color: var(--orange); }
     .proof-stats {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 16px;
       margin-bottom: 32px;
     }
@@ -599,7 +599,7 @@
        deja publies ailleurs sur le site, aucun n'est invente. */
     .price-anchor {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 10px;
       margin: 18px 0 4px;
     }
@@ -799,7 +799,7 @@
         </span>
         <span class="trust-badge">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          100 % accessible PMR
+          Jouable assis ou en fauteuil
         </span>
       </div>
     </div>
@@ -1033,8 +1033,8 @@
             <div class="l">Jeux interactifs</div>
           </div>
           <div class="proof-stat">
-            <div class="n">100%</div>
-            <div class="l">Inclusif PMR</div>
+            <div class="n">0</div>
+            <div class="l">Manette à tenir</div>
           </div>
           <div class="proof-stat">
             <div class="n">15 min</div>
@@ -1042,7 +1042,7 @@
           </div>
           <div class="proof-stat">
             <div class="n">5-95</div>
-            <div class="l">Ans, sans exception</div>
+            <div class="l">Ans, sur le même mur</div>
           </div>
         </div>
 

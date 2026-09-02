@@ -9,14 +9,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0a0e1a" />
   <title>Animation scolaire interactive pour écoles | InterActis</title>
-  <meta name="description" content="Animation scolaire interactive et éducative pour écoles primaires, secondaires et enseignement spécialisé. Jeux projetés sur un mur, 100% inclusif. Démo gratuite. Belgique, Luxembourg, Nord France." />
+  <meta name="description" content="Animation scolaire interactive et éducative pour écoles primaires, secondaires et enseignement spécialisé. Jeux projetés sur un mur, jouables assis ou en fauteuil. Démo gratuite. Belgique, Luxembourg, Nord France." />
   <meta name="robots" content="index, follow" />
   <meta name="keywords" content="animation école, animation scolaire, animation enseignement spécialisé, animation périscolaire, activité école interactive" />
   <link rel="canonical" href="https://www.interactis.be/animation-ecole" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Animation scolaire interactive pour écoles | InterActis" />
-  <meta property="og:description" content="Animation scolaire interactive et éducative pour écoles primaires, secondaires et enseignement spécialisé. 100% inclusif. Belgique, Luxembourg, Nord France." />
+  <meta property="og:description" content="Animation scolaire interactive et éducative pour écoles primaires, secondaires et enseignement spécialisé. Jouable assis ou en fauteuil. Belgique, Luxembourg, Nord France." />
   <meta property="og:url" content="https://www.interactis.be/animation-ecole" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="fr_BE" />
@@ -102,7 +102,14 @@
     .hero-section {
       position: relative;
       overflow: hidden;
-      padding: 80px 0 60px;
+      /* 80 px de padding fixe, alors que le bandeau et l'en-tete, tous deux
+         en position: fixed, en occupent 133 sur ordinateur et 172 sur
+         telephone. Mesure : le titre H1 commencait 112 px sous le bas de
+         l'en-tete, donc entierement recouvert par le logo et le menu, sur la
+         page qui s'adresse au meilleur segment commercial.
+         --urgency-h est mesuree au chargement par cro.js et vaut 0 si le
+         visiteur a ferme le bandeau. */
+      padding: calc(var(--urgency-h, 0px) + 96px) 0 60px;
       background: linear-gradient(135deg, var(--bg-soft) 0%, var(--bg-card) 100%);
     }
 
@@ -111,7 +118,7 @@
       margin: 0 auto;
       padding: 0 24px;
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 48px;
       align-items: center;
     }
@@ -122,7 +129,7 @@
         gap: 32px;
       }
       .hero-section {
-        padding: 60px 0 40px;
+        padding: calc(var(--urgency-h, 0px) + 92px) 0 40px;
       }
     }
 
@@ -390,7 +397,7 @@
     /* Contact form */
     .contact-section {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 48px;
     }
 
@@ -587,7 +594,7 @@
     /* Gallery */
     .gallery {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 24px;
       margin-top: 40px;
     }
@@ -691,7 +698,7 @@
             </div>
             <div style="display: flex; align-items: center; gap: 10px; padding-left: 20px; border-left: 1px solid rgba(245,247,251,0.18);">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>
-              <span style="font-size: 0.9375rem; font-weight: 700; color: var(--text); line-height: 1.3;">Satisfait<br/>ou remboursé</span>
+              <span style="font-size: 0.9375rem; font-weight: 700; color: var(--text); line-height: 1.3;">Remboursé si<br/>non conforme au devis</span>
             </div>
           </div>
           <div class="hero-ctas">
@@ -708,7 +715,7 @@
               <div class="stat-label">Installation</div>
             </div>
             <div class="stat-card">
-              <div class="stat-value">36</div>
+              <div class="stat-value">35+</div>
               <div class="stat-label">Jeux éducatifs</div>
             </div>
           </div>
@@ -764,7 +771,7 @@
           <div class="icon">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
           </div>
-          <h3>100% inclusif et PMR</h3>
+          <h3>Jouable assis ou en fauteuil</h3>
           <p>Aucun équipement à tenir ou à mettre sur soi. Accessible depuis une chaise roulante. Tous les élèves jouent ensemble au même titre.</p>
         </div>
       </div>
@@ -796,7 +803,7 @@
 
       <div style="max-width: 900px; margin: 48px auto 0; padding: 28px; background: var(--bg); border: 1px solid var(--line); border-radius: 12px;">
         <h3 style="text-align: center; margin-bottom: 28px;">Ce qu'il vous faut</h3>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px;">
           <div style="display: flex; gap: 16px;">
             <div style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: var(--orange-glow); border-radius: 8px; color: var(--orange); flex-shrink: 0;">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
@@ -851,7 +858,7 @@
           <h3>Enseignement spécialisé</h3>
           <p>Jeux adaptés à chaque élève. Focus sur l'inclusion, l'accessibilité et la valorisation de chacun.</p>
           <ul>
-            <li>100% inclusif et accessible</li>
+            <li>Jouable assis ou en fauteuil</li>
             <li>Personnalisé par élève</li>
             <li>Favorise la confiance</li>
           </ul>

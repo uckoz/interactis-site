@@ -178,7 +178,7 @@
         </div>
         <div style="display: flex; align-items: center; gap: 10px; padding-left: 20px; border-left: 1px solid rgba(245,247,251,0.18);">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>
-          <span style="font-size: 0.9375rem; font-weight: 700; color: var(--text); line-height: 1.3; text-align: left;">Satisfait<br/>ou remboursé</span>
+          <span style="font-size: 0.9375rem; font-weight: 700; color: var(--text); line-height: 1.3; text-align: left;">Remboursé si<br/>non conforme au devis</span>
         </div>
       </div>
     </div>
@@ -373,7 +373,7 @@
 
       <div style="background: var(--bg-card); border: 1px solid var(--line); border-radius: 20px; padding: 40px;">
         <form style="space-y: 24px;">
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 16px;">
             <div>
               <label style="display: block; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(245, 247, 251, 0.72); margin-bottom: 8px;">Votre nom *</label>
               <input type="text" name="name" required placeholder="Jean Dupont" style="width: 100%; padding: 12px 14px; background: var(--bg); border: 1px solid var(--line); border-radius: 10px; color: white; font-size: 0.9375rem; transition: border-color 0.3s ease;">
@@ -384,7 +384,7 @@
             </div>
           </div>
 
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 16px;">
             <div>
               <label style="display: block; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(245, 247, 251, 0.72); margin-bottom: 8px;">Votre téléphone</label>
               <input type="tel" name="phone" placeholder="+32 488 123 456" style="width: 100%; padding: 12px 14px; background: var(--bg); border: 1px solid var(--line); border-radius: 10px; color: white; font-size: 0.9375rem; transition: border-color 0.3s ease;">

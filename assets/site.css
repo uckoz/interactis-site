@@ -531,8 +531,20 @@
       50% { transform: scaleY(1); opacity: 1; }
     }
 
-    /* Stats ticker en bas du hero */
-    .hero-stats {
+    /* Bandeau de statistiques colle en bas du hero de l'accueil.
+       Prefixe par .hero, qui n'existe que sur index.html. Sans ce prefixe la
+       regle s'appliquait aussi a animation-ecole.html, a
+       animation-maison-de-repos.html et aux 9 pages villes, qui utilisent
+       .hero-section et redeclarent .hero-stats en grille sans toucher a
+       position. Le position: absolute passait donc, et la rangee de
+       statistiques venait se poser par-dessus le reste du hero : mesure sur
+       la page ecole a 390 px, elle occupait 605 a 1014 px alors que
+       l'encadre tarif tenait 571-803 et les boutons 831-974. Les trois
+       blocs se recouvraient.
+       C'est la meme fuite que celle deja documentee plus bas pour
+       body.page-ville : une regle pensee pour l'accueil qui s'echappe faute
+       de prefixe. */
+    .hero .hero-stats {
       position: absolute; bottom: 0; left: 0; right: 0;
       z-index: 3;
       padding: 24px 32px;
@@ -565,6 +577,42 @@
     @media (max-width: 720px) {
       .hero-stats { grid-template-columns: repeat(2, 1fr); }
       .hero-scroll { display: none; }
+    }
+
+    /* --- Debordement horizontal du hero sur telephone ------------------
+       Mesure : sur un ecran de 390 px, animation-maison-de-repos.html et
+       animation-ecole.html avaient un scrollWidth de 396 et 412 px. Toute
+       la page glissait lateralement sous le doigt, sur les deux pages qui
+       s'adressent justement aux deux meilleurs segments.
+
+       Cause exacte, trouvee en mesurant la largeur min-content de chaque
+       enfant du hero : .btn porte white-space: nowrap et 28 px de padding
+       de chaque cote. Le libelle « Demander une demonstration gratuite → »
+       reclame donc 364 a 388 px sur une colonne qui n'en offre que 326.
+       Comme .hero-content est un element de grille avec min-width: auto,
+       il ne peut pas descendre sous cette largeur : la piste de grille
+       s'elargit, et la page avec elle.
+
+       Deux garde-fous plutot qu'un, parce que le premier seul ne suffit
+       pas et que le second seul ne protege pas des libelles futurs :
+       1. min-width: 0 autorise l'element de grille a se retrecir ;
+       2. white-space: normal autorise le libelle a passer a la ligne
+          dans le bouton au lieu de pousser dehors.
+       Les boutons courts (« Demander mon devis ») ne bougent pas : ils
+       tiennent deja sur une ligne, rien ne les force a se couper. */
+    @media (max-width: 720px) {
+      .hero-inner > *,
+      .hero-content { min-width: 0; }
+      /* Volontairement sur .btn et pas seulement sur .hero-ctas .btn : le
+         meme bouton « Demander une demonstration gratuite → » reapparait
+         plus bas dans .cta-section, ou il debordait exactement pareil.
+         Restreindre la regle au hero revenait a corriger une occurrence
+         sur deux et a laisser le prochain bouton long recreer le defaut. */
+      .btn {
+        white-space: normal;
+        max-width: 100%;
+        text-align: center;
+      }
     }
 
     /* ============================================
@@ -1940,9 +1988,18 @@
 /* ============================================
    ARTICLES DE BLOG (templates pour blog-*.html)
    ============================================ */
+/* Le bandeau d'urgence et l'en-tete sont tous deux en position: fixed. Ils
+   ne poussent donc rien : c'est au premier bloc de la page de reserver leur
+   hauteur. Un padding fixe de 130 px ne peut pas y suffire, parce que la
+   hauteur du bandeau varie - 55 px sur ordinateur, 94 px sur telephone ou
+   son texte passe sur deux lignes, 0 px s'il a ete ferme. Mesure a 390 px :
+   en-tete bas = 172, contenu commence a 130, donc 42 px de contenu passaient
+   dessous. C'est --urgency-h, mesuree au chargement par cro.js, qui donne la
+   valeur reelle ; 78 px est la hauteur de l'en-tete, le reste est la
+   respiration. */
 .article-hero {
   position: relative;
-  padding: 130px 32px 40px;
+  padding: calc(var(--urgency-h, 0px) + 108px) 32px 40px;
   background:
     radial-gradient(ellipse at 20% 30%, rgba(0,212,255,0.15), transparent 55%),
     radial-gradient(ellipse at 80% 70%, rgba(255,122,24,0.12), transparent 55%),
@@ -2356,11 +2413,16 @@ a.article-card:hover,
        Le prefixe tombera quand les <style> inline de animation-ecole.html et
        animation-maison-de-repos.html auront ete nettoyes, un par un.
        ============================================ */
-    body.page-ville .hero-section {position: relative; overflow: hidden; padding: 80px 0 60px; background: linear-gradient(135deg, var(--bg-soft) 0%, var(--bg-card) 100%);}
+    /* Meme defaut que sur .article-hero, et c'est moi qui l'ai introduit en
+       reconstruisant les pages villes : 80 px de padding fixe la ou le
+       bandeau et l'en-tete fixes en occupent 133 sur ordinateur et 172 sur
+       telephone. Resultat mesure : le titre H1 des 9 pages villes passait
+       sous l'en-tete, de 12 a 74 px selon le format. */
+    body.page-ville .hero-section {position: relative; overflow: hidden; padding: calc(var(--urgency-h, 0px) + 96px) 0 60px; background: linear-gradient(135deg, var(--bg-soft) 0%, var(--bg-card) 100%);}
     body.page-ville .hero-inner {max-width: 1200px; margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;}
     @media (max-width: 768px) {
       body.page-ville .hero-inner {grid-template-columns: 1fr; gap: 32px;}
-      body.page-ville .hero-section {padding: 60px 0 40px;}
+      body.page-ville .hero-section {padding: calc(var(--urgency-h, 0px) + 92px) 0 40px;}
     }
     body.page-ville .stat-card {padding: 16px; background: var(--bg-card); border: 1px solid var(--line); border-radius: 8px; text-align: center;}
     body.page-ville .stat-value {font-family: var(--serif); font-size: 1.75rem; font-weight: 700; color: var(--orange); margin-bottom: 8px;}

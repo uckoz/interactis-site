@@ -11,7 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0a0e1a" />
   <title>InterActis - L'animation où personne ne reste sur le côté</title>
-  <meta name="description" content="L'animation interactive mobile qui transforme n'importe quel mur en terrain de jeu vivant. Anniversaires, entreprises, maisons de repos. De 5 à 95 ans, sans exception. Belgique, Luxembourg, Nord France." />
+  <meta name="description" content="L'animation interactive mobile qui transforme n'importe quel mur en terrain de jeu vivant. Anniversaires, entreprises, maisons de repos. De 5 à 95 ans, sur le même mur. Belgique, Luxembourg, Nord France." />
   <link rel="canonical" href="https://www.interactis.be/" />
   <link rel="alternate" hreflang="fr" href="https://www.interactis.be/" />
   <link rel="alternate" hreflang="x-default" href="https://www.interactis.be/" />
@@ -22,7 +22,7 @@
   <meta name="apple-mobile-web-app-title" content="InterActis" />
 
   <meta property="og:title" content="InterActis - L'animation où personne ne reste sur le côté" />
-  <meta property="og:description" content="Animation interactive mobile. Anniversaires, team buildings, maisons de repos. 100% accessible, installation en 15 minutes." />
+  <meta property="og:description" content="Animation interactive mobile. Anniversaires, team buildings, maisons de repos. Jouable assis ou en fauteuil, installation en 15 minutes." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.interactis.be/" />
   <meta property="og:image" content="https://www.interactis.be/assets/hero.jpg" />
@@ -317,8 +317,11 @@
 
     <div class="hero-stats">
       <div class="hero-stat">
-        <div class="n" data-count="100">100<span style="color:var(--blue);font-size:0.7em">%</span></div>
-        <div class="l">Inclusif PMR</div>
+        <!-- Pas de data-count ici : le compteur anime de 0 vers la cible, donc
+             une cible a 0 ferait tourner une animation de 1,6 s qui n'affiche
+             jamais autre chose que "0". Valeur statique. -->
+        <div class="n">0</div>
+        <div class="l">Manette à tenir</div>
       </div>
       <div class="hero-stat">
         <div class="n" data-count="15">15<span style="color:var(--blue);font-size:0.5em;margin-left:4px">min</span></div>
@@ -330,7 +333,7 @@
       </div>
       <div class="hero-stat">
         <div class="n">5-95</div>
-        <div class="l">Ans, sans exception</div>
+        <div class="l">Ans, sur le même mur</div>
       </div>
     </div>
   </section>
@@ -559,7 +562,7 @@
       </div>
       <div class="trust-item">
         <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
-        100% accessible PMR
+        Jouable assis ou en fauteuil
       </div>
     </div>
   </div>

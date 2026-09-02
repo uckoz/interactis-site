@@ -9,18 +9,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0a0e1a" />
   <title>Animation maison de repos & seniors | InterActis</title>
-  <meta name="description" content="Animation interactive pour maisons de repos et seniors en Belgique, Luxembourg et Nord France. Jeux projetés sur un mur, 100% accessible PMR. Démonstration gratuite, devis sous 24h.">
+  <meta name="description" content="Animation interactive pour maisons de repos et seniors en Belgique, Luxembourg et Nord France. Jeux projetés sur un mur, jouables assis ou en fauteuil. Démonstration gratuite, devis sous 24h.">
   <meta name="robots" content="index, follow">
   <meta name="keywords" content="animation maison de repos, animation seniors, animation personnes âgées, animation PMR, animation résidence services">
   <link rel="canonical" href="https://www.interactis.be/animation-maison-de-repos">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Animation maison de repos & seniors | InterActis">
-  <meta property="og:description" content="Des jeux interactifs projetés sur un mur pour stimuler la mobilité, la mémoire et le lien social des résidents. 100% accessible PMR. Belgique, Luxembourg, Nord France.">
+  <meta property="og:description" content="Des jeux interactifs projetés sur un mur pour stimuler la mobilité, la mémoire et le lien social des résidents. Jouable assis ou en fauteuil. Belgique, Luxembourg, Nord France.">
   <meta property="og:url" content="https://www.interactis.be/animation-maison-de-repos">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Animation maison de repos & seniors | InterActis">
-  <meta name="twitter:description" content="Jeux interactifs projetés sur un mur pour stimuler mobilité, mémoire et lien social. 100% accessible PMR.">
+  <meta name="twitter:description" content="Jeux interactifs projetés sur un mur pour stimuler mobilité, mémoire et lien social. Jouable assis ou en fauteuil.">
   <meta name="twitter:image" content="https://www.interactis.be/images/hero.jpg">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="fr_BE">
@@ -48,7 +48,7 @@
     "@type": "Service",
     "@id": "https://www.interactis.be/animation-maison-de-repos",
     "name": "Animation Interactive pour Maisons de Repos",
-    "description": "Animation interactive ludique et accessible pour maisons de repos et seniors. Jeux projetés sur un mur, 100% accessible aux personnes à mobilité réduite.",
+    "description": "Animation interactive ludique et accessible pour maisons de repos et seniors. Jeux projetés sur un mur, jouables assis ou en fauteuil.",
     "provider": {
       "@type": "LocalBusiness",
       "name": "Interactis",
@@ -154,7 +154,7 @@
       margin: 0 auto;
       width: 100%;
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 60px;
       align-items: center;
     }
@@ -198,6 +198,19 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
       margin-top: 32px;
+    }
+    /* Ce bloc <style> de page passe apres site.css : sa regle a trois
+       colonnes ecrasait le repli a deux colonnes prevu dans site.css sous
+       720 px. Resultat mesure : la rangee reclamait 459 px sur un ecran de
+       390, et toute la page glissait lateralement sous le doigt. Le repli
+       est donc redeclare ici, ou il a la priorite. Une seule colonne sous
+       480 px : a deux, "MANETTE A TENIR" et "JEUX INTERACTIFS" se coupent
+       en trois lignes chacun. */
+    @media (max-width: 720px) {
+      .hero-stats { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .hero-stats { grid-template-columns: 1fr; gap: 12px; }
     }
     .hero-stat {
       display: flex;
@@ -791,7 +804,19 @@
     @media (max-width: 900px) {
       .contact-grid { grid-template-columns: 1fr; gap: 60px; }
     }
+    /* Mesure a 360 px : l'encadre reclamait 355 px dans une colonne qui n'en
+       offre que 296, et poussait la page hors de l'ecran. Deux causes qui
+       s'additionnent : 32 px de padding de chaque cote, et un element de
+       grille en min-width: auto qui ne peut donc pas se retrecir sous la
+       largeur de son plus long mot insecable (l'adresse e-mail).
+       On rend la reduction possible, on autorise la coupure des chaines
+       longues, et on rend 28 px de padding sur les petits ecrans. */
+    @media (max-width: 560px) {
+      .contact-info-box { padding: 22px 18px; }
+    }
     .contact-info-box {
+      min-width: 0;
+      overflow-wrap: anywhere;
       padding: 32px;
       background: linear-gradient(135deg, var(--orange), #ff5722);
       border-radius: 16px;
@@ -894,7 +919,7 @@
     }
     .form-row {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 16px;
     }
     @media (max-width: 600px) {
@@ -955,9 +980,9 @@
   <section class="hero-section">
     <div class="hero-inner">
       <div class="hero-content fade-in-up">
-        <p class="eyebrow" style="margin-bottom: 16px;">100% Inclusif & PMR</p>
+        <p class="eyebrow" style="margin-bottom: 16px;">Jouable assis ou en fauteuil</p>
         <h1>Animation Interactive pour <span class="accent">Maisons de Repos et Seniors</span></h1>
-        <p class="hero-sub">Des jeux ludiques projetés sur un mur qui stimulent la mobilité, la mémoire et le lien social. 100% accessible aux personnes en fauteuil roulant.</p>
+        <p class="hero-sub">Des jeux ludiques projetés sur un mur qui stimulent la mobilité, la mémoire et le lien social. Tous les jeux se jouent assis ou en fauteuil roulant.</p>
 
         <!-- Badge prix + garantie (CRO) -->
         <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin: 28px 0 32px; padding: 20px 24px; background: linear-gradient(135deg, rgba(255,122,24,0.18), rgba(0,212,255,0.10)); border: 1px solid rgba(255,122,24,0.4); border-radius: 16px; max-width: 540px;">
@@ -972,10 +997,10 @@
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;">
               <polyline points="20 6 9 17 4 12"/>
             </svg>
-            <span style="font-size: 0.9375rem; font-weight: 700; color: var(--text); line-height: 1.3;">Satisfait<br/>ou remboursé</span>
+            <span style="font-size: 0.9375rem; font-weight: 700; color: var(--text); line-height: 1.3;">Remboursé si<br/>non conforme au devis</span>
           </div>
         </div>
-        <p style="font-size: 0.8125rem; color: var(--text-dim); margin: 10px 0 24px; max-width: 540px;">Notre garantie : si l'animation ne se déroule pas comme promis, nous vous remboursons intégralement. Sans discussion.</p>
+        <p style="font-size: 0.8125rem; color: var(--text-dim); margin: 10px 0 24px; max-width: 540px;">Notre garantie : si l'animation ne se déroule pas conformément au devis accepté, nous remboursons l'intégralité du montant payé. Demande par e-mail dans les 48 h, remboursement sous 14 jours (<a href="/cgv" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">article 5.4 des CGV</a>).</p>
 
         <div class="hero-ctas">
           <a href="/devis" class="btn btn-primary" data-hover>Demander une démonstration gratuite <span class="arrow">→</span></a>
@@ -983,15 +1008,15 @@
         </div>
         <div class="hero-stats">
           <div class="hero-stat">
-            <div class="n">100%</div>
-            <div class="l">Inclusif & PMR</div>
+            <div class="n">0</div>
+            <div class="l">Manette à tenir</div>
           </div>
           <div class="hero-stat">
             <div class="n">15 min</div>
             <div class="l">Installation</div>
           </div>
           <div class="hero-stat">
-            <div class="n">36</div>
+            <div class="n">35+</div>
             <div class="l">Jeux interactifs</div>
           </div>
         </div>
@@ -1038,8 +1063,8 @@
       </div>
       <div class="benefit-card">
         <div class="benefit-icon">♿</div>
-        <h3>100% Accessible PMR</h3>
-        <p>Jouable depuis une chaise roulante. Chaque résident, sans exception, peut participer activement.</p>
+        <h3>Jouable en fauteuil roulant</h3>
+        <p>Les jeux se pilotent au geste, jamais debout obligatoirement : un résident assis ou en fauteuil joue dans les mêmes conditions que les autres.</p>
       </div>
     </div>
   </section>
