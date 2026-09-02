@@ -117,6 +117,21 @@ elles ne récupèrent pas la TVA, et une kermesse communale ne se paie pas
 avec le budget d'un team building. Seules les entreprises assujetties
 restent à 349 € HTVA.
 
+**Hiérarchie inversée sur école et plaine de jeux (02/09/2026).** Sur le
+carnet réel d'Ubeyd — 1 anniversaire en septembre, 2 journées complètes
+en octobre — la journée fait 89 % du chiffre d'affaires et lui rapporte
+92 €/h de son temps contre 41 €/h pour une 1h30. Le site affichait
+pourtant « 300 € » en gros orange et la journée en petit gris : on
+mettait en avant le plus mauvais produit. C'est inversé. La journée est
+le montant principal, la 1h30 devient la rampe d'accès (« ou à partir de
+300 €, si vous voulez commencer par une seule classe »).
+
+**À ajouter dès qu'il connaît les chiffres : le coût par enfant.**
+1 049 € pour 6 classes de 22 élèves, c'est 7,95 € par enfant. Pour 8
+classes, 5,96 €. C'est l'argument le plus fort face à une direction, et
+il n'est nulle part sur le site. Il faut qu'Ubeyd confirme combien de
+classes il fait passer sur une journée type avant qu'on l'affiche.
+
 **Le nouveau point à surveiller, à l'inverse.** Une grande commune qui
 commande l'animation phare de sa fête annuelle a souvent un budget
 événementiel, pas un budget scolaire. En l'alignant sur l'école, on lui
