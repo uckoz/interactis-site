@@ -7,6 +7,7 @@
   { "source": "/merci.html", "destination": "/merci", "permanent": true },
   { "source": "/animation-maison-de-repos.html", "destination": "/animation-maison-de-repos", "permanent": true },
   { "source": "/animation-ecole.html", "destination": "/animation-ecole", "permanent": true },
+  { "source": "/animation-plaine-de-jeux.html", "destination": "/animation-plaine-de-jeux", "permanent": true },
   { "source": "/animation-evenement.html", "destination": "/animation-evenement", "permanent": true },
   { "source": "/animation-anniversaire.html", "destination": "/animation-anniversaire", "permanent": true },
   { "source": "/animation-entreprise.html", "destination": "/animation-entreprise", "permanent": true },

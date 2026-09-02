@@ -26,6 +26,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.interactis.be/animation-plaine-de-jeux</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.interactis.be/animation-evenement</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
