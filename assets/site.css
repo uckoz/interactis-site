@@ -254,6 +254,13 @@
     }
     .hd-logo span { color: var(--orange); }
     .hd-nav { display: flex; gap: 36px; align-items: center; }
+    /* Entre 1100 et 1300 px, la barre porte 6 rubriques + le bouton devis +
+       la pastille de profil. A 36 px d'ecart elle mesure 1038 px et vient
+       toucher le logo. On resserre l'ecart sur cette plage : mesure a
+       1150 px apres correction, l'ecart logo <-> menu redevient positif. */
+    @media (max-width: 1300px) {
+      .hd-nav { gap: 22px; }
+    }
     .hd-nav a {
       font-size: 0.875rem; font-weight: 600;
       position: relative; padding: 4px 0;
@@ -282,7 +289,17 @@
     .hd-burger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .hd-burger.is-open span:nth-child(2) { opacity: 0; }
     .hd-burger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    @media (max-width: 900px) {
+    /* Seuil du menu burger : 1100 px et non plus 900 px.
+       La barre bureau compte desormais 6 rubriques (l'onglet Evenements
+       manquait, il n'existait que dans le menu burger). Mesure Playwright sur
+       index.html avec la pastille de profil affichee : la barre demande
+       environ 950 px une fois l'ecart resserre, le logo en prend 148, il faut
+       donc au moins 1100 px de fenetre. En dessous, le menu burger prend le
+       relais - il contient les 7 destinations, le devis et le telephone.
+       Le seuil de 900 px etait deja trop bas avant cet ajout : entre 900 et
+       1140 px le menu chevauchait le logo. Ce reglage corrige aussi ce defaut.
+       Les pastilles de profil suivent le meme seuil dans home.css. */
+    @media (max-width: 1100px) {
       .hd-nav { display: none; }
       .hd-burger { display: flex; }
     }

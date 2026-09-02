@@ -242,9 +242,17 @@
     .mode-pill:hover{border-color:var(--orange,#ff7a18)}
     .mode-pill .mp-switch{color:var(--orange,#ff7a18);font-weight:700}
     html[data-mode] .mode-pill{display:inline-flex}
-    @media(max-width:900px){.mode-pill{display:none !important}}
+    /* Seuils alignes sur celui du menu burger (1100 px, voir site.css) :
+       la pastille du header disparait exactement quand la barre disparait,
+       et celle du hero prend le relais. */
+    @media(max-width:1100px){.mode-pill{display:none !important}}
+    /* Sous 1300 px la barre porte 6 rubriques : on raccourcit la pastille du
+       header en « Particulier - changer », ce qui rend 104 px a la barre.
+       Le libelle complet reste sur la pastille du hero, ou la place ne
+       manque pas. */
+    @media(max-width:1300px){.mode-pill .mp-prefix{display:none}}
     .mode-pill-mobile{display:none;margin:10px auto 0;padding:8px 16px;border-radius:999px;border:1px solid rgba(255,122,24,.45);background:rgba(255,122,24,.10);font-size:.8125rem;font-weight:600;color:var(--text,#f5f7fb);cursor:pointer}
-    @media(max-width:900px){html[data-mode] .mode-pill-mobile{display:inline-block}}
+    @media(max-width:1100px){html[data-mode] .mode-pill-mobile{display:inline-block}}
 
     /* ============================================
        SECTION INSTALLATION - video epinglee
