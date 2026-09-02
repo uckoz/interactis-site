@@ -1782,3 +1782,108 @@
   font-weight: 600;
   background: rgba(245,247,251,.04);
 }
+
+/* ============================================
+   PAGE /merci (confirmation apres envoi du formulaire)
+   ============================================
+   Le visiteur vient d'agir : il a besoin d'une confirmation nette et de
+   savoir exactement ce qui se passe ensuite. Page volontairement courte,
+   sans distraction, sans pop-up.
+   ============================================ */
+.merci {
+  min-height: 70vh;
+  padding: calc(var(--urgency-h, 0px) + 130px) 32px 110px;
+  display: flex;
+  align-items: center;
+}
+.merci-inner { max-width: 720px; margin: 0 auto; width: 100%; }
+
+.merci-check {
+  width: 62px; height: 62px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 999px;
+  background: rgba(34,197,94,.14);
+  border: 1px solid rgba(34,197,94,.42);
+  color: #4ade80;
+  margin-bottom: 26px;
+}
+.merci-check svg { width: 30px; height: 30px; }
+
+.merci h1 {
+  font-family: var(--font-display, inherit);
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin: 0 0 18px;
+}
+.merci-lead {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: var(--text-dim);
+  margin: 0 0 44px;
+}
+.merci-lead strong { color: var(--text); }
+
+.merci-steps { list-style: none; margin: 0 0 36px; padding: 0; }
+.merci-steps li {
+  display: flex; gap: 18px;
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.merci-steps li:last-child { border-bottom: 1px solid var(--line); }
+.merci-step-n {
+  flex: 0 0 auto;
+  width: 30px; height: 30px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(245,247,251,.04);
+  color: var(--orange);
+  font-size: .875rem; font-weight: 700;
+}
+.merci-steps h2 {
+  font-size: 1.0625rem; font-weight: 700;
+  color: var(--text);
+  margin: 3px 0 6px;
+  letter-spacing: 0;
+}
+.merci-steps p { margin: 0; font-size: .9375rem; line-height: 1.65; color: var(--text-dim); }
+
+.merci-spam {
+  font-size: .9375rem; line-height: 1.65;
+  color: var(--text-dim);
+  margin: 0 0 40px;
+}
+.merci-spam strong { color: var(--text); }
+
+.merci-contact {
+  padding: 26px 28px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(245,247,251,.03);
+  margin-bottom: 26px;
+}
+.merci-contact-title { margin: 0 0 16px; font-weight: 600; color: var(--text); }
+.merci-contact-links { display: flex; flex-wrap: wrap; gap: 12px; }
+
+.merci-avis {
+  padding: 24px 28px;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--orange);
+  border-radius: 16px;
+  background: rgba(255,122,24,.05);
+  margin-bottom: 34px;
+}
+.merci-avis p { margin: 0 0 14px; font-size: .9375rem; line-height: 1.65; color: var(--text-dim); }
+.merci-avis strong { color: var(--text); }
+.merci-avis > a { color: var(--orange); font-weight: 600; font-size: .9375rem; }
+
+.merci-back a { color: var(--text-dim); font-size: .9375rem; }
+.merci-back a:hover { color: var(--text); }
+
+@media (max-width: 720px) {
+  .merci { padding: calc(var(--urgency-h, 0px) + 108px) 20px 80px; min-height: 0; }
+  .merci-contact, .merci-avis { padding: 20px 20px; }
+  .merci-contact-links .btn { width: 100%; justify-content: center; }
+}

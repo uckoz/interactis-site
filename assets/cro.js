@@ -80,6 +80,18 @@
       if (localStorage.getItem('ia-urgency-dismissed') === '1') return;
     } catch (e) {}
 
+    var chemin = (location.pathname || '').replace(/\/+$/, '') || '/';
+
+    // Sur /merci le message est au passe : le visiteur vient d'envoyer sa
+    // demande. Lui reafficher "devis gratuit, demandez-le" donne l'impression
+    // que le formulaire n'est pas parti. On n'affiche rien.
+    if (chemin === '/merci' || chemin === '/merci.html') return;
+
+    // Sur /devis le texte de reassurance reste utile juste au-dessus du
+    // formulaire, mais le bouton pointerait vers la page en cours : on le
+    // retire pour ne pas proposer un lien mort.
+    var surDevis = (chemin === '/devis' || chemin === '/devis.html');
+
     var banner = document.createElement('div');
     banner.className = 'urgency-banner';
     banner.setAttribute('role', 'region');
@@ -88,7 +100,7 @@
       + '<div class="urgency-banner-inner">'
       +   '<span class="urgency-banner-emoji" aria-hidden="true">✅</span>'
       +   '<span class="urgency-banner-text">Devis gratuit et sans engagement · <strong>réponse sous 24 h</strong></span>'
-      +   '<a href="/devis" class="urgency-banner-link">Demander mon devis <span aria-hidden="true">→</span></a>'
+      +   (surDevis ? '' : '<a href="/devis" class="urgency-banner-link">Demander mon devis <span aria-hidden="true">→</span></a>')
       +   '<button type="button" class="urgency-banner-close" aria-label="Fermer la bannière">×</button>'
       + '</div>';
 
