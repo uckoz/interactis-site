@@ -84,6 +84,77 @@
 
   <style>
     html { scroll-behavior: smooth; }
+
+    /* ---------------------------------------------------------------
+       Medias entreprise (photos + videos tournees en entreprise).
+       Styles volontairement locaux a cette page : les 29 autres pages
+       n'ont aucune raison de transporter ces regles dans site.css.
+       --------------------------------------------------------------- */
+
+    /* Bandeau photo pleine largeur place juste sous le hero.
+       body { overflow-x: hidden } dans site.css rend la technique
+       100vw + margin-left: calc(50% - 50vw) sans danger. */
+    .ent-band {
+      width: 100vw;
+      margin-left: calc(50% - 50vw);
+      background: var(--bg-soft);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    /* La photo est en 4/3 et les personnes occupent la bande centrale :
+       plafond en haut, sol vide en bas. On recadre donc en 21/9 avec un
+       point d'ancrage a 56 % de la hauteur pour rester sur les visages,
+       sans jamais deformer l'image. */
+    .ent-band__img {
+      width: 100%;
+      aspect-ratio: 21 / 9;
+      object-fit: cover;
+      object-position: 50% 56%;
+      display: block;
+    }
+    .ent-band__caption {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 18px 32px 24px;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--text-dim);
+      text-align: center;
+    }
+    @media (max-width: 768px) {
+      /* Sur mobile un 21/9 reduirait le groupe a une frise de 180 px de
+         haut ou l'on ne distinguerait plus personne. On revient au 4/3
+         d'origine : l'image entiere, aucun recadrage. */
+      .ent-band__img { aspect-ratio: 4 / 3; object-position: 50% 50%; }
+      .ent-band__caption { padding: 16px 20px 22px; font-size: 0.9rem; }
+    }
+
+    /* Bloc video "en conditions reelles".
+       Les deux clips n'ont PAS le meme format (l'un 9/16, l'autre 16/9).
+       Les poser cote a cote dans une grille donnerait deux boites de
+       hauteurs tres differentes : ils sont donc empiles, chacun avec sa
+       propre largeur maximale. */
+    .ent-media { margin: 40px 0 56px; }
+    .ent-media figure { margin: 0 0 40px; }
+    .ent-media figure:last-child { margin-bottom: 0; }
+    .ent-media video {
+      width: 100%;
+      display: block;
+      border-radius: 16px;
+      background: #000;
+    }
+    .ent-media__portrait {
+      max-width: 380px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .ent-media figcaption {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--text-faded);
+      margin-top: 12px;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -96,25 +167,28 @@
   <header class="hd">
     <a href="/" class="hd-logo" data-hover>Inter<span>Actis</span></a>
     <nav class="hd-nav">
-      <a href="/animation-anniversaire" data-hover>Anniversaire</a>
-      <a href="/animation-entreprise" data-hover>Team building</a>
-      <a href="/animation-maison-de-repos" data-hover>Maison de repos</a>
-      <a href="/animation-ecole" data-hover>École</a>
+      <a href="/animation-ecole" data-hover>Écoles</a>
+      <a href="/animation-anniversaire" data-hover>Anniversaires</a>
+      <a href="/animation-entreprise" aria-current="page" data-hover>Entreprises</a>
+      <a href="/animation-maison-de-repos" data-hover>Maisons de repos</a>
       <a href="/blog" data-hover>Blog</a>
-      <a href="/devis" class="btn btn-primary hd-cta" data-hover>Devis <span class="arrow">→</span></a>
+      <a href="/devis" class="btn btn-primary hd-cta" data-hover>Devis <span class="arrow">&rarr;</span></a>
     </nav>
-    <button class="hd-burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menuOverlay"><span></span><span></span><span></span></button>
+    <button class="hd-burger" id="burger" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="menuOverlay"><span></span><span></span><span></span></button>
   </header>
 
   <div class="menu-overlay" id="menuOverlay">
     <nav>
       <a href="/">Accueil</a>
-      <a href="/animation-anniversaire">Anniversaire</a>
-      <a href="/animation-entreprise">Team building</a>
-      <a href="/animation-maison-de-repos">Maison de repos</a>
-      <a href="/animation-ecole">École</a>
+      <a href="/animation-ecole">Écoles</a>
+      <a href="/animation-plaine-de-jeux">Plaines de jeux</a>
+      <a href="/animation-anniversaire">Anniversaires</a>
+      <a href="/animation-entreprise" aria-current="page">Entreprises</a>
+      <a href="/animation-maison-de-repos">Maisons de repos</a>
+      <a href="/animation-evenement">Événements</a>
       <a href="/blog">Blog</a>
-      <a href="/devis">Devis</a>
+      <a href="/devis" class="menu-overlay-cta">Demander un devis</a>
+      <a href="tel:+32488435342" class="menu-overlay-tel">+32 488 43 53 42</a>
     </nav>
   </div>
 
@@ -137,33 +211,48 @@
     </div>
   </section>
 
+  <!-- Photo de groupe prise en fin d'animation dans une salle de reunion.
+       Placee juste sous le hero : c'est la premiere preuve que la page
+       donne au visiteur, avant meme le premier argument. Visages visibles
+       et de face, conformement a la consigne d'Ubeyd. -->
+  <section class="ent-band">
+    <img src="/images/photo-entreprise-equipe.webp"
+         alt="Une équipe d'une dizaine de collaborateurs debout dans leur salle de réunion, balles en main, à la fin d'une animation InterActis"
+         width="1600" height="1200" loading="lazy" decoding="async"
+         class="ent-band__img" />
+    <p class="ent-band__caption">Onze collaborateurs, une salle de réunion ordinaire, aucune manette. Le matériel tient dans une valise et repart le soir même.</p>
+  </section>
+
   <article class="article-body">
 
-    <!-- VIDEO PROMO -->
-    <section style="text-align: center; margin: 56px 0 64px;">
-      <p style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); margin-bottom: 20px;">Découvrez InterActis en vidéo</p>
-      <h2 style="margin-bottom: 40px;">L'animation qui rassemble tout le monde</h2>
-      <div style="max-width: 560px; margin: 0 auto; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.4);">
-        <video class="lazy-video lazy-video-userplay" loop playsinline controls preload="none" poster="/assets/interactis-promo-poster.jpg" style="width: 100%; display: block;" data-src="/assets/interactis-promo.mp4">
-        </video>
-      </div>
-      <p style="font-size: 0.875rem; color: rgba(245, 247, 251, 0.72); margin-top: 20px;">Activez le son 🔊 pour entendre l'ambiance</p>
-    </section>
+    <!-- La video promo generique (interactis-promo.mp4, 1 min 15) a ete
+         retiree sur demande. La page garde la video de team building en tete
+         (video-team-building-action.mp4) et les deux temoignages plus bas. -->
 
     <h2>Pourquoi InterActis pour votre entreprise ?</h2>
     <p>Une solution éprouvée pour renforcer la cohésion et créer des moments mémorables. Que vous organisiez un team building, un séminaire, une journée du personnel ou un événement client, InterActis transforme votre salle en terrain de jeu géant.</p>
 
     <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin: 28px 0 8px; padding: 20px 24px; background: linear-gradient(135deg, rgba(255,122,24,0.18), rgba(0,212,255,0.10)); border: 1px solid rgba(255,122,24,0.4); border-radius: 16px; max-width: 620px;">
       <div>
-        <div style="font-family: var(--serif); font-size: 1.5rem; font-weight: 700; color: var(--orange); line-height: 1.2;">Formule sur mesure</div>
-        <div style="font-size: 0.875rem; color: var(--text-dim); margin-top: 6px;">Le prix dépend de la durée, du nombre de participants et de la distance · Devis gratuit sous 24&nbsp;h</div>
+        <!-- "Formule sur mesure" sans aucun montant : un responsable RH ne
+             sait pas s'il doit prevoir 300 EUR ou 3 000 EUR, donc il repousse.
+             Le plancher reel est annonce, avec "a partir de" puisque Ubeyd
+             ajuste ensuite selon la duree et l'effectif.
+             C'est le SEUL segment du site affiche en HTVA, et sans
+             conversion TVAC (demande d'Ubeyd du 02/09/2026). C'est justifie
+             ici : l'entreprise assujettie recupere la TVA et compare les
+             devis concurrents en HTVA. Ailleurs (ecoles, maisons de repos,
+             particuliers) le TVAC est la bonne base, ces publics ne
+             recuperent rien. -->
+        <div style="font-family: var(--serif); font-size: 1.5rem; font-weight: 700; color: var(--orange); line-height: 1.2;">À partir de 349&nbsp;€ HTVA</div>
+        <div style="font-size: 0.875rem; color: var(--text-dim); margin-top: 6px;">Pour 1h30, animateur inclus &middot; Prix hors TVA, récupérable si votre société y est assujettie &middot; Frais de déplacement chiffrés dans le devis &middot; Devis gratuit sous 24&nbsp;h</div>
       </div>
       <div style="display: flex; align-items: center; gap: 10px; padding-left: 20px; border-left: 1px solid rgba(245,247,251,0.18);">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>
-        <span style="font-size: 0.9375rem; font-weight: 700; color: var(--text); line-height: 1.3;">Satisfait<br/>ou remboursé</span>
+        <span style="font-size: 0.9375rem; font-weight: 700; color: var(--text); line-height: 1.3;">Remboursé si<br/>non conforme au devis</span>
       </div>
     </div>
-    <p style="font-size: 0.8125rem; color: var(--text-dim); margin: 0 0 32px; max-width: 620px;">Notre garantie : si l'animation ne se déroule pas comme promis, nous vous remboursons intégralement. Sans discussion.</p>
+    <p style="font-size: 0.8125rem; color: var(--text-dim); margin: 0 0 32px; max-width: 620px;">Notre garantie : si l'animation ne se déroule pas conformément au devis accepté, nous remboursons l'intégralité du montant payé. Demande par e-mail dans les 48 h, remboursement sous 14 jours (<a href="/cgv" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">article 5.4 des CGV</a>).</p>
 
     <div class="article-cards" style="margin: 40px 0 56px;">
       <div class="article-card">
@@ -201,21 +290,87 @@
         <p>Installation en 15 minutes chrono. Nous nous adaptons à vos locaux et configuration.</p>
       </div>
       <div class="article-card">
-        <h4>4. Déplacement inclus</h4>
-        <p>Nous nous déplaçons dans vos locaux en Belgique, Luxembourg et France.</p>
+        <!-- Cette carte a d'abord dit "Deplacement inclus" (faux : ce n'est
+             pas inclus partout), puis "offert a 40 km" (retire le 02/09/2026
+             a la demande d'Ubeyd, qui decide au cas par cas). L'argument
+             conserve est celui qui est vrai dans tous les cas et qui vend
+             quand meme : le materiel tient dans une valise, donc il va
+             partout, et le cout de la route est connu du client avant qu'il
+             signe. Un responsable RH ne demande pas la gratuite, il demande
+             de ne pas avoir de ligne surprise sur la facture. -->
+        <h4>4. Nous venons jusqu'à vous</h4>
+        <p>Tout le matériel tient dans une valise&nbsp;: Belgique, Luxembourg et Nord de la France. Les frais de déplacement sont calculés selon le lieu et chiffrés dans le devis&nbsp;; rien ne s'ajoute ensuite.</p>
       </div>
     </div>
 
+    <!-- Cette photo est placee ici et pas ailleurs parce qu'elle montre
+         exactement ce que les quatre cartes viennent de decrire : le
+         boitier pose au sol, le faisceau, le mur nu qui devient l'ecran.
+         C'est la reponse visuelle a « il me faut quoi, chez moi ? ». -->
+    <figure style="margin: 32px 0 56px;">
+      <img src="/images/photo-entreprise-salle-reunion.webp"
+           alt="Un jeu de calcul projeté sur le mur blanc d'une salle de réunion, le boîtier posé au sol, quatre collaborateurs debout face à la projection"
+           width="1400" height="1050" loading="lazy" decoding="async"
+           style="width: 100%; display: block; border-radius: 16px;" />
+      <figcaption style="font-size: 0.9rem; color: var(--text-faded); margin-top: 12px;">Un mur clair, une prise, et la salle de réunion devient l'écran. Le boîtier posé au sol, c'est tout le matériel visible.</figcaption>
+    </figure>
+
     <h2>Les points forts de notre solution</h2>
     <ul style="margin: 24px 0 32px;">
-      <li><strong>100% Accessible.</strong> Adapté à tous les niveaux de mobilité et d'inclusivité.</li>
-      <li><strong>Plus de 35 jeux interactifs.</strong> Toute une palette d'activités pour tous les publics et contextes.</li>
+      <li><strong>Personne ne reste sur le banc.</strong> Les jeux se pilotent au geste, sans manette : ils se jouent debout, assis ou en fauteuil roulant.</li>
+      <li><strong>41 jeux interactifs.</strong> Toute une palette d'activités pour tous les publics et contextes.</li>
       <li><strong>Flexible & Évolutif.</strong> Adaptation à votre budget, votre durée et vos besoins spécifiques.</li>
       <li><strong>Moment fédérateur.</strong> Crée des souvenirs partagés que vos collaborateurs évoqueront à la machine à café.</li>
     </ul>
 
+    <!-- Deux sequences filmees pendant de vraies animations en entreprise.
+         Les deux sont en lazy-video-userplay : cro.js leur donne leur
+         source quand elles approchent de l'ecran mais ne lance PAS la
+         lecture. C'est le clic du visiteur sur les controles natifs qui
+         demarre la video, donc le navigateur autorise le son des la
+         premiere lecture. La page a deja une video en autoplay dans le
+         hero : en ajouter deux autres qui se lancent seules donnerait
+         trois videos concurrentes et une page bruyante. -->
+    <h2>L'animation en conditions réelles</h2>
+    <p>Deux séquences filmées pendant des animations, sans mise en scène ni figurants.</p>
+
+    <div class="ent-media">
+      <figure class="ent-media__portrait">
+        <video class="lazy-video lazy-video-userplay" controls preload="none" playsinline
+               width="720" height="1280"
+               poster="/assets/entreprise-equipe-jeu-poster.webp"
+               data-src="/assets/entreprise-equipe-jeu.mp4"></video>
+        <figcaption>Des adultes en tenue de bureau qui lancent des balles sur un mur : c'est exactement l'effet recherché. Personne ne reste assis, personne n'a besoin d'être sportif.</figcaption>
+      </figure>
+
+      <figure>
+        <video class="lazy-video lazy-video-userplay" controls preload="none" playsinline
+               width="960" height="540"
+               poster="/assets/entreprise-groupe-action-poster.webp"
+               data-src="/assets/entreprise-groupe-action.mp4"></video>
+        <figcaption>Quatorze secondes au cœur d'une partie : tout le groupe joue en même temps, les balles partent de partout. Cliquez pour démarrer, activez le son pour l'ambiance.</figcaption>
+      </figure>
+    </div>
+
+    <!-- EN RESERVE, compresses et deja dans le depot, volontairement PAS
+         affiches ici :
+         - /assets/entreprise-salle-sport.mp4 (+ poster .webp) : deux
+           personnes seules dans un grand hall sportif. Techniquement bon
+           (ca prouve que le systeme tient dans un tres grand volume) mais
+           on n'y voit pas d'equipe, et une page qui vend du team building
+           ne peut pas montrer une salle vide.
+         - /images/photo-demo-adultes-mur.webp : la salle a mur olive
+           ressemble a une salle communale, pas a une entreprise. Elle
+           serait bien meilleure sur une page ecole ou collectivite.
+         Pour en afficher un, copier le bloc <figure> ci-dessus. -->
+
     <h2>Des activités pour chaque occasion</h2>
     <p>Notre animation s'adapte à votre contexte spécifique.</p>
+
+    <figure style="margin: 32px 0 40px;">
+      <img src="/images/photo-adultes-recette.webp" alt="Trois adultes debout face au mur interactif, balles en main, devant un jeu de recettes projeté" loading="lazy" width="1200" height="800" style="width: 100%; display: block; border-radius: 16px;" />
+      <figcaption style="font-size: 0.9rem; color: var(--text-faded); margin-top: 12px;">Ce ne sont pas que des jeux d'enfants : ici un jeu de recettes à trois niveaux de difficulté, joué debout, sans manette. Personne n'a besoin d'être sportif pour participer.</figcaption>
+    </figure>
 
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin: 40px 0 56px;">
       <div class="article-card" style="padding: 24px;">
@@ -337,7 +492,7 @@
         </button>
         <div style="max-height: 0; overflow: hidden; transition: max-height 0.4s ease;">
           <p style="padding-bottom: 20px; color: rgba(245, 247, 251, 0.82);">
-            Nos tarifs dépendent de la durée, du nombre de participants et de votre localisation. Demandez un devis gratuit sans engagement : nous l'établissons sous 24 heures et adaptons nos formules à votre budget.
+            Comptez à partir de 349&nbsp;€ HTVA pour une animation de 1h30, animateur compris. Au-delà de cette formule, le tarif dépend de la durée, du nombre de participants et du lieu. Les frais de déplacement sont chiffrés dans le devis, que vous recevez gratuitement et sans engagement sous 24&nbsp;heures.
           </p>
         </div>
       </div>
@@ -367,6 +522,18 @@
       </div>
     </div>
 
+    <!-- Bandeau Instagram : sortie secondaire pour le visiteur qui n'est pas
+         pret a demander un devis mais veut voir davantage d'animations. Place
+         avant le CTA final, pas apres, pour ne pas court-circuiter le devis. -->
+    <section style="padding: 64px 0;">
+      <a href="https://www.instagram.com/interactis.be/" target="_blank" rel="noopener" data-hover class="ig-banner" data-track="ig-animation-entreprise">
+        <span class="ig-banner-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg></span>
+        <span class="ig-banner-title">Envie d'en voir plus&nbsp;?</span>
+        <span class="ig-banner-text">Team buildings, journées du personnel, événements : nos animations filmées sur le vif, sans montage publicitaire. Tout est sur notre Instagram.</span>
+        <span class="ig-banner-cta">Voir nos vidéos sur Instagram&nbsp;→</span>
+        <span class="ig-banner-note">Ouvre notre compte Instagram dans un nouvel onglet. Aucun compte nécessaire pour regarder.</span>
+      </a>
+    </section>
     <div class="article-cta">
       <h3>Besoin d'un devis ? Réponse gratuite sous 24 h.</h3>
       <div class="article-cta-actions">
@@ -410,19 +577,51 @@
         <h3>Inter<span>Actis</span></h3>
         <p>Animation interactive mobile accessible à tous. Basés à Mons, nous intervenons en Belgique, au Luxembourg et dans le Nord de la France.</p>
         <div class="ft-socials">
-          <a href="https://www.instagram.com/interactis.be/" target="_blank" rel="noopener" data-hover aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg></a>
-          <a href="https://www.facebook.com/profile.php?id=61586234006690" target="_blank" rel="noopener" data-hover aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-          <a href="https://www.tiktok.com/@interactisbe" target="_blank" rel="noopener" data-hover aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43V8.42a8.16 8.16 0 0 0 4.77 1.52V6.69h-1.84z"/></svg></a>
+          <a href="https://www.instagram.com/interactis.be/" target="_blank" rel="noopener" data-hover aria-label="Instagram" data-track="social_instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg></a>
+          <a href="https://www.facebook.com/profile.php?id=61586234006690" target="_blank" rel="noopener" data-hover aria-label="Facebook" data-track="social_facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://www.tiktok.com/@interactisbe" target="_blank" rel="noopener" data-hover aria-label="TikTok" data-track="social_tiktok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43V8.42a8.16 8.16 0 0 0 4.77 1.52V6.69h-1.84z"/></svg></a>
+          <a href="https://www.linkedin.com/in/ubeyd-uckoz" target="_blank" rel="noopener" data-hover aria-label="LinkedIn" data-track="social_linkedin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
         </div>
       </div>
       <div class="ft-col">
         <h4>Nos animations</h4>
         <ul>
-          <li><a href="/animation-anniversaire" data-hover>Anniversaire</a></li>
-          <li><a href="/animation-entreprise" data-hover>Team building</a></li>
-          <li><a href="/animation-maison-de-repos" data-hover>Maison de repos</a></li>
-          <li><a href="/animation-ecole" data-hover>École</a></li>
-          <li><a href="/animation-evenement" data-hover>Événement</a></li>
+          <li><a href="/animation-ecole" data-hover>Écoles</a></li>
+          <li><a href="/animation-plaine-de-jeux" data-hover>Plaines de jeux</a></li>
+          <li><a href="/animation-anniversaire" data-hover>Anniversaires</a></li>
+          <li><a href="/animation-entreprise" aria-current="page" data-hover>Entreprises</a></li>
+          <li><a href="/animation-maison-de-repos" data-hover>Maisons de repos</a></li>
+          <li><a href="/animation-evenement" data-hover>Événements</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h4>Zones desservies</h4>
+        <ul>
+          <li><a href="/animation-belgique" data-hover>Belgique <span>(vue d’ensemble)</span></a></li>
+          <li><a href="/animation-mons" data-hover>Mons &amp; Borinage</a></li>
+          <li><a href="/animation-bruxelles" data-hover>Bruxelles</a></li>
+          <li><a href="/animation-charleroi" data-hover>Charleroi</a></li>
+          <li><a href="/animation-liege" data-hover>Liège</a></li>
+          <li><a href="/animation-lille" data-hover>Lille &amp; MEL</a></li>
+          <li><a href="/animation-valenciennes" data-hover>Valenciennes</a></li>
+          <li><a href="/animation-maubeuge" data-hover>Maubeuge</a></li>
+          <li><a href="/animation-luxembourg" data-hover>Luxembourg</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h4>Le site</h4>
+        <ul>
+          <li><a href="/" data-hover>Accueil</a></li>
+          <li><a href="/particuliers" data-hover>Particuliers</a></li>
+          <li><a href="/professionnels" data-hover>Professionnels</a></li>
+          <li><a href="/blog" data-hover>Blog</a></li>
+          <li><a href="/devis" data-hover>Demander un devis</a></li>
+        </ul>
+        <h4 class="ft-h4-second">Légal</h4>
+        <ul>
+          <li><a href="/mentions-legales" data-hover>Mentions légales</a></li>
+          <li><a href="/confidentialite" data-hover>Confidentialité</a></li>
+          <li><a href="/cgv" data-hover>CGV</a></li>
         </ul>
       </div>
       <div class="ft-col">
@@ -430,37 +629,20 @@
         <ul>
           <li><a href="tel:+32488435342" data-hover>+32 488 43 53 42</a></li>
           <li><a href="mailto:uckoz@interactis.be" data-hover>uckoz@interactis.be</a></li>
-          <li><a href="https://wa.me/32488435342" target="_blank" rel="noopener" data-hover>WhatsApp</a></li>
-          <li><a href="https://g.page/r/CaGLdFils55zEBM/review" target="_blank" rel="noopener" data-hover>⭐ Laisser un avis Google</a></li>
-        </ul>
-      </div>
-      <div class="ft-col">
-        <h4>Légal</h4>
-        <ul>
-          <li><a href="/mentions-legales" data-hover>Mentions légales</a></li>
-          <li><a href="/confidentialite" data-hover>Confidentialité</a></li>
-          <li><a href="/cgv" data-hover>CGV</a></li>
+          <li><a href="https://wa.me/32488435342?text=Bonjour%20Ubeyd%2C%20je%20m%27int%C3%A9resse%20%C3%A0%20une%20animation%20InterActis%20pour%20%5Btype%20d%27%C3%A9v%C3%A9nement%5D%20le%20%5Bdate%5D%20%C3%A0%20%5Bville%5D.%20Pouvez-vous%20me%20proposer%20un%20devis%20%3F" target="_blank" rel="noopener" data-hover>WhatsApp</a></li>
+          <li><a href="https://g.page/r/CaGLdFils55zEBM/review" target="_blank" rel="noopener" data-hover class="ft-avis">Laisser un avis Google</a></li>
         </ul>
       </div>
     </div>
     <div class="ft-bottom">
-      <span>© <span id="yr"></span> InterActis · Tous droits réservés</span>
-      <span>Animation interactive mobile · Belgique · Luxembourg · Nord France</span>
+      <span>&copy; <span id="yr"></span> InterActis &middot; Tous droits réservés</span>
+      <span>Animation interactive mobile &middot; Belgique &middot; Luxembourg &middot; Nord France</span>
     </div>
   </footer>
 
   <a href="https://wa.me/32488435342?text=Bonjour%20Ubeyd%2C%20je%20viens%20de%20consulter%20votre%20page%20%22team%20building%22%20et%20j%27aimerais%20discuter%20d%27un%20projet%20pour%20mon%20entreprise." class="wa" target="_blank" rel="noopener" aria-label="Nous contacter sur WhatsApp">
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0 0 20.464 3.488"/></svg>
   </a>
-
-  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Consentement cookies">
-    <h4>🍪 On respecte votre vie privée</h4>
-    <p>Nous utilisons des cookies pour analyser le trafic. <a href="/confidentialite" data-hover>En savoir plus</a></p>
-    <div class="cookie-actions">
-      <button type="button" class="cookie-btn-reject" id="cookieReject" data-hover>Refuser</button>
-      <button type="button" class="cookie-btn-accept" id="cookieAccept" data-hover>Accepter</button>
-    </div>
-  </div>
 
   <script src="/assets/site.js" defer></script>
   <script src="/assets/cro.js" defer></script>

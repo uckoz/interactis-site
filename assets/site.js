@@ -62,22 +62,66 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // -- Cookie banner (affichage si pas encore de choix stocké) --
-  var banner = document.getElementById('cookieBanner');
-  if (banner) {
-    var stored = null;
-    try { stored = localStorage.getItem('ia-cookie-consent'); } catch (e) {}
-    if (!stored) {
-      setTimeout(function() { banner.classList.add('is-visible'); }, 800);
-    }
-    var accept = document.getElementById('cookieAccept');
-    var reject = document.getElementById('cookieReject');
-    function close(value) {
-      try { localStorage.setItem('ia-cookie-consent', value); } catch (e) {}
-      banner.classList.remove('is-visible');
-    }
-    if (accept) accept.addEventListener('click', function() { close('accepted'); });
-    if (reject) reject.addEventListener('click', function() { close('rejected'); });
-  }
+  // Le second bandeau cookies a ete retire : il s'affichait en meme temps
+  // que celui de assets/consent.js, il n'agissait sur aucun traceur (il ne
+  // faisait qu'ecrire 'ia-cookie-consent' dans localStorage) et son texte
+  // affirmait "aucune publicite, aucun pistage tiers" alors que le site
+  // charge Google Ads, PostHog et tawk.to. Le consentement reel est gere
+  // par assets/consent.js (Google Consent Mode v2).
 
+});
+
+/* ============================================
+   FAQ - accordeon du composant partage (.faq de assets/site.css)
+   ============================================
+   Ce gestionnaire vivait en copie locale dans index.html uniquement. La CSS
+   du composant (.faq-item.is-open .faq-a { max-height: 400px }) est pourtant
+   chargee sur TOUTES les pages : n'importe quelle page reprenant le balisage
+   partage heritait donc du style mais pas du comportement, et sa FAQ restait
+   muette au clic. C'est ce qui est arrive a /animation-plaine-de-jeux.
+   On centralise ici pour les 29 pages qui chargent ce fichier. /index.html
+   garde volontairement sa propre copie : c'est la seule page a ne PAS charger
+   assets/site.js (elle a son JS inline avec Lenis, GSAP et son propre burger,
+   et charger site.js en plus brancherait un second gestionnaire sur le menu).
+   Les deux copies ne coexistent donc sur aucune page : pas de double
+   basculement. En contrepartie, toute correction faite ici doit etre reportee
+   dans index.html, et l'inverse.
+
+   Non touchees volontairement : /animation-maison-de-repos et
+   /animation-entreprise. Elles n'utilisent pas ce composant mais leur propre
+   balisage et leur propre CSS locale, avec un mecanisme different
+   (classe 'open' pour l'une, max-height en style inline pour l'autre).
+   Les brancher ici les casserait. Elles fonctionnent, on les laisse.
+   ============================================ */
+document.addEventListener('DOMContentLoaded', function() {
+  var items = document.querySelectorAll('.faq .faq-item');
+  if (!items.length) return;
+
+  items.forEach(function(item) {
+    var q = item.querySelector('.faq-q');
+    if (!q) return;
+
+    // Accessibilite : le bouton annonce l'etat du panneau qu'il commande.
+    var panel = item.querySelector('.faq-a');
+    q.setAttribute('aria-expanded', 'false');
+    if (panel) {
+      if (!panel.id) panel.id = 'faq-a-' + Math.random().toString(36).slice(2, 8);
+      q.setAttribute('aria-controls', panel.id);
+    }
+
+    q.addEventListener('click', function() {
+      var wasOpen = item.classList.contains('is-open');
+      // Accordeon : une seule reponse ouverte a la fois. Sur telephone, deux
+      // reponses ouvertes repoussent les suivantes hors de l'ecran.
+      items.forEach(function(other) {
+        other.classList.remove('is-open');
+        var ob = other.querySelector('.faq-q');
+        if (ob) ob.setAttribute('aria-expanded', 'false');
+      });
+      if (!wasOpen) {
+        item.classList.add('is-open');
+        q.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
 });

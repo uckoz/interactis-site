@@ -79,13 +79,31 @@
    var s = document.createElement('style');
    s.id = 'ia-consent-style';
    s.textContent = [
-     '.ia-banner{position:fixed;left:16px;right:16px;bottom:16px;max-width:560px;margin:0 auto;background:#0f172a;color:#fff;padding:20px 22px;border-radius:14px;box-shadow:0 25px 60px rgba(0,0,0,.45);z-index:2147483600;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;font-size:14px;line-height:1.55;animation:iaUp .4s ease}',
-     '.ia-banner p{margin:0 0 14px}',
+     '.ia-banner{position:fixed;left:16px;right:16px;bottom:16px;max-width:560px;margin:0 auto;background:#0f172a;color:#fff;padding:16px 18px;border-radius:14px;box-shadow:0 25px 60px rgba(0,0,0,.45);z-index:2147483600;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;font-size:14px;line-height:1.5;animation:iaUp .4s ease}',
+     '.ia-banner p{margin:0 0 12px}',
+     // Mesure : sur iPhone (390x844) le bandeau faisait 206 px de haut et
+     // recouvrait le bouton « Demander mon devis » du hero, c'est-a-dire le
+     // seul element de la page qui rapporte quelque chose. Sur 360x640 il
+     // mangeait un tiers de l'ecran. Le texte a ete raccourci (meme
+     // information : finalites + lien vers la politique) et les marges
+     // resserrees sur petit ecran. Le bandeau reste obligatoire, il n'est
+     // plus posé sur le bouton.
+     '@media(max-width:520px){.ia-banner{left:10px;right:10px;bottom:10px;padding:14px 15px;font-size:13px}' +
+       '.ia-banner p{margin:0 0 10px}' +
+       '.ia-banner-actions{gap:8px}' +
+       '.ia-banner button{flex:1;padding:11px 12px}}',
+     // Ecrans courts (iPhone SE 667, vieux Android 640) : 140 px de bandeau
+     // sur 667 px d'ecran, c'est un cinquieme de la page. On resserre encore.
+     // Les boutons restent a 44 px de haut, minimum tactile recommande.
+     '@media(max-height:700px){.ia-banner{padding:11px 13px;font-size:12.5px;line-height:1.42;bottom:8px}' +
+       '.ia-banner p{margin:0 0 8px}' +
+       '.ia-banner button{padding:9px 12px}}',
      '.ia-banner a{color:#fb923c;text-decoration:underline}',
      '.ia-banner-actions{display:flex;gap:10px;flex-wrap:wrap}',
      '.ia-banner button{padding:10px 18px;border:none;border-radius:10px;font-weight:600;cursor:pointer;font-size:14px;font-family:inherit}',
-     '.ia-banner .ia-accept{background:#fb923c;color:#fff}',
-     '.ia-banner .ia-accept:hover{background:#ea580c}',
+     // Texte sombre : blanc sur #fb923c ne donne que 2.26:1 (min AA 4.5:1)
+     '.ia-banner .ia-accept{background:#fb923c;color:#1b0f00}',
+     '.ia-banner .ia-accept:hover{background:#ea580c;color:#1b0f00}',
      '.ia-banner .ia-refuse{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.3)}',
      '.ia-banner .ia-refuse:hover{background:rgba(255,255,255,.08)}',
      '.ia-cookies-link{position:fixed;left:16px;bottom:16px;background:#fff;color:#374151;border:1px solid #e5e7eb;padding:8px 12px;border-radius:8px;font-size:12px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.08);z-index:2147483500;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif}',
@@ -101,10 +119,17 @@
    b.className = 'ia-banner';
    b.setAttribute('role', 'dialog');
    b.setAttribute('aria-label', 'Bandeau de consentement aux cookies');
+   // L'emoji 🍪 en tete du bandeau a ete retire : il donnait un ton badin a
+   // un texte qui engage juridiquement, son rendu variait d'un systeme a
+   // l'autre, et il n'apportait aucune information.
+   // Texte raccourci de 6 lignes a 2 sur telephone. Les mentions exigees
+   // restent la : les finalites (mesure d'audience, publicite, chat) et
+   // l'acces a la politique de confidentialite. Le reste etait de la
+   // paraphrase — « vous pouvez accepter ou refuser » double simplement les
+   // deux boutons situes juste en dessous.
    b.innerHTML =
-     '<p>🍪 <strong>Nous respectons votre vie privée.</strong> ' +
-     'Nous utilisons des cookies pour mesurer la fréquentation et améliorer votre expérience ' +
-     '(Google Ads, chat en direct). Vous pouvez accepter ou refuser. ' +
+     '<p><strong>Nous respectons votre vie privée.</strong> ' +
+     'Cookies de mesure d\u2019audience, de publicité (Google Ads) et chat en direct. ' +
      '<a href="/confidentialite" target="_blank" rel="noopener">En savoir plus</a></p>' +
      '<div class="ia-banner-actions">' +
      '<button type="button" class="ia-accept">Accepter</button>' +
@@ -131,7 +156,7 @@
    l.id = 'ia-cookies-link';
    l.className = 'ia-cookies-link';
    l.type = 'button';
-   l.textContent = '🍪 Cookies';
+   l.textContent = 'Cookies';
    l.addEventListener('click', function () {
      l.remove();
      buildBanner();

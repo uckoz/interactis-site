@@ -1,0 +1,359 @@
+/* ============================================
+   home.css — styles propres a la page d'accueil
+   ============================================
+   Complete assets/site.css, ne le remplace pas.
+   L'accueil portait 61 KB de CSS inline dont 54 KB etaient une copie
+   mot pour mot de site.css : deux fichiers a maintenir, qui avaient
+   deja diverge. Le doublon est supprime ; il ne reste ici que ce qui
+   n'existe que sur l'accueil.
+   ============================================ */
+
+    /* Avis Google près du formulaire (preuve sociale) */
+    .greviews {
+      margin-top: 28px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+    }
+    .greviews-head {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+      font-size: 0.9375rem;
+    }
+    .greviews-stars { color: #fbbc04; letter-spacing: 2px; }
+    .greviews-head a { color: var(--orange); font-size: 0.8125rem; }
+    .greviews blockquote {
+      margin: 0 0 14px;
+      font-size: 0.875rem;
+      line-height: 1.55;
+      color: var(--text-dim);
+    }
+    .greviews blockquote:last-child { margin-bottom: 0; }
+    .greviews blockquote footer {
+      margin-top: 4px;
+      font-size: 0.8125rem;
+      color: var(--text-faded);
+    }
+
+    /* ============================================
+       WOW EFFECTS : ajouts 2026
+       ============================================ */
+
+    /* Barre de progression de lecture (haut de page) */
+    .scroll-progress {
+      position: fixed; top: 0; left: 0;
+      height: 3px; width: 0%;
+      z-index: 9999;
+      background: linear-gradient(90deg, var(--orange), var(--blue));
+      box-shadow: 0 0 12px var(--orange-glow);
+      pointer-events: none;
+      will-change: width;
+    }
+
+    /* Canvas "mur interactif" du hero : réagit à la souris */
+    .hero-canvas {
+      position: absolute; inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      mix-blend-mode: screen;
+      opacity: 0.85;
+    }
+
+    /* Orbes lumineux ambiants flottants */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(70px);
+      pointer-events: none;
+      z-index: 0;
+      will-change: transform;
+      opacity: 0.55;
+    }
+    .orb-1 { width: 460px; height: 460px; top: -120px; left: -100px;
+      background: radial-gradient(circle, var(--orange) 0%, transparent 70%); }
+    .orb-2 { width: 520px; height: 520px; bottom: -160px; right: -120px;
+      background: radial-gradient(circle, var(--blue) 0%, transparent 70%); opacity: 0.4; }
+
+    /* Tilt 3D générique (vidéos, étapes process) */
+    [data-tilt] {
+      transform-style: preserve-3d;
+      transition: transform 0.35s var(--ease), box-shadow 0.4s var(--ease), border-color 0.35s var(--ease);
+      will-change: transform;
+    }
+    .vcard:hover {
+      border-color: rgba(255,122,24,0.55);
+      box-shadow: 0 28px 70px rgba(0,0,0,0.55), 0 0 46px rgba(255,122,24,0.16);
+    }
+    .vcard::after {
+      content: '';
+      position: absolute; inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(255,122,24,0.18), transparent 45%);
+      opacity: 0; transition: opacity 0.35s var(--ease);
+      pointer-events: none; z-index: 1;
+    }
+    .vcard:hover::after { opacity: 1; }
+
+    /* Bandeau défilant (marquee) */
+    .marquee {
+      overflow: hidden;
+      padding: 30px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, var(--bg-soft), var(--bg));
+      position: relative;
+    }
+    .marquee::before, .marquee::after {
+      content: ''; position: absolute; top: 0; bottom: 0; width: 140px; z-index: 2; pointer-events: none;
+    }
+    .marquee::before { left: 0;  background: linear-gradient(90deg, var(--bg), transparent); }
+    .marquee::after  { right: 0; background: linear-gradient(270deg, var(--bg), transparent); }
+    .marquee-track {
+      display: inline-flex; align-items: center; gap: 0;
+      white-space: nowrap;
+      animation: marquee 32s linear infinite;
+      will-change: transform;
+    }
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+    .marquee-track span,
+    .marquee-track a {
+      font-family: var(--serif);
+      font-size: clamp(1.4rem, 3vw, 2.4rem);
+      font-weight: 700; letter-spacing: -0.02em;
+      color: var(--text);
+      display: inline-flex; align-items: center;
+      padding: 0 28px;
+      text-decoration: none;
+      transition: color 0.25s var(--ease);
+    }
+    .marquee-track a:hover {
+      color: var(--orange);
+    }
+    .marquee-track span::after,
+    .marquee-track a::after {
+      content: '✦'; color: var(--orange);
+      font-size: 0.55em; margin-left: 56px;
+      transform: translateY(-2px);
+    }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+
+    /* Section vidéo promo : réintégrée au thème dark */
+    .promo {
+      padding: 120px 32px;
+      text-align: center;
+      position: relative;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(255,122,24,0.10), transparent 55%),
+        var(--bg);
+    }
+    .promo-eyebrow {
+      color: var(--orange); font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.14em;
+      font-size: 0.8rem; margin-bottom: 14px;
+    }
+    .promo h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      font-weight: 700; letter-spacing: -0.03em;
+      line-height: 1.05; margin: 0 auto 40px;
+      max-width: 20ch;
+    }
+    .promo h2 .accent { color: var(--orange); }
+    .promo-video {
+      max-width: 380px; margin: 0 auto;
+      border-radius: 24px; overflow: hidden;
+      border: 1px solid var(--line-strong);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 60px rgba(0,212,255,0.12);
+    }
+    /* aspect-ratio reserve la hauteur avant que la lazy-video charge sa src (evite CLS) */
+    .promo-video { aspect-ratio: 9 / 16; }
+    .promo-video video { width: 100%; height: 100%; display: block; object-fit: cover; }
+    .promo-hint { font-size: 0.8125rem; color: var(--text-faded); margin-top: 18px; }
+
+    /* ===== Temoignages =====
+       Le bloc .testi a ete deplace dans site.css : il ne servait qu'a
+       l'accueil, or les pages Particuliers et Professionnels ont le meme
+       besoin (montrer de vrais avis au moment ou le visiteur se demande
+       « est-ce que ca marche vraiment »). Le dupliquer aurait cree une
+       troisieme copie a maintenir. home.css ne charge que sur l'accueil,
+       site.css sur les 29 pages. */
+
+    /* ===== Bandeau de preuve, juste sous le hero =====
+       Objectif : donner au visiteur, avant qu'il ne scrolle, les trois
+       informations qu'il cherche pour decider — est-ce que d'autres ont
+       aime, combien ca coute, et quand j'ai une reponse. Tous les
+       elements affiches ici sont deja publies ailleurs sur le site :
+       rien n'est invente. */
+    .proof{padding:26px 32px 0;background:var(--bg-soft,#0a0e1a)}
+    .proof-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .proof-item{display:flex;align-items:flex-start;gap:12px;padding:18px 20px;border:1px solid var(--line,rgba(245,247,251,.12));border-radius:14px;background:rgba(245,247,251,.02)}
+    .proof-item svg{flex:0 0 auto;margin-top:2px;color:var(--orange,#ff7a18)}
+    .proof-k{display:block;font-weight:700;font-size:.9375rem;color:var(--text,#f5f7fb);margin-bottom:3px;line-height:1.3}
+    .proof-v{display:block;font-size:.8125rem;color:rgba(245,247,251,.68);line-height:1.5}
+    .proof-v a{color:var(--orange,#ff7a18)}
+    .proof-stars{color:#fbbc04;letter-spacing:1px}
+    @media(max-width:900px){
+      .proof-inner{grid-template-columns:1fr;gap:10px}
+      .proof{padding:22px 20px 0}
+      .proof-item{padding:14px 16px}
+    }
+
+    /* ===== Sélecteur de profil (non bloquant) =====
+       Remplace l'ancien écran d'accueil plein écran qui masquait tout le
+       site tant que le visiteur n'avait pas cliqué. Le contenu est
+       maintenant lisible immédiatement ; ce bloc ne fait que filtrer. */
+    .chooser{padding:34px 32px 6px;background:var(--bg-soft,#0a0e1a)}
+    .chooser-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap}
+    .chooser-label{font-size:.875rem;font-weight:600;color:rgba(245,247,251,.72);margin:0}
+    .chooser-btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+    .chooser-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;border:1px solid var(--line,rgba(245,247,251,.12));background:rgba(245,247,251,.03);color:var(--text,#f5f7fb);font:inherit;font-size:.9375rem;font-weight:600;cursor:pointer;transition:border-color .2s ease,background .2s ease}
+    .chooser-btn:hover{border-color:var(--orange,#ff7a18);background:rgba(255,122,24,.08)}
+    .chooser-btn[aria-pressed="true"]{border-color:var(--orange,#ff7a18);background:rgba(255,122,24,.14)}
+    .chooser-btn[aria-pressed="true"]::after{content:'✓';color:var(--orange,#ff7a18);font-weight:800}
+    .chooser-btn:focus-visible{outline:2px solid var(--orange,#ff7a18);outline-offset:3px}
+    @media(pointer:coarse){.chooser-btn{cursor:auto}}
+    @media(max-width:680px){
+      .chooser{padding:26px 20px 4px}
+      .chooser-inner{gap:12px}
+      .chooser-label{width:100%;text-align:center}
+      .chooser-btn{padding:9px 15px;font-size:.875rem}
+    }
+    /* ===== Filtrage par univers ===== */
+    html[data-mode="part"] [data-aud="pro"]{display:none !important}
+    html[data-mode="pro"] [data-aud="part"]{display:none !important}
+    /* ===== Cartes d'univers sous le hero ===== */
+    .uni{padding:90px 32px;background:var(--bg-soft,#0a0e1a)}
+    .uni-inner{max-width:1280px;margin:0 auto}
+    .uni h2{text-align:center;font-family:var(--serif,'Bricolage Grotesque',sans-serif);font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:700;margin-bottom:14px}
+    .uni-sub{text-align:center;color:rgba(245,247,251,.7);max-width:60ch;margin:0 auto 44px;line-height:1.6}
+    .uni-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+    .uni-card{display:block;padding:26px 22px;border:1px solid var(--line,rgba(245,247,251,.12));border-radius:16px;text-decoration:none;background:rgba(245,247,251,.02);transition:transform .25s ease,border-color .25s ease}
+    .uni-card:hover{transform:translateY(-4px);border-color:var(--orange,#ff7a18)}
+    .uni-card .uc-emoji{font-size:1.7rem;display:block;margin-bottom:10px}
+    .uni-card .uc-title{display:block;font-weight:700;color:var(--text,#f5f7fb);margin-bottom:8px;font-size:1.05rem}
+    .uni-card .uc-desc{display:block;font-size:.875rem;color:rgba(245,247,251,.68);line-height:1.55;margin-bottom:10px}
+    .uni-card .uc-price{display:inline-block;font-size:.8125rem;font-weight:700;color:var(--orange,#ff7a18)}
+    .uni-card .uc-go{display:block;margin-top:6px;font-size:.875rem;font-weight:700;color:var(--orange,#ff7a18)}
+    /* ===== Pilule de bascule dans le header ===== */
+    .mode-pill{display:none;align-items:center;gap:8px;margin-left:14px;padding:7px 14px;border-radius:999px;border:1px solid rgba(255,122,24,.45);background:rgba(255,122,24,.10);font-size:.8125rem;font-weight:600;color:var(--text,#f5f7fb);cursor:pointer;white-space:nowrap}
+    .mode-pill:hover{border-color:var(--orange,#ff7a18)}
+    .mode-pill .mp-switch{color:var(--orange,#ff7a18);font-weight:700}
+    html[data-mode] .mode-pill{display:inline-flex}
+    @media(max-width:900px){.mode-pill{display:none !important}}
+    .mode-pill-mobile{display:none;margin:10px auto 0;padding:8px 16px;border-radius:999px;border:1px solid rgba(255,122,24,.45);background:rgba(255,122,24,.10);font-size:.8125rem;font-weight:600;color:var(--text,#f5f7fb);cursor:pointer}
+    @media(max-width:900px){html[data-mode] .mode-pill-mobile{display:inline-block}}
+
+    /* ============================================
+       SECTION INSTALLATION - video epinglee
+       ============================================
+       Le probleme resolu : la video d'installation est filmee au telephone,
+       donc verticale (9:16). L'ancien bloc la posait dans un cadre large et
+       la recadrait en « object-fit: cover » : on perdait les deux tiers de
+       la hauteur, c'est-a-dire la valise au sol en bas et le mur allume en
+       haut - les deux seules choses que la demonstration doit montrer. Il
+       restait un bout de sol vide avec une silhouette minuscule.
+       Ici la video garde son format. Elle reste collee a l'ecran pendant que
+       les trois etapes defilent a cote : la duree de lecture est donnee par
+       la hauteur des etapes, pas par une boucle qui tourne dans le vide.
+       Verifie avant d'ecrire : body porte overflow-x: hidden, ce qui casse
+       position: sticky dans certains cas. Test sur la page reelle - l'element
+       de scroll est <html>, le sticky tient. Lenis 1.1.16 utilise le
+       defilement natif, il ne s'y oppose pas non plus.
+       ============================================ */
+    /* 1120 px et non les 1280 du reste du site : le texte des etapes est
+       borne a ~42 caracteres pour rester lisible, si bien que dans une grille
+       de 1280 il restait environ 300 px de vide a droite de chaque paragraphe.
+       Le bloc paraissait inachevee plutot qu'aere. En resserrant, la video et
+       le texte se regardent au lieu de flotter chacun dans son coin. */
+    .instal{max-width:1120px;margin:110px auto 0;padding:0}
+    .instal-inner{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1fr);gap:60px;align-items:start}
+
+    /* -- Colonne video : epinglee -- */
+    /* 78 px d'en-tete fixe + 24 px de respiration. --urgency-h est mesuree a
+       l'execution par cro.js : elle vaut 55 px sur ordinateur, 0 si le
+       visiteur a ferme le bandeau. Sans elle le haut de la video passerait
+       sous le bandeau. */
+    .instal-media-col{position:sticky;top:calc(var(--urgency-h, 0px) + 102px);display:flex;justify-content:center}
+    .instal-media{position:relative;margin:0;height:min(72vh,660px);aspect-ratio:9/16;max-width:100%;border-radius:24px;overflow:hidden;background:#0b0b0d;border:1px solid var(--line,rgba(245,247,251,.12));box-shadow:0 30px 80px rgba(0,0,0,.45)}
+    .instal-video{display:block;width:100%;height:100%;object-fit:cover}
+    /* Tant que la source n'est pas chargee, l'affiche du <video> tient lieu
+       d'image : pas de trou blanc, pas de decalage de mise en page. */
+    .instal-legende{position:absolute;left:0;right:0;bottom:0;padding:38px 16px 12px;margin:0;font-size:.75rem;color:rgba(245,247,251,.82);text-align:center;background:linear-gradient(to top,rgba(0,0,0,.72),transparent);pointer-events:none}
+
+    /* -- Bouton de lecture : telephone uniquement -- */
+    /* Choix assume : sur telephone la video ne se telecharge que si on
+       appuie. 1,7 Mo imposes en 4G a quelqu'un qui ne fait que passer, c'est
+       du gaspillage ; laisses au choix, c'est un signal d'interet. */
+    .instal-play{display:none;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);align-items:center;gap:10px;min-height:48px;padding:13px 22px;border-radius:999px;border:1px solid rgba(255,255,255,.28);background:rgba(12,12,14,.66);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#fff;font:inherit;font-size:.875rem;font-weight:700;cursor:pointer;white-space:nowrap}
+    .instal-play svg{flex:none}
+    .instal-play:focus-visible{outline:2px solid var(--orange,#ff7a18);outline-offset:3px}
+    .instal-media.is-playing .instal-play{display:none}
+    @media(pointer:coarse){.instal-play{display:inline-flex}}
+    /* Si le defilement pilote est desactive (mouvement reduit), il faut
+       quand meme un moyen de lancer la video, y compris a la souris. */
+    @media(prefers-reduced-motion:reduce){.instal-play{display:inline-flex}}
+
+    /* -- Colonne texte -- */
+    .instal-head{margin-bottom:18px}
+    .instal-head h2{font-family:var(--serif,'Bricolage Grotesque',sans-serif);font-size:clamp(1.9rem,3.4vw,2.9rem);font-weight:700;letter-spacing:-.02em;line-height:1.08;margin:18px 0 16px}
+    .instal-lede{color:var(--text-dim,rgba(245,247,251,.7));font-size:1.0625rem;line-height:1.65;max-width:46ch}
+
+    /* Chaque etape occupe assez de hauteur pour donner sa duree a la video :
+       trois fois 40vh, c'est environ quatre secondes de defilement calme -
+       le temps que les 15 secondes se deroulent sans qu'on ait a courir. */
+    .instal-list{list-style:none;margin:0;padding:0}
+    .instal-step{min-height:40vh;display:flex;flex-direction:column;justify-content:center;padding:22px 0;border-top:1px solid var(--line,rgba(245,247,251,.12))}
+    .instal-step h3{font-size:1.25rem;font-weight:700;margin:10px 0 8px;letter-spacing:-.01em}
+    .instal-step p{color:var(--text-dim,rgba(245,247,251,.7));font-size:.9375rem;line-height:1.65;max-width:44ch;margin:0}
+    .instal-num{font-family:var(--serif,'Bricolage Grotesque',sans-serif);font-size:.8125rem;font-weight:700;letter-spacing:.14em;color:var(--orange,#ff7a18)}
+    /* La mise en retrait des etapes inactives n'est activee QUE par le
+       script, via .is-live. Si le JavaScript ne tourne pas, les trois etapes
+       restent pleinement lisibles au lieu d'etre grisees pour toujours. */
+    .instal-list.is-live .instal-step{opacity:.32;transition:opacity .45s var(--ease,cubic-bezier(.16,1,.3,1))}
+    .instal-list.is-live .instal-step.is-active{opacity:1}
+
+    /* Un element colle se decolle des que son bas atteint le bas de son
+       conteneur. Sans cette reserve, la video se decrochait exactement au
+       moment ou la troisieme etape devenait active : le visiteur lisait
+       « le mur devient un terrain de jeu » en voyant la video quitter
+       l'ecran. La preuve disparaissait juste avant la promesse, et le bouton
+       de devis se lisait dans le vide. Constate au releve : la video passait
+       de 153 px a -73 px des l'activation de l'etape 3.
+       30vh de reserve la maintiennent en place le temps que l'etape 3 et le
+       bouton soient lus. */
+    .instal-steps{padding-bottom:30vh}
+
+    .instal-meta{display:flex;gap:10px;flex-wrap:wrap;margin:30px 0 26px}
+    .instal-meta span{display:inline-flex;align-items:center;padding:7px 14px;border-radius:999px;font-size:.75rem;font-weight:600;color:var(--orange,#ff7a18);background:rgba(255,122,24,.09);border:1px solid rgba(255,122,24,.25)}
+
+    /* .btn impose white-space: nowrap et une ligne unique ; on le desserre
+       pour loger la mention sous le libelle. */
+    .instal-cta{flex-direction:column;gap:3px;white-space:normal;text-align:center;padding:15px 32px;min-height:48px}
+    .instal-cta-note{font-size:.75rem;font-weight:600;opacity:.8}
+
+    /* -- Tablette et telephone : plus d'epinglage -- */
+    @media(max-width:900px){
+      .instal{margin-top:72px}
+      .instal-inner{grid-template-columns:1fr;gap:30px}
+      .instal-media-col{position:static;top:auto}
+      .instal-media{height:auto;width:min(320px,78vw);aspect-ratio:9/16}
+      .instal-steps{padding-bottom:0}   /* plus d'epinglage, plus de reserve */
+      .instal-step{min-height:0;padding:18px 0}
+      .instal-list.is-live .instal-step{opacity:1}
+      .instal-head h2{margin-top:14px}
+    }
+    @media(max-width:420px){
+      .instal-media{width:min(280px,72vw)}
+      .instal-play{font-size:.8125rem;padding:12px 18px}
+    }
+
+    /* -- Mouvement reduit : la video ne suit plus le doigt ni la molette -- */
+    @media(prefers-reduced-motion:reduce){
+      .instal-media-col{position:static;top:auto}
+      .instal-steps{padding-bottom:0}
+      .instal-step{min-height:0}
+      .instal-list.is-live .instal-step{opacity:1}
+    }

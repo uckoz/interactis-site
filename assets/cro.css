@@ -81,19 +81,58 @@
 
 /* Pousse le header fixe vers le bas quand banner present.
    On match aussi html.has-urgency-banner (set synchroneusement avant
-   le premier paint, voir <script> dans <head>) pour eviter le CLS. */
+   le premier paint, voir <script> dans <head>) pour eviter le CLS.
+   --urgency-h est mesuree par cro.js des l'injection ; les valeurs de
+   repli (55px / 94px) correspondent a la hauteur reelle mesuree au
+   premier paint, avant que le script ne prenne le relais. */
 body.has-urgency-banner .hd,
-html.has-urgency-banner .hd { top: 46px; }
+html.has-urgency-banner .hd { top: var(--urgency-h, 55px); }
 body.has-urgency-banner .devis-header,
-html.has-urgency-banner .devis-header { top: 46px; }
+html.has-urgency-banner .devis-header { top: var(--urgency-h, 55px); }
+
+/* Bascule des deux libelles du bouton (voir cro.js). Par defaut on affiche
+   la version longue ; la version courte n'apparait que sur telephone etroit. */
+.urgency-banner-link .ubl-short { display: none; }
 
 @media (max-width: 720px) {
-  .urgency-banner-inner { padding: 10px 48px 10px 16px; gap: 10px; font-size: 0.8125rem; }
-  .urgency-banner-link { padding: 5px 12px; font-size: 0.75rem; }
+  /* Une seule rangee sur tout le domaine tactile. Sans nowrap, le bouton
+     passait a la ligne des que le texte manquait de place : 93 px de haut
+     mesures a 500 px de large, 94 px a 360. Avec min-width:0 le texte se
+     replie sur deux lignes a l'interieur de sa colonne et le bouton reste
+     a droite : le bandeau retombe entre 49 et 65 px. */
+  .urgency-banner-inner { padding: 10px 48px 10px 16px; gap: 10px; font-size: 0.8125rem; flex-wrap: nowrap; }
+  .urgency-banner-text { min-width: 0; }
+  .urgency-banner-link { padding: 5px 12px; font-size: 0.75rem; white-space: nowrap; }
   body.has-urgency-banner .hd,
   body.has-urgency-banner .devis-header,
   html.has-urgency-banner .hd,
-  html.has-urgency-banner .devis-header { top: 68px; }
+  html.has-urgency-banner .devis-header { top: var(--urgency-h, 94px); }
+}
+
+/* Telephones etroits : le bandeau tient sur une seule rangee.
+   Place APRES le bloc 720 px, sinon celui-ci ecraserait le padding et la
+   taille de police definis ici (les deux regles s'appliquent a 360 px).
+   Mesure avant : 94 px de haut (texte sur une rangee, bouton renvoye a la
+   suivante). Ces 94 px se repercutaient sur tout le hero, qui est decale de
+   --urgency-h, et repoussaient le bouton « Demander mon devis » sous le
+   bandeau cookies sur iPhone SE et Android 640. On empeche le retour a la
+   ligne (nowrap), on autorise le texte a se replier sur lui-meme
+   (min-width:0) et on raccourcit le libelle du bouton. */
+@media (max-width: 480px) {
+  .urgency-banner-inner { flex-wrap: nowrap; padding: 9px 40px 9px 14px; gap: 8px; }
+  .urgency-banner-text { min-width: 0; font-size: 0.75rem; line-height: 1.3; }
+  .urgency-banner-emoji { display: none; }
+  .urgency-banner-link .ubl-long { display: none; }
+  .urgency-banner-link .ubl-short { display: inline; }
+  .urgency-banner-link { padding: 6px 10px; font-size: 0.75rem; white-space: nowrap; }
+  .urgency-banner-close { right: 10px; width: 26px; height: 26px; }
+  /* Valeur de repli alignee sur la nouvelle hauteur reelle (~55 px). Elle
+     sert le temps que cro.js mesure le bandeau ; laisser 94 px ici ferait
+     sauter l'en-tete de 39 px au premier affichage. */
+  body.has-urgency-banner .hd,
+  body.has-urgency-banner .devis-header,
+  html.has-urgency-banner .hd,
+  html.has-urgency-banner .devis-header { top: var(--urgency-h, 55px); }
 }
 
 /* ============================================
@@ -192,24 +231,61 @@ html.has-urgency-banner .devis-header { top: 46px; }
   gap: 8px;
   padding: 14px 20px;
   background: var(--orange);
-  color: white;
+  /* Texte sombre et non blanc : blanc sur #ff7a18 donne 2.61:1, sous le
+     minimum WCAG AA de 4.5:1. Ce brun tres fonce donne 7.22:1. */
+  color: #1b0f00;
   border: none;
   border-radius: 999px;
   font: inherit;
   font-size: 0.9375rem;
   font-weight: 700;
   cursor: pointer;
+  text-decoration: none;
   transition: all 0.25s var(--ease);
   box-shadow: 0 12px 28px rgba(255,122,24,0.35);
 }
 @media (pointer: coarse) { .exit-popup-submit { cursor: auto; } }
 .exit-popup-submit:hover {
   background: var(--orange-bright);
+  color: #1b0f00;
   box-shadow: 0 16px 36px rgba(255,122,24,0.5);
   transform: translateY(-1px);
 }
+.exit-popup-submit:disabled {
+  opacity: 0.65;
+  cursor: default;
+  transform: none;
+}
+/* Message d'erreur du formulaire brochure (email invalide) */
+.exit-popup-error {
+  margin: 10px 0 0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #ffb4a2;
+}
+.exit-popup-error[hidden] { display: none; }
 .exit-popup-trust {
   font-size: 0.75rem;
   color: var(--text-faded);
   margin: 0;
+}
+.exit-popup-trust a { color: var(--text-dim); }
+
+/* ============================================
+   CIBLES TACTILES DU BANDEAU
+   ============================================
+   Mesure sur telephone 390 px : le lien « Demander mon devis » fait 29 px de
+   haut et la croix de fermeture 28x28. Sous 44 px, le doigt rate.
+   Le bandeau est en position fixed et sa hauteur reelle est mesuree par
+   cro.js dans --urgency-h, qui sert ensuite a decaler l'en-tete ET le
+   premier bloc de chaque page. Grandir le dessin ferait donc descendre tout
+   le contenu de toutes les pages. On etend la zone cliquable avec un ::after
+   transparent : le doigt gagne, la mise en page ne bouge pas.
+   La croix compte double : mal visee, elle declenche le clic sur le lien
+   juste a cote et envoie le visiteur sur une page qu'il ne demandait pas. */
+.urgency-banner-link, .urgency-banner-close { position: relative; }
+.urgency-banner-link::after, .urgency-banner-close::after {
+  content: ""; position: absolute;
+  top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 100%; height: 44px; min-width: 44px;
 }
