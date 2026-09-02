@@ -136,9 +136,18 @@
     try {
       if (sessionStorage.getItem('ia-exit-popup-shown') === '1') return;
     } catch (e) {}
-    // Pas si on est deja sur /devis ou /merci (deja en cours de conversion)
-    var path = location.pathname || '';
-    if (path.indexOf('/devis') === 0 || path.indexOf('/merci') === 0) return;
+    // Pages ou la pop-up n'a rien a faire :
+    //  - /devis et /merci : le visiteur est deja en train de convertir,
+    //    l'interrompre ne peut que lui faire abandonner le formulaire.
+    //  - pages legales : quelqu'un qui lit la politique de confidentialite
+    //    ou les CGV cherche une information precise, souvent parce qu'il se
+    //    pose deja une question de confiance. Lui reclamer son adresse mail
+    //    a ce moment-la est au mieux inutile, au pire contre-productif.
+    var path = (location.pathname || '').replace(/\/+$/, '') || '/';
+    var exclues = ['/devis', '/merci', '/mentions-legales', '/confidentialite', '/cgv'];
+    for (var i = 0; i < exclues.length; i++) {
+      if (path === exclues[i] || path === exclues[i] + '.html') return;
+    }
 
     var triggered = false;
     function fire() {

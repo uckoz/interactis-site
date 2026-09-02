@@ -1729,3 +1729,56 @@
   margin-top: 8px;
 }
 
+
+/* ============================================
+   PAGES LEGALES (mentions-legales, cgv, confidentialite)
+   ============================================
+   Variante de .article-body pour du texte juridique : sections
+   numerotees, encadres d'informations, listes denses. Elles etaient
+   auparavant construites sur Tailwind CDN, en theme clair, ce qui en
+   faisait les seules pages blanches d'un site sombre.
+   ============================================ */
+.article-body.legal section {
+  margin-bottom: 44px;
+}
+.article-body.legal section:last-child { margin-bottom: 0; }
+
+/* Encadre d'informations (editeur, hebergeur, coordonnees...) */
+.article-body.legal .legal-card {
+  margin: 20px 0 8px;
+  padding: 22px 24px;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--orange);
+  border-radius: 14px;
+  background: rgba(245,247,251,.03);
+}
+.article-body.legal .legal-card p {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+.article-body.legal .legal-card p:last-child { margin-bottom: 0; }
+.article-body.legal .legal-card strong { color: var(--text); }
+
+@media (max-width: 720px) {
+  .article-body.legal .legal-card { padding: 18px 18px; border-radius: 12px; }
+}
+
+/* Tableaux eventuels (sous-traitants, cookies) */
+.article-body.legal table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 0.9375rem;
+}
+.article-body.legal th,
+.article-body.legal td {
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+.article-body.legal th {
+  color: var(--text);
+  font-weight: 600;
+  background: rgba(245,247,251,.04);
+}
