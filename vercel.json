@@ -1,6 +1,9 @@
 {
 "cleanUrls": true,
 "redirects": [
+  { "source": "/build-brochure.py", "destination": "/", "permanent": false },
+  { "source": "/CONTENU-A-FOURNIR.md", "destination": "/", "permanent": false },
+  { "source": "/audit-interactis.md", "destination": "/", "permanent": false },
   { "source": "/mentions-legales.html", "destination": "/mentions-legales", "permanent": true },
   { "source": "/confidentialite.html", "destination": "/confidentialite", "permanent": true },
   { "source": "/cgv.html", "destination": "/cgv", "permanent": true },

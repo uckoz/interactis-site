@@ -1,0 +1,20 @@
+# Fichiers presents dans le depot mais qui ne doivent PAS etre servis
+# publiquement. Vercel deploie un site statique : tout fichier a la racine
+# devient une URL. Sans ce filtre, https://www.interactis.be/build-brochure.py
+# renvoie le code source (verifie le 02/09/2026 : la fuite existait deja en
+# production), et CONTENU-A-FOURNIR.md exposerait les notes internes
+# (historique des decisions tarifaires, marges, points a completer).
+
+# Notes de travail internes
+CONTENU-A-FOURNIR.md
+audit-interactis.md
+*.md
+
+# Scripts de generation (ne servent qu'en local)
+build-brochure.py
+*.py
+
+# Sauvegardes et artefacts
+*.bak
+*.orig
+.DS_Store
