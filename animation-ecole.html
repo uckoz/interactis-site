@@ -126,8 +126,16 @@
     @media (max-width: 768px) {
       .hero-inner {
         grid-template-columns: 1fr;
-        gap: 32px;
+        gap: 24px;
       }
+      /* La colonne texte est ecrite avant la video dans le HTML. Sur mobile,
+         la grille passe a une seule colonne et la video se retrouvait donc
+         a 1360 px du haut, soit ~500 px SOUS la ligne de flottaison d'un
+         iPhone (844 px de haut). Or elle doit se voir des l'arrivee sur la
+         page. On la remonte avec `order`, ce qui ne change QUE l'ordre
+         d'affichage : dans le document le h1 reste le premier element, donc
+         rien ne bouge pour le referencement ni pour les lecteurs d'ecran. */
+      .hero-image { order: -1; }
       .hero-section {
         padding: calc(var(--urgency-h, 0px) + 92px) 0 40px;
       }
@@ -219,6 +227,30 @@
       border-radius: 12px;
       aspect-ratio: 16/10;
       object-fit: cover;
+    }
+
+    /* Video du hero (ecole-salle-de-gym.mp4). Elle est verticale (720x1280) :
+       laissee libre dans la colonne du hero (environ 550 px de large) elle
+       ferait 978 px de haut et pousserait les boutons hors de l'ecran. On la
+       borne donc en HAUTEUR et on laisse la largeur suivre le ratio, plutot
+       que l'inverse : comme ca l'image n'est jamais recadree et on voit la
+       salle de gym en entier. */
+    .hero-image video {
+      height: min(58vh, 520px);
+      width: auto;
+      max-width: 100%;
+      margin: 0 auto;
+      display: block;
+      border-radius: 16px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+      background: #000;
+    }
+    @media (max-width: 768px) {
+      /* Plus basse que sur desktop : la video passe en premier sur mobile, il
+         faut qu'il reste de la place sous elle pour que le titre soit lui
+         aussi dans le premier ecran. A 44vh la video mesure ~372 x 209 px sur
+         un iPhone : le format 9/16 est conserve, rien n'est recadre. */
+      .hero-image video { height: min(48vh, 420px); }
     }
 
     /* Section générale */
@@ -721,8 +753,27 @@
             </div>
           </div>
         </div>
+        <!-- La photo /images/photo-ecole.webp qui etait ici est remplacee par
+             la video tournee en salle de gym. Demande d'Ubeyd : la video doit
+             se voir des l'arrivee sur la page, donc dans le hero et pas plus
+             bas. Le fichier photo reste dans le depot, la ligne d'origine est
+             dans l'historique git : retour en arriere immediat si besoin.
+
+             Elle est en lazy-video (et non lazy-video-userplay) : cro.js lui
+             donne sa source et lance la lecture des qu'elle est observee,
+             c'est-a-dire tout de suite puisqu'elle est en haut de page. Le
+             script etant en defer, la requete video ne concurrence pas le
+             HTML et le CSS critiques : c'est le poster (68 Ko) qui s'affiche
+             en premier, la video prend le relais ensuite.
+             Muette et en boucle, sinon aucun navigateur n'autorise
+             l'autoplay. Le son est disponible sur video-ecole-action.mp4
+             plus bas dans la page. -->
         <div class="hero-image">
-          <img src="/images/photo-ecole.webp" alt="Animation Interactive Interactis pour écoles" loading="eager" />
+          <video class="lazy-video" autoplay muted loop playsinline preload="none"
+                 poster="/assets/ecole-salle-de-gym-poster.jpg"
+                 width="720" height="1280"
+                 aria-label="Des élèves jouent au football interactif projeté sur le mur de la salle de gym de leur école"
+                 data-src="/assets/ecole-salle-de-gym.mp4"></video>
         </div>
       </div>
     </section>
