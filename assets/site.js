@@ -79,8 +79,13 @@ document.addEventListener('DOMContentLoaded', function() {
    chargee sur TOUTES les pages : n'importe quelle page reprenant le balisage
    partage heritait donc du style mais pas du comportement, et sa FAQ restait
    muette au clic. C'est ce qui est arrive a /animation-plaine-de-jeux.
-   On centralise ici, une fois, et la copie d'index.html a ete supprimee pour
-   eviter un double basculement (deux gestionnaires = clic sans effet).
+   On centralise ici pour les 29 pages qui chargent ce fichier. /index.html
+   garde volontairement sa propre copie : c'est la seule page a ne PAS charger
+   assets/site.js (elle a son JS inline avec Lenis, GSAP et son propre burger,
+   et charger site.js en plus brancherait un second gestionnaire sur le menu).
+   Les deux copies ne coexistent donc sur aucune page : pas de double
+   basculement. En contrepartie, toute correction faite ici doit etre reportee
+   dans index.html, et l'inverse.
 
    Non touchees volontairement : /animation-maison-de-repos et
    /animation-entreprise. Elles n'utilisent pas ce composant mais leur propre

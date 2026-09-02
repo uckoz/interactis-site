@@ -112,7 +112,17 @@
       // identique partout.
       +   '<span class="urgency-banner-emoji" aria-hidden="true">\u2713</span>'
       +   '<span class="urgency-banner-text">Devis gratuit et sans engagement · <strong>réponse sous 24 h</strong></span>'
-      +   (sansBouton ? '' : '<a href="/devis" class="urgency-banner-link">Demander mon devis <span aria-hidden="true">→</span></a>')
+      // Deux libelles, un seul visible a la fois (bascule en CSS a 480 px).
+      // Sur telephone etroit, « Demander mon devis » forcait le bouton a
+      // passer a la ligne : le bandeau montait a 94 px de haut, poussait tout
+      // le hero vers le bas et le bouton principal de la page finissait sous
+      // le bandeau cookies. Le libelle court garde le bandeau sur une seule
+      // rangee. Le lecteur d'ecran n'annonce que le libelle affiche, et
+      // l'aria-label du lien porte la formulation complete dans les deux cas.
+      +   (sansBouton ? '' : '<a href="/devis" class="urgency-banner-link" aria-label="Demander mon devis">'
+      +      '<span class="ubl-long">Demander mon devis</span>'
+      +      '<span class="ubl-short">Mon devis</span>'
+      +      ' <span aria-hidden="true">→</span></a>')
       +   '<button type="button" class="urgency-banner-close" aria-label="Fermer la bannière">×</button>'
       + '</div>';
 
