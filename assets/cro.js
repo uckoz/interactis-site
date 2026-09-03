@@ -55,15 +55,15 @@
 
   // ============================================
   // 0) CHARGE LE CSS CRO (banner + popup styles)
-  // Injecte dynamiquement /assets/cro.css?v=20260902b pour que toutes les pages
+  // Injecte dynamiquement /assets/cro.css?v=20260903a pour que toutes les pages
   // qui chargent cro.js aient automatiquement les styles, sans avoir
   // a modifier chaque HTML.
   // ============================================
   (function loadCss() {
-    if (document.querySelector('link[href="/assets/cro.css?v=20260902b"]')) return;
+    if (document.querySelector('link[href="/assets/cro.css?v=20260903a"]')) return;
     var link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = '/assets/cro.css?v=20260902b';
+    link.href = '/assets/cro.css?v=20260903a';
     document.head.appendChild(link);
   })();
 
@@ -147,8 +147,32 @@
     }
     // Les polices web changent la hauteur du texte une fois chargees.
     if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(syncBannerHeight).catch(function() {});
+      document.fonts.ready.then(function() { syncBannerHeight(); recenterHash(); }).catch(function() {});
     }
+
+    // -- Ancres profondes (/animation-anniversaire#video, etc.) --
+    // Le CSS reserve la hauteur de l'en-tete via scroll-margin-top, mais il
+    // s'appuie sur --urgency-h, que ce script ne fixe qu'apres l'insertion de
+    // la banniere. Or le navigateur a deja saute a l'ancre avant. Mesure a
+    // 390 px : le titre se retrouvait a 93 px du haut alors que l'en-tete
+    // descend a 128 px, donc 35 px caches sous la barre. On repositionne une
+    // fois la banniere mesuree - et jamais si le visiteur a deja fait defiler
+    // lui-meme, pour ne pas lui reprendre la main.
+    var userScrolled = false;
+    var programmatic = false;
+    window.addEventListener('scroll', function() {
+      if (!programmatic) userScrolled = true;
+    }, { passive: true });
+    function recenterHash() {
+      if (userScrolled || !window.location.hash) return;
+      var target;
+      try { target = document.querySelector(window.location.hash); } catch (e) { return; }
+      if (!target) return;
+      programmatic = true;
+      target.scrollIntoView();
+      setTimeout(function() { programmatic = false; }, 100);
+    }
+    requestAnimationFrame(function() { requestAnimationFrame(recenterHash); });
 
     banner.querySelector('.urgency-banner-close').addEventListener('click', function() {
       banner.classList.add('is-closing');

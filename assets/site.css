@@ -2646,3 +2646,14 @@ a.article-card:hover,
        la case, ce qui donne une cible de la largeur du paragraphe. */
     .form-consent input[type="checkbox"],
     input#privacy { width: 22px; height: 22px; flex-shrink: 0; }
+
+    /* -- Ancres internes (#video, #contact, ...) --
+       L'en-tete est en position: fixed (78 px) et le bandeau d'urgence aussi
+       (--urgency-h, 0 a 94 px selon la largeur et s'il a ete ferme). Ni l'un
+       ni l'autre ne pousse le contenu : un saut d'ancre depose donc la cible
+       tout en haut du viewport, cachee sous la barre. Le lien annexe Google
+       Ads « Voir la demo video » pointe sur /animation-anniversaire#video :
+       sans cette reserve, le visiteur atterrit sur un titre invisible.
+       scroll-margin-top n'a aucun effet de mise en page, il ne joue qu'au
+       moment du defilement. */
+    [id] { scroll-margin-top: calc(var(--urgency-h, 0px) + 100px); }
