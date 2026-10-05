@@ -10,6 +10,18 @@
   var GADS_ID = 'AW-18186820643';
   var TAWK_ID = '6a0b93230ff9d11c35914030/1joujdgtg';
 
+  /* GA4 : a renseigner une seule fois, ici.
+     Etat au 05/10/2026 : vide. Le site ne charge que la balise Google Ads,
+     donc les deux conversions (clic WhatsApp et clic telephone, voir
+     assets/cro.js) remontent bien dans Ads, mais aucun rapport d'audience
+     n'existe : on ne sait pas quelles pages sont lues ni ou les visiteurs
+     abandonnent.
+     Pour l'activer : creer une propriete sur analytics.google.com, copier
+     l'identifiant de flux au format G-XXXXXXXXXX et le coller ci-dessous.
+     Rien d'autre a modifier, le reste du fichier s'en charge. L'historique
+     ne remonte pas dans le temps, il demarre le jour du collage. */
+  var GA4_ID = '';
+
  window.dataLayer = window.dataLayer || [];
   window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
 
@@ -30,6 +42,15 @@
   document.head.appendChild(g);
   window.gtag('js', new Date());
   window.gtag('config', GADS_ID, { 'allow_enhanced_conversions': true });
+
+ /* GA4, uniquement si l'ID a ete renseigne plus haut. La balise gtag.js
+    deja chargee accepte plusieurs destinations : un second appel config
+    suffit, il n'y a pas de script supplementaire a inserer. Le garde-fou
+    sur le prefixe evite qu'un ID de Google Ads ou un reste de modele du
+    type G-XXXXXXXXXX soit envoye par erreur. */
+ if (GA4_ID && GA4_ID.indexOf('G-') === 0 && GA4_ID.indexOf('X') === -1) {
+   window.gtag('config', GA4_ID);
+ }
 
  function getConsent() {
    try {

@@ -125,3 +125,57 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+
+
+/* ============================================
+   MESURE DES CLICS : attributs data-track
+   ============================================
+   Constat du 05/10/2026 : 29 pages portent des attributs data-track
+   (pro-final-wa, plaine-hero-tel, social_instagram, ig-plaine...) et
+   AUCUN script ne les lit. Ils ont ete poses en prevision d'une mesure
+   qui n'a jamais ete branchee. Resultat : on sait combien de clics
+   WhatsApp et telephone ont lieu au total (cro.js envoie bien les deux
+   conversions Google Ads), mais on ne sait pas d'ou ils partent. Or
+   c'est precisement ce qu'il faut savoir : le bouton du hero ou celui
+   du bas de page, la page entreprise ou la page plaine.
+
+   Ce gestionnaire est delegue sur document, donc il couvre aussi les
+   elements injectes apres le chargement. Il est volontairement separe
+   des conversions de cro.js : ici on mesure le detail, la-bas on
+   declare la conversion. Si ce fichier ne se charge pas, les
+   conversions Ads continuent de fonctionner.
+
+   index.html ne charge pas site.js (voir le commentaire de la FAQ plus
+   haut) et possede sa propre fonction trackEvent : aucun risque de
+   double comptage.
+
+   Les evenements partent vers la balise Google deja presente. Tant que
+   GA4 n'est pas configure (voir assets/consent.js), ils sont envoyes
+   mais aucun rapport ne les affichera. Le jour ou l'ID GA4 est renseigne,
+   l'historique ne remonte pas : il commence a cette date. */
+document.addEventListener('click', function (e) {
+  var el = e.target && e.target.closest ? e.target.closest('[data-track]') : null;
+  if (!el) return;
+
+  var label = el.getAttribute('data-track');
+  if (!label) return;
+
+  // Le nom d'evenement GA4 n'accepte que lettres, chiffres et underscores.
+  // Les libelles du site utilisent des tirets (pro-final-wa), on normalise.
+  var name = 'cta_' + label.replace(/[^a-zA-Z0-9_]/g, '_').slice(0, 36);
+
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', name, {
+      'cta_id': label,
+      'page_path': window.location.pathname
+    });
+  }
+}, true);
+
+
+/* ============================================
+   GA4 : activation differee
+   ============================================
+   L'ID GA4 se renseigne dans assets/consent.js (constante GA4_ID), pas
+   ici. Ce commentaire est la pour que la recherche "GA4" dans le depot
+   tombe sur les deux fichiers concernes. */
