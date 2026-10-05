@@ -13,14 +13,34 @@
   /* GA4 : a renseigner une seule fois, ici.
      Etat au 05/10/2026 : vide. Le site ne charge que la balise Google Ads,
      donc les deux conversions (clic WhatsApp et clic telephone, voir
-     assets/cro.js) remontent bien dans Ads, mais aucun rapport d'audience
-     n'existe : on ne sait pas quelles pages sont lues ni ou les visiteurs
-     abandonnent.
+     assets/cro.js) remontent bien dans Ads. L'audience de base (visiteurs,
+     pages lues, provenance) est couverte depuis le 05/10/2026 par Vercel Web
+     Analytics, voir juste en dessous. GA4 n'apporterait en plus que le suivi
+     fin des clics et les audiences de remarketing reliees a Google Ads.
      Pour l'activer : creer une propriete sur analytics.google.com, copier
      l'identifiant de flux au format G-XXXXXXXXXX et le coller ci-dessous.
      Rien d'autre a modifier, le reste du fichier s'en charge. L'historique
      ne remonte pas dans le temps, il demarre le jour du collage. */
   var GA4_ID = '';
+
+  /* Vercel Web Analytics — mesure d'audience sans cookie.
+     Active le 05/10/2026 sur le projet Vercel "interactis-site" (offre Hobby :
+     50 000 evenements par mois, 30 jours d'historique, gratuit). Repond a la
+     question "combien de visiteurs, sur quelles pages, venus d'ou", que la
+     balise Google Ads seule ne couvre pas.
+     Le script est servi par Vercel lui-meme depuis /_vercel/insights/script.js :
+     rien a heberger, rien a configurer. Il n'ecrit aucun cookie et ne stocke
+     aucun identifiant persistant, il n'est donc pas soumis au consentement et
+     se charge sans attendre le bandeau — contrairement a la balise Google plus
+     bas, qui elle reste bridee par le Consent Mode.
+     Si Web Analytics etait desactive dans le tableau de bord Vercel, l'adresse
+     renverrait 404 et le script echouerait en silence : rien ne casse.
+     Les evenements personnalises ne sont pas inclus dans l'offre Hobby, on ne
+     charge donc pas la file d'attente window.va, inutile ici. */
+  var vercelInsights = document.createElement('script');
+  vercelInsights.defer = true;
+  vercelInsights.src = '/_vercel/insights/script.js';
+  (document.head || document.documentElement).appendChild(vercelInsights);
 
  window.dataLayer = window.dataLayer || [];
   window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
